@@ -1,0 +1,214 @@
+  CHANGES IN dbmss VERSION 2.3-0.9001
+  ==============================
+
+
+
+  CHANGES IN dbmss VERSION 2.3-0
+  ==============================
+
+INTERNAL CHANGES
+
+  o Enforcement of the use of C++11 to avoid warnings due to RcppParallel.
+
+
+
+  CHANGES IN dbmss VERSION 2.2-5
+  ==============================
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Distance matrices can be used instead of point patterns in Mhat, mhat and Kdhat and their envelopes.
+  o The estimation of density used by Kd now includes reflection: the estimation of Kd is more accurate than before, but values may vary from previous versions close to the minimum distance.
+  o LazyData is used to save memory.
+
+BUG FIXES
+
+  o Weighted argument was ignored in Kdhat (bug introduced in v.2.2-4). Fixed.
+
+
+
+  CHANGES IN dbmss VERSION 2.2-4
+  ==============================
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Mhat and mhat C++ code is now parallelized thanks to RcppParallel
+  o Small performance improvement of Kdhat (around 5% faster)
+  
+  
+  
+  CHANGES IN dbmss VERSION 2.2-3
+  ==============================
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Updated CITATION: the paper about this package has been published: Eric Marcon, Stephane Traissac, Florence Puech, Gabriel Lang (2015). Tools to Characterize Point Patterns: dbmss for R. Journal of Statistical Software, 67(3), 1-15.
+
+
+
+  CHANGES IN dbmss VERSION 2.2-2
+  ==============================
+
+MINOR CHANGE
+
+  o Intervals of estimation of the Kd function are narrower when the distance range is small with respect to the window to improve precision.
+
+BUG FIX
+
+  o Distances pairs more than twice the maximum value of r where ignored when using the approximate estimation of Kd, so Kd was overestimated when r was smaller than usual (much less than the default values). Corrected.
+
+
+
+  CHANGES IN dbmss VERSION 2.2-1
+  ==============================
+
+BUG FIXES
+
+  o Adjust argument ignored in Kdhat. Fixed.
+
+
+
+  CHANGES IN dbmss VERSION 2.2-0
+  ==============================
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+  o m function added.
+  o Default value Controls=NULL for Dhat: controls are by default all points except for cases.
+  o Kd and m are both computed by default up to one third of the diameter of the window, other options are added.
+  o Original and Adjust arguments allow to change the default bandwith used by Kd and m.
+
+MINOR CHANGE
+
+  o Typo in internal function name FillEnveloppe corrected: FillEnvelope is the new name.
+
+
+  
+  CHANGES IN dbmss VERSION 2.1-2
+  ==============================
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Default neighbor type for Khat and Kenvelope is the same as reference type instead of "".
+  o Kd estimation now accepts "" as reference type to use all points.
+  o Approximate argument to calculate Kd on big data sets with little RAM.
+
+BUG FIXES
+
+  o FillEnvelope returned wrong quantiles for local confidence intervals. Fixed.
+
+
+  
+  CHANGES IN dbmss VERSION 2.1-1
+  ==============================
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Global confidence intervals are now defined even when NA values are found in the simulations.
+  o Kd is computed by default up to the median (instead of mean) distance between points.
+
+BUG FIXES
+
+  o Kdhat with Reference and Neighbor points of different types was calculated with only half of point pairs and sometimes crashed R. Fixed.
+
+
+
+  CHANGES IN dbmss VERSION 2.1-0
+  ==============================
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Kdhat and M are computed through C++ loops instead of spatstat paridist(). Much faster, and uses far less memory.
+
+
+  CHANGES IN dbmss VERSION 2.0-6
+  ==============================
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Kdhat and M propose a default value for argument r.
+  o Vignette added.
+
+MINOR CHANGE
+
+  o Kdhat probability density estimation is cut at the lowest distance between points instead of 0.
+
+
+  CHANGES IN dbmss VERSION 2.0-5
+  ==============================
+  
+BUG FIXES
+
+  o Kdhat with Reference and Neighbor points of the same type and Weighted=TRUE returned an error. Fixed.
+
+  
+  CHANGES IN dbmss VERSION 2.0-3
+  ==============================
+  
+OVERVIEW
+
+  o Minor corrections, mainly comments and formating.
+
+  
+  CHANGES IN dbmss VERSION 2.0-0
+  ==============================
+
+OVERVIEW 
+
+  o Most code rewritten.
+  
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o Names of functions X.r became Xhat.
+  o Point patterns are now of class wmppp.
+  o Results are of class fv, envelopes of class envelope.
+
+  
+  CHANGES IN dbmss VERSION 1.2-5
+  ==============================
+
+OVERVIEW 
+
+  o NEWS file added.
+
+
+  CHANGES IN dbmss VERSION 1.2-4
+  ==============================
+  
+OVERVIEW 
+
+  o Documentation format improved.
+ 
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o The default behavior of Kd is that of Duranton and Overman (2005). An optional parameter is added to used improved bandwith selection.
+ 
+BUG FIXES
+
+  o The density estimation of Kd was run twice. Fixed.
+
+
+
+  CHANGES IN dbmss VERSION 1.2-3
+  ==============================
+  
+OVERVIEW 
+
+  o First version on CRAN. Versions 1.2.2 and 1.2.3 contain faster examples to follow CRAN requirements.
+
+ 
+
+  CHANGES IN dbmss VERSION 1.2-1
+  ==============================
+  
+OVERVIEW 
+
+  o Kinhom function added.
+
+
+
+  CHANGES IN dbmss VERSION 1.1
+  ============================
+  
+OVERVIEW 
+
+  o First version.

@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\_sgbak$
+^\.hg$
+\.synctex\.gz$
+\.tex$
+\.log$
+\.blg$
+\.bbl$

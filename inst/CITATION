@@ -1,0 +1,25 @@
+bibentry(bibtype = "Article",
+  title        = "Tools to Characterize Point Patterns: {dbmss} for {R}",
+  author       = c(person(given = "Eric",
+                          family = "Marcon"),
+                   person(given = "St{\\'e}phane",
+                          family = "Traissac"),
+                   person(given = "Florence",
+                          family = "Puech"),
+                   person(given = "Gabriel",
+                          family = "Lang")),
+  journal      = "Journal of Statistical Software, Code Snippets",
+  year         = "2015",
+  volume       = "67",
+  number       = "3",
+  pages        = "1--15",
+  doi          = "10.18637/jss.v067.c03",
+
+  header       = "To cite dbmss in publications use:",
+  textVersion  =
+  paste("Eric Marcon, St{\'e}phane Traissac, Florence Puech, Gabriel Lang (2015).",
+        "Tools to Characterize Point Patterns: dbmss for R.",
+        "Journal of Statistical Software, 67(3), 1-15.",
+        "doi:10.18637/jss.v067.c03")
+)
+
