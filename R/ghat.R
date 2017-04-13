@@ -35,7 +35,7 @@ function(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TR
   rmaxdefault <- rmax.rule("K", X$window, lambdaJ)
   breaks <- handle.r.b.args(window = X$window, rmaxdefault = rmaxdefault)
   rBest <- breaks$r
-  denargs <- resolve.defaults(list(kernel = "epanechnikov",  n = length(rBest), from = 0, to = max(rBest)))
+  denargs <- spatstat.utils::resolve.defaults(list(kernel = "epanechnikov",  n = length(rBest), from = 0, to = max(rBest)))
   if (is.null(r)) {
     r <- rBest
   }

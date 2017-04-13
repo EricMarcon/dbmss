@@ -1,14 +1,14 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.3-0
-Date: 2016-09-18
+Version: 2.4-1
+Date: 2017-04-10
 Author: Eric Marcon, Gabriel Lang, Stephane Traissac, Florence Puech
 Maintainer: Eric Marcon <Eric.Marcon@ecofog.gf>
 Description: Simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's Kd, Marcon and Puech's M). Relies on 'spatstat' for some core calculation.
 License: GNU General Public License
-Depends: spatstat, Rcpp (>= 0.10.6)
-Imports: cubature, stats, RcppParallel
+Depends: R (>= 3.3.0), spatstat, Rcpp (>= 0.10.6)
+Imports: cubature, stats, RcppParallel, spatstat.utils (>= 1.3-1)
 LinkingTo: Rcpp, RcppParallel
 LazyData: true
 Suggests: testthat

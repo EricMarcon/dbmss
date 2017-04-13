@@ -4,9 +4,9 @@ function (Y, fun = Kest, nsim = 99, nrank = 1, ..., funargs = list(),
           Yname = NULL, envir.simul = NULL) 
 {
   # Environment information sent to envelopeEngine
-  cl <- short.deparse(sys.call())
+  cl <- spatstat.utils::short.deparse(sys.call())
   if (is.null(Yname)) 
-    Yname <- short.deparse(substitute(Y))
+    Yname <- spatstat.utils::short.deparse(substitute(Y))
   if (is.null(fun)) 
     fun <- Kest
   envir.user <- if (!is.null(envir.simul)) 

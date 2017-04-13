@@ -1,8 +1,26 @@
-  CHANGES IN dbmss VERSION 2.3-0.9001
+  CHANGES IN dbmss VERSION 2.4-1
   ==============================
 
+IMPROVEMENTS
+
+  o Declaration of the required versions of R and spatstats in DESCRIPTION to avoid error in CRAN test on oldrel Windows platform.
+  
+  
+  CHANGES IN dbmss VERSION 2.4-0
+  ==============================
+
+EXTERNAL CHANGES
+
+  o Updates in the spatstat package: dbmss has been updated to address the creation of spatstat.util.
+
+INTERNAL CHANGES
+
+  o C routines registration to comply with R 3.4 policy.
+  o Explicit export of all non-internal functions instead of exportPattern("^[[:alpha:]]+").
+  o Import of package cubature reduced to function adaptIntegrate().
 
 
+  
   CHANGES IN dbmss VERSION 2.3-0
   ==============================
 
@@ -10,7 +28,7 @@ INTERNAL CHANGES
 
   o Enforcement of the use of C++11 to avoid warnings due to RcppParallel.
 
-
+  
 
   CHANGES IN dbmss VERSION 2.2-5
   ==============================
