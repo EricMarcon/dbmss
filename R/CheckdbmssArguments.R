@@ -133,6 +133,13 @@ function() {
       stop(paste(ErrorFunction, "StartFromMinR must be TRUE or FALSE, it cannot be", sQuote(StartFromMinR)))    
   }
   
+  # Individual 
+  if (!is.na(names(Args["Individual"]))) {
+    Individual <- eval(expression(Individual), parent.frame())
+    if (!is.logical(Individual))
+      stop(paste(ErrorFunction, "Individual must be TRUE or FALSE, it cannot be", sQuote(Individual)))    
+  }
+  
   return (TRUE)
 }
     

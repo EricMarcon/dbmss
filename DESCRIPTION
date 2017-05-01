@@ -1,7 +1,7 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.4-1
+Version: 2.4-1.9001
 Date: 2017-04-10
 Author: Eric Marcon, Gabriel Lang, Stephane Traissac, Florence Puech
 Maintainer: Eric Marcon <Eric.Marcon@ecofog.gf>

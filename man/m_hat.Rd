@@ -9,7 +9,7 @@
 \usage{
 mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     CaseControl = FALSE, Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1),
-    Adjust = 1, MaxRange = "ThirdW", CheckArguments = TRUE)
+    Adjust = 1, MaxRange = "ThirdW", Individual = FALSE, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
@@ -42,6 +42,9 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
     if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
   }
+  \item{Individual}{
+    Logical; if \code{TRUE}, values of the function around each individual point are returned.
+  }
   \item{CheckArguments}{
     Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
@@ -55,6 +58,8 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 }
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+
+  If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point.
 }
 \note{
   Estimating \emph{m} relies on calculating distances, exactly or approximately (if \code{Approximate} is not 0).

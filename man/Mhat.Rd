@@ -8,7 +8,7 @@
 }
 \usage{
 Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
-    CaseControl = FALSE, CheckArguments = TRUE)
+    CaseControl = FALSE, Individual = FALSE, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
@@ -26,6 +26,9 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \item{CaseControl}{
     Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
   }
+  \item{Individual}{
+    Logical; if \code{TRUE}, values of the function around each individual point are returned.
+  }
   \item{CheckArguments}{
     Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
@@ -35,6 +38,8 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 }
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  
+  If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point.
 }
 \references{
   Marcon, E. and Puech, F. (2010). Measures of the Geographic Concentration of Industries: Improving Distance-Based Methods. \emph{Journal of Economic Geography} 10(5): 745-762.

@@ -1,7 +1,7 @@
 mhat <-
 function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl = FALSE, 
          Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1, MaxRange = "ThirdW", 
-         CheckArguments = TRUE) {
+         Individual = FALSE, CheckArguments = TRUE) {
 
   # Eliminate erroneous configurations
   if (CheckArguments) {
@@ -118,7 +118,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
       h <- stats::bw.SJ(RefDistances) * Adjust
     }
 
-    if(is.null(r)) {
+    if (is.null(r)) {
       # Min distance obtained from the data rather than 0
       rmin <- min(Nbd, na.rm=TRUE)
       # Max distance may be obtained from the data rather than from the window
@@ -136,18 +136,31 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   # Calculate the local ratio (at distance r)
   LocalRatio <- Djc/Dj
   # Divide it by the global ratio. Ignore points with no neighbor at all.
-  mvalues <- colSums(LocalRatio)/sum(GlobalRatio)
+  mvalues <- matrix(colSums(LocalRatio)/sum(GlobalRatio))
+  # Keep individual values
+  if (Individual) {
+    mvalues <- cbind(mvalues, t(LocalRatio/GlobalRatio))
+  }
   
   # Interpolate if necessary
   if (is.null(r)) {
     r <- x
   } else {
-    mvalues <- stats::approx(x, mvalues, xout=r)$y
+    mvalues <- apply(mvalues, 2, function(m) stats::approx(x, m, xout=r)$y)
   }
   # Put the results into an fv object
   mEstimate <- data.frame(r, rep(1, length(r)), mvalues)
-  colnames(mEstimate) <- c("r", "theo", "m")
+  ColNames <- c("r", "theo", "m")
+  Labl <- c("r", "%s[ind](r)", "hat(%s)(r)")
+  Desc <- c("Distance argument r", "Theoretical independent m(r)", "Estimated m(r)")  
+  if (Individual) {
+    ColNumbers <- 1:(ncol(mEstimate)-3)
+    ColNames <- c(ColNames, paste("m", ColNumbers, sep=""))
+    Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
+    Desc <- c(Desc, paste("Individual M(r) around point", ColNumbers))
+  }
+  colnames(mEstimate) <- ColNames
   
   # Return the values of M(r)
-  return (fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", fmla= ". ~ r", alim=c(0, max(r)), labl=c("r", "%s[ind](r)", paste("hat(%s)(r)", sep="")), desc=c("distance argument r", "theoretical independent m(r)", "Estimated m(r)"), unitname=X$window$unit, fname="m")) 
+  return (fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", fmla= ". ~ r", alim=c(0, max(r)), labl=Labl, desc=Desc, unitname=X$window$unit, fname="m")) 
 }
