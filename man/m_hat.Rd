@@ -59,7 +59,7 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
 
-  If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point.
+  If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point. The column names of the \code{fv} are "m_" followed by the point names, i.e. the row names of the marks of the point pattern.
 }
 \note{
   Estimating \emph{m} relies on calculating distances, exactly or approximately (if \code{Approximate} is not 0).

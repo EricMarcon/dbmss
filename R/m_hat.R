@@ -154,13 +154,14 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   Labl <- c("r", "%s[ind](r)", "hat(%s)(r)")
   Desc <- c("Distance argument r", "Theoretical independent m(r)", "Estimated m(r)")  
   if (Individual) {
-    ColNumbers <- 1:(ncol(mEstimate)-3)
-    ColNames <- c(ColNames, paste("m", ColNumbers, sep=""))
+    # ColNumbers will usually be line numbers of the marks df, but may be real names.
+    ColNumbers <- row.names(X$marks[IsReferenceType, ])
+    ColNames <- c(ColNames, paste("m", ColNumbers, sep="_"))
     Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
     Desc <- c(Desc, paste("Individual M(r) around point", ColNumbers))
   }
   colnames(mEstimate) <- ColNames
   
   # Return the values of M(r)
-  return (fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", fmla= ". ~ r", alim=c(0, max(r)), labl=Labl, desc=Desc, unitname=X$window$unit, fname="m")) 
+  return (fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", fmla= "cbind(m,theo)~r", alim=c(0, max(r)), labl=Labl, desc=Desc, unitname=X$window$unit, fname="m")) 
 }

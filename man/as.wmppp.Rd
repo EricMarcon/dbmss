@@ -30,7 +30,7 @@ as.wmppp(X, \dots)
 \details{
   This is a generic method, implemented for \code{\link{ppp}} and \code{\link{data.frame}}:
   \itemize{
-    \item{If the dataset \code{X} is an object of class "ppp" (\code{\link{ppp.object}}), the marks are converted to point weights if they are numeric or to point types if they are factors. Default weights are set to 1, default types to "All". If marks are a dataframe with column names equal to \code{PointType} and \code{PointWeight}, they are not modified.
+    \item{If the dataset \code{X} is an object of class "ppp" (\code{\link{ppp.object}}), the marks are converted to point weights if they are numeric or to point types if they are factors. Default weights are set to 1, default types to "All". If marks are a dataframe with column names equal to \code{PointType} and \code{PointWeight}, they are not modified. Row namles of the dataframe are preserved aqs row names of the marks, to identify points.
     }
     \item{If the dataset \code{X} is a dataframe, see \code{\link{wmppp}}.
     }

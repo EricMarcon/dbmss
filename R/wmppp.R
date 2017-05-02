@@ -58,7 +58,11 @@ function(df, window = NULL, unitname = NULL)
   }
   if (!is.owin(window))
     stop("window must be an object of class owin.")
+  
+  # Build the object
   wmpppX <- ppp(X, Y, window=window, marks=data.frame(PointWeight, PointType))
+  # Keep the point names
+  row.names(wmpppX$marks) <- row.names(df)
   class(wmpppX) <- c("wmppp", "ppp")
   return (wmpppX)
 }

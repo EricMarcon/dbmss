@@ -1,9 +1,10 @@
-  CHANGES IN dbmss VERSION 2.4-1.9001
+  CHANGES IN dbmss VERSION 2.4-1.9002
   ==============================
 
 NEW FEATURES
 
-  o Declaration of the required versions of R and spatstats in DESCRIPTION to avoid error in CRAN test on oldrel Windows platform.
+  o Individual values of m and M available from Mhat and mhat with argument Individual.
+  o Point names can be specified as row names of the dataframe passed to wmppp(). They are preserved in the fv object returned by individual Mhat and mhat to identify points more easily.
 
 
 
