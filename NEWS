@@ -1,10 +1,14 @@
-  CHANGES IN dbmss VERSION 2.4-1.9002
+  CHANGES IN dbmss VERSION 2.4-1.9004
   ==============================
 
 NEW FEATURES
 
   o Individual values of m and M available from Mhat and mhat with argument Individual.
   o Point names can be specified as row names of the dataframe passed to wmppp(). They are preserved in the fv object returned by individual Mhat and mhat to identify points more easily.
+
+IMPROVEMENTS
+
+  o Far less memory is used to compute M and approximated m functions. The ratio of necessary memory equals that of  the number of reference points to the total number of points.
 
 
 

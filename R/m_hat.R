@@ -59,16 +59,12 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
     rseq <- seq(from = rmin, to = rmax*2, length.out = 2048*Approximate)
     Nr <- length(rseq)
 
-    # Call C routine to fill Nbd
+    # Call C routine to fill Nbd (1 line per reference point, 2*Nr columns)
     if (CaseControl) {
       Nbd <- parallelCountNbdCC(rseq, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
     } else {
       Nbd <- parallelCountNbd(rseq, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
     }
-    
-    # Keep the lines of the matrix corresponding to reference points (cases).
-    # Other lines are useless and have not been filled by the loops
-    Nbd <- Nbd[IsReferenceType, ]
     
     # Adjust distances: values are the centers of intervals
     rseq <- c(0, (rseq[2:Nr]+rseq[1:Nr-1])/2)
@@ -94,6 +90,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
       # Dtable case: set distances between identical points to NA and keep reference points only
       Nbd <- X$Dmatrix
       diag(Nbd) <- NA
+      # Nbd already contains distances between points
       Nbd <- Nbd[IsReferenceType, ]
     } else {
       # wmppp case:

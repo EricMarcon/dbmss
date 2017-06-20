@@ -65,13 +65,9 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     }
   }
   
-  # Keep the lines of the matrix corresponding to reference points (cases).
-  # Other lines are useless and have not been filled by the loops
-  NbdInt <- Nbd[IsReferenceType, 1:Nr]
-  NbdAll <- Nbd[IsReferenceType, (Nr+1):(2*Nr)]
   # Cumulate weights up to each distance
-  NbdInt <- t(apply(NbdInt, 1, cumsum))
-  NbdAll <- t(apply(NbdAll, 1, cumsum))
+  NbdInt <- t(apply(Nbd[, 1:Nr], 1, cumsum))
+  NbdAll <- t(apply(Nbd[, (Nr+1):(2*Nr)], 1, cumsum))
   
   # Calulate the ratio of points of interest around each point
   LocalRatio <- NbdInt/NbdAll
