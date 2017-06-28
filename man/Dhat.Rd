@@ -39,7 +39,7 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
   
   Diggle, P. J. and Chetwynd, A. G. (1991). Second-Order Analysis of Spatial Clustering for Inhomogeneous Populations. \emph{Biometrics} 47(3): 1155-1163.
   
-  Marcon, E. and F. Puech (2012). A typology of distance-based measures of spatial concentration. \emph{HAL SHS}. 00679993.
+  Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
 }
 \author{
   Eric Marcon <Eric.Marcon@ecofog.gf>
