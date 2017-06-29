@@ -3,6 +3,7 @@
 
 NEW FEATURES
 
+  o On GitHub now.
   o Individual values of m and M available from Mhat and mhat with argument Individual.
   o Point names can be specified as row names of the dataframe passed to wmppp(). They are preserved in the fv object returned by individual Mhat and mhat to identify points more easily.
 
