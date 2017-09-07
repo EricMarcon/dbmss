@@ -25,7 +25,7 @@ GoFtest(Envelope)
   
   Loosmore, N. B. and  Ford, E. D. (2006). Statistical inference using the G or K point pattern spatial statistics. \emph{Ecology} 87(8): 1925-1931.
   
-  Marcon, E., F. Puech, et al. (2012). Characterizing the relative spatial structure of point patterns. International \emph{Journal of Ecology} 2012(Article ID 619281): 11.  
+  Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. International \emph{Journal of Ecology} 2012(Article ID 619281): 11.  
 }
 \author{
   Eric Marcon <Eric.Marcon@ecofog.gf>

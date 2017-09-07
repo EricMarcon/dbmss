@@ -55,6 +55,8 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   The number of neighbors at each distance is estimated by a Gaussian kernel whose bandwith is chosen optimally according to Silverman (1986: eq 3.31). It can be sharpened or smoothed by multiplying it by \code{Adjust}. The bandwidth of Sheather and Jones (1991) would be better but it is very slow to calculate for large point patterns and it sometimes fails. It is often sharper than that of Silverman. 
   
   If \code{X} is not a \code{\link{Dtable}} object, the maximum value of \code{r} is obtained from the geometry of the window rather than caculating the median distance between points as suggested by Duranton and Overman (2005) to save (a lot of) calculation time.
+  
+   If \emph{CaseControl} is \code{TRUE}, then \item{ReferenceType} points are cases and \emph{NeighborType} points are controls. The univariate concentration of cases is calculated as if \emph{NeighborType} was equal to \item{ReferenceType}, but only controls are considered when counting all points around cases (Marcon et al., 2012). This makes sense when the sampling design is such that all points of \emph{ReferenceType} (the cases) but only a sample of the other points (the controls) are recorded. Then, the whole distribution of points is better represented by the controls alone.
 }
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
@@ -72,7 +74,9 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106.
 
   Lang G., Marcon E. and Puech F. (2014) Distance-Based Measures of Spatial Concentration: Introducing a Relative Density Function. \emph{HAL} 01082178, 1-18.
-  
+
+  Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. \emph{International Journal of Ecology} 2012(Article ID 619281): 11.
+
   Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, \emph{Journal of Geographical Systems} 17(4): 333-351.
 
   Sheather, S. J. and Jones, M. C. (1991) A reliable data-based bandwidth selection method for kernel density estimation. \emph{Journal of the Royal Statistical Society series B}, 53, 683-690.

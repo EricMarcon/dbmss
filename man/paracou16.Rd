@@ -20,7 +20,7 @@ data(paracou16)
 \references{
   Gourlet-Fleury, S., Guehl, J. M. and Laroussinie, O., Eds. (2004). \emph{Ecology & management of a neotropical rainforest. Lessons drawn from Paracou, a long-term experimental research site in French Guiana}. Paris, Elsevier.
   
-  Marcon, E., F. Puech, et al. (2012). Characterizing the relative spatial structure of point patterns. \emph{International Journal of Ecology} 2012(Article ID 619281): 11.
+  Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. \emph{International Journal of Ecology} 2012(Article ID 619281): 11.
 }
 \examples{
 
