@@ -2,30 +2,30 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 DistKd <- function(Rx, Ry, RPointWeight, RWeight, RDist, RIsReferenceType, RIsNeighborType) {
-    invisible(.Call(dbmss_DistKd, Rx, Ry, RPointWeight, RWeight, RDist, RIsReferenceType, RIsNeighborType))
+    invisible(.Call(`_dbmss_DistKd`, Rx, Ry, RPointWeight, RWeight, RDist, RIsReferenceType, RIsNeighborType))
 }
 
 CountNbdKd <- function(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType) {
-    invisible(.Call(dbmss_CountNbdKd, Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType))
+    invisible(.Call(`_dbmss_CountNbdKd`, Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType))
 }
 
 parallelCountNbd <- function(r, x, y, Weight, IsReferenceType, IsNeighborType) {
-    .Call(dbmss_parallelCountNbd, r, x, y, Weight, IsReferenceType, IsNeighborType)
+    .Call(`_dbmss_parallelCountNbd`, r, x, y, Weight, IsReferenceType, IsNeighborType)
 }
 
 parallelCountNbdDt <- function(r, Dmatrix, Weight, IsReferenceType, IsNeighborType) {
-    .Call(dbmss_parallelCountNbdDt, r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
+    .Call(`_dbmss_parallelCountNbdDt`, r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
 }
 
 parallelCountNbdCC <- function(r, x, y, Weight, IsReferenceType, IsNeighborType) {
-    .Call(dbmss_parallelCountNbdCC, r, x, y, Weight, IsReferenceType, IsNeighborType)
+    .Call(`_dbmss_parallelCountNbdCC`, r, x, y, Weight, IsReferenceType, IsNeighborType)
 }
 
 parallelCountNbdDtCC <- function(r, Dmatrix, Weight, IsReferenceType, IsNeighborType) {
-    .Call(dbmss_parallelCountNbdDtCC, r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
+    .Call(`_dbmss_parallelCountNbdDtCC`, r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
 }
 
 parallelCountNbdm <- function(x, y, ReferencePoints) {
-    .Call(dbmss_parallelCountNbdm, x, y, ReferencePoints)
+    .Call(`_dbmss_parallelCountNbdm`, x, y, ReferencePoints)
 }
 

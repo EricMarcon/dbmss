@@ -3,6 +3,7 @@
 \alias{split.wmppp}
 \alias{superimpose.wmppp}
 \alias{unique.wmppp}
+\alias{[.wmppp}
 \title{
   Methods for weighted, marked planar point patterns (of class wmppp) from spatstat
 }
@@ -14,6 +15,7 @@
 \method{split}{wmppp}(\dots)
 \method{superimpose}{wmppp}(\dots)
 \method{unique}{wmppp}(\dots)
+\method{[}{wmppp}(\dots)
 }
 \arguments{
   \item{\dots}{

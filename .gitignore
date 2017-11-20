@@ -39,3 +39,4 @@ src/*.dll
 
 # Extras
 .#Extra
+.Rproj.user
