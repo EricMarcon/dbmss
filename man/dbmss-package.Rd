@@ -17,7 +17,7 @@ Florence Puech
 Maintainer: Eric Marcon <Eric.Marcon@ecofog.gf>
 }
 \references{
-  Marcon, É., & Puech, F. (2003). Evaluating the Geographic Concentration of Industries Using Distance-Based Methods. \emph{Journal of Economic Geography}, 3(4), 409–428.
+  Marcon, E., & Puech, F. (2003). Evaluating the Geographic Concentration of Industries Using Distance-Based Methods. \emph{Journal of Economic Geography}, 3(4), 409–428.
 
   Marcon, E. and Puech, F. (2010). Measures of the Geographic Concentration of Industries: Improving Distance-Based Methods. \emph{Journal of Economic Geography} 10(5): 745-762.
   

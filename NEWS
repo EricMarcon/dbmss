@@ -1,4 +1,4 @@
-  CHANGES IN dbmss VERSION 2.4-1.9006
+  CHANGES IN dbmss VERSION 2.5-0
   ==============================
 
 NEW FEATURES
@@ -9,7 +9,7 @@ NEW FEATURES
 
 IMPROVEMENTS
 
-  o Far less memory is used to compute M and approximated m functions. The ratio of necessary memory equals that of  the number of reference points to the total number of points.
+  o Far less memory is used to compute M and approximated m functions. The ratio of necessary memory equals that of the number of reference points to the total number of points.
   o [.wmppp function added to spatstat generics
 
 

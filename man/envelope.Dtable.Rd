@@ -7,9 +7,9 @@
   Prints a useful summary of a confidence envelope of class "dbmssEnvelope"
 }
 \usage{
-\method{envelope}{Dtable}(Y, fun = Kest, nsim = 99, nrank = 1, ..., funargs = list(), 
-          funYargs = funargs, simulate = NULL, verbose = TRUE, savefuns = FALSE,
-          Yname = NULL, envir.simul = NULL)
+\method{envelope}{Dtable}(Y, fun = Kest, nsim = 99, nrank = 1, ..., 
+          funargs = list(), funYargs = funargs, simulate = NULL, 
+          verbose = TRUE, savefuns = FALSE, Yname = NULL, envir.simul = NULL)
 }
 \arguments{
   \item{Y}{
