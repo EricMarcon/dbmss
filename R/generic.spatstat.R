@@ -30,9 +30,9 @@ unique.wmppp <- function(x, ...)
   return(X)
 }
 
-"[.wmppp" <- function(...)
+"[.wmppp" <- function(i, j, drop=FALSE, ..., clip=FALSE)
 {
-  X <- "[.ppp"(...)
+  X <- "[.ppp"(i, j, drop=drop, ..., clip=clip)
   class(X) <- c("wmppp", "ppp")
   return(X)
 }

@@ -15,7 +15,7 @@
 \method{split}{wmppp}(\dots)
 \method{superimpose}{wmppp}(\dots)
 \method{unique}{wmppp}(x, \dots)
-\method{[}{wmppp}(x, i, j, drop=FALSE, \dots, clip=FALSE)
+\method{[}{wmppp}(i, j, drop=FALSE, \dots, clip=FALSE)
 }
 \arguments{
   \item{X, x}{

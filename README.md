@@ -1,7 +1,7 @@
 # Distance Based Measures of Spatial Structures
 
-[![CRAN version](http://www.r-pkg.org/badges/version/dbmss)](https://cran.r-project.org/package=dbmss)
-[![](http://cranlogs.r-pkg.org/badges/dbmss)](http://cran.rstudio.com/web/packages/dbmss/index.html)
+[![CRAN version](http://www.r-pkg.org/badges/version/dbmss)](https://CRAN.r-project.org/package=dbmss)
+[![](http://cranlogs.r-pkg.org/badges/dbmss)](https://CRAN.R-project.org/package=dbmss)
 [![Research software impact](http://depsy.org/api/package/cran/dbmss/badge.svg)](http://depsy.org/package/r/dbmss)
 
 dbmss is an R package for simple computation of spatial statistic functions of distance to characterize the spatial structures
