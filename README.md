@@ -2,6 +2,7 @@
 
 [![CRAN version](http://www.r-pkg.org/badges/version/dbmss)](https://cran.r-project.org/package=dbmss)
 [![](http://cranlogs.r-pkg.org/badges/dbmss)](http://cran.rstudio.com/web/packages/dbmss/index.html)
+[![Research software impact](http://depsy.org/api/package/cran/dbmss/badge.svg)](http://depsy.org/package/r/dbmss)
 
 dbmss is an R package for simple computation of spatial statistic functions of distance to characterize the spatial structures
 of mapped objects, including classical ones (Ripley's *K* and others) and more recent ones used by spatial economists 
