@@ -1,10 +1,24 @@
 CheckdbmssArguments <-
 function() {
 
+  # Verify that the package is attached
+  if (! "dbmss" %in% .packages()) {
+    warning("Function arguments cannot be checked because the dbmss package is not attached. Add CheckArguments=FALSE to suppress this warning or run library('dbmss')")
+    return (TRUE)
+  }
   # Get the list of arguments of the parent function
   ParentFunction <- sys.call(-1)[[1]]
+  # If apply() or similar was used, the function name is not in ParentFunction: sys.call(-1)[[1]] returns "FUN"
+  if (ParentFunction == "FUN") {
+    warning("Function arguments cannot be checked, probably because you used apply(). Add CheckArguments=FALSE to suppress this warning.")
+    return (TRUE)
+  }
+  
   ErrorFunction <- paste("Error in ", ParentFunction, ":")
-  Args <- formals(match.fun(ParentFunction))
+  
+  # Find the arguments. match.fun does not work with entropart::function
+  ParentFunctionNoNS <- as.name(gsub("dbmss::", "", as.character(ParentFunction)))
+  Args <- formals(match.fun(ParentFunctionNoNS))
   
   # Get the point pattern or the Dtable
   X <- eval(expression(X), parent.frame())
