@@ -10,4 +10,5 @@ r_packages:
  - stats
  - RcppParallel
  - spatstat.utils 
- 
+ r_build_args: --no-build-vignettes
+ r_check_args: --no-build-vignettes
