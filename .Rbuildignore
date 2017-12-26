@@ -7,3 +7,4 @@
 \.log$
 \.blg$
 \.bbl$
+^\.travis\.yml$
