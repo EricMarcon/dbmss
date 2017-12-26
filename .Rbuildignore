@@ -8,3 +8,7 @@
 \.blg$
 \.bbl$
 ^\.travis\.yml$
+vignettes/figure/
+vignettes/dbmss_cache/
+vignettes/dbmss_files/
+vignettes/dbmss.tex
