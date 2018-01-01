@@ -15,10 +15,10 @@ as.Dtable(X, \dots)
 }
 \arguments{
   \item{X}{
-    Data to be converted into a \code{"Dtable"}.
+  Data to be converted into a \code{"Dtable"}.
   }
   \item{\dots}{
-    Extra arguments.
+  Extra arguments.
   }
 }
 \details{
@@ -35,4 +35,3 @@ as.Dtable(X, \dots)
 \seealso{
   \code{\link{as.wmppp}}
 }
-

@@ -13,40 +13,40 @@
 }
 \arguments{
   \item{Y}{
-    An object of class \code{\link{Dtable}}.
+  An object of class \code{\link{Dtable}}.
   }
   \item{fun}{
-    Function that computes the desired summary statistic for \code{Y}.
+  Function that computes the desired summary statistic for \code{Y}.
   }
   \item{nsim}{
-    Number of simulated point patterns to be generated when computing the envelopes.
+  Number of simulated point patterns to be generated when computing the envelopes.
   }
   \item{nrank}{
-    Integer. Rank of the envelope value amongst the nsim simulated values. A rank of 1 means that the minimum and maximum simulated values will be used.
+  Integer. Rank of the envelope value amongst the nsim simulated values. A rank of 1 means that the minimum and maximum simulated values will be used.
   }
   \item{\dots}{
-    Extra arguments passed to \code{fun}.
+  Extra arguments passed to \code{fun}.
   }
   \item{funargs}{
-    A list, containing extra arguments to be passed to \code{fun}.
+  A list, containing extra arguments to be passed to \code{fun}.
   }
   \item{funYargs}{
-    Optional. A list, containing extra arguments to be passed to fun when applied to the original data \code{Y} only.
+  Optional. A list, containing extra arguments to be passed to fun when applied to the original data \code{Y} only.
   }
   \item{simulate}{
-    Optional. Specifies how to generate the simulated point patterns.
+  Optional. Specifies how to generate the simulated point patterns.
   }
   \item{verbose}{
-    Logical flag indicating whether to print progress reports during the simulations.
+  Logical flag indicating whether to print progress reports during the simulations.
   }
   \item{savefuns}{
-    Logical flag indicating whether to save all the simulated function values.
+  Logical flag indicating whether to save all the simulated function values.
   }
   \item{Yname}{
-    Character string that should be used as the name of the data \code{Y} when printing or plotting the results.
+  Character string that should be used as the name of the data \code{Y} when printing or plotting the results.
   }
   \item{envir.simul}{
-    Environment in which to evaluate the expression \code{simulate}, if not the current environment.
+  Environment in which to evaluate the expression \code{simulate}, if not the current environment.
   }
 }
 \details{

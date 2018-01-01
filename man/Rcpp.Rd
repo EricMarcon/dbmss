@@ -23,55 +23,55 @@ CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType)
 }
 \arguments{
   \item{Rr}{
-    A vector of distances.
+  A vector of distances.
   }
   \item{r}{
-    A vector of distances.
+  A vector of distances.
   }
   \item{Rx}{
-    A vector of \emph{x} coordinates.
+  A vector of \emph{x} coordinates.
   }
   \item{x}{
-    A vector of \emph{x} coordinates.
+  A vector of \emph{x} coordinates.
   }
   \item{Ry}{
-    A vector of \emph{y} coordinates.
+  A vector of \emph{y} coordinates.
   }
   \item{y}{
-    A vector of \emph{y} coordinates.
+  A vector of \emph{y} coordinates.
   }
   \item{Dmatrix}{
-    A matrix of distances.
+  A matrix of distances.
   }
   \item{RPointWeight}{
-    A vector of point weights.
+  A vector of point weights.
   }
   \item{RWeight}{
-    A vector of point weights.
+  A vector of point weights.
   }
   \item{Weight}{
-    A vector of point weights.
+  A vector of point weights.
   }
   \item{ReferencePoints}{
-    A vector of pont indices.
+  A vector of pont indices.
   }
   \item{RNbd}{
-    A matrix to store the weight of neighbors.
+  A matrix to store the weight of neighbors.
   }
   \item{RDist}{
-    A vector of point-pair distances.
+  A vector of point-pair distances.
   }
   \item{RIsReferenceType}{
-    A boolean vector to recognize reference points.
+  A boolean vector to recognize reference points.
   }
   \item{IsReferenceType}{
-    A boolean vector to recognize reference points.
+  A boolean vector to recognize reference points.
   }
   \item{RIsNeighborType}{
-    A boolean vector to recognize neighbor points.
+  A boolean vector to recognize neighbor points.
   }
   \item{IsNeighborType}{
-    A boolean vector to recognize neighbor points.
+  A boolean vector to recognize neighbor points.
   }
 }
 \details{

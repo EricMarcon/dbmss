@@ -11,13 +11,13 @@ Dtable(Dmatrix, PointType = NULL, PointWeight = NULL)
 }
 \arguments{
   \item{Dmatrix}{
-    A square matrix containing distances.
+  A square matrix containing distances.
   }
   \item{PointType}{
-    A vector describing the point types. Its length must correspond to the number of points. 
+  A vector describing the point types. Its length must correspond to the number of points. 
   }
   \item{PointWeight}{
-    A vector describing the point weights. Its length must correspond to the number of points.
+  A vector describing the point weights. Its length must correspond to the number of points.
   }
 }
 \details{

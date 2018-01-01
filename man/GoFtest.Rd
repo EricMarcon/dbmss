@@ -11,7 +11,7 @@ GoFtest(Envelope)
 }
 \arguments{
   \item{Envelope}{
-    An envelope object (\code{\link{envelope}}) containing simulations in its \code{simfuns} attribute. It may be the result of any estimation function of the dbmss package or obtained by the \code{\link{envelope}} function with argument \code{savefuns=TRUE}.
+  An envelope object (\code{\link{envelope}}) containing simulations in its \code{simfuns} attribute. It may be the result of any estimation function of the dbmss package or obtained by the \code{\link{envelope}} function with argument \code{savefuns=TRUE}.
   }
 }
 \details{
@@ -40,7 +40,6 @@ GoFtest(Envelope)
   \code{\link{Ktest}}
 }
 \examples{
-
 # Simulate a Matern (Neyman Scott) point pattern
 nclust <- function(x0, y0, radius, n) {
   return(runifdisc(n, radius, centre=c(x0, y0)))
@@ -57,5 +56,4 @@ plot(Envelope, ./(pi*r^2) ~ r)
 
 # GoF test. Power is correct if enough simulations are run (say >1000).
 paste("p-value =", GoFtest(Envelope))
-
 }

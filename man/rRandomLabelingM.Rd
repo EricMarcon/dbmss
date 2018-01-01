@@ -11,10 +11,10 @@ rRandomLabelingM(X, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -38,7 +38,6 @@ rRandomLabelingM(X, CheckArguments = TRUE)
   \code{\link{rRandomLabeling}}, \code{\link{rPopulationIndependenceM}}
 }
 \examples{
-
 # Simulate a point pattern with five types
 X <- rpoispp(50) 
 PointType   <- sample(c("A", "B", "C", "D", "E"), X$n, replace=TRUE)
@@ -58,5 +57,4 @@ plot(Y, main="Randomized pattern, Point Type", which.marks=2)
 # But weights are unchanged
 Y <- Z
 plot(Y, main="Randomized pattern, Point Weight", which.marks=1)
-
 }

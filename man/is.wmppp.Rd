@@ -11,7 +11,7 @@ is.wmppp(X)
 }
 \arguments{
   \item{X}{
-    Any object
+  Any object
   }
 }
 \value{

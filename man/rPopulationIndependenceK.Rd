@@ -11,16 +11,16 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{ReferenceType}{
-    One of the point types.
+  One of the point types.
   }
   \item{NeighborType}{
-    One of the point types.
+  One of the point types.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -40,7 +40,6 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
   \code{\link{rPopulationIndependenceM}}, \code{\link{rRandomLabeling}}
 }
 \examples{
-
 # Simulate a point pattern with two types
 X <- rpoispp(50) 
 PointType   <- sample(c("A", "B"), X$n, replace=TRUE)

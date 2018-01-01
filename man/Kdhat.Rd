@@ -13,41 +13,41 @@
 }
 \arguments{
   \item{X}{
-    A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
+  A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a default value is set: 512 equally spaced values are used, from the smallest distance between points to half the diameter of the window.
+  A vector of distances. If \code{NULL}, a default value is set: 512 equally spaced values are used, from the smallest distance between points to half the diameter of the window.
   }
   \item{ReferenceType}{
-    One of the point types. If "", all points are considered (this is not the default value; \code{NeighborType} is ignored then) to estimate the average value of simulated \emph{Kd} values under the null hypothesis of \emph{RandomLocation} (Marcon and Puech, 2012).
+  One of the point types. If "", all points are considered (this is not the default value; \code{NeighborType} is ignored then) to estimate the average value of simulated \emph{Kd} values under the null hypothesis of \emph{RandomLocation} (Marcon and Puech, 2012).
   }
   \item{NeighborType}{
-    One of the point types. By default, the same as reference type.
+  One of the point types. By default, the same as reference type.
   }
   \item{Weighted}{
-    Logical; if \code{TRUE}, estimates the \emph{Kemp} function.
+  Logical; if \code{TRUE}, estimates the \emph{Kemp} function.
   }
   \item{Original}{
-    Logical; if \code{TRUE} (by default), the original bandwidth selection by Duranton and Overman (2005) following Silverman (1986: eq 3.31) is used. If \code{FALSE}, it is calculated following Sheather and Jones (1991), \emph{i.e.} the state of the art. See \code{\link{bw.SJ}} for more details.
+  Logical; if \code{TRUE} (by default), the original bandwidth selection by Duranton and Overman (2005) following Silverman (1986: eq 3.31) is used. If \code{FALSE}, it is calculated following Sheather and Jones (1991), \emph{i.e.} the state of the art. See \code{\link{bw.SJ}} for more details.
   }
   \item{Approximate}{
-    if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times \code{Approximate} single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing \code{Approximate} allows better precision at the cost of proportional memory use. Ignored if \code{X} is a \code{\link{Dtable}} object.
+  if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times \code{Approximate} single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing \code{Approximate} allows better precision at the cost of proportional memory use. Ignored if \code{X} is a \code{\link{Dtable}} object.
   }
   \item{Adjust}{
-    Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation.
+  Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation.
   }
   \item{MaxRange}{
-    The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
-    "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
-    "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
-    if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
+  The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
+  "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
+  "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
+  if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
   }
   \item{StartFromMinR}{
-    Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, distances are smoothed down to $r=0$.
-    Ignored if \code{Approximate} is not 0: then, estimation always starts from $r=0$.
+  Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, distances are smoothed down to $r=0$.
+  Ignored if \code{Approximate} is not 0: then, estimation always starts from $r=0$.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -83,7 +83,6 @@
   \code{\link{KdEnvelope}}, \code{\link{Mhat}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 

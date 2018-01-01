@@ -11,13 +11,13 @@ FillEnvelope(Envelope, Alpha, Global)
 }
 \arguments{
   \item{Envelope}{
-    An envelope object (\code{\link{envelope}}) containing all the simulated function values.
+  An envelope object (\code{\link{envelope}}) containing all the simulated function values.
   }
   \item{Alpha}{
-    The risk level.
+  The risk level.
   }
   \item{Global}{
-    Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
   }
 }
 \value{

@@ -15,16 +15,16 @@ as.wmppp(X, \dots)
 }
 \arguments{
   \item{X}{
-    Data to be converted into a weighted, marked, planar point pattern (\code{\link{wmppp.object}})
+  Data to be converted into a weighted, marked, planar point pattern (\code{\link{wmppp.object}})
   }
   \item{window}{
-    An object of calls "owin" (\code{\link{owin.object}}).  
+  An object of calls "owin" (\code{\link{owin.object}}).  
   }
   \item{unitname}{
-    Name of unit of length. Either a single character string, or a vector of two character strings giving the singular and plural forms, respectively.  
+  Name of unit of length. Either a single character string, or a vector of two character strings giving the singular and plural forms, respectively.  
   }
   \item{\dots}{
-    Extra arguments.
+  Extra arguments.
   }
 }
 \details{
@@ -45,4 +45,3 @@ as.wmppp(X, \dots)
 \seealso{
   \code{\link{wmppp.object}}
 }
-

@@ -1,10 +1,11 @@
-  CHANGES IN dbmss VERSION 2.5-1.9002
+  CHANGES IN dbmss VERSION 2.5-1.9003
   ==============================
 
 IMPROVEMENTS
 
   o More robust check of arguments.
   o Rcpp >= 0.12.14 required. init.c and makevars are not any longer necessary. 
+  o Introduction vignette.
 
 
 

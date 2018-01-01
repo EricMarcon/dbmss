@@ -13,32 +13,32 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 \arguments{
   \item{X}{
-    A point pattern (\code{\link{wmppp.object}}).
+  A point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{NumberOfSimulations}{
-    The number of simulations to run.
+  The number of simulations to run.
   }
   \item{Alpha}{
-    The risk level.
+  The risk level.
   }
   \item{ReferenceType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{lambda}{
-    An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
+  An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
   }
   \item{SimulationType}{
-    A string describing the null hypothesis to simulate. The null hypothesis, may be 
+  A string describing the null hypothesis to simulate. The null hypothesis, may be 
   "\emph{RandomPosition}": points are drawn in an inhomogenous Poisson process (intensity is either \code{lambda} or estimated from \code{X}); 
   "\emph{RandomLocation}": points are redistributed across actual locations;
   "\emph{RandomLabeling}": randomizes point types, keeping locations unchanged;
   "\emph{PopulationIndependence}": keeps reference points unchanged, redistributes others across actual locations.
   }
   \item{Global}{
-    Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
   }
 }
 \details{
@@ -76,7 +76,6 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 
 \examples{
-
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))

@@ -11,19 +11,19 @@ Lhat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{ReferenceType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{NeighborType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -46,7 +46,6 @@ Lhat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
   \code{\link{Khat}}, \code{\link{LEnvelope}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 
@@ -56,5 +55,4 @@ r <- 0:30
 
 # Plot
 plot(Paracou)
-
 }

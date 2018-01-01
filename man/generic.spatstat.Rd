@@ -19,22 +19,22 @@
 }
 \arguments{
   \item{X, x}{
-    A two-dimensional point pattern. An object of class "wmppp".
+  A two-dimensional point pattern. An object of class "wmppp".
   }
   \item{\dots}{
-    Arguments passed to the \code{\link{ppp.object}} method.
+  Arguments passed to the \code{\link{ppp.object}} method.
   }
   \item{i}{
-    Subset index. Either a valid subset index in the usual R sense, indicating which points should be retained, or a window (an object of class "owin") delineating a subset of the original observation window, or a pixel image with logical values defining a subset of the original observation window.
+  Subset index. Either a valid subset index in the usual R sense, indicating which points should be retained, or a window (an object of class "owin") delineating a subset of the original observation window, or a pixel image with logical values defining a subset of the original observation window.
   }
   \item{j}{
-    Redundant. Included for backward compatibility.
+  Redundant. Included for backward compatibility.
   }
   \item{drop}{
-    Logical value indicating whether to remove unused levels of the marks, if the marks are a factor.
+  Logical value indicating whether to remove unused levels of the marks, if the marks are a factor.
   }
   \item{clip}{
-    Logical value indicating how to form the window of the resulting point pattern, when \code{i} is a window. If \code{clip=FALSE} (the default), the result has window equal to \code{i}. If \code{clip=TRUE}, the resulting window is the intersection between the window of \code{x} and the window \code{i}.
+  Logical value indicating how to form the window of the resulting point pattern, when \code{i} is a window. If \code{clip=FALSE} (the default), the result has window equal to \code{i}. If \code{clip=TRUE}, the resulting window is the intersection between the window of \code{x} and the window \code{i}.
   }
 }
 \details{

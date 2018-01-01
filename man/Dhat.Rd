@@ -10,22 +10,22 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{Cases}{
-    One of the point types.
+  One of the point types.
   }
   \item{Controls}{
-    One of the point types. If \code{NULL}, controls are all types except for cases.
+  One of the point types. If \code{NULL}, controls are all types except for cases.
   }
   \item{Intertype}{
-    Logical; if \code{TRUE}, \emph{D} is computed as \emph{Di} in Marcon and Puech (2012). 
+  Logical; if \code{TRUE}, \emph{D} is computed as \emph{Di} in Marcon and Puech (2012). 
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -52,7 +52,6 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
   \code{\link{Khat}}, \code{\link{DEnvelope}}, \code{\link{Kest}}, \code{\link{Kcross}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 

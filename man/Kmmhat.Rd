@@ -11,16 +11,16 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{ReferenceType}{
   One of the point types. Others are ignored. Default is all point types.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -45,7 +45,6 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   \code{\link{Lmmhat}}, \code{\link{LmmEnvelope}}, \code{\link{markcorrint}}
 }
 \examples{
-
 data(paracou16)
 # Keep only 50\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.5))
@@ -57,5 +56,4 @@ r <- seq(0, 30, 2)
 
 # Plot
 plot(Paracou, ./(pi*r^2) ~ r)
-
 }

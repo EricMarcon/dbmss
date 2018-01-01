@@ -11,10 +11,10 @@ Ktest(X, r)
 }
 \arguments{
   \item{X}{
-    A point pattern (\code{\link{ppp.object}}). Marks are ignored. The window must be a rectangle sensu spatstat (tested by \code{\link{is.rectangle}}).
+  A point pattern (\code{\link{ppp.object}}). Marks are ignored. The window must be a rectangle sensu spatstat (tested by \code{\link{is.rectangle}}).
   }
   \item{r}{
-    A vector of distances.
+  A vector of distances.
   }
 }
 \details{
@@ -35,7 +35,6 @@ Ktest(X, r)
   \code{\link{Khat}}, \code{\link{GoFtest}}
 }
 \examples{
-
 # Simulate a Matern (Neyman Scott) point pattern
 nclust <- function(x0, y0, radius, n) {
   return(runifdisc(n, radius, centre=c(x0, y0)))
@@ -45,5 +44,4 @@ plot(X)
 
 # Test it
 Ktest(X, r=seq(0.1, .5, .1))
-
 }

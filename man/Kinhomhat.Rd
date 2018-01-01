@@ -11,19 +11,19 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{ReferenceType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{lambda}{
-    An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
+  An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -52,7 +52,6 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
   \code{\link{KinhomEnvelope}}, \code{\link{Kinhom}}
 }
 \examples{
-
 data(paracou16)
 
 # Density of all trees
@@ -65,5 +64,4 @@ plot(V.americana, add=TRUE)
 # Calculate Kinhom according to the density of all trees
 r <- 0:30
 plot(Kinhomhat(paracou16, r, "V. Americana", lambda), ./(pi*r^2) ~ r)
-
 }

@@ -12,25 +12,25 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 }
 \arguments{
   \item{X}{
-    A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
+  A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a default value is set: 64 unequally spaced values are used up to half the maximum distance between points \eqn{d_m}. The first value is 0, first steps are small (\eqn{d_m/800}) then increase progressively up to \eqn{d_m/40}.
+  A vector of distances. If \code{NULL}, a default value is set: 64 unequally spaced values are used up to half the maximum distance between points \eqn{d_m}. The first value is 0, first steps are small (\eqn{d_m/800}) then increase progressively up to \eqn{d_m/40}.
   }
   \item{ReferenceType}{
-    One of the point types.
+  One of the point types.
   }
   \item{NeighborType}{
-    One of the point types. By default, the same as reference type.
+  One of the point types. By default, the same as reference type.
   }
   \item{CaseControl}{
-    Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
+  Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
   }
   \item{Individual}{
-    Logical; if \code{TRUE}, values of the function around each individual point are returned.
+  Logical; if \code{TRUE}, values of the function around each individual point are returned.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -57,7 +57,6 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \code{\link{MEnvelope}}, \code{\link{Kdhat}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 

@@ -13,28 +13,28 @@ gEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 \arguments{
   \item{X}{
-    A point pattern (\code{\link{wmppp.object}}).
+  A point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{NumberOfSimulations}{
-    The number of simulations to run, 100 by default.
+  The number of simulations to run, 100 by default.
   }
   \item{Alpha}{
-    The risk level, 5\% by default.
+  The risk level, 5\% by default.
   }
   \item{ReferenceType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{NeighborType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{SimulationType}{
-    A string describing the null hypothesis to simulate. The null hypothesis may be "\emph{RandomPosition}": points are drawn in a Poisson process (default); "\emph{RandomLabeling}": randomizes point types, keeping locations unchanged; "\emph{PopulationIndependence}": keeps reference points unchanged, shifts other point locations.
+  A string describing the null hypothesis to simulate. The null hypothesis may be "\emph{RandomPosition}": points are drawn in a Poisson process (default); "\emph{RandomLabeling}": randomizes point types, keeping locations unchanged; "\emph{PopulationIndependence}": keeps reference points unchanged, shifts other point locations.
   }
   \item{Global}{
-    Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
   }
 }
 \details{
@@ -64,7 +64,6 @@ gEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 
 \examples{
-
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))

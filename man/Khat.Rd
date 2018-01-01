@@ -11,19 +11,19 @@ Khat(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArgumen
 }
 \arguments{
   \item{X}{
-    A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
+  A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{ReferenceType}{
-    One of the point types. Default is all point types.
+  One of the point types. Default is all point types.
   }
   \item{NeighborType}{
-    One of the point types. By default, the same as reference type.
+  One of the point types. By default, the same as reference type.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -47,7 +47,6 @@ Khat(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArgumen
   \code{\link{Lhat}}, \code{\link{KEnvelope}}, \code{\link{Ktest}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 

@@ -23,7 +23,6 @@ data(paracou16)
   Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. \emph{International Journal of Ecology} 2012(Article ID 619281): 11.
 }
 \examples{
-
 data(paracou16)
 # Plot (second column of marks is Point Types) 
 plot(paracou16, which.marks=2, leg.side="right")

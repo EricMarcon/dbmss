@@ -9,6 +9,15 @@ dbmss is an R package for simple computation of spatial statistic functions of d
 of mapped objects, including classical ones (Ripley's *K* and others) and more recent ones used by spatial economists 
 (Duranton and Overman's *Kd*, Marcon and Puech's *M*). Relies on spatstat for some core calculation.
 
+# Vignettes
+
+A full documentation is available in the main [vignette](inst/doc/dbmss.pdf). 
+In R, type: `vignette("dbmss")`.
+It is a continuous update of the paper published in the Journal of Statistical Software ([Marcon et al., 2015](https://www.jstatsoft.org/article/view/v067c03)).
+
+A quick [introduction](https://EricMarcon.github.io/dbmss/) is in `vignette("introduction", "dbmss")`.
+
+
 ## Reference
 
 Marcon, E., Traissac, S., Puech, F. and Lang, G. (2015). Tools to Characterize Point Patterns: dbmss for R. 

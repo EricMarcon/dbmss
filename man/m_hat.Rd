@@ -13,40 +13,40 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 }
 \arguments{
   \item{X}{
-    A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
+  A weighted, marked planar point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a default value is set: 512 equally spaced values are used, from the smallest distance to the range defined by \code{MaxRange}. the between points to half the diameter of the window.
+  A vector of distances. If \code{NULL}, a default value is set: 512 equally spaced values are used, from the smallest distance to the range defined by \code{MaxRange}. the between points to half the diameter of the window.
   }
   \item{ReferenceType}{
-    One of the point types.
+  One of the point types.
   }
   \item{NeighborType}{
-    One of the point types. By default, the same as reference type.
+  One of the point types. By default, the same as reference type.
   }
   \item{CaseControl}{
-    Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
+  Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
   }
   \item{Original}{
-    Logical; if \code{TRUE} (by default), the original bandwidth selection by Duranton and Overman (2005) following Silverman (1986: eq 3.31) is used. If \code{FALSE}, it is calculated following Sheather and Jones (1991), \emph{i.e.} the state of the art. See \code{\link{bw.SJ}} for more details.
+  Logical; if \code{TRUE} (by default), the original bandwidth selection by Duranton and Overman (2005) following Silverman (1986: eq 3.31) is used. If \code{FALSE}, it is calculated following Sheather and Jones (1991), \emph{i.e.} the state of the art. See \code{\link{bw.SJ}} for more details.
   }
   \item{Approximate}{
-    if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times \code{Approximate} single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing \code{Approximate} allows better precision at the cost of proportional memory use. Ignored if \code{X} is a \code{\link{Dtable}} object.
+  if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times \code{Approximate} single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing \code{Approximate} allows better precision at the cost of proportional memory use. Ignored if \code{X} is a \code{\link{Dtable}} object.
   }
   \item{Adjust}{
-    Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation. 
+  Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation. 
   }
   \item{MaxRange}{
-    The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
-    "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
-    "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
-    if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
+  The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
+  "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
+  "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
+  If \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
   }
   \item{Individual}{
-    Logical; if \code{TRUE}, values of the function around each individual point are returned.
+  Logical; if \code{TRUE}, values of the function around each individual point are returned.
   }
   \item{CheckArguments}{
-    Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
@@ -56,7 +56,7 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   If \code{X} is not a \code{\link{Dtable}} object, the maximum value of \code{r} is obtained from the geometry of the window rather than caculating the median distance between points as suggested by Duranton and Overman (2005) to save (a lot of) calculation time.
   
-   If \emph{CaseControl} is \code{TRUE}, then \emph{ReferenceType} points are cases and \emph{NeighborType} points are controls. The univariate concentration of cases is calculated as if \emph{NeighborType} was equal to \emph{ReferenceType}, but only controls are considered when counting all points around cases (Marcon et al., 2012). This makes sense when the sampling design is such that all points of \emph{ReferenceType} (the cases) but only a sample of the other points (the controls) are recorded. Then, the whole distribution of points is better represented by the controls alone.
+  If \emph{CaseControl} is \code{TRUE}, then \emph{ReferenceType} points are cases and \emph{NeighborType} points are controls. The univariate concentration of cases is calculated as if \emph{NeighborType} was equal to \emph{ReferenceType}, but only controls are considered when counting all points around cases (Marcon et al., 2012). This makes sense when the sampling design is such that all points of \emph{ReferenceType} (the cases) but only a sample of the other points (the controls) are recorded. Then, the whole distribution of points is better represented by the controls alone.
 }
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
@@ -90,7 +90,6 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \code{\link{mEnvelope}}, \code{\link{Kdhat}}
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 

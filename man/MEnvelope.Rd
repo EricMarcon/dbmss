@@ -13,34 +13,34 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 \arguments{
   \item{X}{
-    A point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
+  A point pattern (\code{\link{wmppp.object}}) or a \code{\link{Dtable}} object.
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a default value is set: 32 unequally spaced values are used up to half the maximum distance between points \eqn{d_m}. The first value is 0, first steps are small (\eqn{d_m/200}) then incresase progressively up to \eqn{d_m/20}.
+  A vector of distances. If \code{NULL}, a default value is set: 32 unequally spaced values are used up to half the maximum distance between points \eqn{d_m}. The first value is 0, first steps are small (\eqn{d_m/200}) then incresase progressively up to \eqn{d_m/20}.
   }
   \item{NumberOfSimulations}{
-    The number of simulations to run, 100 by default.
+  The number of simulations to run, 100 by default.
   }
   \item{Alpha}{
-    The risk level, 5\% by default.
+  The risk level, 5\% by default.
   }
   \item{ReferenceType}{
-    One of the point types.
+  One of the point types.
   }
   \item{NeighborType}{
-    One of the point types, equal to the reference type by default to caculate univariate M.
+  One of the point types, equal to the reference type by default to caculate univariate M.
   }
   \item{CaseControl}{
-    Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
+  Logical; if \code{TRUE}, the case-control version of \emph{M} is computed. \emph{ReferenceType} points are cases, \emph{NeighborType} points are controls.
   }
   \item{SimulationType}{
-    A string describing the null hypothesis to simulate. The null hypothesis may be
-    "\emph{RandomLocation}": points are redistributed on the actual locations (default);
-    "\emph{RandomLabeling}": randomizes point types, keeping locations and weights unchanged;
-    "\emph{PopulationIndependence}": keeps reference points unchanged, randomizes other point locations.
+  A string describing the null hypothesis to simulate. The null hypothesis may be
+  "\emph{RandomLocation}": points are redistributed on the actual locations (default);
+  "\emph{RandomLabeling}": randomizes point types, keeping locations and weights unchanged;
+  "\emph{PopulationIndependence}": keeps reference points unchanged, randomizes other point locations.
   }
   \item{Global}{
-    Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
   }
 }
 \details{
@@ -70,7 +70,6 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 
 \examples{
-
 data(paracou16)
 # Keep only 50\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.5))

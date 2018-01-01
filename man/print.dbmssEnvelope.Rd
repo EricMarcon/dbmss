@@ -11,10 +11,10 @@
 }
 \arguments{
   \item{x}{
-    An object of class "dbmssEnvelope".
+  An object of class "dbmssEnvelope".
   }
   \item{\dots}{
-    Ignored.
+  Ignored.
   }
 }
 \details{
@@ -27,7 +27,6 @@
   Eric Marcon <Eric.Marcon@ecofog.gf>
 }
 \examples{
-
 data(paracou16)
 plot(paracou16)
 
@@ -38,4 +37,3 @@ plot(Envelope)
 # print
 print(Envelope)
 }
-

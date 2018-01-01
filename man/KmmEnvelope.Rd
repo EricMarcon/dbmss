@@ -12,22 +12,22 @@ KmmEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType 
 }
 \arguments{
   \item{X}{
-    A point pattern (\code{\link{wmppp.object}}).
+  A point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-    A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
   }
   \item{NumberOfSimulations}{
-    The number of simulations to run, 100 by default.
+  The number of simulations to run, 100 by default.
   }
   \item{Alpha}{
-    The risk level, 5\% by default.
+  The risk level, 5\% by default.
   }
   \item{ReferenceType}{
   One of the point types. Others are ignored. Default is all point types.
   }
   \item{Global}{
-    Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
   }
 }
 \details{
@@ -57,7 +57,6 @@ KmmEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType 
 }
 
 \examples{
-
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))
@@ -68,5 +67,4 @@ r <- seq(0, 30, 2)
 NumberOfSimulations <- 4
 Alpha <- .10
 plot(KmmEnvelope(X, r, NumberOfSimulations, Alpha), ./(pi*r^2) ~ r)
-
 }

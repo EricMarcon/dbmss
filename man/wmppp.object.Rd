@@ -6,8 +6,8 @@
 \description{
   A class \code{"wmppp"} to represent a two-dimensional point pattern of class \code{\link{ppp}} whose marks are a dataframe with two columns:
   \itemize{
-    \item \code{PointType}: labels, as factors
-    \item \code{PointWeight}: weights.
+   \item \code{PointType}: labels, as factors
+   \item \code{PointWeight}: weights.
   }
 }
 \details{
@@ -39,5 +39,3 @@ par(mfrow=c(1,2))
 plot(X, which.marks=1, main="Point weights")
 plot(X, which.marks=2, main="Point types")
 }
-
- 
