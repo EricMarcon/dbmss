@@ -9,7 +9,7 @@ output:
     toc_collapse: false
 redirect: http://EricMarcon.github.io/dbmss
 vignette: |
-  %\VignetteIndexEntry{dbmss introduction}
+  %\VignetteIndexEntry{Introduction to dbmss}
   %\VignetteEngine{packagedocs::redirect}
 navpills: |
   <li class="active"><a href='index.html'>Docs</a></li>
