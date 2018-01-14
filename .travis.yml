@@ -9,6 +9,8 @@ r_packages:
  - cubature
  - stats
  - RcppParallel
- - spatstat.utils 
-r_build_args: --no-build-vignettes
-r_check_args: --no-build-vignettes
+ - spatstat.utils
+ - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov(type ="all")'
