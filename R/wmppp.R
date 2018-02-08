@@ -51,18 +51,25 @@ function(df, window = NULL, unitname = NULL)
   if (any(PointWeight < 0))
     stop("Point weights must be positive.")
   
-  # Check the window
-  if (is.null(window)) {
-    window <- owin(xrange=c(min(X), max(X)), yrange=c(min(Y), max(Y)), unitname=unitname)        
-    warning("No window has been specified. A rectangle window containing all points has been used.")
-  }
-  if (!is.owin(window))
-    stop("window must be an object of class owin.")
+  if (!is.null(window))
+    if (!is.owin(window))
+      stop("window must be an object of class owin.")
+
+  # Full window: keep all points for their names
+  w <- owin(xrange=c(min(X), max(X)), yrange=c(min(Y), max(Y)), unitname=unitname)
   
   # Build the object
-  wmpppX <- ppp(X, Y, window=window, marks=data.frame(PointWeight, PointType))
+  wmpppX <- ppp(X, Y, window=w, marks=data.frame(PointWeight, PointType))
   # Keep the point names
   row.names(wmpppX$marks) <- row.names(df)
+  
+  # Crop the window
+  if (is.null(window)) {
+    warning("No window has been specified. A rectangle window containing all points has been used.")
+  } else {
+    wmpppX <- wmpppX[window]
+  }
+  
   class(wmpppX) <- c("wmppp", "ppp")
   return (wmpppX)
 }

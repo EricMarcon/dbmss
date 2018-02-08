@@ -1,8 +1,8 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.5-1.9004
-Date: 2018-01-14
+Version: 2.5-1.9005
+Date: 2018-02-07
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre")),
     person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut"),

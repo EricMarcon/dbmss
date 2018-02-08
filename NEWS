@@ -1,4 +1,4 @@
-  CHANGES IN dbmss VERSION 2.5-1.9004
+  CHANGES IN dbmss VERSION 2.5-1.9005
   ==============================
 
 IMPROVEMENTS
@@ -7,6 +7,10 @@ IMPROVEMENTS
   o Rcpp >= 0.12.14 required. init.c and makevars are not any longer necessary. 
   o Introduction vignette.
   o On Travis and codecov.io now.
+
+BUG FIXES
+
+  o wmppp() failed if some point laid outside the window.
 
 
 
