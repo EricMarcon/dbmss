@@ -1,4 +1,4 @@
-context("Kd")
+testthat::context("Kd")
 
 # Load Paracou data (a tropical forest tree point pattern)
 data(paracou16)

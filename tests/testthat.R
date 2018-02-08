@@ -1,4 +1,4 @@
 library(testthat)
 library(dbmss)
 
-test_check("dbmss")
+testthat::test_check("dbmss")
