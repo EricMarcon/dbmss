@@ -10,4 +10,5 @@
 ^\.travis\.yml$
 vignettes/docs_cache/
 vignettes/rd_cache/
+docs/
 ^_gh-pages$
