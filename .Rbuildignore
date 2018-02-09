@@ -8,8 +8,6 @@
 \.blg$
 \.bbl$
 ^\.travis\.yml$
-vignettes/figure/
-vignettes/dbmss_cache/
-vignettes/dbmss_files/
-vignettes/dbmss.tex
+vignettes/docs_cache/
+vignettes/rd_cache/
 ^_gh-pages$
