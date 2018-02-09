@@ -12,12 +12,10 @@ of mapped objects, including classical ones (Ripley's *K* and others) and more r
 
 # Vignettes
 
-A full documentation is available in the main [vignette](inst/doc/dbmss.pdf). 
-In R, type: `vignette("dbmss")`.
-It is a continuous update of the paper published in the Journal of Statistical Software ([Marcon et al., 2015](https://www.jstatsoft.org/article/view/v067c03)).
-
 A quick [introduction](https://EricMarcon.github.io/dbmss/) is in `vignette("docs", "dbmss")`.
 
+A full documentation is available in section section of the same vignette (Reference Guide).
+It is a continuous update of the paper published in the Journal of Statistical Software ([Marcon et al., 2015](https://www.jstatsoft.org/article/view/v067c03)).
 
 ## Reference
 
