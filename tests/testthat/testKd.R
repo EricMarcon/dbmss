@@ -35,3 +35,11 @@ testthat::test_that("Kd sums to 1 when all distances are kept", {
                1, 
                tolerance = 1e-2)
 })
+
+# Check Kd ppp equals Kd approximated when only two values of r
+testthat::test_that("Kd is unchanged when approximated", {
+  testthat::skip_on_cran()
+  testthat::expect_equal(as.numeric(Kdhat(paracou16, r=c(0, 100) , "Q. Rosea", "V. Americana")$Kd),
+                         as.numeric(Kdhat(paracou16, r=c(0, 100) , "Q. Rosea", "V. Americana", Approximate=1)$Kd),
+                         tolerance = 1e-6)
+})
