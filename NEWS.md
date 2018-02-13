@@ -1,4 +1,4 @@
-## Changes in dbmss version 2.5-1.9006
+## Changes in dbmss version 2.6-0
 
 ## Improvements
 
