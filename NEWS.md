@@ -1,9 +1,9 @@
-## Changes in dbmss version 2.6-0
+## Changes in dbmss version 2.6-1
 
 ## Improvements
 
 - More robust check of arguments.
-- Rcpp >= 0.12.14 required. `init.c` and `makevars` are not any longer necessary. 
+- Rcpp >= 0.12.14 required. `init.c` no longer necessary. 
 - Introduction vignette.
 - On Travis and codecov.io now.
 - NEWS in Markdown.
