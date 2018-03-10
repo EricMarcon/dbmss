@@ -1,4 +1,4 @@
-## Changes in dbmss version 2.6-1
+## Changes in dbmss version 2.6-2
 
 ## Improvements
 
@@ -7,6 +7,7 @@
 - Introduction vignette.
 - On Travis and codecov.io now.
 - NEWS in Markdown.
+- `wmppp()` accepts characters in `PointType`.
 
 ## Bug fixes
 

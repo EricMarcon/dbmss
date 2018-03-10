@@ -31,8 +31,13 @@ function(df, window = NULL, unitname = NULL)
       PointType <- df[, 3]
     }
   }
-  if (!is.factor(PointType))
-    stop("Point types must be factors.")
+  if (!is.factor(PointType)) {
+    if (is.character(PointType)) {
+      PointType <- as.factor(PointType)
+    } else {
+      stop("Point types must be factors or characters.")
+    }
+  }
   
   # Read Point Weights
   if ("pointweight" %in% names(df)) {
