@@ -7,7 +7,7 @@
 - Introduction vignette.
 - On Travis and codecov.io now.
 - NEWS in Markdown.
-- `wmppp()` accepts characters in `PointType`.
+- `wmppp()` accepts characters in `PointType`. A `PointName` column is searched to set the row names of the marks.
 
 ## Bug fixes
 

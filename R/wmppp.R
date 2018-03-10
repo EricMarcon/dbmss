@@ -66,7 +66,11 @@ function(df, window = NULL, unitname = NULL)
   # Build the object
   wmpppX <- ppp(X, Y, window=w, marks=data.frame(PointWeight, PointType))
   # Keep the point names
-  row.names(wmpppX$marks) <- row.names(df)
+  if ("pointname" %in% names(df)) {
+    row.names(wmpppX$marks) <- df[, "pointname"]
+  } else {
+    row.names(wmpppX$marks) <- row.names(df)
+  }
   
   # Crop the window
   if (is.null(window)) {

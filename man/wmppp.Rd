@@ -22,6 +22,8 @@ wmppp(df, window = NULL, unitname = NULL)
 }
 \details{
   Columns named "X", "Y", "PointType", "PointWeight" (capitalization is ignored) are searched to build the \code{"wmppp"} object and set the point coordinates, type and weight. If they are not found, columns are used in this order. If columns are missing, \code{PointType} is set to "All" and \code{PointWeight} to 1.
+  If a "PointName" column is found, it is used to set the row names of the marks, else the original row names are used.
+  
   If the window is not specified, a rectangle containing all points is used, and \code{unitname} is used.
 }
 \value{
