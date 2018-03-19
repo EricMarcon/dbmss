@@ -1,7 +1,7 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.6-2
+Version: 2.6-3
 Date: 2018-03-09
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre")),
@@ -9,7 +9,7 @@ Authors@R: c(
     person("Stephane", "Traissac", email="stephane.traissac@agroparistech.fr", role="aut"),
     person("Florence", "Puech", email="florence.puech@u-psud.fr", role="aut")
     )
-Description: Simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, following Marcon, Traissac, Puech, and Lang (2015)<doi:10.18637/jss.v067.c03>.
+Description: Simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, following Marcon, Traissac, Puech, and Lang (2015) <doi:10.18637/jss.v067.c03>.
              Includes classical functions (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's Kd, Marcon and Puech's M). 
              Relies on 'spatstat' for some core calculation.
 URL: https://github.com/EricMarcon/dbmss
