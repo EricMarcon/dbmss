@@ -1,12 +1,10 @@
 useDynLib("dbmss", .registration = TRUE)
+
 import("spatstat")
 import("Rcpp")
-importFrom("cubature", "adaptIntegrate")
 importFrom("ggplot2", "autoplot")
 importFrom("RcppParallel", "RcppParallelLibs")
-importFrom("spatstat.utils", "resolve.defaults")
-importFrom("spatstat.utils", "short.deparse")
-importFrom("stats", "approx", "bw.SJ", "bw.nrd0", "density", "integrate", "median", "pchisq", "quantile")
+
 export("as.Dtable")
 export("as.wmppp")
 export("DEnvelope")              
@@ -43,6 +41,7 @@ export("rRandomLabelingM")
 export("rRandomLocation")
 export("rRandomPositionK")
 export("wmppp")
+
 S3method("as.Dtable", "data.frame")
 S3method("as.Dtable", "ppp")
 S3method("as.wmppp", "data.frame")

@@ -76,7 +76,7 @@ function(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TR
   gEstimate <- sewpcf(Pairs$d, edgewt, denargs, lambdaI*lambdaJ*area)
   # Calculate values for r if specified
   if (!autor) {
-    g <- approx(gEstimate$r, gEstimate$g, xout=r)$y
+    g <- stats::approx(gEstimate$r, gEstimate$g, xout=r)$y
     gEstimate <- data.frame(r, g)
   }
   # Add theoretical value

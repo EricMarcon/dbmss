@@ -1,3 +1,15 @@
+## Changes in dbmss version 2.6-3.9002
+
+## Improvements
+
+- `autoplot()` for `envelope` objects
+
+## Internal changes
+
+- Fewer imported functions in NAMESPACE.
+
+
+
 ## Changes in dbmss version 2.6-3
 
 ## Improvements
