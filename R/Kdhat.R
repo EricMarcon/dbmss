@@ -82,34 +82,35 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     # Call C routine to fill NeighborWeights
     CountNbdKd(rseq, Y$x, Y$y, Weight, NeighborWeight, IsReferenceType, IsNeighborType)
     
-    # Adjust distances: values are the centers of intervals
+    # Adjust distances: values are the centers of intervals.
+    # rseq becomes a vector (it was a 1-row matrix)
     rseq <- c(0, (rseq[2:Nr]+rseq[1:Nr-1])/2)
-
-    # Estimate the density. Change the bandwith according to adjust if requested.
+    
+    # Estimate the bandwith according to adjust if requested.
+    # Distances are the values of rseq corresponding to at least a pair of points i.e. NeighborWeight > 0
+    # Ignore the last value of NeighborWeight which contains far neighbors
     if (Original) {
-      bw <- stats::bw.nrd0(rseq) * Adjust
+      bw <- stats::bw.nrd0(rseq[NeighborWeight[-length(NeighborWeight)]>0]) * Adjust
     } else {
-      bw <- stats::bw.SJ(rseq) * Adjust
+      bw <- stats::bw.SJ(rseq[NeighborWeight[-length(NeighborWeight)]>0]) * Adjust
     }
+    
+    # Add a last value to rseq equal to rmax+6bw (i.e. ignored by the estimation of density at rmax) for far neighbors
+    rseq <- c(rseq, rmax + 6*bw)
+    # Estimated density is false above rmax + 6*bw, but it will be censored at rmax.
+    # The total mass is needed for normalization after mirroring: it is correct.
 
-    # The last element of the vector NeighborWeight contains the weight of pairs farther than 2 rmax
-    FarWeight <- NeighborWeight[Nr+1]
-    # Keep the other elements
-    NeighborWeight <- NeighborWeight[-(Nr+1)]
-    # Total density is not 1 because far weights will be dropped
-    SumNeighborWeight <- sum(NeighborWeight)
-    TotalDensity <- SumNeighborWeight/(SumNeighborWeight+FarWeight)
     # Prepare reflection. Distances below 4bw are mirrored around 0. The first one is 0: ignore it. Code adapted from GoFKernel::density.reflected
     Reflected <- which(rseq <= 4*bw)[-1]
     rseq <- c(rseq, -rseq[Reflected])
     NeighborWeight <- c(NeighborWeight, NeighborWeight[Reflected])
-    # Update the sum
+    # Sum of weights to normalize them to avoid warning during density estimation
     SumNeighborWeight <- sum(NeighborWeight)
     # Estimate density and the density of the mirrored values (below 0) to renormalize later
     Density <- stats::density(rseq, weight=NeighborWeight/SumNeighborWeight, from=0, to=rmax, bw=bw, n=n)
     Mirrored <- stats::density(rseq, weight=NeighborWeight/SumNeighborWeight, to=0, bw=bw)
     # Renormalize density because mirrored distances decreased it
-    Density$y <- Density$y / (TotalDensity - mean(Mirrored$y)*diff(range(Mirrored$x)))
+    Density$y <- Density$y / (1 - mean(Mirrored$y)*diff(range(Mirrored$x)))
     
   } else {
     # Classical estimation of distances

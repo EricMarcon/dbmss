@@ -1,4 +1,4 @@
-## Changes in dbmss version 2.6-3.9002
+## Changes in dbmss version 2.6-3.9003
 
 ## Improvements
 
@@ -7,6 +7,10 @@
 ## Internal changes
 
 - Fewer imported functions in NAMESPACE.
+
+## Bug fixes
+
+- `Kdhat()` density was normalized incorrectly with Approximate=TRUE and small r values.
 
 
 
