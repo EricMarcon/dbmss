@@ -1,8 +1,9 @@
-## Changes in dbmss version 2.6-3.9003
+# dbmss 2.6-3.9004
 
 ## Improvements
 
 - `autoplot()` for `envelope` objects
+- vignettes by [pkgdown](https://pkgdown.r-lib.org/)
 
 ## Internal changes
 
@@ -14,7 +15,7 @@
 
 
 
-## Changes in dbmss version 2.6-3
+# dbmss 2.6-3
 
 ## Improvements
 
@@ -31,7 +32,7 @@
 
 
 
-# Changes in dbmss version 2.5-1
+# dbmss 2.5-1
 
 ## New features
 
@@ -46,7 +47,7 @@
 
 
 
-# Changes in dbmss version 2.4-1
+# dbmss 2.4-1
 
 ## Improvements
 
@@ -54,7 +55,7 @@
   
 
   
-# Changes in dbmss version 2.4-0
+# dbmss 2.4-0
 
 ## External changes
 
@@ -68,7 +69,7 @@
 
 
   
-# Changes in dbmss version 2.3-0
+# dbmss 2.3-0
 
 ## Internal changes
 
@@ -76,7 +77,7 @@
 
   
 
-# Changes in dbmss version 2.2-5
+# dbmss 2.2-5
 
 ## Significant user-visible changes
 
@@ -90,7 +91,7 @@
 
 
 
-# Changes in dbmss version 2.2-4
+# dbmss 2.2-4
 
 ## Significant user-visible changes
 
@@ -99,7 +100,7 @@
   
   
   
-# Changes in dbmss version 2.2-3
+# dbmss 2.2-3
 
 ## Significant user-visible changes
 
@@ -107,7 +108,7 @@
 
 
 
-# Changes in dbmss version 2.2-2
+# dbmss 2.2-2
 
 ## Minor change
 
@@ -119,7 +120,7 @@
 
 
 
-# Changes in dbmss version 2.2-1
+# dbmss 2.2-1
 
 ## Bug fixes
 
@@ -127,7 +128,7 @@
 
 
 
-# Changes in dbmss version 2.2-0
+# dbmss 2.2-0
 
 ## Significant user-visible changes
 - `m` function added.
@@ -141,7 +142,7 @@
 
 
   
-# Changes in dbmss version 2.1-2
+# dbmss 2.1-2
 
 ## Significant user-visible changes
 
@@ -155,7 +156,7 @@
 
 
   
-# Changes in dbmss version 2.1-1
+# dbmss 2.1-1
 
 ## Significant user-visible changes
 
@@ -168,14 +169,14 @@
 
 
 
-# Changes in dbmss version 2.1-0
+# dbmss 2.1-0
 
 ## Significant user-visible changes
 
 - `Kdhat` and `M` are computed through C++ loops instead of spatstat `pairdist()`. Much faster, and uses far less memory.
 
 
-# Changes in dbmss version 2.0-6
+# dbmss 2.0-6
 
 ## Significant user-visible changes
 
@@ -187,21 +188,21 @@
 - `Kdhat` probability density estimation is cut at the lowest distance between points instead of 0.
 
 
-# Changes in dbmss version 2.0-5
+# dbmss 2.0-5
 
 ## Bug fixes
 
 - `Kdhat` with Reference and Neighbor points of the same type and `Weighted=TRUE` returned an error. Fixed.
 
   
-# Changes in dbmss version 2.0-3
+# dbmss 2.0-3
 
 ## Overview
 
 - Minor corrections, mainly comments and formating.
 
   
-# Changes in dbmss version 2.0-0
+# dbmss 2.0-0
 
 ## Overview
 
@@ -214,14 +215,14 @@
 - Results are of class `fv`, envelopes of class `envelope`.
 
   
-# Changes in dbmss version 1.2-5
+# dbmss 1.2-5
 
 ## Overview
 
 - NEWS file added.
 
 
-# Changes in dbmss version 1.2-4
+# dbmss 1.2-4
 
 ## Overview
 
@@ -237,7 +238,7 @@
 
 
 
-# Changes in dbmss version 1.2-3
+# dbmss 1.2-3
 
   
 ## ## Overview
@@ -246,16 +247,16 @@
 
  
 
-# Changes in dbmss version 1.2-1
+# dbmss 1.2-1
   
-## ## Overview
+## Overview
 
 - `Kinhom` function added.
 
 
 
-# Changes in dbmss version 1.1
+# dbmss 1.1
   
-## ## Overview
+## Overview
 
 - First version.

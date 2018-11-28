@@ -1,0 +1,77 @@
+---
+title: "dbmss"
+subtitle: "Distance-Based Measures of Spatial Structures"
+author: "Eric Marcon"
+bibliography: dbmss.bib
+vignette: >
+  %\VignetteIndexEntry{Introduction to dbmss}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r global_options, include=FALSE}
+# R output pre blocks are styled by default to indicate output
+knitr::opts_chunk$set(comment = NA, cache=TRUE)
+set.seed(97310)
+```
+
+The _dbmss_ package allows simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's $K_d$, Marcon and Puech's $M$). 
+It relies on _spatstat_ for some core calculation.
+
+This vignette contains a quick introduction.
+
+# Data
+
+The main data format is `wmppp` for weighted, marked point pattern.
+It inherits from the `ppp` class of the _spatstat_ package.
+
+A `wmppp` object can be created from the coordinates of points, their type and their weight.
+
+```{r wmppp, warning=FALSE, message=FALSE}
+library("dbmss")
+# Draw the coordinates of 10 points
+X <- runif(10)
+Y <- runif(10)
+# Draw the point types.
+PointType   <- sample(c("A", "B"), 10, replace=TRUE)
+# Plot the point pattern. Weights are set to 1 ant the window is adjusted.
+plot(wmppp(data.frame(X, Y, PointType)), which.marks=2)
+```
+
+An example dataset is provided: it is a point pattern from the Paracou forest in French Guiana.
+Two species of trees are identified, other trees are of type "Other".
+Point weights are their basal area, in square centimeters.
+
+```{r paracou}
+data(paracou16)
+# Plot (second column of marks is Point Types) 
+plot(paracou16, which.marks=2, leg.side="right")
+```
+
+# Main functions
+
+The main functions of the packages are designed to calculate distance-based measures of spatial structure.
+Those are non-parametric statistics able to summarize and test the spatial distribution (concentration, dispersion) of points.
+
+The classical, topographic functions such as Ripley's _K_ are provided by the _spatstat_ package and supported by _dbmss_ for convenience.
+
+Relative functions are available in _dbmss_ only.
+These are the $M$ and $m$ and $K_d$ functions.
+
+The bivariate $M$ function can be calculated for _Q. Rosea_ trees around _V. Americana_ trees:
+
+```{r m}
+plot(Mhat(paracou16, , "V. Americana", "Q. Rosea"))
+```
+
+
+# Confidence envelopes
+
+Confidence envelopes of various null hypotheses can be calculated.
+The univariate distribution of _Q. Rosea_ is tested against the null hypothesis of random location.
+
+```{r, fig.width=6, fig.height=5}
+plot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
+```
+
+Significant concentration is detected between about 10 and 20 meters.

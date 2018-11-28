@@ -1,0 +1,37 @@
+url: https://ericmarcon.github.io/dbmss/
+
+development:
+  mode: auto
+
+reference:
+  - title: Package summary
+    contents:
+    - dbmss-package
+  - title: Datasets
+    desc:  Example datasets.
+    contents:
+    - paracou16
+  - title: Prepare data
+    desc:  Data conversion and random generation.
+    contents:
+    - starts_with("as.Dtable")
+    - starts_with("as.wmppp")
+    - starts_with("wmppp")
+    - Dtable
+    - starts_with("rPopulationIndependence")
+    - starts_with("rRandom")
+  - title: Distance-based functions
+    desc:  Non-parametric summary statistics of point patterns.
+    contents:
+    - ends_with("hat")
+    - ends_with("Envelope")
+  - title: Tests
+    desc:  Statistical tests.
+    contents:
+    - ends_with("test")
+  - title: Utilities
+    contents:
+    - dbmssEnvelope.object
+    - autoplot
+    - envelope.Dtable
+    - ends_with(".wmppp")

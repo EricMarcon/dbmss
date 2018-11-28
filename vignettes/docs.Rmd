@@ -1,111 +1,23 @@
 ---
-title: "dbmss"
+title: "dbmss Package Reference"
 subtitle: "Distance-Based Measures of Spatial Structures"
 author: "Eric Marcon"
-copyright: "Eric Marcon"
-output:
-  packagedocs::package_docs:
-    toc: true
-    toc_collapse: false
-    mathjax: default
 bibliography: dbmss.bib
-redirect: http://EricMarcon.github.io/dbmss
-vignette: |
+vignette: >
   %\VignetteIndexEntry{Introduction to dbmss}
-  %\VignetteEngine{packagedocs::redirect}
-navpills: |
-  <li class="active"><a href='index.html'>Docs</a></li>
-  <li><a href='rd.html'>Package Ref</a></li>
-  <li><a href='https://github.com/EricMarcon/dbmss'>Github<i class='fa fa-github'></i></a></li>
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 ```{r global_options, include=FALSE}
-# R output pre blocks are styled by default to indicate output
 knitr::opts_chunk$set(comment = NA, cache=TRUE)
 set.seed(97310)
-
-# shorthand for rd_link() - see ?packagedocs::rd_link for more information
-rdl <- function(x) packagedocs::rd_link(deparse(substitute(x)))
 ```
 
 The _dbmss_ package allows simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's $K_d$, Marcon and Puech's $M$). 
 It relies on _spatstat_ for some core calculation.
 
-This vignette contains a quick introduction to the package (first section) and its reference guide (second section).
-
-
-# Introduction
-
-## Data
-
-The main data format is `wmppp` for weighted, marked point pattern.
-It inherits from the `ppp` class of the _spatstat_ package.
-
-A `wmppp` object can be created from the coordinates of points, their type and their weight.
-
-```{r wmppp, warning=FALSE, message=FALSE}
-library("dbmss")
-# Draw the coordinates of 10 points
-X <- runif(10)
-Y <- runif(10)
-# Draw the point types.
-PointType   <- sample(c("A", "B"), 10, replace=TRUE)
-# Plot the point pattern. Weights are set to 1 ant the window is adjusted.
-plot(wmppp(data.frame(X, Y, PointType)), which.marks=2)
-```
-
-An example dataset is provided: it is a point pattern from the Paracou forest in French Guiana.
-Two species of trees are identified, other trees are of type "Other".
-Point weights are their basal area, in square centimeters.
-
-```{r paracou}
-data(paracou16)
-# Plot (second column of marks is Point Types) 
-plot(paracou16, which.marks=2, leg.side="right")
-```
-
-## Main functions
-
-The main functions of the packages are designed to calculate distance-based measures of spatial structure.
-Those are non-parametric statistics able to summarize and test the spatial distribution (concentration, dispersion) of points.
-
-The classical, topographic functions such as Ripley's _K_ are provided by the _spatstat_ package and supported by _dbmss_ for convenience.
-
-Relative functions are available in _dbmss_ only.
-These are the $M$ and $m$ and $K_d$ functions.
-
-The bivariate $M$ function can be calculated for _Q. Rosea_ trees around _V. Americana_ trees:
-
-```{r m}
-plot(Mhat(paracou16, , "V. Americana", "Q. Rosea"))
-```
-
-
-## Confidence envelopes
-
-Confidence envelopes of various null hypotheses can be calculated.
-The univariate distribution of _Q. Rosea_ is tested against the null hypothesis of random location.
-
-```{r, fig.width=6, fig.height=5}
-plot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
-```
-
-Significant concentration is detected between about 10 and 20 meters.
-
-
-
-# Reference Guide
+This vignette contains its reference guide.
 
 Characterizing spatial distributions of objects concerns numerous researchers in various fields. 
 Amongst many questions, ecologists have been addressing the spatial attraction between species [@Duncan1991] or the non-independence of the location of dead trees in a forest [@Haase1997]. 
@@ -148,7 +60,7 @@ Definitions of all functions and formulas for their estimation can be found in @
 Their implementation is presented in the package content section.
 
 
-## Rationale and statistical background
+# Rationale and statistical background
 
 We consider a map of points which often represents establishments in economic geography or trees in vegetation science. 
 These points have two marks: a type (an industrial sector, a species...) and a weight (a number of employees, a basal area...). 
@@ -160,7 +72,7 @@ They are bivariate if the types differ, to address the colocation of types.
 We detail this approach below.
 
 
-### Topographic, homogeneous functions
+## Topographic, homogeneous functions
 
 Topographic, homogeneous functions are Ripley's $K$ and its derivative $g$. 
 Their null hypothesis is a Poisson homogeneous process: rejecting it means that the process underlying the observed pattern is either not homogeneous or not independent. 
@@ -173,7 +85,7 @@ Edge effect correction is compulsory to compute topographic functions: points lo
 The _spatstat_ package provides corrections following @Ripley1988, we use them.
 
 
-### Topographic, inhomogeneous functions
+## Topographic, inhomogeneous functions
 
 $K_{inhom}$ [@Baddeley2000] is the generalization of $K$ to inhomogeneous processes: it tests independence of points assuming the intensity of the process is known. 
 Empirically, it generally has to be estimated from the data after assumptions on the way to do it relying on the theoretical knowledge of the process. 
@@ -191,7 +103,7 @@ The $D$ [@Diggle1991] function compares the $K$ function of points of interest (
 Its null hypothesis is random labeling.
 
 
-### Absolute functions
+## Absolute functions
 
 In their seminal paper, Duranton and Overman [@Duranton2005] study the distribution of industrial establishments in Great Britain.
 Every establishment, represented by a point, is characterized by its position (geographic coordinates), its sector of activity (point type) and its number of employees (point weight).
@@ -212,7 +124,7 @@ A great number of its applications can be found in the literature that confirms 
 A recent major study can be found in @Ellison2010.
 
 
-### Relative functions
+## Relative functions
 
 The univariate and bivariate $M$ function [@Marcon2010] are the ratio of neighbors of interest up to distance $r$ normalized by its value over the whole domain. 
 Their null hypotheses are the same as $K_d$'s. 
@@ -221,7 +133,7 @@ They do not suffer edge effects. @Marcon2010 show that the $M$ function respect 
 $m$ [@Lang2014] is the density function measuring the same ratio as $M$, at distance $r$.
 
 
-### Unification
+## Unification
 
 Empirically, all estimators can be seen as variations in a unique framework: neighbors of each reference point are counted, their number is averaged and divided by a reference measure. 
 Last, this average local result is divided by its reference value, calculated over the whole point pattern instead of around each point.
@@ -274,7 +186,7 @@ Their value (except for absolute functions) can be interpreted as a location quo
 The appropriate function will be chosen among the toolbox according to the question raised.
 
 
-## Package content
+# Package content
 
 The _dbmss_ package contains a full (within the limits of the literature reviewed in section 2) set of functions to characterize the spatial structure of a point pattern, including tools to compute the confidence interval of the counterfactual.
 It allows addressing big datasets thanks to C++ code used to calculate distances between pairs of points [using _Rcpp_ and _RcppParallel_ infrastructure: @Eddelbuettel2011; @Allaire2015]. 
@@ -295,12 +207,13 @@ It draws point coordinates between 0 and 1, and creates a `wmppp` with a default
 
 
 ```{r SimpleWmppp, warning=FALSE}
+library("dbmss")
 Pattern <- wmppp(data.frame(X=runif(100), Y=runif(100)))
 summary(Pattern)
 ```
 
 
-### Distance-based functions
+## Distance-based functions
 
 All functions are named `Xhat` where `X` is the name of the function: 
 
@@ -337,7 +250,7 @@ Technical details are provided in help files.
 These functions return an `fv` object, as defined in _spatstat_, which can be plotted.
 
 
-### Confidence envelopes
+## Confidence envelopes
 
 The classical confidence intervals, calculated by Monte-Carlo simulations [@Kenkel1988] are obtained by the `XEnvelope` functions, where `X` is the function's name. 
 Arguments are the number of simulations to run, the risk level, those of the function and the null hypothesis to simulate. 
@@ -354,7 +267,7 @@ The underestimation of the risk has been discussed by @Loosmore2006.
 The argument `Global = TRUE` is used to obtain it instead of the local one.
 
 
-### Examples
+## Examples
 
 We illustrate the main features of the package by two examples. 
 The first one comes from the economic literature [@Bonneu2007] [^1]
@@ -439,7 +352,7 @@ Significance is unclear, since the observed values of the function are very clos
 The complete study, with a larger dataset allowing significant results, can be found in @Marcon2012.
  
 
-### Goodness-of-fit test
+## Goodness-of-fit test
 
 A Goodness-of-fit test for $K$ has been proposed by @Diggle1983, applied to $K$ by @Loosmore2006 and to $M$ by @Marcon2012. 
 It calculates the  distance between the actual values of the function and its average value obtained in simulations of the null hypothesis.
@@ -453,7 +366,7 @@ GoFtest(Envelope)
 ```
 
 
-### Ktest
+## Ktest
 
 The `Ktest` has been developed by Lang and Marcon [@Lang2010; @Marcon2013]. 
 It does not rely on simulations and returns the $p$-value to erroneously reject complete spatial randomness (CSR) given the values of $K$. 
