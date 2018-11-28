@@ -95,8 +95,8 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
       bw <- stats::bw.SJ(rseq[NeighborWeight[-length(NeighborWeight)]>0]) * Adjust
     }
     
-    # Add a last value to rseq equal to rmax+6bw (i.e. ignored by the estimation of density at rmax) for far neighbors
-    rseq <- c(rseq, rmax + 6*bw)
+    # Add a last value to rseq equal to 2*rmax+4bw (i.e. ignored by the estimation of density at rmax) for far neighbors
+    rseq <- c(rseq, rmax*2 + 4*bw)
     # Estimated density is false above rmax + 6*bw, but it will be censored at rmax.
     # The total mass is needed for normalization after mirroring: it is correct.
 
