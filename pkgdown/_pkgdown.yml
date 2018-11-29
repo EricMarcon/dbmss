@@ -2,6 +2,12 @@ url: https://ericmarcon.github.io/dbmss/
 
 development:
   mode: auto
+  
+template:
+  params:
+    docsearch:
+      api_key: 34d07893d7877757953d7bd46f236a5e
+      index_name: dbmss
 
 reference:
   - title: Package summary

@@ -15,3 +15,4 @@ docs/
 ^pkgdown$
 vignettes/articles/
 vignettes/dbmss_cache/
+vignettes/dbmss_files/
