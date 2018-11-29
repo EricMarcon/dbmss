@@ -2,7 +2,6 @@
 title: "dbmss"
 subtitle: "Distance-Based Measures of Spatial Structures"
 author: "Eric Marcon"
-bibliography: dbmss.bib
 vignette: >
   %\VignetteIndexEntry{Introduction to dbmss}
   %\VignetteEngine{knitr::rmarkdown}
@@ -75,3 +74,8 @@ plot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
 ```
 
 Significant concentration is detected between about 10 and 20 meters.
+
+
+# Full documentation
+
+https://ericmarcon.github.io/dbmss/ 
