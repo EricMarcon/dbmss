@@ -10,7 +10,8 @@
 \.blg$
 \.bbl$
 ^\.travis\.yml$
-vignettes/docs_cache/
-vignettes/rd_cache/
 docs/
 ^_gh-pages$
+^pkgdown$
+vignettes/articles/
+vignettes/dbmss_cache/
