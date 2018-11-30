@@ -36,3 +36,4 @@ src/*.dll
 /src-x64/
 # Extras
 .#Extra
+.Rproj.user

@@ -1,7 +1,7 @@
 ---
 title: "dbmss"
 subtitle: "Distance-Based Measures of Spatial Structures"
-author: "Eric Marcon"
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to dbmss}
   %\VignetteEngine{knitr::rmarkdown}
@@ -9,8 +9,6 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-# R output pre blocks are styled by default to indicate output
-knitr::opts_chunk$set(comment = NA, cache=TRUE)
 set.seed(97310)
 ```
 
@@ -33,18 +31,20 @@ X <- runif(10)
 Y <- runif(10)
 # Draw the point types.
 PointType   <- sample(c("A", "B"), 10, replace=TRUE)
-# Plot the point pattern. Weights are set to 1 ant the window is adjusted.
-plot(wmppp(data.frame(X, Y, PointType)), which.marks=2)
+# Plot the point pattern. Weights are set to 1 ant the window is adjusted
+par(mar=c(1,1,1,1))
+plot(wmppp(data.frame(X, Y, PointType)), which.marks=2, main="")
 ```
 
 An example dataset is provided: it is a point pattern from the Paracou forest in French Guiana.
 Two species of trees are identified, other trees are of type "Other".
 Point weights are their basal area, in square centimeters.
 
-```{r paracou}
+```{r paracou, fig.width=4}
 data(paracou16)
 # Plot (second column of marks is Point Types) 
-plot(paracou16, which.marks=2, leg.side="right")
+par(mar=c(1,1,1,1))
+plot(paracou16, which.marks=2, leg.side="right", main="")
 ```
 
 # Main functions
@@ -59,8 +59,8 @@ These are the $M$ and $m$ and $K_d$ functions.
 
 The bivariate $M$ function can be calculated for _Q. Rosea_ trees around _V. Americana_ trees:
 
-```{r m}
-plot(Mhat(paracou16, , "V. Americana", "Q. Rosea"))
+```{r m, fig.width=6, fig.height=5}
+plot(Mhat(paracou16, , "V. Americana", "Q. Rosea"), main="")
 ```
 
 
