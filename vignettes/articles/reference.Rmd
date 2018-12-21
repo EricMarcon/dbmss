@@ -1,7 +1,6 @@
 ---
 title: "dbmss Package Reference"
 subtitle: "Distance-Based Measures of Spatial Structures"
-author: "Eric Marcon"
 bibliography: dbmss.bib
 output: 
   rmarkdown::html_document:
