@@ -66,10 +66,9 @@
   Reflection is used to estimate density close to the lowest distance, that is the minimum observed distance (if \code{StartFromMinR} is \code{TRUE}) or 0: all distances below 4 times the estimation kernel bandwith apart from the lowest distance are duplicated (symmetrically with respect to the lowest distance) to avoid edge effects (underestimation of the density close to the lowest distance).
   
   Density estimation heavily relies on the bandwith.
-  The optimal bandwith is computed from the whole distribution of distances between pairs of points if \code{Approximate} is 0.
-  When distances are approximated, the bandwith is calculated from the distribution of approximated distances.
-  It will be larger if the range of distances is larger because approximation is less acute: this means that the estimation of \emph{Kd} changes somehow when $r$ is changed, especially at small distances where the number of pairs of points is small and a rougher approximation smooths the function.
-  To allow comparison of approximated \emph{Kd} values, the same $r$ vector (the default value is a good choice) should be used.
+  Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
+  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed $Kd$ values.
+  The default values (\code{r = NULL}, \code{MaxRange = "ThirdW"}) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.
 }
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106.

@@ -69,6 +69,11 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   In contrast with \code{\link{Kdhat}}, reflection is not used to estimate density close to the lowest distance.
   The same kernel estimation is applied to the distances from reference points of neighbor points and of all points.
   Since \emph{m} is a relative function, a ratio of densities is calculated, that makes the features of the estimation vanish.
+  
+  Density estimation heavily relies on the bandwith.
+  Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
+  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed $m$ values.
+  The default values (\code{r = NULL}, \code{MaxRange = "ThirdW"}) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.
 }
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106.

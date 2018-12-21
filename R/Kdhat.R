@@ -67,10 +67,10 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     # Round distances to save memory
     # Prepare steps so that 1024*Approximate steps are between 0 and rmax.
     # Pairs further than 2*rmax apart will be stored in an extra element.
-    rseq <- seq(from = 0, to = rmax*2, length.out = 2048*Approximate)
+    rseq <- seq(from=0, to=rmax*2, length.out=2048*Approximate)
     # Number of distances
     Nr <- length(rseq)
-    # Prepare a matrix, single line, one value for each distance + 1 extra for pairs far away.
+    # Prepare a matrix: single line, one value for each distance + 1 extra for pairs far away.
     NeighborWeight <- matrix(0.0, nrow=1, ncol=Nr+1)
     # Weights
     if (Weighted) {
@@ -97,8 +97,8 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     
     # Add a last value to rseq equal to 2*rmax+4bw (i.e. ignored by the estimation of density at rmax) for far neighbors
     rseq <- c(rseq, rmax*2 + 4*bw)
-    # Estimated density is false above rmax + 6*bw, but it will be censored at rmax.
-    # The total mass is needed for normalization after mirroring: it is correct.
+    # Estimated density is false above 2rmax-4bw, but it will be censored at rmax.
+    # The total mass is correct. It is needed for normalization after mirroring.
 
     # Prepare reflection. Distances below 4bw are mirrored around 0. The first one is 0: ignore it. Code adapted from GoFKernel::density.reflected
     Reflected <- which(rseq <= 4*bw)[-1]
@@ -157,10 +157,11 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     }
     
     # Estimate the density. Change the bandwith according to adjust if requested.
+    # Only pairs of points up to 2rmax are considered for consistency with approximated computation
     if (Original) {
-      bw <- stats::bw.nrd0(Dist) * Adjust
+      bw <- stats::bw.nrd0(Dist[Dist<=rmax*2]) * Adjust
     } else {
-      bw <- stats::bw.SJ(Dist) * Adjust
+      bw <- stats::bw.SJ(Dist[Dist<=rmax*2]) * Adjust
     }
     # Prepare reflection. Distances below rmin + 4bw are mirrored. Code adapted from GoFKernel::density.reflected
     Reflected <- which(Dist <= rmin + 4*bw)

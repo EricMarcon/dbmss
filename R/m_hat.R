@@ -70,10 +70,11 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
     rseq <- c(0, (rseq[2:Nr]+rseq[1:Nr-1])/2)
     
     # Estimate the bandwith according to adjust if requested.
+    # Distances are the values of rseq corresponding to at least a pair of points (reference and neighbor)
     if (Original) {
-      h <- stats::bw.nrd0(rseq)*Adjust
+      h <- stats::bw.nrd0(rseq[colSums(Nbd[, 1:Nr]) > 0])*Adjust
     } else {
-      h <- stats::bw.SJ(rseq)*Adjust
+      h <- stats::bw.SJ(rseq[colSums(Nbd[, 1:Nr]) > 0])*Adjust
     }
 
     # Calculate densities of neighbors (with unnormalized weights so suppress warnings)
@@ -108,11 +109,11 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
       # RefDistances is a square matrix: keep the upper half as a vector
       RefDistances <- RefDistances[upper.tri(RefDistances)]
     }
-    
+    # Only pairs of points up to 2rmax are considered for consistency with approximated computation
     if (Original) {
-      h <- stats::bw.nrd0(RefDistances) * Adjust
+      h <- stats::bw.nrd0(RefDistances[RefDistances<=rmax*2]) * Adjust
     } else {
-      h <- stats::bw.SJ(RefDistances) * Adjust
+      h <- stats::bw.SJ(RefDistances[RefDistances<=rmax*2]) * Adjust
     }
 
     if (is.null(r)) {
