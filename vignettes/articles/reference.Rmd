@@ -3,14 +3,18 @@ title: "dbmss Package Reference"
 subtitle: "Distance-Based Measures of Spatial Structures"
 author: "Eric Marcon"
 bibliography: dbmss.bib
+output: 
+  rmarkdown::html_document:
+    toc: yes
+    toc_float: yes
 vignette: >
-  %\VignetteIndexEntry{Introduction to dbmss}
+  %\VignetteIndexEntry{Reference}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(comment = NA, cache=TRUE)
+knitr::opts_chunk$set(cache=TRUE)
 set.seed(97310)
 ```
 
