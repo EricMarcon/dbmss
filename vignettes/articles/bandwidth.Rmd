@@ -16,6 +16,9 @@ knitr::opts_chunk$set(cache=TRUE)
 set.seed(97310)
 ```
 
+
+# Estimation of the density of neighbors
+
 The $K_d$ function [@Duranton2005] is the probability density to find a neighbor a given distance apart from a point of interest in a finite point process.
 The $K^{emp}$ function integrates the weights of points: it is the density probability to find an employee $r$ apart from an employee of interest.
 The $m$ function [@Lang2014] is the ratio of neighbors of interest at distance $r$ normalized by its value over the whole domain.
@@ -31,7 +34,7 @@ A small bandwidth only considers the closest values so the estimation is close t
 A large bandwidth considers more points and gives a smoother estimation.
 
 
-## Available algorithms
+# Available algorithms
 
 @Duranton2005, in the original paper introducing the $K_d$ function, used the optimal bandwidth according to @Silverman1986, i.e. the argument `bw = "nrd0"` of function `density`.
 This is the default choice in the functions of $dbmss$, i.e. the argument `Original = TRUE` in `Kdhat`, `mhat` and similar functions.
@@ -40,7 +43,7 @@ A better choice may be `Original = FALSE` to apply the estimation of @Sheather19
 The result is less smoothed.
 
 
-## Data
+# Data
 
 The data used by those algorithms is the set of distances between pairs of points.
 In $dbmss$, only pairs of points less than twice the maximum value of $r$ are considered: very distant pairs of points are of little interest to estimate functions based on the number of neighbors of points.
@@ -51,13 +54,13 @@ The approximated algorithm used to calculate $K_d$ and $m$ retains point pairs u
 This set of distances (actually, only those corresponding to at least a pair of points) is used to choose the bandwidth.
 Simulations show that the approximated algorithm yields bandwidths very similar to those obtained by exact computation.
 
-## Fine tuning
+# Fine tuning
 
 The users can choose to multiply the bandwidth by argument `Adjust`.
 Values over 1 will smooth the density estimation; under 1, they will sharpen it.
 
 
-## Conclusion
+# Conclusion
 
 Density estimation heavily relies on the choice of its bandwidth.
 In $dbmss$, several choices influence its value.
@@ -68,7 +71,7 @@ Decreasing `r` allows focusing on close neighbors: a smaller bandwidth will be u
 
 Last, the bandwidth can be arbitrarily modified by the `Adjust` argument if necessary.
 
-The default values of arguments (especially `r = NULL`) are a good choice to obtain standard estimations of the $K_d$ and $m$ functions.
+The default values of arguments (especially `r`) are a good choice to obtain standard estimations of the $K_d$ and $m$ functions.
 If consistency with the original estimation of $K_d$ by @Duranton2005 is not important, `Original = FALSE` is the even better.
 Whatever the user's choices, the bandwidth is the same for the estimation of a distance-based function and its confidence envelope according to a null hypothesis, allowing to detect departures of the oberved data from the null hypothesis consistently.
 

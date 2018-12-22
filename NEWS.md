@@ -1,9 +1,10 @@
-# dbmss 2.6-3.9004
+# dbmss 2.6-3.9005
 
 ## Improvements
 
 - `autoplot()` for `envelope` objects
-- vignettes by [pkgdown](https://pkgdown.r-lib.org/)
+- Vignettes by [pkgdown](https://pkgdown.r-lib.org/)
+- Better consistency of bandwidth choice in $K_d$ and $m$ estimation. An article is added in the online documentation.
 
 ## Internal changes
 
