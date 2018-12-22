@@ -23,7 +23,7 @@ testthat::test_that("Kemp is unchanged with point pattern or distance table", {
 # Check Kd and Kemp
 testthat::test_that("Kd is different from Kemp", {
   testthat::skip_on_cran()
-  testthat::expect_equal(as.numeric(Kdhat(paracou16, r=c(0, 100) , "Q. Rosea", "V. Americana", Weighted = T)$Kd + c(1.411929e-04, 7.733467e-04)),
+  testthat::expect_equal(as.numeric(Kdhat(paracou16, r=c(0, 100) , "Q. Rosea", "V. Americana", Weighted = T)$Kd + c(1.411928e-04, 7.733467e-04)),
                as.numeric(Kdhat(paracou16, r=c(0, 100) , "Q. Rosea", "V. Americana", Weighted = F)$Kd),
                tolerance = 1e-6)
 })
