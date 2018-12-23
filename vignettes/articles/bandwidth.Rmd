@@ -40,8 +40,17 @@ A large bandwidth considers more points and gives a smoother estimation.
 This is the default choice in the functions of $dbmss$, i.e. the argument `Original = TRUE` in `Kdhat`, `mhat` and similar functions.
 
 A better choice may be `Original = FALSE` to apply the estimation of @Sheather1991, i.e. the argument `bw = "SJ"` of function `density`, which has better theoretical support.
-The result is less smoothed.
+The result is usually less smoothed.
 
+The following figure shows this difference on the estimation of the $m$ function applied to the `paracou16` point set: the red curve is for the original estimation, the black one uses the Sheather and Jones bandwidth.
+
+```{r}
+library("dbmss")
+# Sheather and Jones bandwidth in black
+plot(mhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), main="", legend=FALSE)
+# Original bandwith in red
+plot(mhat(paracou16, , ReferenceType="Q. Rosea"), col="red", main="", add=TRUE)
+```
 
 # Data
 
@@ -49,16 +58,37 @@ The data used by those algorithms is the set of distances between pairs of point
 In $dbmss$, only pairs of points less than twice the maximum value of $r$ are considered: very distant pairs of points are of little interest to estimate functions based on the number of neighbors of points.
 With the default arguments, almost all point pairs are included, except for the most distant ones, i.e. more than two thirds of the window's diameter apart.
 If the user wants to focus on small distances, i.e. choose $r$ much less than the default value, then the most distant point pairs (more than twice the max value of $r$) will be ignored, resulting in a smaller bandwidth and consequently a more acute (less smoothed) estimation of the functions.
+The following figure shows this effect on the estimation of the $K_d$ function applied to the `paracou16` point set.
+The default distance range is used for the black curve.
+The red curve is the same function estimated up to 30 meters only, resulting into a narrower bandwith: the curve of $K_d$ is less smoothed.
+
+```{r message=FALSE}
+plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), ylim=c(0, 0.008), main="")
+plot(Kdhat(paracou16, r=0:30 , ReferenceType="Q. Rosea", Original=FALSE), main="", col="red", add=TRUE)
+```
 
 The approximated algorithm used to calculate $K_d$ and $m$ retains point pairs up to twice the max value of $r$ and rounds their distances in 2048 (this number can be increased by the `Approximate` argument) equally-spaced values.
 This set of distances (actually, only those corresponding to at least a pair of points) is used to choose the bandwidth.
 Simulations show that the approximated algorithm yields bandwidths very similar to those obtained by exact computation.
+
+```{r}
+# Exact computation in black
+plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), main="")
+# Approximated computation in green
+plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE, Approximate = 1), main="", col="green", add=TRUE)
+```
 
 # Fine tuning
 
 The users can choose to multiply the bandwidth by argument `Adjust`.
 Values over 1 will smooth the density estimation; under 1, they will sharpen it.
 
+```{r}
+# Default bandwith in black
+plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), ylim=c(0, 0.008), main="")
+# Adjusted (half) bandwidth in red
+plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE, Adjust = 1/2), main="", col="red", add=TRUE)
+```
 
 # Conclusion
 
@@ -73,7 +103,7 @@ Last, the bandwidth can be arbitrarily modified by the `Adjust` argument if nece
 
 The default values of arguments (especially `r`) are a good choice to obtain standard estimations of the $K_d$ and $m$ functions.
 If consistency with the original estimation of $K_d$ by @Duranton2005 is not important, `Original = FALSE` is the even better.
-Whatever the user's choices, the bandwidth is the same for the estimation of a distance-based function and its confidence envelope according to a null hypothesis, allowing to detect departures of the oberved data from the null hypothesis consistently.
+Whatever the user's choices, the bandwidth is chosen the same way for the estimation of a distance-based function and its confidence envelope according to a null hypothesis, allowing to detect departures of the oberved data from the null hypothesis consistently.
 
 
 # References
