@@ -9,7 +9,7 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-set.seed(97310)
+set.seed(2018)
 ```
 
 The _dbmss_ package allows simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's $K_d$, Marcon and Puech's $M$). 
