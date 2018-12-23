@@ -7,12 +7,6 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     CheckdbmssArguments()
   }
   
-  # Select the bandwith: original choice by Duranton and Overman or optimized one.
-  if (Original) {
-    bw <- "nrd0"
-  } else {
-    bw <- "sj"
-  }
   # The default number of values used by density is 512. It may be changed if needed.
   n <- 512
   
