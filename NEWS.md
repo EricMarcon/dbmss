@@ -4,7 +4,7 @@
 
 - `autoplot()` for `envelope` objects
 - Vignettes by [pkgdown](https://pkgdown.r-lib.org/)
-- Better consistency of bandwidth choice in $K_d$ and $m$ estimation. An article is added in the online documentation.
+- Better consistency of bandwidth choice in `Kd` and `m` estimation. An article is added in the online documentation.
 
 ## Internal changes
 
