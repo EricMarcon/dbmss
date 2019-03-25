@@ -102,7 +102,7 @@ Decreasing `r` allows focusing on close neighbors: a smaller bandwidth will be u
 Last, the bandwidth can be arbitrarily modified by the `Adjust` argument if necessary.
 
 The default values of arguments (especially `r`) are a good choice to obtain standard estimations of the $K_d$ and $m$ functions.
-If consistency with the original estimation of $K_d$ by @Duranton2005 is not important, `Original = FALSE` is the even better.
+If consistency with the original estimation of $K_d$ by @Duranton2005 is not important, `Original = FALSE` is even better.
 Whatever the user's choices, the bandwidth is chosen the same way for the estimation of a distance-based function and its confidence envelope according to a null hypothesis, allowing to detect departures of the oberved data from the null hypothesis consistently.
 
 
