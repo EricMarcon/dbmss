@@ -1,3 +1,15 @@
+# dbmss 2.7-0.9900
+
+## Improvements
+
+- tibbles are accepted by `wmppp()`
+
+## Bug fixes
+
+- `autoplot()` failed with `Lenvelope` objects
+
+
+
 # dbmss 2.7-0
 
 ## Improvements
