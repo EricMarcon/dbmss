@@ -9,8 +9,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   for(i in Columns) {
     Envelope[[i]] <- sqrt(Envelope[[i]]/pi)-Envelope$r
   }
-  attr(Envelope, "ylab") <- "L(r)"
-  attr(Envelope, "yexp") <- "L(r)"
+  attr(Envelope, "ylab") <- attr(Envelope, "yexp") <- quote(L(r))
   attr(Envelope, "fname") <- "L"
   return (Envelope)
 }
