@@ -4,6 +4,8 @@ function(df, window = NULL, unitname = NULL)
   # Check the data
   if (!is.data.frame(df))
     stop("The data used to create a wmppp must be a dataframe.")
+  if (tibble::is_tibble(df)) # Tibbles must be coerced to data.frames or as.numeric below won't work.
+    df <- as.data.frame(df)
   if (ncol(df) < 2)
     stop("The data used to create a wmppp must have at least two columns for coordinates X and Y.")
   names(df) <- tolower(names(df))
