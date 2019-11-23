@@ -113,13 +113,14 @@ function() {
     if (NumberOfSimulations <= 0)
       stop(paste(ErrorFunction, "NumberOfSimulations must be positive, it cannot be", sQuote(NumberOfSimulations)))    
   }
+  
   # Alpha 
   if (!is.na(names(Args["Alpha"]))) {
     Alpha <- eval(expression(Alpha), parent.frame())
     if (!is.numeric(Alpha))
       stop(paste(ErrorFunction, "Alpha must be a number, it cannot be", sQuote(Alpha)))    
-    if (Alpha<=0 | Alpha>=1)
-      stop(paste(ErrorFunction, "Alpha must be strictly between 0 and 1, it cannot be", sQuote(Alpha)))    
+    if (Alpha < 0)
+      stop(paste(ErrorFunction, "Alpha must be positive, it cannot be", sQuote(Alpha)))    
   }
   
   # Adjust 
@@ -153,6 +154,16 @@ function() {
     if (!is.logical(Individual))
       stop(paste(ErrorFunction, "Individual must be TRUE or FALSE, it cannot be", sQuote(Individual)))    
   }
+  
+  # Precision 
+  if (!is.na(names(Args["Precision"]))) {
+    Precision <- eval(expression(Precision), parent.frame())
+    if (!is.numeric(Precision))
+      stop(paste(ErrorFunction, "Precision must be a number, it cannot be", sQuote(Precision)))    
+    if (Precision<=0 | Precision>=1)
+      stop(paste(ErrorFunction, "Precision must be strictly between 0 and 1, it cannot be", sQuote(Precision)))    
+  }
+  
   
   return (TRUE)
 }

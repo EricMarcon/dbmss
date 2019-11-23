@@ -1,12 +1,13 @@
-# dbmss 2.7-0.9900
+# dbmss 2.7-0.9901
 
 ## Improvements
 
-- tibbles are accepted by `wmppp()`
+- tibbles are accepted by `wmppp()`.
+- Precision of point coordinates can be set in `rRandomPositionK()`.
 
 ## Bug fixes
 
-- `autoplot()` failed with `Lenvelope` objects
+- `autoplot()` failed with `Lenvelope` objects.
 
 
 
@@ -14,7 +15,7 @@
 
 ## Improvements
 
-- `autoplot()` for `envelope` objects
+- `autoplot()` for `envelope` objects.
 - Vignettes by [pkgdown](https://pkgdown.r-lib.org/)
 - Better consistency of bandwidth choice in `Kd` and `m` estimation. An article is added in the online documentation.
 

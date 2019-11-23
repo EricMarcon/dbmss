@@ -1,12 +1,12 @@
 KEnvelope <-
 function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-         ReferenceType = "", NeighborType = ReferenceType, SimulationType = "RandomPosition", Global = FALSE) {
+         ReferenceType = "", NeighborType = ReferenceType, SimulationType = "RandomPosition", Precision = 0, Global = FALSE) {
 
   CheckdbmssArguments()
   
   # Choose the null hypothesis
   SimulatedPP <- switch (SimulationType,
-                         RandomPosition = expression(rRandomPositionK(X, CheckArguments = FALSE)),
+                         RandomPosition = expression(rRandomPositionK(X, Precision=Precision, CheckArguments = FALSE)),
                          RandomLabeling = expression(rRandomLabeling(X, CheckArguments = FALSE)),
                          PopulationIndependence = expression(rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = FALSE))
                          )

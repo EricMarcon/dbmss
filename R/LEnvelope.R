@@ -1,9 +1,9 @@
 LEnvelope <-
 function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-         ReferenceType = "", NeighborType = "", SimulationType = "RandomPosition", Global = FALSE) {
+         ReferenceType = "", NeighborType = "", SimulationType = "RandomPosition", Precision = 0, Global = FALSE) {
   
   # Calculate the envelope of K
-  Envelope <- KEnvelope(X, r, NumberOfSimulations, Alpha, ReferenceType, NeighborType, SimulationType, Global)
+  Envelope <- KEnvelope(X, r, NumberOfSimulations, Alpha, ReferenceType, NeighborType, SimulationType, Precision, Global)
   # Transform K to L
   Columns <- names(Envelope)[-1]
   for(i in Columns) {
