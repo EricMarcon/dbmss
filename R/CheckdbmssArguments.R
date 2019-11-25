@@ -160,8 +160,8 @@ function() {
     Precision <- eval(expression(Precision), parent.frame())
     if (!is.numeric(Precision))
       stop(paste(ErrorFunction, "Precision must be a number, it cannot be", sQuote(Precision)))    
-    if (Precision<=0 | Precision>=1)
-      stop(paste(ErrorFunction, "Precision must be strictly between 0 and 1, it cannot be", sQuote(Precision)))    
+    if (Precision < 0)
+      stop(paste(ErrorFunction, "Precision must be positive, it cannot be", sQuote(Precision)))    
   }
   
   
