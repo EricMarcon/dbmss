@@ -17,11 +17,12 @@ jobs:
         - git fetch origin gh-pages:gh-pages
         - git --work-tree=docs checkout gh-pages -- .
         - travis_wait 60 Rscript -e 'pkgdown::build_site()'
+        - touch docs/.nojekyll
       deploy:
+        strategy: git
         provider: pages
-        skip_cleanup: true
         keep_history: true
-        github_token: $GITHUB_TOKEN
+        token: $GITHUB_TOKEN
         on:
           branch: master
         local_dir: docs
