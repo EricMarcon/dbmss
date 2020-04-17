@@ -16,7 +16,7 @@ jobs:
         - mkdir docs
         - git fetch origin gh-pages:gh-pages
         - git --work-tree=docs checkout gh-pages -- .
-        - Rscript -e 'pkgdown::build_site()'
+        - travis_wait 60 Rscript -e 'pkgdown::build_site()'
       deploy:
         provider: pages
         skip_cleanup: true
