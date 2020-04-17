@@ -21,7 +21,7 @@ jobs:
       deploy:
         strategy: git
         provider: pages
-        keep_history: true
+        keep_history: false
         token: $GITHUB_TOKEN
         on:
           branch: master
