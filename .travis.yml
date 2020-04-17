@@ -1,16 +1,32 @@
 language: r
-sudo: false
+warnings_are_errors: true
 cache: packages
-r_packages:
- - devtools
- - testthat
- - spatstat
- - Rcpp
- - cubature
- - stats
- - RcppParallel
- - spatstat.utils
- - covr
 
-after_success:
-  - Rscript -e 'library(covr); codecov(type ="all")'
+jobs:
+  include:
+    - stage: Check package, code coverage and deploy pkgdown website
+      os: linux
+      dist: xenial
+      r: release
+      r_packages:
+        - covr
+        - pkgdown
+      after_success:
+        - Rscript -e 'covr::codecov(type ="all")'
+        - mkdir docs
+        - git fetch origin gh-pages:gh-pages
+        - git --work-tree=docs checkout gh-pages -- .
+        - Rscript -e 'pkgdown::build_site()'
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        keep_history: true
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
+        local_dir: docs
+
+notifications:
+  email:
+    recipients:
+      - e.marcon@free.fr
