@@ -14,14 +14,14 @@ jobs:
       after_success:
         - Rscript -e 'covr::codecov(type ="all")'
         - mkdir docs
-        - git fetch origin gh-pages:gh-pages
-        - git --work-tree=docs checkout gh-pages -- .
+#        - git fetch origin gh-pages:gh-pages                 # Comment out for release
+#        - git --work-tree=docs checkout gh-pages -- .        # Comment out for release
         - travis_wait 60 Rscript -e 'pkgdown::build_site()'
         - touch docs/.nojekyll
       deploy:
-        strategy: git
         provider: pages
-        keep_history: false
+        skip_cleanup: true
+#        keep_history: true                                   # Comment out for release
         token: $GITHUB_TOKEN
         on:
           branch: master
