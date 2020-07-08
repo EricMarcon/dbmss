@@ -18,7 +18,7 @@ Ktest(X, r)
   }
 }
 \details{
-  The test returns the risk to reject CSR erroneously, based on the distribution of the \emph{K} function.
+  The test returns the risk to reject CSR erroneously, i.e. the p-value of the test, based on the distribution of the \emph{K} function.
 }
 \value{
   A p-value.
