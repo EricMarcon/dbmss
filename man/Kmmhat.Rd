@@ -14,7 +14,7 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   A weighted, marked, planar point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \strong{spatstat}.
   }
   \item{ReferenceType}{
   One of the point types. Others are ignored. Default is all point types.

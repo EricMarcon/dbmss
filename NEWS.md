@@ -1,4 +1,4 @@
-# dbmss 2.7-1
+# dbmss 2.7-1.9001
 
 ## Improvements
 
@@ -9,6 +9,9 @@
 
 - `autoplot()` failed with `Lenvelope` objects.
 
+## External changes
+
+- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_.
 
 
 # dbmss 2.7-0

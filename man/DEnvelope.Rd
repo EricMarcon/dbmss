@@ -15,7 +15,7 @@ DEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   A point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \code{\link{spatstat}}.
+  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \strong{spatstat}.
   }
   \item{NumberOfSimulations}{
   The number of simulations to run, 100 by default.

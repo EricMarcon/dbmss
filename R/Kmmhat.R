@@ -9,7 +9,7 @@ function(X, r = NULL, ReferenceType = "", CheckArguments = TRUE) {
     X.marked <- X
     # Weights are normalized so that their mean is 1 because markcorrint returns Kmm * mean weight instead of Kmm (as of v. 1.27-0 of spatstat).
     X.marked$marks <- X$marks$PointWeight/mean(X$marks$PointWeight)
-    Kmm <- spatstat::Kmark(X.marked, correction="best")
+    Kmm <- spatstat.core::Kmark(X.marked, correction="best")
     attr(Kmm, "ylab") <- attr(Kmm, "yexp") <- quote(K[mm](r))
     attr(Kmm, "fname") <- "K[mm]"
     return (Kmm)

@@ -1,6 +1,6 @@
 useDynLib("dbmss", .registration = TRUE)
 
-import("spatstat")
+import("spatstat.core")
 import("Rcpp")
 importFrom("ggplot2", "autoplot")
 importFrom("RcppParallel", "RcppParallelLibs")

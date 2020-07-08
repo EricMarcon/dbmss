@@ -53,5 +53,5 @@
   This is the S3 method \code{\link{envelope}} for \code{\link{Dtable}} objects.
 }
 \author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>. Relies on the \code{\link{envelope}} engine of \code{\link{spatstat}}.
+  Eric Marcon <Eric.Marcon@ecofog.gf>. Relies on the \code{\link{envelope}} engine of \strong{spatstat}.
 }
