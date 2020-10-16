@@ -16,7 +16,7 @@ autoplot.envelope <- function(object, ..., ObsColor = "black", H0Color = "red", 
   # Confidence envelope
   thePlot <- ggplot2::ggplot() +
     ggplot2::geom_ribbon(ggplot2::aes_(x=~r, ymin=~lo, ymax=~hi, fill=ShadeColor), data=object, alpha=alpha) +
-    ggplot2::labs(main=main, x=xlab, y=ylab) + 
+    ggplot2::labs(title=main, x=xlab, y=ylab) + 
     ggplot2::scale_fill_identity(name=LegendLabels[3], guide="legend", labels=paste(attr(object, "einfo")$Alpha*100, "%", sep="")) 
   
   # Melt observed and expected values to prepare geom_line
