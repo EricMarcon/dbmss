@@ -2,6 +2,13 @@ language: r
 warnings_are_errors: true
 cache: packages
 
+# Binary packages from RStudio
+before_install:
+  - echo "options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/xenial/latest'))" >> ~/.Rprofile.site
+  - echo "options(HTTPUserAgent = paste0('R/', getRversion(), ' R (',
+       paste(getRversion(), R.version['platform'], R.version['arch'], R.version['os']),
+       ')'))" >> ~/.Rprofile.site
+
 jobs:
   include:
     - stage: Check package, code coverage and deploy pkgdown website
