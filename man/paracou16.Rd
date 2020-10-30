@@ -5,7 +5,7 @@
   Paracou field station plot 16, partial map
 }
 \description{
-  This point pattern is from Paracou field station, French Guiana, managed by \href{http://www.cirad.fr}{Cirad}.
+  This point pattern is from Paracou field station, French Guiana, managed by \href{https://www.cirad.fr}{Cirad}.
 }
 \usage{
 data(paracou16)
