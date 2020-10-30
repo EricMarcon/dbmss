@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9003</span>
       </span>
     </div>
 
@@ -158,16 +158,16 @@
     <p>Estimates the <em>Kd</em> function</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Kdhat</span>(<span class='no'>X</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>ReferenceType</span>, <span class='kw'>NeighborType</span> <span class='kw'>=</span> <span class='no'>ReferenceType</span>, <span class='kw'>Weighted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-       <span class='kw'>Original</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>Approximate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='no'>X</span>$<span class='no'>n</span> <span class='kw'>&lt;</span> <span class='fl'>10000</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>Adjust</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-       <span class='kw'>MaxRange</span> <span class='kw'>=</span> <span class='st'>"ThirdW"</span>, <span class='kw'>StartFromMinR</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>CheckArguments</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>Kdhat</span><span class='op'>(</span><span class='va'>X</span>, r <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>ReferenceType</span>, NeighborType <span class='op'>=</span> <span class='va'>ReferenceType</span>, Weighted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+       Original <span class='op'>=</span> <span class='cn'>TRUE</span>, Approximate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>$</span><span class='va'>n</span> <span class='op'>&lt;</span> <span class='fl'>10000</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, Adjust <span class='op'>=</span> <span class='fl'>1</span>,
+       MaxRange <span class='op'>=</span> <span class='st'>"ThirdW"</span>, StartFromMinR <span class='op'>=</span> <span class='cn'>FALSE</span>, CheckArguments <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>X</th>
-      <td><p>A weighted, marked planar point pattern (<code>wmppp.object</code>) or a <code>Dtable</code> object.</p></td>
+      <td><p>A weighted, marked planar point pattern (<code><a href='wmppp.object.html'>wmppp.object</a></code>) or a <code><a href='Dtable.html'>Dtable</a></code> object.</p></td>
     </tr>
     <tr>
       <th>r</th>
@@ -191,7 +191,7 @@
     </tr>
     <tr>
       <th>Approximate</th>
-      <td><p>if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times <code>Approximate</code> single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing <code>Approximate</code> allows better precision at the cost of proportional memory use. Ignored if <code>X</code> is a <code>Dtable</code> object.</p></td>
+      <td><p>if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times <code>Approximate</code> single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing <code>Approximate</code> allows better precision at the cost of proportional memory use. Ignored if <code>X</code> is a <code><a href='Dtable.html'>Dtable</a></code> object.</p></td>
     </tr>
     <tr>
       <th>Adjust</th>
@@ -202,7 +202,7 @@
       <td><p>The maximum value of <code>r</code> to consider, ignored if <code>r</code> is not <code>NULL</code>. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
   "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
   "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as <code>ReferenceType</code> and <code>NeighborType</code>, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if <code>Approximate</code> is not 0.
-  if <code>X</code> is a <code>Dtable</code> object, the diameter of the window is taken as the max distance between points.</p></td>
+  if <code>X</code> is a <code><a href='Dtable.html'>Dtable</a></code> object, the diameter of the window is taken as the max distance between points.</p></td>
     </tr>
     <tr>
       <th>StartFromMinR</th>
@@ -219,7 +219,7 @@
 
     <p><em>Kd</em> is a density, absolute measure of a point pattern structure. <em>Kd</em> is computed efficiently by building a matrix of distances between point pairs and calculating the density of their distribution (the default values of <code>r</code> are those of the <code><a href='https://rdrr.io/r/stats/density.html'>density</a></code> function). The kernel estimator is Gaussian.</p>  
 <p>The weighted <em>Kd</em> function has been named <em>Kemp</em> (<em>emp</em> is for employees) by Duranton and Overman (2005).</p>  
-<p>If <code>X</code> is not a <code>Dtable</code> object, the maximum value of <code>r</code> is obtained from the geometry of the window rather than caculating the median distance between points as suggested by Duranton and Overman (2005) to save (a lot of) calculation time.</p>
+<p>If <code>X</code> is not a <code><a href='Dtable.html'>Dtable</a></code> object, the maximum value of <code>r</code> is obtained from the geometry of the window rather than caculating the median distance between points as suggested by Duranton and Overman (2005) to save (a lot of) calculation time.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>fv</code>, see <code>fv.object</code>, which can be plotted directly using <code>plot.fv</code>.</p>
@@ -239,15 +239,20 @@
 <p>Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, <em>Journal of Geographical Systems</em> 17(4): 333-351.</p>
 <p>Sheather, S. J. and Jones, M. C. (1991) A reliable data-based bandwidth selection method for kernel density estimation. <em>Journal of the Royal Statistical Society series B</em>, 53, 683-690.</p>  
 <p>Silverman, B. W. (1986). <em>Density estimation for statistics and data analysis</em>. Chapman and Hall, London.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>KdEnvelope</code>, <code>Mhat</code></p></div>
+    <div class='dont-index'><p><code><a href='KdEnvelope.html'>KdEnvelope</a></code>, <code><a href='Mhat.html'>Mhat</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>paracou16</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>paracou16</span>)</div><div class='img'><img src='Kdhat-1.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
+</div><div class='img'><img src='Kdhat-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate Kd</span>
-(<span class='no'>Paracou</span> <span class='kw'>&lt;-</span> <span class='fu'>Kdhat</span>(<span class='no'>paracou16</span>, , <span class='st'>"Q. Rosea"</span>, <span class='st'>"V. Americana"</span>))</div><div class='output co'>#&gt; Function value object (class ‘fv’)
+<span class='op'>(</span><span class='va'>Paracou</span> <span class='op'>&lt;-</span> <span class='fu'>Kdhat</span><span class='op'>(</span><span class='va'>paracou16</span>, , <span class='st'>"Q. Rosea"</span>, <span class='st'>"V. Americana"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Function value object (class ‘fv’)
 #&gt; for the function r -&gt; Kd(r)
 #&gt; .................................
 #&gt;    Math.label Description        
@@ -259,7 +264,8 @@
 #&gt; Recommended range of argument r: [0, 102.11]
 #&gt; Available range of argument r: [0, 102.11]
 #&gt; Unit of length: 1 meter</div><div class='input'><span class='co'># Plot</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Paracou</span>)</div><div class='img'><img src='Kdhat-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
+</div><div class='img'><img src='Kdhat-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -275,7 +281,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

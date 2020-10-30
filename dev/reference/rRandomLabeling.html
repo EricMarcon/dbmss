@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9003</span>
       </span>
     </div>
 
@@ -158,14 +158,14 @@
     <p>Simulates of a point pattern according to the null hypothesis of random labeling.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rRandomLabeling</span>(<span class='no'>X</span>, <span class='kw'>CheckArguments</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>rRandomLabeling</span><span class='op'>(</span><span class='va'>X</span>, CheckArguments <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>X</th>
-      <td><p>A weighted, marked, planar point pattern (<code>wmppp.object</code>).</p></td>
+      <td><p>A weighted, marked, planar point pattern (<code><a href='wmppp.object.html'>wmppp.object</a></code>).</p></td>
     </tr>
     <tr>
       <th>CheckArguments</th>
@@ -178,34 +178,38 @@
     <p>Marks are redistributed randomly across the original point pattern.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A new weighted, marked, planar point pattern (an object of class <code>wmppp</code>, see <code>wmppp.object</code>).</p>
+    <p>A new weighted, marked, planar point pattern (an object of class <code>wmppp</code>, see <code><a href='wmppp.object.html'>wmppp.object</a></code>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Goreaud, F. et Pelissier, R. (2003). Avoiding misinterpretation of biotic interactions with the intertype K12 fonction: population independence vs random labelling hypotheses. <em>Journal of Vegetation Science</em> 14(5): 681-692.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>rRandomLabelingM</code>, <code>rPopulationIndependenceK</code></p></div>
+    <div class='dont-index'><p><code><a href='rRandomLabelingM.html'>rRandomLabelingM</a></code>, <code><a href='rPopulationIndependenceK.html'>rPopulationIndependenceK</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Simulate a point pattern with five types</span>
-<span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='fu'>rpoispp</span>(<span class='fl'>50</span>)
-<span class='no'>PointType</span>   <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"D"</span>, <span class='st'>"E"</span>), <span class='no'>X</span>$<span class='no'>n</span>, <span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>PointWeight</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='no'>X</span>$<span class='no'>n</span>, <span class='kw'>min</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>10</span>)
-<span class='no'>X</span>$<span class='no'>marks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='no'>PointType</span>, <span class='no'>PointWeight</span>)
-<span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='fu'>as.wmppp</span>(<span class='no'>X</span>)
+<span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'>rpoispp</span><span class='op'>(</span><span class='fl'>50</span><span class='op'>)</span> 
+<span class='va'>PointType</span>   <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"D"</span>, <span class='st'>"E"</span><span class='op'>)</span>, <span class='va'>X</span><span class='op'>$</span><span class='va'>n</span>, replace<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>PointWeight</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>$</span><span class='va'>n</span>, min<span class='op'>=</span><span class='fl'>1</span>, max<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>X</span><span class='op'>$</span><span class='va'>marks</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>PointType</span>, <span class='va'>PointWeight</span><span class='op'>)</span>
+<span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>2</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>X</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Original pattern, Point Type"</span>, <span class='kw'>which.marks</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>X</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Original pattern, Point Weight"</span>, <span class='kw'>which.marks</span><span class='kw'>=</span><span class='fl'>1</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span>, main<span class='op'>=</span><span class='st'>"Original pattern, Point Type"</span>, which.marks<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span>, main<span class='op'>=</span><span class='st'>"Original pattern, Point Weight"</span>, which.marks<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
 
 <span class='co'># Randomize it</span>
-<span class='no'>Y</span> <span class='kw'>&lt;-</span> <span class='fu'>rRandomLabeling</span>(<span class='no'>X</span>)
-<span class='no'>Z</span> <span class='kw'>&lt;-</span> <span class='no'>Y</span>
+<span class='va'>Y</span> <span class='op'>&lt;-</span> <span class='fu'>rRandomLabeling</span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+<span class='va'>Z</span> <span class='op'>&lt;-</span> <span class='va'>Y</span>
 <span class='co'># Types have been redistributed randomly across locations</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Y</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Randomized pattern, Point Type"</span>, <span class='kw'>which.marks</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Y</span>, main<span class='op'>=</span><span class='st'>"Randomized pattern, Point Type"</span>, which.marks<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 <span class='co'># weights too</span>
-<span class='no'>Y</span> <span class='kw'>&lt;-</span> <span class='no'>Z</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Y</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Randomized pattern, Point Weight"</span>, <span class='kw'>which.marks</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='img'><img src='rRandomLabeling-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>Y</span> <span class='op'>&lt;-</span> <span class='va'>Z</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Y</span>, main<span class='op'>=</span><span class='st'>"Randomized pattern, Point Weight"</span>, which.marks<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='img'><img src='rRandomLabeling-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -221,7 +225,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

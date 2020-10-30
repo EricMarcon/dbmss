@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9003</span>
       </span>
     </div>
 
@@ -158,17 +158,17 @@
     <p>Simulates point patterns according to the null hypothesis and returns the envelope of <em>m</em> according to the confidence level.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mEnvelope</span>(<span class='no'>X</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>NumberOfSimulations</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>Alpha</span> <span class='kw'>=</span> <span class='fl'>0.05</span>,
-          <span class='no'>ReferenceType</span>, <span class='kw'>NeighborType</span> <span class='kw'>=</span> <span class='no'>ReferenceType</span>, <span class='kw'>CaseControl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-          <span class='kw'>Original</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>Approximate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='no'>X</span>$<span class='no'>n</span> <span class='kw'>&lt;</span> <span class='fl'>10000</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>Adjust</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-          <span class='kw'>MaxRange</span> <span class='kw'>=</span> <span class='st'>"ThirdW"</span>, <span class='kw'>SimulationType</span> <span class='kw'>=</span> <span class='st'>"RandomLocation"</span>, <span class='kw'>Global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>mEnvelope</span><span class='op'>(</span><span class='va'>X</span>, r <span class='op'>=</span> <span class='cn'>NULL</span>, NumberOfSimulations <span class='op'>=</span> <span class='fl'>100</span>, Alpha <span class='op'>=</span> <span class='fl'>0.05</span>,
+          <span class='va'>ReferenceType</span>, NeighborType <span class='op'>=</span> <span class='va'>ReferenceType</span>, CaseControl <span class='op'>=</span> <span class='cn'>FALSE</span>,
+          Original <span class='op'>=</span> <span class='cn'>TRUE</span>, Approximate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>$</span><span class='va'>n</span> <span class='op'>&lt;</span> <span class='fl'>10000</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, Adjust <span class='op'>=</span> <span class='fl'>1</span>, 
+          MaxRange <span class='op'>=</span> <span class='st'>"ThirdW"</span>, SimulationType <span class='op'>=</span> <span class='st'>"RandomLocation"</span>, Global <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>X</th>
-      <td><p>A point pattern (<code>wmppp.object</code>).</p></td>
+      <td><p>A point pattern (<code><a href='wmppp.object.html'>wmppp.object</a></code>).</p></td>
     </tr>
     <tr>
       <th>r</th>
@@ -242,20 +242,25 @@
 <p>Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. <em>Regional Science and Urban Economics</em>. 62:56-67.</p>  
 <p>Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, <em>Journal of Geographical Systems</em> 17(4): 333-351.</p>
 <p>Silverman, B. W. (1986). <em>Density estimation for statistics and data analysis</em>. Chapman and Hall, London.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>mhat</code></p></div>
+    <div class='dont-index'><p><code><a href='mhat.html'>mhat</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>paracou16</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 <span class='co'># Keep only 50% of points to run this example</span>
-<span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='fu'>as.wmppp</span>(<span class='fu'>rthin</span>(<span class='no'>paracou16</span>, <span class='fl'>0.5</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>X</span>)</div><div class='img'><img src='m_Envelope-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='fu'>rthin</span><span class='op'>(</span><span class='va'>paracou16</span>, <span class='fl'>0.5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+</div><div class='img'><img src='m_Envelope-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)</span>
-<span class='no'>NumberOfSimulations</span> <span class='kw'>&lt;-</span> <span class='fl'>4</span>
-<span class='no'>Alpha</span> <span class='kw'>&lt;-</span> <span class='fl'>.10</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'>mEnvelope</span>(<span class='no'>X</span>, , <span class='no'>NumberOfSimulations</span>, <span class='no'>Alpha</span>,
-    <span class='st'>"V. Americana"</span>, <span class='st'>"Q. Rosea"</span>, <span class='kw'>Original</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>SimulationType</span> <span class='kw'>=</span> <span class='st'>"RandomLabeling"</span>))</div><div class='output co'>#&gt; Generating 4 simulations by evaluating expression  ...
+<span class='va'>NumberOfSimulations</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
+<span class='va'>Alpha</span> <span class='op'>&lt;-</span> <span class='fl'>.10</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mEnvelope</span><span class='op'>(</span><span class='va'>X</span>, , <span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span>, 
+    <span class='st'>"V. Americana"</span>, <span class='st'>"Q. Rosea"</span>, Original <span class='op'>=</span> <span class='cn'>FALSE</span>, SimulationType <span class='op'>=</span> <span class='st'>"RandomLabeling"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Generating 4 simulations by evaluating expression  ...
 #&gt; 1, 2, 3,  4.
 #&gt; 
 #&gt; Done.</div><div class='img'><img src='m_Envelope-2.png' alt='' width='700' height='433' /></div></pre>
@@ -274,7 +279,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

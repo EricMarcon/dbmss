@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9003</span>
       </span>
     </div>
 
@@ -158,7 +158,7 @@
     <p>Creates an object of class <code>"Dtable"</code> representing a set of points with weights and labels and the distances between them.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Dtable</span>(<span class='no'>Dmatrix</span>, <span class='kw'>PointType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>PointWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>Dtable</span><span class='op'>(</span><span class='va'>Dmatrix</span>, PointType <span class='op'>=</span> <span class='cn'>NULL</span>, PointWeight <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,16 +188,20 @@
   <dt>n</dt><dd><p>The number of points.</p></dd>
   <dt>marks</dt><dd><p>A list of two items: <code>PointType</code>, a vector of factors containing the point types and <code>PointWeight</code>, the numeric vector of weights.</p></dd>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>as.Dtable</code></p></div>
+    <div class='dont-index'><p><code><a href='as.Dtable.html'>as.Dtable</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># A Dtable containing two points</span>
-<span class='no'>Dmatrix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='no'>PointType</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Type1"</span>, <span class='st'>"Type2"</span>)
-<span class='no'>PointWeight</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>)
-<span class='fu'>Dtable</span>(<span class='no'>Dmatrix</span>, <span class='no'>PointType</span>, <span class='no'>PointWeight</span>)</div><div class='output co'>#&gt; $Dmatrix
+<span class='va'>Dmatrix</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>, nrow<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>PointType</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Type1"</span>, <span class='st'>"Type2"</span><span class='op'>)</span>
+<span class='va'>PointWeight</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span>
+<span class='fu'>Dtable</span><span class='op'>(</span><span class='va'>Dmatrix</span>, <span class='va'>PointType</span>, <span class='va'>PointWeight</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $Dmatrix
 #&gt;      [,1] [,2]
 #&gt; [1,]    0    1
 #&gt; [2,]    1    0
@@ -231,7 +235,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

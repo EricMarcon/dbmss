@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-1.9003</span>
       </span>
     </div>
 
@@ -152,24 +152,15 @@
       <small>Source: <a href='https://github.com/EricMarcon/dbmss/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="dbmss-2-7-1-9001" class="section level1">
-<h1 class="page-header" data-toc-text="2.7-1.9001">
-<a href="#dbmss-2-7-1-9001" class="anchor"></a>dbmss 2.7-1.9001<small> Unreleased </small>
+    <div id="dbmss-2-7-1-9003" class="section level1">
+<h1 class="page-header" data-toc-text="2.7-1.9003">
+<a href="#dbmss-2-7-1-9003" class="anchor"></a>dbmss 2.7-1.9003<small> Unreleased </small>
 </h1>
-<div id="improvements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#improvements" class="anchor"></a>Improvements</h2>
-<ul>
-<li>tibbles are accepted by <code>wmppp()</code>.</li>
-<li>Precision of point coordinates can be set in <code>rRandomPositionK()</code>.</li>
-</ul>
-</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>
-<code>autoplot()</code> failed with <code>Lenvelope</code> objects.</li>
+<li>argument <code>main</code> in <code>autoplot()</code> was ignored.</li>
 </ul>
 </div>
 <div id="external-changes" class="section level2">
@@ -177,6 +168,27 @@
 <a href="#external-changes" class="anchor"></a>External changes</h2>
 <ul>
 <li>Updates in the <em>spatstat</em> package: <em>dbmss</em> has been updated to address the creation of <em>spatstat.core</em>.</li>
+</ul>
+</div>
+</div>
+    <div id="dbmss-2-7-1" class="section level1">
+<h1 class="page-header" data-toc-text="2.7-1">
+<a href="#dbmss-2-7-1" class="anchor"></a>dbmss 2.7-1<small> 2020-01-08 </small>
+</h1>
+<div id="improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements" class="anchor"></a>Improvements</h2>
+<ul>
+<li>tibbles are accepted by <code><a href="../reference/wmppp.html">wmppp()</a></code>.</li>
+<li>Precision of point coordinates can be set in <code><a href="../reference/rRandomPositionK.html">rRandomPositionK()</a></code>.</li>
+</ul>
+</div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>
+<code>autoplot()</code> failed with <code>Lenvelope</code> objects.</li>
 </ul>
 </div>
 </div>
@@ -202,12 +214,12 @@
 <li>Fewer imported functions in NAMESPACE.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
-<code>Kdhat()</code> density was normalized incorrectly with Approximate=TRUE and small r values.</li>
+<code><a href="../reference/Kdhat.html">Kdhat()</a></code> density was normalized incorrectly with Approximate=TRUE and small r values.</li>
 </ul>
 </div>
 </div>
@@ -225,15 +237,15 @@
 <li>On Travis and codecov.io now.</li>
 <li>NEWS in Markdown.</li>
 <li>
-<code>wmppp()</code> accepts characters in <code>PointType</code>. A <code>PointName</code> column is searched to set the row names of the marks.</li>
+<code><a href="../reference/wmppp.html">wmppp()</a></code> accepts characters in <code>PointType</code>. A <code>PointName</code> column is searched to set the row names of the marks.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
-<code>wmppp()</code> failed if some point laid outside the window.</li>
+<code><a href="../reference/wmppp.html">wmppp()</a></code> failed if some point laid outside the window.</li>
 </ul>
 </div>
 </div>
@@ -247,7 +259,7 @@
 <ul>
 <li>On GitHub now.</li>
 <li>Individual values of m and M available from <code>Mhat</code> and <code>mhat</code> with argument <code>Individual</code>.</li>
-<li>Point names can be specified as row names of the dataframe passed to <code>wmppp()</code>. They are preserved in the <code>fv</code> object returned by individual <code>Mhat</code> and <code>mhat</code> to identify points more easily.</li>
+<li>Point names can be specified as row names of the dataframe passed to <code><a href="../reference/wmppp.html">wmppp()</a></code>. They are preserved in the <code>fv</code> object returned by individual <code>Mhat</code> and <code>mhat</code> to identify points more easily.</li>
 </ul>
 </div>
 <div id="improvements-3" class="section level2">
@@ -318,9 +330,9 @@
 <li>LazyData is used to save memory.</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Weighted argument was ignored in <code>Kdhat</code> (bug introduced in v.2.2-4). Fixed.</li>
 </ul>
@@ -368,9 +380,9 @@
 <h1 class="page-header" data-toc-text="2.2-1">
 <a href="#dbmss-2-2-1" class="anchor"></a>dbmss 2.2-1<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Adjust argument ignored in <code>Kdhat</code>. Fixed.</li>
 </ul>
@@ -415,9 +427,9 @@
 <li>Approximate argument to calculate <code>Kd</code> on big data sets with little RAM.</li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>FillEnvelope</code> returned wrong quantiles for local confidence intervals. Fixed.</li>
@@ -437,9 +449,9 @@
 <code>Kd</code> is computed by default up to the median (instead of mean) distance between points.</li>
 </ul>
 </div>
-<div id="bug-fixes-6" class="section level2">
+<div id="bug-fixes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>Kdhat</code> with Reference and Neighbor points of different types was calculated with only half of point pairs and sometimes crashed R. Fixed.</li>
@@ -485,9 +497,9 @@
 <h1 class="page-header" data-toc-text="2.0-5">
 <a href="#dbmss-2-0-5" class="anchor"></a>dbmss 2.0-5<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-7" class="section level2">
+<div id="bug-fixes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>Kdhat</code> with Reference and Neighbor points of the same type and <code>Weighted=TRUE</code> returned an error. Fixed.</li>
@@ -557,9 +569,9 @@
 <li>The default behavior of <code>Kd</code> is that of Duranton and Overman (2005). An optional parameter is added to used improved bandwith selection.</li>
 </ul>
 </div>
-<div id="bug-fixes-8" class="section level2">
+<div id="bug-fixes-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-9" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>The density estimation of <code>Kd</code> was run twice. Fixed.</li>
 </ul>
@@ -619,7 +631,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
