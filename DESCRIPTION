@@ -3,7 +3,7 @@ Type: Package
 Title: Distance-Based Measures of Spatial Structures
 Version: 2.7-1.9003
 Authors@R: c(
-    person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
+    person("Eric", "Marcon", email="eric.marcon@agroparistech.fr", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
     person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0002-4325-6044")),
     person("Stephane", "Traissac", email="stephane.traissac@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0001-9255-1616")),
     person("Florence", "Puech", email="florence.puech@u-psud.fr", role="aut", comment = c(ORCID = "0000-0002-5279-6878"))
