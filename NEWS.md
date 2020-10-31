@@ -1,13 +1,8 @@
-# dbmss 2.7-1.9003
+# dbmss 2.7-1.9004
 
 ## Bug fixes
 
 - argument `main` in `autoplot()` was ignored.
-
-## External changes
-
-- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_.
-
 
 
 # dbmss 2.7-1
