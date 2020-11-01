@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-3</span>
       </span>
     </div>
 
@@ -159,16 +159,16 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for Dtable</span>
-<span class='fu'>envelope</span>(<span class='no'>Y</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>Kest</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>99</span>, <span class='kw'>nrank</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>...</span>,
-          <span class='kw'>funargs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>funYargs</span> <span class='kw'>=</span> <span class='no'>funargs</span>, <span class='kw'>simulate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-          <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>savefuns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>Yname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>envir.simul</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>envelope</span><span class='op'>(</span><span class='va'>Y</span>, fun <span class='op'>=</span> <span class='va'>Kest</span>, nsim <span class='op'>=</span> <span class='fl'>99</span>, nrank <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>...</span>, 
+          funargs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, funYargs <span class='op'>=</span> <span class='va'>funargs</span>, simulate <span class='op'>=</span> <span class='cn'>NULL</span>, 
+          verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, savefuns <span class='op'>=</span> <span class='cn'>FALSE</span>, Yname <span class='op'>=</span> <span class='cn'>NULL</span>, envir.simul <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>Y</th>
-      <td><p>An object of class <code>Dtable</code>.</p></td>
+      <td><p>An object of class <code><a href='Dtable.html'>Dtable</a></code>.</p></td>
     </tr>
     <tr>
       <th>fun</th>
@@ -218,7 +218,10 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is the S3 method <code>envelope</code> for <code>Dtable</code> objects.</p>
+    <p>This is the S3 method <code>envelope</code> for <code><a href='Dtable.html'>Dtable</a></code> objects.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;. Relies on the <code>envelope</code> engine of <strong>spatstat</strong>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -235,7 +238,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

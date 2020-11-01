@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-3</span>
       </span>
     </div>
 
@@ -158,11 +158,11 @@
     <p>Creates an object of class <code>"Dtable"</code> representing a set of points with weights and labels and the distances between them.. This is a generic method.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as.Dtable</span>(<span class='no'>X</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>as.Dtable</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span>
   <span class='co'># S3 method for ppp</span>
-<span class='fu'>as.Dtable</span>(<span class='no'>X</span>, <span class='no'>...</span>)
+<span class='fu'>as.Dtable</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span>
   <span class='co'># S3 method for data.frame</span>
-<span class='fu'>as.Dtable</span>(<span class='no'>X</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>as.Dtable</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,13 +180,16 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This is a generic method, implemented for <code>ppp</code> and <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code>.</p>  
-<p>Data is first converted to a (<code>wmppp.object</code>). Then, the distance matrix between points is calculated and the marks are kept.</p>
+<p>Data is first converted to a (<code><a href='wmppp.object.html'>wmppp.object</a></code>). Then, the distance matrix between points is calculated and the marks are kept.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>"Dtable"</code>.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>as.wmppp</code></p></div>
+    <div class='dont-index'><p><code><a href='as.wmppp.html'>as.wmppp</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -203,7 +206,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

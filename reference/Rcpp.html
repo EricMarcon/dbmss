@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-3</span>
       </span>
     </div>
 
@@ -158,13 +158,13 @@
     <p>C++ routines used for fast count of neighbors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>parallelCountNbd</span>(<span class='no'>r</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>Weight</span>, <span class='no'>IsReferenceType</span>, <span class='no'>IsNeighborType</span>)
-<span class='fu'>parallelCountNbdCC</span>(<span class='no'>r</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>Weight</span>, <span class='no'>IsReferenceType</span>, <span class='no'>IsNeighborType</span>)
-<span class='fu'>parallelCountNbdm</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>ReferencePoints</span>)
-<span class='fu'>parallelCountNbdDt</span>(<span class='no'>r</span>, <span class='no'>Dmatrix</span>, <span class='no'>Weight</span>, <span class='no'>IsReferenceType</span>, <span class='no'>IsNeighborType</span>)
-<span class='fu'>parallelCountNbdDtCC</span>(<span class='no'>r</span>, <span class='no'>Dmatrix</span>, <span class='no'>Weight</span>, <span class='no'>IsReferenceType</span>, <span class='no'>IsNeighborType</span>)
-<span class='fu'>DistKd</span>(<span class='no'>Rx</span>, <span class='no'>Ry</span>, <span class='no'>RPointWeight</span>, <span class='no'>RWeight</span>, <span class='no'>RDist</span>, <span class='no'>RIsReferenceType</span>, <span class='no'>RIsNeighborType</span>)
-<span class='fu'>CountNbdKd</span>(<span class='no'>Rr</span>, <span class='no'>Rx</span>, <span class='no'>Ry</span>, <span class='no'>RWeight</span>, <span class='no'>RNbd</span>, <span class='no'>RIsReferenceType</span>, <span class='no'>RIsNeighborType</span>)</pre>
+    <pre class="usage"><span class='fu'>parallelCountNbd</span><span class='op'>(</span><span class='va'>r</span>, <span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>Weight</span>, <span class='va'>IsReferenceType</span>, <span class='va'>IsNeighborType</span><span class='op'>)</span>
+<span class='fu'>parallelCountNbdCC</span><span class='op'>(</span><span class='va'>r</span>, <span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>Weight</span>, <span class='va'>IsReferenceType</span>, <span class='va'>IsNeighborType</span><span class='op'>)</span>
+<span class='fu'>parallelCountNbdm</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>ReferencePoints</span><span class='op'>)</span>
+<span class='fu'>parallelCountNbdDt</span><span class='op'>(</span><span class='va'>r</span>, <span class='va'>Dmatrix</span>, <span class='va'>Weight</span>, <span class='va'>IsReferenceType</span>, <span class='va'>IsNeighborType</span><span class='op'>)</span>
+<span class='fu'>parallelCountNbdDtCC</span><span class='op'>(</span><span class='va'>r</span>, <span class='va'>Dmatrix</span>, <span class='va'>Weight</span>, <span class='va'>IsReferenceType</span>, <span class='va'>IsNeighborType</span><span class='op'>)</span>
+<span class='fu'>DistKd</span><span class='op'>(</span><span class='va'>Rx</span>, <span class='va'>Ry</span>, <span class='va'>RPointWeight</span>, <span class='va'>RWeight</span>, <span class='va'>RDist</span>, <span class='va'>RIsReferenceType</span>, <span class='va'>RIsNeighborType</span><span class='op'>)</span>
+<span class='fu'>CountNbdKd</span><span class='op'>(</span><span class='va'>Rr</span>, <span class='va'>Rx</span>, <span class='va'>Ry</span>, <span class='va'>RWeight</span>, <span class='va'>RNbd</span>, <span class='va'>RIsReferenceType</span>, <span class='va'>RIsNeighborType</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -242,6 +242,9 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>These routines are called internally.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -258,7 +261,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

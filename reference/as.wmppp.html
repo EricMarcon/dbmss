@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-3</span>
       </span>
     </div>
 
@@ -158,18 +158,18 @@
     <p>Creates a Weighted, Marked, Planar Point Pattern, <em>i.e.</em> an object of class <code>"wmppp"</code> representing a two-dimensional point pattern with weights and labels. This is a generic method.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as.wmppp</span>(<span class='no'>X</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>as.wmppp</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span>
   <span class='co'># S3 method for ppp</span>
-<span class='fu'>as.wmppp</span>(<span class='no'>X</span>, <span class='no'>...</span>)
+<span class='fu'>as.wmppp</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span>
   <span class='co'># S3 method for data.frame</span>
-<span class='fu'>as.wmppp</span>(<span class='no'>X</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unitname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>as.wmppp</span><span class='op'>(</span><span class='va'>X</span>, window <span class='op'>=</span> <span class='cn'>NULL</span>, unitname <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>X</th>
-      <td><p>Data to be converted into a weighted, marked, planar point pattern (<code>wmppp.object</code>)</p></td>
+      <td><p>Data to be converted into a weighted, marked, planar point pattern (<code><a href='wmppp.object.html'>wmppp.object</a></code>)</p></td>
     </tr>
     <tr>
       <th>window</th>
@@ -189,15 +189,18 @@
 
     <p>This is a generic method, implemented for <code>ppp</code> and <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code>:</p><ul>
 <li><p>If the dataset <code>X</code> is an object of class "ppp" (<code>ppp.object</code>), the marks are converted to point weights if they are numeric or to point types if they are factors. Default weights are set to 1, default types to "All". If marks are a dataframe with column names equal to <code>PointType</code> and <code>PointWeight</code>, they are not modified. Row namles of the dataframe are preserved aqs row names of the marks, to identify points.</p></li>
-<li><p>If the dataset <code>X</code> is a dataframe, see <code>wmppp</code>.</p></li>
+<li><p>If the dataset <code>X</code> is a dataframe, see <code><a href='wmppp.html'>wmppp</a></code>.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>"wmppp"</code>.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>wmppp.object</code></p></div>
+    <div class='dont-index'><p><code><a href='wmppp.object.html'>wmppp.object</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -214,7 +217,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
