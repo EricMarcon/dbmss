@@ -150,13 +150,13 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   mEstimate <- data.frame(r, rep(1, length(r)), mvalues)
   ColNames <- c("r", "theo", "m")
   Labl <- c("r", "%s[ind](r)", "hat(%s)(r)")
-  Desc <- c("Distance argument r", "Theoretical independent m(r)", "Estimated m(r)")  
+  Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
     ColNumbers <- row.names(X$marks[IsReferenceType, ])
     ColNames <- c(ColNames, paste("m", ColNumbers, sep="_"))
     Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
-    Desc <- c(Desc, paste("Individual M(r) around point", ColNumbers))
+    Desc <- c(Desc, paste("Individual %s around point", ColNumbers))
   }
   colnames(mEstimate) <- ColNames
   

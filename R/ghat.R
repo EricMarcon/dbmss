@@ -85,5 +85,5 @@ function(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TR
   colnames(gEstimate) <- c("r", "theo", valu)
   
   # Return the values of g(r)
-  return (fv(gEstimate, argu="r", ylab=quote(g(r)), valu=valu, fmla= ". ~ r", alim=c(0, max(r)), labl=c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep="")), desc=c("distance argument r", "theoretical Poisson g(r)", desc), unitname=X$window$unit, fname="g"))
+  return (fv(gEstimate, argu="r", ylab=quote(g(r)), valu=valu, fmla= ". ~ r", alim=c(0, max(r)), labl=c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep="")), desc=c("distance argument r", "theoretical Poisson %s", desc), unitname=X$window$unit, fname="g"))
 }
