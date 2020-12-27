@@ -1,6 +1,8 @@
 # dbmss 2.7-3.9000
 
-## Bug fixes
+## Improvements
+
+- Continuous integration by GitHub Actions.
 
 
 
