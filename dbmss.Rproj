@@ -16,3 +16,5 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageCheckArgs: --no-multiarch  --as-cran
+
+SpellingDictionary: en_US
