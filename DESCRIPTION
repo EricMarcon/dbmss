@@ -22,4 +22,4 @@ VignetteBuilder: knitr
 SystemRequirements: pandoc, GNU make
 Encoding: UTF-8
 LazyData: true
-Remotes: spatstat/spatstat.core
+Remotes: spatstat/spatstat.utils, spatstat/spatstat.core
