@@ -11,7 +11,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
     } else {
       X.reduced <- X[X$marks$PointType==ReferenceType]
     }
-    lambda <- spatstat::density.ppp(X.reduced, sigma=bw.diggle(X.reduced))
+    lambda <- spatstat.core::density.ppp(X.reduced, sigma=bw.diggle(X.reduced))
   }
   
   # Choose the null hypothesis

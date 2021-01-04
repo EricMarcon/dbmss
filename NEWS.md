@@ -1,8 +1,12 @@
-# dbmss 2.7-3.9000
+# dbmss 2.7-3.9001
 
 ## Improvements
 
 - Continuous integration by GitHub Actions.
+
+## External changes
+ 
+- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_.
 
 
 
