@@ -1,7 +1,7 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.7-3.9001
+Version: 2.7-4
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@agroparistech.fr", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
     person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0002-4325-6044")),
@@ -14,7 +14,7 @@ Description: Simple computation of spatial statistic functions of distance to ch
 URL: https://github.com/EricMarcon/dbmss
 BugReports: https://github.com/EricMarcon/dbmss/issues
 License: GNU General Public License
-Depends: R (>= 3.3.0), spatstat.core, spatstat.geom, Rcpp (>= 0.12.14), ggplot2
+Depends: R (>= 3.5.0), spatstat.core, spatstat.geom, Rcpp (>= 0.12.14), ggplot2
 Imports: cubature, reshape2, stats, RcppParallel, spatstat.utils, tibble
 Suggests: testthat, knitr, pkgdown
 LinkingTo: Rcpp, RcppParallel
@@ -22,4 +22,3 @@ VignetteBuilder: knitr
 SystemRequirements: pandoc, GNU make
 Encoding: UTF-8
 LazyData: true
-Remotes: spatstat/spatstat.utils, spatstat/spatstat.geom, spatstat/spatstat.core

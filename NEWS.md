@@ -1,4 +1,4 @@
-# dbmss 2.7-3.9001
+# dbmss 2.7-4
 
 ## Improvements
 
@@ -6,7 +6,7 @@
 
 ## External changes
  
-- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_.
+- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_ et al.
 
 
 
