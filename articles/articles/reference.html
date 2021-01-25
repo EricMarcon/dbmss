@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
       </span>
     </div>
 
@@ -48,7 +48,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -80,7 +80,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/EricMarcon/dbmss/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -100,8 +100,7 @@
 
       
 
-      </header><link href="reference_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="reference_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="reference_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>dbmss Package Reference</h1>
@@ -189,18 +188,16 @@
 <p>A <code>wmppp</code> object can be created by the <code><a href="../../reference/wmppp.html">wmppp()</a></code> function which accepts a dataframe as argument, or converted from a <code>ppp</code> object by <code><a href="../../reference/as.wmppp.html">as.wmppp()</a></code>. Starting from a csv file containing point coordinates, their type and their weight in four columns, a <code>wmppp</code> object can be created by just reading the file with <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> and applying <code><a href="../../reference/wmppp.html">wmppp()</a></code> to the result. Options are available to specify the observation window or guess it from the point coordinates and set default weights or types to points when they are not in the dataframe, see the package help for details. The simplest code to create a <code>wmppp</code> with 100 points is as follows. It draws point coordinates between 0 and 1, and creates a <code>wmppp</code> with a default window, all points are of the same type named <em>All</em> and their weight is 1.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss">"dbmss"</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## Loading required package: spatstat</code></pre>
+<pre><code>## Loading required package: spatstat.core</code></pre>
 <pre><code>## Loading required package: spatstat.data</code></pre>
+<pre><code>## Loading required package: spatstat.geom</code></pre>
+<pre><code>## spatstat.geom 1.65-5</code></pre>
 <pre><code>## Loading required package: nlme</code></pre>
 <pre><code>## Loading required package: rpart</code></pre>
-<pre><code>## 
-## spatstat 1.64-1       (nickname: 'Help you I can, yes!') 
-## For an introduction to spatstat, type 'beginner'</code></pre>
-<pre><code>## 
-## Note: spatstat version 1.64-1 is out of date by more than 6 months; we recommend upgrading to the latest version.</code></pre>
+<pre><code>## spatstat.core 1.65-0</code></pre>
 <pre><code>## Loading required package: Rcpp</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></code></pre></div>
 <pre><code>## Marked planar point pattern:  100 points
@@ -255,7 +252,7 @@
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
 <p>We illustrate the main features of the package by two examples. The first one comes from the economic literature <span class="citation">(Bonneu 2007)</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"CSBIGS.Rdata"</span><span class="op">)</span>
 <span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,
    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Other"</span>, <span class="st">"Biggest"</span><span class="op">)</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -270,62 +267,62 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span>, main<span class="op">=</span><span class="st">""</span>, maxsize<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fl">514300</span>,  <span class="fl">1826800</span>, <span class="st">"b"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/Toulouse-1.png" width="700"></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The map of emergencies in the urban area of Toulouse, France, during year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies recorded (many points are confused at the figure scale) and (b) the locations of the 10 percent most serious ones. The workload associated to each emergency (the number of men <span class="math inline">\(\times\)</span> hours it required) is known. The original study tested the dependence between workload and location of emergencies: it did not exclude the null hypothesis of random labeling. We have a complementary approach here: we consider the 10 percent more serious emergencies, i.e. those which caused the highest workload. <span class="math inline">\(K_d\)</span> may detect concentration (or dispersion) if, at a distance <span class="math inline">\(r\)</span> from a serious emergency, the probability to find another serious emergency is greater (or lower) than that of finding an emergency whatever its workload:</p>
 <p>The <code>Emergencies</code> data frame contains point coordinates (in meters) in columns <code>X</code> and <code>Y</code> and workload in column <code>M</code>. The second line of the code creates a vector containing a factor describing the workload to separate its 10% higher values. A <code>wmppp</code> object is created then, containing the points and their mark. The <code>KdEnvelope</code> function is run from 0 to 10km by steps of 100m for the most serious emergencies. The figure below shows that the 10% most serious emergencies are more dispersed than the distribution of all emergencies at all distances up to 10km.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, NumberOfSimulations<span class="op">=</span><span class="fl">1000</span>, ReferenceType<span class="op">=</span><span class="st">"Biggest"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Generating 1000 simulations by evaluating expression  ...
-## 1, 2, 3, ......10 [etd 10:51] .........20 [etd 10:48] .........
-## 30 [etd 10:40] .........40 [etd 10:33] .........50 [etd 10:26] ........
-## .60 [etd 10:19] .........70 [etd 10:13] .........80 [etd 10:06] .......
-## ..90 [etd 9:59] .........100 [etd 9:52] .........110 [etd 9:46] ......
-## ...120 [etd 9:40] .........130 [etd 9:33] .........140 [etd 9:27] .....
-## ....150 [etd 9:20] .........160 [etd 9:13] .........170 [etd 9:07] ....
-## .....180 [etd 9:00] .........190 [etd 8:53] .........200 [etd 8:47] ...
-## ......210 [etd 8:40] .........220 [etd 8:34] .........230 [etd 8:27] ..
-## .......240 [etd 8:20] .........250 [etd 8:14] .........260 [etd 8:07] .
-## ........270 [etd 8:01] .........280 [etd 7:54] .........290
-##  [etd 7:48] .........300 [etd 7:41] .........310 [etd 7:34] .........
-## 320 [etd 7:28] .........330 [etd 7:21] .........340 [etd 7:15] ........
-## .350 [etd 7:08] .........360 [etd 7:01] .........370 [etd 6:55] .......
-## ..380 [etd 6:48] .........390 [etd 6:42] .........400 [etd 6:35] ......
-## ...410 [etd 6:28] .........420 [etd 6:22] .........430 [etd 6:15] .....
-## ....440 [etd 6:09] .........450 [etd 6:02] .........460 [etd 5:55] ....
-## .....470 [etd 5:49] .........480 [etd 5:42] .........490 [etd 5:36] ...
-## ......500 [etd 5:29] .........510 [etd 5:22] .........520 [etd 5:16] ..
-## .......530 [etd 5:09] .........540 [etd 5:03] .........550 [etd 4:56] .
-## ........560 [etd 4:50] .........570 [etd 4:43] .........580
-##  [etd 4:36] .........590 [etd 4:30] .........600 [etd 4:23] .........
-## 610 [etd 4:17] .........620 [etd 4:10] .........630 [etd 4:04] ........
-## .640 [etd 3:57] .........650 [etd 3:50] .........660 [etd 3:44] .......
-## ..670 [etd 3:37] .........680 [etd 3:31] .........690 [etd 3:24] ......
-## ...700 [etd 3:18] .........710 [etd 3:11] .........720 [etd 3:04] .....
-## ....730 [etd 2:58] .........740 [etd 2:51] .........750 [etd 2:45] ....
-## .....760 [etd 2:38] .........770 [etd 2:31] .........780 [etd 2:25] ...
-## ......790 [etd 2:18] .........800 [etd 2:12] .........810 [etd 2:05] ..
-## .......820 [etd 1:58] .........830 [etd 1:52] .........840 [etd 1:45] .
-## ........850 [etd 1:39] .........860 [etd 1:32] .........870
-##  [etd 1:26] .........880 [etd 1:19] .........890 [etd 1:12] .........
-## 900 [etd 1:06] .........910 [etd 59 sec] .........920 [etd 53 sec] ........
-## .930 [etd 46 sec] .........940 [etd 40 sec] .........950 [etd 33 sec] .......
-## ..960 [etd 26 sec] .........970 [etd 20 sec] .........980 [etd 13 sec] ......
-## ...990 [etd 7 sec] ......... 1000.
+## 1, 2, 3, ......10 [etd 14:56] .........20 [etd 14:49] .........
+## 30 [etd 14:40] .........40 [etd 14:30] .........50 [etd 14:21] ........
+## .60 [etd 14:11] .........70 [etd 14:03] .........80 [etd 13:53] .......
+## ..90 [etd 13:44] .........100 [etd 13:34] .........110 [etd 13:25] ......
+## ...120 [etd 13:17] .........130 [etd 13:08] .........140 [etd 12:58] .....
+## ....150 [etd 12:49] .........160 [etd 12:40] .........170 [etd 12:31] ....
+## .....180 [etd 12:22] .........190 [etd 12:13] .........200 [etd 12:03] ...
+## ......210 [etd 11:54] .........220 [etd 11:45] .........230 [etd 11:36] ..
+## .......240 [etd 11:27] .........250 [etd 11:18] .........260 [etd 11:09] .
+## ........270 [etd 11:00] .........280 [etd 10:51] .........290
+##  [etd 10:42] .........300 [etd 10:32] .........310 [etd 10:23] .........
+## 320 [etd 10:14] .........330 [etd 10:05] .........340 [etd 9:56] ........
+## .350 [etd 9:47] .........360 [etd 9:38] .........370 [etd 9:29] .......
+## ..380 [etd 9:20] .........390 [etd 9:11] .........400 [etd 9:02] ......
+## ...410 [etd 8:52] .........420 [etd 8:43] .........430 [etd 8:34] .....
+## ....440 [etd 8:25] .........450 [etd 8:16] .........460 [etd 8:07] ....
+## .....470 [etd 7:58] .........480 [etd 7:48] .........490 [etd 7:39] ...
+## ......500 [etd 7:30] .........510 [etd 7:22] .........520 [etd 7:12] ..
+## .......530 [etd 7:03] .........540 [etd 6:54] .........550 [etd 6:45] .
+## ........560 [etd 6:36] .........570 [etd 6:27] .........580
+##  [etd 6:18] .........590 [etd 6:09] .........600 [etd 6:01] .........
+## 610 [etd 5:52] .........620 [etd 5:43] .........630 [etd 5:34] ........
+## .640 [etd 5:25] .........650 [etd 5:16] .........660 [etd 5:07] .......
+## ..670 [etd 4:58] .........680 [etd 4:49] .........690 [etd 4:40] ......
+## ...700 [etd 4:31] .........710 [etd 4:22] .........720 [etd 4:13] .....
+## ....730 [etd 4:04] .........740 [etd 3:55] .........750 [etd 3:46] ....
+## .....760 [etd 3:37] .........770 [etd 3:28] .........780 [etd 3:19] ...
+## ......790 [etd 3:10] .........800 [etd 3:01] .........810 [etd 2:51] ..
+## .......820 [etd 2:42] .........830 [etd 2:33] .........840 [etd 2:24] .
+## ........850 [etd 2:15] .........860 [etd 2:06] .........870
+##  [etd 1:57] .........880 [etd 1:48] .........890 [etd 1:39] .........
+## 900 [etd 1:30] .........910 [etd 1:21] .........920 [etd 1:12] ........
+## .930 [etd 1:03] .........940 [etd 54 sec] .........950 [etd 45 sec] .......
+## ..960 [etd 36 sec] .........970 [etd 27 sec] .........980 [etd 18 sec] ......
+## ...990 [etd 9 sec] ......... 1000.
 ## 
 ## Done.</code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">KdE</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/KdCode-1.png" width="576"></p>
 <p>The solid, black curve is <span class="math inline">\(K_d\)</span>. The dotted red curve is the average simulated value and the shaded area is the confidence envelope under the null hypothesis of random location. The risk level is 5%, 1000 simulations have been run. distances are in meters.</p>
 <p>This opens the way to discuss on the optimal location of fire stations.</p>
 <p>The second example uses the <code>paracou16</code> point pattern provided in the package. It represents the distribution of trees in a 4.1-ha tropical forest plot in the Paracou field station in French Guiana <span class="citation">(Gourlet-Fleury, Guehl, and Laroussinie 2004)</span>. It contains 2426 trees, whose species is either <em>Qualea rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300 species). Weights are basal areas (the area of the stems virtually cut 1.3 meter above ground), measured in square centimeters.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"paracou16"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">paracou16</span>, which.marks<span class="op">=</span><span class="st">"PointWeight"</span>, main<span class="op">=</span><span class="st">""</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>On the map, circles are centered on trees in the forest plot (the containing rectangle is 200m wide by 250m long). Circle sizes are proportional to the basal areas of trees.</p>
 <p>The question to test is dependence between the distributions of the two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000 simulations are run to build the global confidence envelope.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, NumberOfSimulations 
    <span class="op">=</span> <span class="fl">1000</span>, Alpha <span class="op">=</span> <span class="fl">0.05</span>, ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, NeighborType 
    <span class="op">=</span> <span class="st">"Q. Rosea"</span>, SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -347,7 +344,7 @@
 ## .......960.........970.........980.........990......... 1000.
 ## 
 ## Done.</code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">Envelope</span>, main<span class="op">=</span><span class="st">""</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/MCode-1.png" width="700"></p>
 <p><span class="math inline">\(M(r)\)</span> values of <em>Qualea rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid, black curve is <span class="math inline">\(M\)</span>. The dotted red curve is the average simulated value. The shaded area is the confidence envelope. <span class="math inline">\(M=1\)</span> is expected if points are independently distributed. The risk level is 5%, 1000 simulations have been run. Distances are in meters.</p>
@@ -358,7 +355,7 @@
 <a href="#goodness-of-fit-test" class="anchor"></a>Goodness-of-fit test</h2>
 <p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has been proposed by <span class="citation">Diggle (1983)</span>, applied to <span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon, Puech, and Traissac (2012)</span>. It calculates the distance between the actual values of the function and its average value obtained in simulations of the null hypothesis. The same distance is calculated for each simulated point pattern, and the returned <span class="math inline">\(p\)</span>-value of the test if the ratio of simulations whose distance is larger than that of the real point pattern. The test is performed by the <code>GoFtest</code> function whose argument is the envelope previously calculated (actually, the function uses the simulation values).</p>
 <p>Applied to the example of Paracou trees, the <span class="math inline">\(p\)</span>-value is:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/GoFtest.html">GoFtest</a></span><span class="op">(</span><span class="va">Envelope</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.267</code></pre>
 </div>
@@ -367,7 +364,7 @@
 <a href="#ktest" class="anchor"></a>Ktest</h2>
 <p>The <code>Ktest</code> has been developed by Lang and Marcon <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang 2013)</span>. It does not rely on simulations and returns the <span class="math inline">\(p\)</span>-value to erroneously reject complete spatial randomness (CSR) given the values of <span class="math inline">\(K\)</span>. It relies on the exact variance of <span class="math inline">\(K\)</span> calculated with edge-effect corrections. It only works in a rectangular window.</p>
 <p>The following example tests a 1.5-ha subset of <code>paracou16</code> (100m by 150m, origin at the southwestern corner).</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"paracou16"</span><span class="op">)</span>
 <span class="va">RectWindow</span> <span class="op">&lt;-</span> <span class="fu">owin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span>
 <span class="va">X</span> <span class="op">&lt;-</span> <span class="va">paracou16</span><span class="op">[</span><span class="va">RectWindow</span><span class="op">]</span>
@@ -381,7 +378,7 @@
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-Allaire2015">
-<p>Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>. <a href="http://CRAN.R-project.org/package=RcppParallel" class="uri">http://CRAN.R-project.org/package=RcppParallel</a>.</p>
+<p>Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>. <a href="http://CRAN.R-project.org/package=RcppParallel">http://CRAN.R-project.org/package=RcppParallel</a>.</p>
 </div>
 <div id="ref-Baddeley2000">
 <p>Baddeley, Adrian J., Jesper Møller, and Rasmus Plenge Waagepetersen. 2000. “Non- and Semi-Parametric Estimation of Interaction in Inhomogeneous Point Patterns.” <em>Statistica Neerlandica</em> 54 (3): 329–50.</p>
@@ -420,7 +417,7 @@
 <p>———. 2008. “Exploring the Detailed Location Patterns of Uk Manufacturing Industries Using Microgeographic Data.” <em>Journal of Regional Science</em> 48 (1): 213–43.</p>
 </div>
 <div id="ref-Eddelbuettel2011">
-<p>Eddelbuettel, Dirk, and Romain François. 2011. “Rcpp: Seamless R and C++ Integration.” <em>Journal of Statistical Software</em> 40 (8): 1–18. <a href="http://www.jstatsoft.org/v40/i08/" class="uri">http://www.jstatsoft.org/v40/i08/</a>.</p>
+<p>Eddelbuettel, Dirk, and Romain François. 2011. “Rcpp: Seamless R and C++ Integration.” <em>Journal of Statistical Software</em> 40 (8): 1–18. <a href="http://www.jstatsoft.org/v40/i08/">http://www.jstatsoft.org/v40/i08/</a>.</p>
 </div>
 <div id="ref-Ellison1997">
 <p>Ellison, Glenn, and Edward L. Glaeser. 1997. “Geographic Concentration in U.s. Manufacturing Industries: A Dartboard Approach.” <em>Journal of Political Economy</em> 105 (5): 889–927.</p>
@@ -502,7 +499,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The dataset can be downloaded from <a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="uri">http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>The dataset can be downloaded from <a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="uri">http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
