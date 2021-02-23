@@ -159,7 +159,7 @@ struct CountNbdWrkr : public Worker
                const LogicalVector IsReferenceType, const LogicalVector IsNeighborType,
                NumericMatrix Nbd) 
     : r2(r2), Rx(x), Ry(y), RWeight(Weight), RIsReferenceType(IsReferenceType), RIsNeighborType(IsNeighborType), RNbd(Nbd) {}
-  
+
   // count neighbors
   void operator()(std::size_t begin, std::size_t end) {
     double Distance2, dx, dy;
@@ -168,7 +168,7 @@ struct CountNbdWrkr : public Worker
     unsigned int k, c;
     // c is the index of case points in the RNbd output matrix, whilst i is their index in input data
     c = std::count(RIsReferenceType.begin(), RIsReferenceType.begin()+begin, true);
-    
+
     for (unsigned int i = begin; i < end; i++) {
       // Consider reference type points
       if (RIsReferenceType[i]) {
@@ -205,16 +205,16 @@ struct CountNbdWrkr : public Worker
 NumericMatrix parallelCountNbd(NumericVector r, 
                                NumericVector x, NumericVector y, NumericVector Weight, 
                                LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
-  
+
   // allocate the output matrix
   NumericMatrix Nbd(std::count(IsReferenceType.begin(), IsReferenceType.end(), true), 2*r.length());
-  
+
   // CountNbd functor
   CountNbdWrkr countNbdWrkr(r*r, x, y, Weight, IsReferenceType, IsNeighborType, Nbd);
-  
+
   // call parallelFor to do the work
   parallelFor(0, Weight.length(), countNbdWrkr);
-  
+
   // return the output matrix
   return Nbd;
 }
@@ -281,16 +281,15 @@ struct CountNbdDtWrkr : public Worker
 NumericMatrix parallelCountNbdDt(NumericVector r, 
                                  NumericMatrix Dmatrix, NumericVector Weight, 
                                  LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
-  
   // allocate the output matrix
   NumericMatrix Nbd(std::count(IsReferenceType.begin(), IsReferenceType.end(), true), 2*r.length());
-  
+
   // CountNbd functor, distances are not squared
   CountNbdDtWrkr countNbdDtWrkr(r, Dmatrix, Weight, IsReferenceType, IsNeighborType, Nbd);
-  
+
   // call parallelFor to do the work
   parallelFor(0, Weight.length(), countNbdDtWrkr);
-  
+
   // return the output matrix
   return Nbd;
 }
