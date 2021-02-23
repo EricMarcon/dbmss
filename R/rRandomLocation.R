@@ -6,7 +6,7 @@ function(X, ReferenceType = "", CheckArguments = TRUE) {
   
   if (inherits(X, "Dtable")) {
     # Dtable case
-    Index <- 1:length(X$marks$PointType) 
+    Index <- seq_along(X$marks$PointType) 
     if (ReferenceType != "") {
       # Retain a single point type
       ReferencePoints <- X$marks$PointType==ReferenceType

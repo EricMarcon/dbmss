@@ -67,18 +67,18 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
     }
     
     # Adjust distances: values are the centers of intervals
-    rseq <- c(0, (rseq[2:Nr]+rseq[1:Nr-1])/2)
+    rseq <- c(0, (rseq[2:Nr]+rseq[seq_len(Nr)-1])/2)
     
-    # Estimate the bandwith according to adjust if requested.
+    # Estimate the bandwidth according to adjust if requested.
     # Distances are the values of rseq corresponding to at least a pair of points (reference and neighbor)
     if (Original) {
-      h <- stats::bw.nrd0(rseq[colSums(Nbd[, 1:Nr]) > 0])*Adjust
+      h <- stats::bw.nrd0(rseq[colSums(Nbd[, seq_len(Nr)]) > 0])*Adjust
     } else {
-      h <- stats::bw.SJ(rseq[colSums(Nbd[, 1:Nr]) > 0])*Adjust
+      h <- stats::bw.SJ(rseq[colSums(Nbd[, seq_len(Nr)]) > 0])*Adjust
     }
 
     # Calculate densities of neighbors (with unnormalized weights so suppress warnings)
-    Djc <- t(apply(Nbd[, 1:Nr], 1, function(x) suppressWarnings(stats::density(rseq, bw=h, weights=x, from=rmin, to=rmax, na.rm=TRUE))$y))
+    Djc <- t(apply(Nbd[, seq_len(Nr)], 1, function(x) suppressWarnings(stats::density(rseq, bw=h, weights=x, from=rmin, to=rmax, na.rm=TRUE))$y))
     Dj <- t(apply(Nbd[, (Nr+1):(2*Nr)], 1, function(x) suppressWarnings(stats::density(rseq, bw=h, weights=x, from=rmin, to=rmax, na.rm=TRUE))$y))
     # Get the x values of the density estimation: estimate one vector
     x <- stats::density(rseq, bw=h, from=rmin, to=rmax, na.rm=TRUE)$x

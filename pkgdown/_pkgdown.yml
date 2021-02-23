@@ -2,7 +2,7 @@ url: https://ericmarcon.github.io/dbmss
 
 development:
   mode: auto
-  
+
 template:
   params:
     docsearch:

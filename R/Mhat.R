@@ -66,10 +66,10 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   }
   
   # Cumulate weights up to each distance
-  NbdInt <- t(apply(Nbd[, 1:Nr], 1, cumsum))
+  NbdInt <- t(apply(Nbd[, seq_len(Nr)], 1, cumsum))
   NbdAll <- t(apply(Nbd[, (Nr+1):(2*Nr)], 1, cumsum))
   
-  # Calulate the ratio of points of interest around each point
+  # Calculate the ratio of points of interest around each point
   LocalRatio <- NbdInt/NbdAll
   # Divide it by the global ratio. Ignore points with no neighbor at all.
   Mvalues <- apply(LocalRatio, 2, function(x) sum(x[is.finite(x)])/sum(GlobalRatio[is.finite(x)]))

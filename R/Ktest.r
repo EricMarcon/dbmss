@@ -60,21 +60,21 @@ Ktest <- function(X, r)
     sigmaKi_ <- matrix(nrow = d, ncol = d)
   
     # Top half of the matrix
-    for (i in 1:(d-1))
+    for (i in seq_len(d-1))
     {
-      for (j in i:d)
+      for (j in seq_len(d))
       {
         covh1_ <- covh1(vec[i], vec[j], w, l)
         sigmaKi_[i, j] <- c1*ern_[min(i, j)]+(c2-c1)*ern_[i]*ern_[j]+c3*covh1_
       }
     }
     # Diagonal
-    for (i in 1:d)
+    for (i in seq_len(d))
     {
       sigmaKi_[i, i] <- c1*ern_[i]+(c2-c1)*ern_[i]*ern_[i]+c3*eh(vec[i], w, l)
     }
     # Bottom half
-    for (j in 1:(d-1))
+    for (j in seq_len(d-1))
     {
       for (i in j:d)
       {
@@ -180,13 +180,13 @@ Ktest <- function(X, r)
     sigmaKi_ <- sigmaKi(r, X$n, w, l)
    
     # Distance matrix.
-    pairdist_ <- pairdist.ppp(X)  # Requires a lot of RAM. Limited to 8, 000 points with 32-bit versions of R.
+    pairdist_ <- pairdist.ppp(X)  # Requires a lot of RAM. Limited to 8,000 points with 32-bit versions of R.
 
     # Estimation of K
     # NbPairs : number of pairs of points less than r apart (it's a vector, one value for each r)
-    # pairdist_ >0 eliminates distance from a point to itself
+    # pairdist_ > 0 eliminates distance from a point to itself
     # *1.0 is to convert values to real and avoid infinite values in NbPairs*w*l later
-    NbPairs <- sapply(r, function(d) sum(pairdist_ > 0 & pairdist_ < d)*1.0)
+    NbPairs <- vapply(r, function(d) sum(pairdist_ > 0 & pairdist_ < d)*1.0, FUN.VALUE=0.0)
     # Kest gets the estimator of K, centered on the expected value.
     Kest <- NbPairs*w*l/(X$n*(X$n-1))-espKi_
     

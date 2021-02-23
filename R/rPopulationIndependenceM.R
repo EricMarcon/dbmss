@@ -8,7 +8,7 @@ function(X, ReferenceType, CheckArguments = TRUE) {
     # Dtable case
     ReferencePoints <- X$marks$PointType==ReferenceType
     # Index vector
-    Index <- 1:length(X$marks$PointType)
+    Index <- seq_along(X$marks$PointType)
     # Randomize the other points
     RandomizedOthers <- sample(Index[!ReferencePoints])
     # Replace randomized elements in the index

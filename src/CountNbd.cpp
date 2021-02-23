@@ -20,7 +20,7 @@ void DistKd(SEXP Rx, SEXP Ry, SEXP RPointWeight, SEXP RWeight, SEXP RDist, SEXP 
   // Boolean vectors describing reference and neighbor points
   IntegerVector IsReferenceType(RIsReferenceType);
   IntegerVector IsNeighborType(RIsNeighborType);
-  
+
   // Kd is weighted if a vector has been passed by R. Else, a single numeric value has been passed.
   bool Weighted = (Weight.length() > 1);
 
@@ -71,7 +71,7 @@ void CountNbdKd(SEXP Rr, SEXP Rx, SEXP Ry, SEXP RWeight, SEXP RNbd, SEXP RIsRefe
   double Nr = r.length();
   NumericVector r2 = r*r;
   int k; 
-  
+
   for (int i=0; i < (x.length()-1); i++) {
     // Consider reference type points
     if (IsReferenceType[i]) {
@@ -307,17 +307,17 @@ struct CountNbdCCWrkr : public Worker
   const RVector<double> RWeight;
   const RVector<int> RIsReferenceType;
   const RVector<int> RIsNeighborType;
-  
+
   // destination matrix
   RMatrix<double> RNbd;
-  
+
   // constructor
   CountNbdCCWrkr(const NumericVector r2, 
                const NumericVector x, const NumericVector y, const NumericVector Weight, 
                const LogicalVector IsReferenceType, const LogicalVector IsNeighborType,
                NumericMatrix Nbd) 
     : r2(r2), Rx(x), Ry(y), RWeight(Weight), RIsReferenceType(IsReferenceType), RIsNeighborType(IsNeighborType), RNbd(Nbd) {}
-  
+
   // count neighbors
   void operator()(std::size_t begin, std::size_t end) {
     double Distance2, dx, dy;
@@ -365,19 +365,18 @@ struct CountNbdCCWrkr : public Worker
 };
 
 // [[Rcpp::export]]
-NumericMatrix parallelCountNbdCC(NumericVector r, 
-                                NumericVector x, NumericVector y, NumericVector Weight, 
-                                LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
-  
+NumericMatrix parallelCountNbdCC(
+    NumericVector r, NumericVector x, NumericVector y, NumericVector Weight,
+    LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
   // allocate the output matrix
   NumericMatrix Nbd(std::count(IsReferenceType.begin(), IsReferenceType.end(), true), 2*r.length());
-  
+
   // CountNbd functor
   CountNbdCCWrkr countNbdCCWrkr(r*r, x, y, Weight, IsReferenceType, IsNeighborType, Nbd);
-  
+
   // call parallelFor to do the work
   parallelFor(0, Weight.length(), countNbdCCWrkr);
-  
+
   // return the output matrix
   return Nbd;
 }
@@ -392,17 +391,17 @@ struct CountNbdDtCCWrkr : public Worker
   const RVector<double> RWeight;
   const RVector<int> RIsReferenceType;
   const RVector<int> RIsNeighborType;
-  
+
   // destination matrix
   RMatrix<double> RNbd;
-  
+
   // constructor
   CountNbdDtCCWrkr(const NumericVector r1, 
                   const NumericMatrix Dmatrix, const NumericVector Weight, 
                   const LogicalVector IsReferenceType, const LogicalVector IsNeighborType,
                   NumericMatrix Nbd) 
     : r1(r1), RDmatrix(Dmatrix), RWeight(Weight), RIsReferenceType(IsReferenceType), RIsNeighborType(IsNeighborType), RNbd(Nbd) {}
-  
+
   // count neighbors
   void operator()(std::size_t begin, std::size_t end) {
     double Nr = r1.length();
@@ -445,19 +444,18 @@ struct CountNbdDtCCWrkr : public Worker
 };
 
 // [[Rcpp::export]]
-NumericMatrix parallelCountNbdDtCC(NumericVector r, 
-                                  NumericMatrix Dmatrix, NumericVector Weight, 
-                                  LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
-  
+NumericMatrix parallelCountNbdDtCC(
+    NumericVector r, NumericMatrix Dmatrix, NumericVector Weight,
+    LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
   // allocate the output matrix
   NumericMatrix Nbd(std::count(IsReferenceType.begin(), IsReferenceType.end(), true), 2*r.length());
-  
+
   // CountNbd functor, distances are not squared
   CountNbdDtCCWrkr countNbdDtCCWrkr(r, Dmatrix, Weight, IsReferenceType, IsNeighborType, Nbd);
-  
+
   // call parallelFor to do the work
   parallelFor(0, Weight.length(), countNbdDtCCWrkr);
-  
+
   // return the output matrix
   return Nbd;
 }
@@ -471,16 +469,16 @@ struct CountNbdmWrkr : public Worker
   const RVector<double> Rx;
   const RVector<double> Ry;
   const RVector<int> RReferencePoints;
-  
+
   // destination matrix
   RMatrix<double> RNbd;
-  
+
   // constructor
   CountNbdmWrkr(const NumericVector x, const NumericVector y,
                const IntegerVector ReferencePoints,
                NumericMatrix Nbd) 
     : Rx(x), Ry(y), RReferencePoints(ReferencePoints), RNbd(Nbd) {}
-  
+
   // count neighbors
   void operator()(std::size_t begin, std::size_t end) {
     double dx, dy;
@@ -506,18 +504,17 @@ struct CountNbdmWrkr : public Worker
 };
 
 // [[Rcpp::export]]
-NumericMatrix parallelCountNbdm(NumericVector x, NumericVector y,
-                               IntegerVector ReferencePoints) {
-  
+NumericMatrix parallelCountNbdm(
+    NumericVector x, NumericVector y, IntegerVector ReferencePoints) {
   // allocate the output matrix
   NumericMatrix Nbd(ReferencePoints.length(), x.length());
-  
+
   // CountNbd functor
   CountNbdmWrkr countNbdmWrkr(x, y, ReferencePoints, Nbd);
-  
+
   // call parallelFor to do the work
   parallelFor(0, ReferencePoints.length(), countNbdmWrkr);
-  
+
   // return the output matrix
   return Nbd;
 }
