@@ -70,7 +70,7 @@ Confidence envelopes of various null hypotheses can be calculated.
 The univariate distribution of _Q. Rosea_ is tested against the null hypothesis of random location.
 
 ```{r, fig.width=6, fig.height=5}
-plot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
+autoplot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
 ```
 
 Significant concentration is detected between about 10 and 20 meters.

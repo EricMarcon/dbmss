@@ -7,14 +7,17 @@
   S3 methods for the \code{\link{autoplot}} generic.
 }
 \usage{
-  \method{autoplot}{envelope}(object, \dots, ObsColor = "black", H0Color = "red",
-        ShadeColor = "grey75", alpha=0.3, main = NULL, 
+  \method{autoplot}{envelope}(object, fmla, \dots, ObsColor = "black", 
+        H0Color = "red", ShadeColor = "grey75", alpha=0.3, main = NULL, 
         xlab = NULL, ylab = NULL, 
         LegendLabels = c("Observed", "Expected", "Confidence\n enveloppe"))
 }
 \arguments{
   \item{object}{
   An object to be plotted.
+  }
+  \item{fmla}{
+  An R language formula determining which variables or expressions are plotted. Either a formula object, or a string that can be parsed as a formula. See \code{\link[spatstat.core]{plot.fv}}.
   }
   \item{\dots}{
   Extra arguments, currently unused.
@@ -45,7 +48,7 @@
   A \code{\link{ggplot}} object.
 }
 \author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
+  Eric Marcon <Eric.Marcon@ecofog.gf>, parts of the code from \code{spatstat.core::plot.fv}.
 }
 \examples{
 data(paracou16)
@@ -54,4 +57,7 @@ X <- as.wmppp(rthin(paracou16, 0.2))
 
 # Plot the envelope (should be 1000 simulations, reduced to 20 to save time)
 autoplot(KdEnvelope(X, ReferenceType="Q. Rosea", NumberOfSimulations=20))
+
+# With a formula
+autoplot(KEnvelope(X, NumberOfSimulations=20), ./(pi*r^2) ~ r)
 }

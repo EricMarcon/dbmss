@@ -92,6 +92,6 @@ plot(V.americana, add=TRUE)
 r <- 0:30
 NumberOfSimulations <- 4
 Alpha <- .10
-plot(KinhomEnvelope(X, r,NumberOfSimulations, Alpha, , 
+autoplot(KinhomEnvelope(X, r,NumberOfSimulations, Alpha, , 
     SimulationType="RandomPosition", lambda=lambda), ./(pi*r^2) ~ r)
 }

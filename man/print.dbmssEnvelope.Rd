@@ -33,7 +33,7 @@ plot(paracou16)
 # Calculate intertype K envelope
 Envelope <- KEnvelope(paracou16, NumberOfSimulations = 20, Global = TRUE,
   ReferenceType = "V. Americana", NeighborType = "Q. Rosea")
-plot(Envelope)
+autoplot(Envelope)
 # print
 print(Envelope)
 }

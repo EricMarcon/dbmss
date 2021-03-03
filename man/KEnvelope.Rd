@@ -81,5 +81,5 @@ plot(X)
 r <- 0:30
 NumberOfSimulations <- 20
 # Plot the envelope
-plot(KEnvelope(X, r, NumberOfSimulations), ./(pi*r^2) ~ r)
+autoplot(KEnvelope(X, r, NumberOfSimulations), ./(pi*r^2) ~ r)
 }

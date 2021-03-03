@@ -73,5 +73,5 @@ plot(X)
 r <- 0:40
 NumberOfSimulations <- 10
 # Plot the envelope
-plot(gEnvelope(X, r, NumberOfSimulations))
+autoplot(gEnvelope(X, r, NumberOfSimulations))
 }

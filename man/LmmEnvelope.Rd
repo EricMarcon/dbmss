@@ -66,5 +66,5 @@ plot(X)
 r <- seq(0, 30, 2)
 NumberOfSimulations <- 4
 Alpha <- .10
-plot(LmmEnvelope(X, r, NumberOfSimulations, Alpha))
+autoplot(LmmEnvelope(X, r, NumberOfSimulations, Alpha))
 }

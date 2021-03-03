@@ -75,6 +75,6 @@ r <- 0:30
 NumberOfSimulations <- 20
 Alpha <- .05
 # Plot the envelope (after normalization by pi.r^2)
-plot(DEnvelope(X, r, NumberOfSimulations, Alpha,
+autoplot(DEnvelope(X, r, NumberOfSimulations, Alpha,
     "V. Americana", "Q. Rosea", Intertype = TRUE), ./(pi*r^2) ~ r)
 }
