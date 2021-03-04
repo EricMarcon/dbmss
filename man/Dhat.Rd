@@ -60,5 +60,5 @@ r <- 0:30
 (Paracou <- Dhat(paracou16, r, "V. Americana", "Q. Rosea", Intertype = TRUE))
 
 # Plot (after normalization by pi.r^2)
-plot(Paracou, ./(pi*r^2) ~ r)
+autoplot(Paracou, ./(pi*r^2) ~ r)
 }

@@ -99,5 +99,5 @@ data(paracou16)
 plot(paracou16)
 
 # Calculate M
-plot(mhat(paracou16, , "V. Americana", "Q. Rosea"))
+autoplot(mhat(paracou16, , "V. Americana", "Q. Rosea"))
 }

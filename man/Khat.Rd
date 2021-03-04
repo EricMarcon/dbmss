@@ -55,6 +55,6 @@ r <- 0:30
 (Paracou <- Khat(paracou16, r))
 
 # Plot (after normalization by pi.r^2)
-plot(Paracou, ./(pi*r^2) ~ r)
+autoplot(Paracou, ./(pi*r^2) ~ r)
 }
 

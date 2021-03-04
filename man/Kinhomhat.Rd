@@ -63,5 +63,5 @@ plot(V.americana, add=TRUE)
 
 # Calculate Kinhom according to the density of all trees
 r <- 0:30
-plot(Kinhomhat(paracou16, r, "V. Americana", lambda), ./(pi*r^2) ~ r)
+autoplot(Kinhomhat(paracou16, r, "V. Americana", lambda), ./(pi*r^2) ~ r)
 }

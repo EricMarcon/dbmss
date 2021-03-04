@@ -94,5 +94,5 @@ plot(paracou16)
 # Calculate Kd
 (Paracou <- Kdhat(paracou16, , "Q. Rosea", "V. Americana"))
 # Plot
-plot(Paracou)
+autoplot(Paracou)
 }

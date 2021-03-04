@@ -52,5 +52,5 @@ r <- seq(0, 30, 2)
 (Paracou <- Lmmhat(X, r))
 
 # Plot
-plot(Paracou)
+autoplot(Paracou)
 }

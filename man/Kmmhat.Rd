@@ -55,5 +55,5 @@ r <- seq(0, 30, 2)
 (Paracou <- Kmmhat(X, r))
 
 # Plot
-plot(Paracou, ./(pi*r^2) ~ r)
+autoplot(Paracou, ./(pi*r^2) ~ r)
 }

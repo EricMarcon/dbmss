@@ -54,5 +54,5 @@ r <- 0:30
 (Paracou <- Lhat(paracou16, r))
 
 # Plot
-plot(Paracou)
+autoplot(Paracou)
 }

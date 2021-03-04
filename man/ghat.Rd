@@ -51,5 +51,5 @@ r <- 0:30
 (Paracou <- ghat(paracou16, r, "Q. Rosea", "V. Americana"))
 
 # Plot
-plot(Paracou)
+autoplot(Paracou)
 }
