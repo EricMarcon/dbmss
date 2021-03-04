@@ -60,7 +60,7 @@ These are the $M$ and $m$ and $K_d$ functions.
 The bivariate $M$ function can be calculated for _Q. Rosea_ trees around _V. Americana_ trees:
 
 ```{r m, fig.width=6, fig.height=5}
-plot(Mhat(paracou16, , "V. Americana", "Q. Rosea"), main="")
+autoplot(Mhat(paracou16, , "V. Americana", "Q. Rosea"), main="")
 ```
 
 

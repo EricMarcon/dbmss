@@ -99,6 +99,6 @@ plot(X)
 # Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)
 NumberOfSimulations <- 4
 Alpha <- .10
-auplot(mEnvelope(X, , NumberOfSimulations, Alpha, 
+autoplot(mEnvelope(X, , NumberOfSimulations, Alpha, 
     "V. Americana", "Q. Rosea", Original = FALSE, SimulationType = "RandomLabeling"))
 }

@@ -308,7 +308,7 @@ The figure below shows that the 10% most serious emergencies are more dispersed 
 
 ```{r KdCode, fig.width=6, fig.height=5}
 KdE <- KdEnvelope(X, r=seq(0, 10000, 100), NumberOfSimulations=1000, ReferenceType="Biggest", Global=TRUE)
-plot(KdE, main="")
+autoplot(KdE, main="")
 ```
 
 The solid, black curve is  $K_d$. 
@@ -339,7 +339,7 @@ Bivariate $M(r)$ is calculated for $r$ between 0 and 30 meters.
 Envelope <- MEnvelope(paracou16, r = seq(0, 30, 2), NumberOfSimulations 
    = 1000, Alpha = 0.05, ReferenceType = "V. Americana", NeighborType 
    = "Q. Rosea", SimulationType = "RandomLabeling", Global = TRUE)
-plot(Envelope, main="", ylim=c(0, 20))
+autoplot(Envelope, main="", ylim=c(0, 20))
 ```
 
 $M(r)$ values of _Qualea rosea_ around _Vouacapoua Americana_ are plotted.
