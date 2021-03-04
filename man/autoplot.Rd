@@ -10,12 +10,10 @@
 \usage{
   \method{autoplot}{envelope}(object, fmla, \dots, ObsColor = "black", 
         H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
-        xlab = NULL, ylab = NULL, 
-        LegendLabels = c("Observed", "Expected", "Confidence\n enveloppe"))
+        xlab = NULL, ylab = NULL, LegendLabels = NULL)
   \method{autoplot}{fv}(object, fmla, \dots, ObsColor = "black", 
         H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
-        xlab = NULL, ylab = NULL, 
-        LegendLabels = c("Observed", "Expected", "Confidence\n enveloppe"))
+        xlab = NULL, ylab = NULL, LegendLabels = NULL)
 }
 \arguments{
   \item{object}{
@@ -46,7 +44,9 @@
   The axes labels.
   }
   \item{LegendLabels}{
-  A vector of characters. The first two items describe the observed and null-hypothesis curves, the last item the confidence interval.
+  A vector of characters. The first two items describe the observed and null-hypothesis curves, the third and last item the confidence interval.
+  To be used only in plots with two curves (typically observed and expected values).
+  The default is `NULL` to display the full description of functions.
   }
 }
 \value{
@@ -63,6 +63,8 @@ X <- as.wmppp(rthin(paracou16, 0.2))
 # Plot the envelope (should be 1000 simulations, reduced to 20 to save time)
 autoplot(KdEnvelope(X, ReferenceType="Q. Rosea", NumberOfSimulations=20))
 
-# With a formula
-autoplot(KEnvelope(X, NumberOfSimulations=20), ./(pi*r^2) ~ r)
+# With a formula and a compact legend
+autoplot(KEnvelope(X, NumberOfSimulations=20), 
+    ./(pi*r^2) ~ r,
+    LegendLabels=c("Observed", "Expected", "Confidence\n enveloppe"))
 }
