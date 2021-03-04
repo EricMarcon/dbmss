@@ -40,6 +40,8 @@ autoplot.fv <- function(object, fmla, ...,
   rhsdata <- eval(rhs, envir=indata)
   alldata <- data.frame(x=rhsdata, lhsdata)
   datacols <- colnames(alldata)
+  # Name of the function. Attribute may be a vector ("K" "inhom")
+  fname <- paste(attr(object, "fname"), collapse = "")
   
   if (is.null(xlab)) {
     if (rhs == "r") {
@@ -55,8 +57,8 @@ autoplot.fv <- function(object, fmla, ...,
   }
   
   if (is.null(ylab)) {
-    # Y label is the function's name
-    ylab <- attr(object, "fname")
+    # Y label is the function's name.
+    ylab <- fname
     if(!defaultplot)
       # Complete function name with the formula
       ylab <- parse(text=gsub("\\.", ylab, as.character(attr(terms(fmla), which = "variables")[2])))
@@ -93,7 +95,7 @@ autoplot.fv <- function(object, fmla, ...,
   if (is.null(LegendLabels) || any(is.na(LegendLabels[1:2]))) {
     # Describe function values by their names
     levels(Lines$variable) <- vapply(levels(Lines$variable), function(fvalue) {
-      sprintf(attr(object, which="desc")[which(fvs == fvalue)+1], attr(object, "fname"))
+      sprintf(attr(object, which="desc")[which(fvs == fvalue)+1], fname)
     }, FUN.VALUE = "")
   } else {
     levels(Lines$variable) <- LegendLabels[1:2]

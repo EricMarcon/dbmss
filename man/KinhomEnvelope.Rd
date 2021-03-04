@@ -43,6 +43,7 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 }
 \details{
   The random location null hypothesis is that of Duranton and Overman (2005). It is appropriate to test the univariate \emph{Kinhom} function of a single point type, redistributing it over all point locations.
+  It allows fixing lambda along simulations so the warning message can be ignored.
   
   The random labeling hypothesis is appropriate for the bivariate \emph{Kinhom} function.
   
