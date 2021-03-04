@@ -21,6 +21,13 @@ function(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments 
   }
   # Calculate the difference (a difference between fv's yields a dataframe)
   Dvalues <- KCases-KControls
-  
-  return (fv(cbind(as.data.frame(KCases)[1], Dvalues[2:3]), argu="r", ylab=quote(D(r)), valu=attr(KCases, "valu"), fmla=attr(KCases, "fmla"), alim=attr(KCases, "alim"), labl=c("r", "%s[ind](r)", "hat(%s)[iso](r)"), desc=attr(KCases, "desc"), unitname=attr(KCases, "unitname"), fname="D"))
+  DEstimate <- cbind(as.data.frame(KCases)[1], Dvalues[2:3])
+    
+  # Return the values of D(r)
+  D <- fv(DEstimate, argu="r", 
+          ylab=quote(D(r)), valu=attr(KCases, "valu"), fmla=attr(KCases, "fmla"), 
+          alim=attr(KCases, "alim"), labl=c("r", "%s[theo](r)", "hat(%s)[iso](r)"), 
+          desc=attr(KCases, "desc"), unitname=attr(KCases, "unitname"), fname="D")
+  fvnames(D, ".") <- colnames(DEstimate)[-1]
+  return (D)
 }

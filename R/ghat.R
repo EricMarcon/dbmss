@@ -82,8 +82,15 @@ function(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TR
   # Add theoretical value
   theo <- rep(1, length(r))
   gEstimate <- data.frame(gEstimate[, 1], theo, gEstimate[, 2])
-  colnames(gEstimate) <- c("r", "theo", valu)
+  ColNames <- c("r", "theo", valu)
+  colnames(gEstimate) <- ColNames
   
   # Return the values of g(r)
-  return (fv(gEstimate, argu="r", ylab=quote(g(r)), valu=valu, fmla= ". ~ r", alim=c(0, max(r)), labl=c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep="")), desc=c("distance argument r", "theoretical Poisson %s", desc), unitname=X$window$unit, fname="g"))
+  g <- fv(gEstimate, argu="r", ylab=quote(g(r)), valu=valu, fmla= ". ~ r", 
+          alim=c(0, max(r)), 
+          labl=c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep="")), 
+          desc=c("distance argument r", "theoretical Poisson %s", desc), 
+          unitname=X$window$unit, fname="g")
+  fvnames(g, ".") <- ColNames[-1]
+  return(g)
 }

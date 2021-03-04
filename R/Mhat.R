@@ -81,7 +81,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   # Put the results into an fv object
   MEstimate <- data.frame(r, rep(1, length(r)), Mvalues)
   ColNames <- c("r", "theo", "M")
-  Labl <- c("r", "%s[ind](r)", "hat(%s)(r)")
+  Labl <- c("r", "%s[theo](r)", "hat(%s)(r)")
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
@@ -93,5 +93,9 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   colnames(MEstimate) <- ColNames
   
   # Return the values of M(r)
-  return (fv(MEstimate, argu="r", ylab=quote(M(r)), valu="M", fmla= "cbind(M,theo)~r", alim=c(0, max(r)), labl=Labl, desc=Desc, unitname=X$window$unit, fname="M"))
+  M <- fv(MEstimate, argu="r", ylab=quote(M(r)), valu="M", 
+          fmla= "cbind(M,theo)~r", alim=c(0, max(r)), labl=Labl, 
+          desc=Desc, unitname=X$window$unit, fname="M")
+  fvnames(M, ".") <- ColNames[-1]
+  return (M)
 }

@@ -149,7 +149,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   # Put the results into an fv object
   mEstimate <- data.frame(r, rep(1, length(r)), mvalues)
   ColNames <- c("r", "theo", "m")
-  Labl <- c("r", "%s[ind](r)", "hat(%s)(r)")
+  Labl <- c("r", "%s[theo](r)", "hat(%s)(r)")
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
@@ -160,6 +160,10 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   }
   colnames(mEstimate) <- ColNames
   
-  # Return the values of M(r)
-  return (fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", fmla= "cbind(m,theo)~r", alim=c(0, max(r)), labl=Labl, desc=Desc, unitname=X$window$unit, fname="m")) 
+  # Return the values of m(r)
+  m <- fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", 
+          fmla= "cbind(m,theo)~r", alim=c(0, max(r)), labl=Labl, desc=Desc, 
+          unitname=X$window$unit, fname="m")
+  fvnames(m, ".") <- ColNames[-1]
+  return (m) 
 }

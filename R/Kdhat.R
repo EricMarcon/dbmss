@@ -190,5 +190,10 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
   colnames(KdEstimate) <- c("r", "Kd")
   
   # Return the values of Kd(r)
-  return (fv(KdEstimate, argu="r", ylab=quote(Kd(r)), valu="Kd", fmla= ". ~ r", alim=c(0, max(r)), labl=c("r", paste("hat(%s)(r)", sep="")), desc=c("distance argument r", "Estimated %s"), unitname=X$window$unit, fname="Kd"))
+  Kd <- fv(KdEstimate, argu="r", ylab=quote(Kd(r)), valu="Kd", fmla= ". ~ r", 
+           alim=c(0, max(r)), labl=c("r", paste("hat(%s)(r)", sep="")), 
+           desc=c("distance argument r", "Estimated %s"), unitname=X$window$unit, 
+           fname="Kd")
+  fvnames(Kd, ".") <- "Kd"
+  return (Kd)
 }
