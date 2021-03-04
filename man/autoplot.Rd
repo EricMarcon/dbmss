@@ -1,5 +1,6 @@
 \name{autoplot}
 \alias{autoplot.envelope}
+\alias{autoplot.fv}
 \title{
   ggplot methods to plot dbmss objects
 }
@@ -8,7 +9,11 @@
 }
 \usage{
   \method{autoplot}{envelope}(object, fmla, \dots, ObsColor = "black", 
-        H0Color = "red", ShadeColor = "grey75", alpha=0.3, main = NULL, 
+        H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
+        xlab = NULL, ylab = NULL, 
+        LegendLabels = c("Observed", "Expected", "Confidence\n enveloppe"))
+  \method{autoplot}{fv}(object, fmla, \dots, ObsColor = "black", 
+        H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
         xlab = NULL, ylab = NULL, 
         LegendLabels = c("Observed", "Expected", "Confidence\n enveloppe"))
 }
