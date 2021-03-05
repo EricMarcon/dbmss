@@ -205,7 +205,6 @@ struct CountNbdWrkr : public Worker
 NumericMatrix parallelCountNbd(NumericVector r, 
                                NumericVector x, NumericVector y, NumericVector Weight, 
                                LogicalVector IsReferenceType, LogicalVector IsNeighborType) {
-
   // allocate the output matrix
   NumericMatrix Nbd(std::count(IsReferenceType.begin(), IsReferenceType.end(), true), 2*r.length());
 
