@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
       </span>
     </div>
 
@@ -258,7 +258,7 @@
 <span class='co'># Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)</span>
 <span class='va'>NumberOfSimulations</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
 <span class='va'>Alpha</span> <span class='op'>&lt;-</span> <span class='fl'>.10</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mEnvelope</span><span class='op'>(</span><span class='va'>X</span>, , <span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span>, 
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>mEnvelope</span><span class='op'>(</span><span class='va'>X</span>, , <span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span>, 
     <span class='st'>"V. Americana"</span>, <span class='st'>"Q. Rosea"</span>, Original <span class='op'>=</span> <span class='cn'>FALSE</span>, SimulationType <span class='op'>=</span> <span class='st'>"RandomLabeling"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Generating 4 simulations by evaluating expression  ...
 #&gt; 1, 2, 3,  4.

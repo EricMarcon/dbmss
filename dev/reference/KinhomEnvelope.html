@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
       </span>
     </div>
 
@@ -205,7 +205,8 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The random location null hypothesis is that of Duranton and Overman (2005). It is appropriate to test the univariate <em>Kinhom</em> function of a single point type, redistributing it over all point locations.</p>  
+    <p>The random location null hypothesis is that of Duranton and Overman (2005). It is appropriate to test the univariate <em>Kinhom</em> function of a single point type, redistributing it over all point locations.
+  It allows fixing lambda along simulations so the warning message can be ignored.</p>  
 <p>The random labeling hypothesis is appropriate for the bivariate <em>Kinhom</em> function.</p>  
 <p>The population independence hypothesis is that of Marcon and Puech (2010).</p>  
 <p>This envelope is local by default, that is to say it is computed separately at each distance. See Loosmore and Ford (2006) for a discussion.</p>  
@@ -245,7 +246,7 @@
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>30</span>
 <span class='va'>NumberOfSimulations</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
 <span class='va'>Alpha</span> <span class='op'>&lt;-</span> <span class='fl'>.10</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>KinhomEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>,<span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span>, , 
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>KinhomEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>,<span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span>, , 
     SimulationType<span class='op'>=</span><span class='st'>"RandomPosition"</span>, lambda<span class='op'>=</span><span class='va'>lambda</span><span class='op'>)</span>, <span class='va'>.</span><span class='op'>/</span><span class='op'>(</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>r</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>r</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: Envelope may be invalid; argument ‘lambda’ appears to have been fixed.</span></div><div class='output co'>#&gt; Generating 4 simulations by evaluating expression  ...
 #&gt; 1, 2, 3,  4.

@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
       </span>
     </div>
 
@@ -159,10 +159,13 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for envelope</span>
-<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, ObsColor <span class='op'>=</span> <span class='st'>"black"</span>, H0Color <span class='op'>=</span> <span class='st'>"red"</span>,
-        ShadeColor <span class='op'>=</span> <span class='st'>"grey75"</span>, alpha<span class='op'>=</span><span class='fl'>0.3</span>, main <span class='op'>=</span> <span class='cn'>NULL</span>, 
-        xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, 
-        LegendLabels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Observed"</span>, <span class='st'>"Expected"</span>, <span class='st'>"Confidence\n enveloppe"</span><span class='op'>)</span><span class='op'>)</span></pre>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>fmla</span>, <span class='va'>...</span>, ObsColor <span class='op'>=</span> <span class='st'>"black"</span>, 
+        H0Color <span class='op'>=</span> <span class='st'>"red"</span>, ShadeColor <span class='op'>=</span> <span class='st'>"grey75"</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, main <span class='op'>=</span> <span class='cn'>NULL</span>, 
+        xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+  <span class='co'># S3 method for fv</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>fmla</span>, <span class='va'>...</span>, ObsColor <span class='op'>=</span> <span class='st'>"black"</span>, 
+        H0Color <span class='op'>=</span> <span class='st'>"red"</span>, ShadeColor <span class='op'>=</span> <span class='st'>"grey75"</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, main <span class='op'>=</span> <span class='cn'>NULL</span>, 
+        xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,6 +173,10 @@
     <tr>
       <th>object</th>
       <td><p>An object to be plotted.</p></td>
+    </tr>
+    <tr>
+      <th>fmla</th>
+      <td><p>An R language formula determining which variables or expressions are plotted. Either a formula object, or a string that can be parsed as a formula. See <code><a href='https://rdrr.io/pkg/spatstat.core/man/plot.fv.html'>plot.fv</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -201,7 +208,9 @@
     </tr>
     <tr>
       <th>LegendLabels</th>
-      <td><p>A vector of characters. The first two items describe the observed and null-hypothesis curves, the last item the confidence interval.</p></td>
+      <td><p>A vector of characters. The first two items describe the observed and null-hypothesis curves, the third and last item the confidence interval.
+  To be used only in plots with two curves (typically observed and expected values).
+  The default is `NULL` to display the full description of functions.</p></td>
     </tr>
     </table>
 
@@ -210,7 +219,7 @@
     <p>A <code>ggplot</code> object.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
+    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;, parts of the code from <code><a href='https://rdrr.io/pkg/spatstat.core/man/plot.fv.html'>spatstat.core::plot.fv</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
@@ -222,7 +231,15 @@
 </div><div class='output co'>#&gt; Generating 20 simulations by evaluating expression  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.
 #&gt; 
-#&gt; Done.</div><div class='img'><img src='autoplot-1.png' alt='' width='700' height='433' /></div></pre>
+#&gt; Done.</div><div class='img'><img src='autoplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># With a formula and a compact legend</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'><a href='KEnvelope.html'>KEnvelope</a></span><span class='op'>(</span><span class='va'>X</span>, NumberOfSimulations<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>, 
+    <span class='va'>.</span><span class='op'>/</span><span class='op'>(</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>r</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>r</span>,
+    LegendLabels<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Observed"</span>, <span class='st'>"Expected"</span>, <span class='st'>"Confidence\n enveloppe"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Generating 20 simulations by evaluating expression  ...
+#&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.
+#&gt; 
+#&gt; Done.</div><div class='img'><img src='autoplot-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

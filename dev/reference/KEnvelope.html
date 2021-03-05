@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
       </span>
     </div>
 
@@ -238,7 +238,7 @@
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>30</span>
 <span class='va'>NumberOfSimulations</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
 <span class='co'># Plot the envelope</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>KEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>, <span class='va'>NumberOfSimulations</span><span class='op'>)</span>, <span class='va'>.</span><span class='op'>/</span><span class='op'>(</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>r</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>r</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>KEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>, <span class='va'>NumberOfSimulations</span><span class='op'>)</span>, <span class='va'>.</span><span class='op'>/</span><span class='op'>(</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>r</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>r</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Generating 20 simulations by evaluating expression  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.
 #&gt; 
