@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9003</span>
       </span>
     </div>
 
@@ -165,7 +165,12 @@
   <span class='co'># S3 method for fv</span>
 <span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>fmla</span>, <span class='va'>...</span>, ObsColor <span class='op'>=</span> <span class='st'>"black"</span>, 
         H0Color <span class='op'>=</span> <span class='st'>"red"</span>, ShadeColor <span class='op'>=</span> <span class='st'>"grey75"</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, main <span class='op'>=</span> <span class='cn'>NULL</span>, 
-        xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+        xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+  <span class='co'># S3 method for wmppp</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, show.window <span class='op'>=</span> <span class='cn'>TRUE</span>,
+        main <span class='op'>=</span> <span class='cn'>NULL</span>, xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span>, 
+        labelSize <span class='op'>=</span> <span class='st'>"Weight"</span>, labelColor <span class='op'>=</span> <span class='st'>"Type"</span>, palette<span class='op'>=</span><span class='st'>"Set1"</span>,
+        windowColor <span class='op'>=</span> <span class='st'>"black"</span>, windowFill <span class='op'>=</span> <span class='st'>"transparent"</span>, alpha <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,7 +201,7 @@
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>The opacity of the confidence envelope, between 0 and 1.</p></td>
+      <td><p>The opacity of the confidence envelope (in function values) or the window (in maps), between 0 and 1.</p></td>
     </tr>
     <tr>
       <th>main</th>
@@ -212,8 +217,36 @@
   To be used only in plots with two curves (typically observed and expected values).
   The default is `NULL` to display the full description of functions.</p></td>
     </tr>
+    <tr>
+      <th>show.window</th>
+      <td><p>if `TRUE`, the borders of the window containing the points are shown on the point map.</p></td>
+    </tr>
+    <tr>
+      <th>labelSize</th>
+      <td><p>The guide of the point size legend in point maps, i.e. what the `PointSize` mark represents.</p></td>
+    </tr>
+    <tr>
+      <th>labelColor</th>
+      <td><p>The guide of the point color legend in point maps, i.e. what the `PointType` mark represents.</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>The color palette used to display point types in maps. See <code><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></code></p></td>
+    </tr>
+    <tr>
+      <th>windowColor</th>
+      <td><p>The color used to draw the limits of the windows in point maps.</p></td>
+    </tr>
+    <tr>
+      <th>windowFill</th>
+      <td><p>The color used to fill the windows in point maps.</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Plots of `wmppp` objects are a single representation of both point types and point weights.
+  Rectangular and polygonal windows (see <code><a href='https://rdrr.io/pkg/spatstat.geom/man/owin.object.html'>owin.object</a></code>) are supported but mask windows are ignored (use the `plot` method if necessary).</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>ggplot</code> object.</p>

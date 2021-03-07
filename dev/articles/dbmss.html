@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9003</span>
       </span>
     </div>
 
@@ -130,15 +130,14 @@
 <span class="co"># Draw the point types.</span>
 <span class="va">PointType</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fl">10</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># Plot the point pattern. Weights are set to 1 ant the window is adjusted</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">Y</span>, <span class="va">PointType</span><span class="op">)</span><span class="op">)</span>, which.marks<span class="op">=</span><span class="fl">2</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
+<span class="fu">autoplot</span><span class="op">(</span><span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">Y</span>, <span class="va">PointType</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="dbmss_files/figure-html/wmppp-1.png" width="700"></p>
 <p>An example dataset is provided: it is a point pattern from the Paracou forest in French Guiana. Two species of trees are identified, other trees are of type “Other”. Point weights are their basal area, in square centimeters.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">paracou16</span><span class="op">)</span>
-<span class="co"># Plot (second column of marks is Point Types) </span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">paracou16</span>, which.marks<span class="op">=</span><span class="fl">2</span>, leg.side<span class="op">=</span><span class="st">"right"</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Plot (second column of marks is Point Types) </span>
+<span class="fu">autoplot</span><span class="op">(</span><span class="va">paracou16</span>, 
+  labelSize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"Basal area ("</span> <span class="op">~</span><span class="va">cm</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>, 
+  labelColor <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></code></pre></div>
 <p><img src="dbmss_files/figure-html/paracou-1.png" width="384"></p>
 </div>
 <div id="main-functions" class="section level1">
