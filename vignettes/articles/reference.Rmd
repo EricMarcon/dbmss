@@ -324,8 +324,9 @@ It contains 2426 trees, whose species is either _Qualea rosea_, _Vouacapoua amer
 Weights are basal areas (the area of the stems virtually cut 1.3 meter above ground), measured in square centimeters.
 
 ```{r P16Code, eval=FALSE}
-data("paracou16")
-plot(paracou16, which.marks="PointWeight", main="", legend=FALSE)
+autoplot(paracou16,
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
 ```
 
 On the map, circles are centered on trees in the forest plot (the containing rectangle is 200m wide by 250m long). 

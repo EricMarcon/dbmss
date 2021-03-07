@@ -80,7 +80,9 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))
-plot(X)
+autoplot(X, 
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
 
 # Density of all trees
 lambda <- density.ppp(X, bw.diggle(X))

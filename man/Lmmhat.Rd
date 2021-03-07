@@ -45,7 +45,9 @@ Lmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
 data(paracou16)
 # Keep only 50\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.5))
-plot(X)
+autoplot(X, 
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
 
 # Calculate Lmm
 r <- seq(0, 30, 2)

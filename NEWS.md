@@ -1,9 +1,10 @@
-# dbmss 2.7-4.9002
+# dbmss 2.7-4.9003
 
 ## Improvements
 
 - `fmla` argument added in `autoplot.envelope()`.
 - `autoplot.fv()` added.
+- `autoplot.wmppp()` added.
 - CodeFactor optimization applied.
 
 

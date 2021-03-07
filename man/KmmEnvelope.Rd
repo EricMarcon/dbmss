@@ -60,7 +60,9 @@ KmmEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType 
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))
-plot(X)
+autoplot(X, 
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
 
 # Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)
 r <- seq(0, 30, 2)

@@ -32,8 +32,7 @@ Y <- runif(10)
 # Draw the point types.
 PointType   <- sample(c("A", "B"), 10, replace=TRUE)
 # Plot the point pattern. Weights are set to 1 ant the window is adjusted
-par(mar=c(1,1,1,1))
-plot(wmppp(data.frame(X, Y, PointType)), which.marks=2, main="")
+autoplot(wmppp(data.frame(X, Y, PointType)))
 ```
 
 An example dataset is provided: it is a point pattern from the Paracou forest in French Guiana.
@@ -41,10 +40,10 @@ Two species of trees are identified, other trees are of type "Other".
 Point weights are their basal area, in square centimeters.
 
 ```{r paracou, fig.width=4}
-data(paracou16)
 # Plot (second column of marks is Point Types) 
-par(mar=c(1,1,1,1))
-plot(paracou16, which.marks=2, leg.side="right", main="")
+autoplot(paracou16, 
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
 ```
 
 # Main functions

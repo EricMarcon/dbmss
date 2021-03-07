@@ -61,7 +61,7 @@ autoplot.fv <- function(object, fmla, ...,
     ylab <- fname
     if(!defaultplot)
       # Complete function name with the formula
-      ylab <- parse(text=gsub("\\.", ylab, as.character(attr(terms(fmla), which = "variables")[2])))
+      ylab <- parse(text=gsub("\\.", ylab, as.character(attr(stats::terms(fmla), which = "variables")[2])))
   }
   
   if (is.null(LegendLabels) || is.na(LegendLabels[3])) {
@@ -133,6 +133,46 @@ autoplot.fv <- function(object, fmla, ...,
     # Merged legend if name and labels are identical
     ggplot2::scale_colour_manual(name=ylab, values=col) +
     ggplot2::scale_linetype_manual(name=ylab, values=lty)
+  
+  return(thePlot)
+}
+
+
+autoplot.wmppp <- function(object, ..., show.window = TRUE,
+                           main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
+                           labelSize = "Weight", labelColor = "Type", palette="Set1",
+                           windowColor = "black", windowFill = "transparent", alpha = 0)
+{
+  # Arrange the data
+  thePoints <- with(object, data.frame(x, y, PointWeight=marks$PointWeight, PointType=marks$PointType))
+
+  # Plot the points
+  thePlot <- ggplot2::ggplot(thePoints) +
+    ggplot2::geom_point(ggplot2::aes_(x=~x, y=~y, size=~PointWeight, color=~PointType)) + 
+    ggplot2::coord_fixed() + ggplot2::scale_color_brewer(palette = palette) +
+    ggplot2::labs(title=main, x=xlab, y=ylab, size=labelSize, color=labelColor)
+  
+  # Plot the window
+  if (show.window) {
+    if (object$window$type == "rectangle") {
+      theRectangle <- data.frame(xmin=object$window$xrange[1],
+                                 xmax=object$window$xrange[2],
+                                 ymin=object$window$yrange[1],
+                                 ymax=object$window$yrange[2])
+      thePlot <- thePlot +
+        ggplot2::geom_rect(theRectangle, mapping=ggplot2::aes_(xmin=~xmin, xmax=~xmax, ymin=~ymin, ymax=~ymax),
+                           color=windowColor, fill=windowFill, alpha=0)
+    }
+    if (object$window$type == "polygonal") {
+      for (polygon in object$window$bdry) {
+        thePolygon <- data.frame(x=polygon$x,
+                                 y=polygon$y)
+        thePlot <- thePlot +
+          ggplot2::geom_polygon(thePolygon, mapping=ggplot2::aes_(x=~x, y=~y),
+                             color=windowColor, fill=windowFill, alpha=0)
+      }
+    }
+  }
   
   return(thePlot)
 }

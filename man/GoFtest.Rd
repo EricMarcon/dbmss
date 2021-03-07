@@ -45,7 +45,7 @@ nclust <- function(x0, y0, radius, n) {
   return(runifdisc(n, radius, centre=c(x0, y0)))
 }
 X <- rNeymanScott(20, 0.2, nclust, radius=0.3, n=10)
-plot(X)
+autoplot(as.wmppp(X))
 
 # Calculate confidence envelope (should be 1000 simulations, reduced to 50 to save time)
 r <- seq(0, 0.3, 0.01)

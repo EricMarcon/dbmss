@@ -68,7 +68,10 @@ DEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))
-plot(X)
+autoplot(X, 
+  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+  labelColor = "Species")
+
 
 # Calculate confidence envelope (should be 1000 simulations, reduced to 20 to save time)
 r <- 0:30

@@ -1,6 +1,7 @@
 \name{autoplot}
 \alias{autoplot.envelope}
 \alias{autoplot.fv}
+\alias{autoplot.wmppp}
 \title{
   ggplot methods to plot dbmss objects
 }
@@ -14,6 +15,10 @@
   \method{autoplot}{fv}(object, fmla, \dots, ObsColor = "black", 
         H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
         xlab = NULL, ylab = NULL, LegendLabels = NULL)
+  \method{autoplot}{wmppp}(object, \dots, show.window = TRUE,
+        main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
+        labelSize = "Weight", labelColor = "Type", palette="Set1",
+        windowColor = "black", windowFill = "transparent", alpha = 0)
 }
 \arguments{
   \item{object}{
@@ -35,7 +40,7 @@
   The color of the confidence envelope.
   }
   \item{alpha}{
-  The opacity of the confidence envelope, between 0 and 1.
+  The opacity of the confidence envelope (in function values) or the window (in maps), between 0 and 1.
   }
   \item{main}{
   The title of the plot.
@@ -48,6 +53,28 @@
   To be used only in plots with two curves (typically observed and expected values).
   The default is `NULL` to display the full description of functions.
   }
+  \item{show.window}{
+  if `TRUE`, the borders of the window containing the points are shown on the point map.
+  }
+  \item{labelSize}{
+  The guide of the point size legend in point maps, i.e. what the `PointSize` mark represents. 
+  }
+  \item{labelColor}{
+  The guide of the point color legend in point maps, i.e. what the `PointType` mark represents. 
+  }
+  \item{palette}{
+  The color palette used to display point types in maps. See \code{\link[ggplot2]{scale_colour_brewer}}
+  }
+  \item{windowColor}{
+  The color used to draw the limits of the windows in point maps. 
+  }
+  \item{windowFill}{
+  The color used to fill the windows in point maps. 
+  }
+}
+\details{
+  Plots of `wmppp` objects are a single representation of both point types and point weights.
+  Rectangular and polygonal windows (see \code{\link[spatstat.geom]{owin.object}}) are supported but mask windows are ignored (use the `plot` method if necessary).
 }
 \value{
   A \code{\link{ggplot}} object.

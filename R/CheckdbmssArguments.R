@@ -123,6 +123,17 @@ function() {
       stop(paste(ErrorFunction, "Alpha must be positive, it cannot be", sQuote(Alpha)))    
   }
   
+  # alpha 
+  if (!is.na(names(Args["alpha"]))) {
+    alpha <- eval(expression(alpha), parent.frame())
+    if (!is.numeric(alpha))
+      stop(paste(ErrorFunction, "alpha must be a number, it cannot be", sQuote(alpha)))    
+    if (alpha < 0)
+      stop(paste(ErrorFunction, "alpha must be positive, it cannot be", sQuote(alpha)))    
+    if (alpha > 1)
+      stop(paste(ErrorFunction, "alpha must be less than or equal to 1, it cannot be", sQuote(alpha)))    
+  }
+  
   # Adjust 
   if (!is.na(names(Args["Adjust"]))) {
     Adjust <- eval(expression(Adjust), parent.frame())
@@ -163,7 +174,13 @@ function() {
     if (Precision < 0)
       stop(paste(ErrorFunction, "Precision must be positive, it cannot be", sQuote(Precision)))    
   }
-  
+
+  # show.window 
+  if (!is.na(names(Args["show.window"]))) {
+    show.window <- eval(expression(show.window), parent.frame())
+    if (!is.logical(show.window))
+      stop(paste(ErrorFunction, "show.window must be TRUE or FALSE, it cannot be", sQuote(show.window)))    
+  }
   
   return (TRUE)
 }
