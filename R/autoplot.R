@@ -91,12 +91,37 @@ autoplot.fv <- function(object, fmla, ...,
   Lines <- reshape2::melt(alldata, id.vars="x", measure.vars=fvs)
   # Delete NAs created by the formula to avoid warnings when plotting
   Lines <- Lines[!is.na(Lines$value), ]
+  
+  # Color
+  fvalu <- attr(object, "valu")
+  col <- vapply(unique(Lines$variable), function(fvalue){
+    fvalue <- as.character(fvalue)
+    if (fvalue == fvalu) return(ObsColor)
+    # Possible H0 function values (from spatstat)
+    if (fvalue == "theo" | fvalue == "mmean") return(H0Color)
+    # Other functions have the observed value color
+    return(ObsColor)
+  },
+  FUN.VALUE = "")
+  
+  # Type
+  other_variables <- setdiff(fvs, c(fvalu, "theo", "mmean"))
+  lty <- vapply(unique(Lines$variable), function(fvalue){
+    fvalue <- as.character(fvalue)
+    if (fvalue == fvalu) return(1)
+    if (fvalue == "theo" | fvalue == "mmean") return(2)
+    # Other functions have lty = 3, 4, ...
+    return(which(other_variables == fvalue)+2)
+  },
+  FUN.VALUE = 0)
+  
   # Get variable full names and use them
   if (is.null(LegendLabels) || any(is.na(LegendLabels[1:2]))) {
-    # Describe function values by their names
+    # Describe function values by their names by mapping indata cols and attribute "desc"
     levels(Lines$variable) <- vapply(levels(Lines$variable), function(fvalue) {
-      sprintf(attr(object, which="desc")[which(fvs == fvalue)+1], fname)
-    }, FUN.VALUE = "")
+      sprintf(attr(object, which="desc")[which(colnames(indata) == fvalue)], fname)
+    }, 
+    FUN.VALUE = "")
   } else {
     levels(Lines$variable) <- LegendLabels[1:2]
   }
@@ -106,8 +131,8 @@ autoplot.fv <- function(object, fmla, ...,
   thePlot <- thePlot +
     ggplot2::geom_line(data=Lines, ggplot2::aes_(x=~x, y=~value, colour=~variable, linetype=~variable)) +
     # Merged legend if name and labels are identical
-    ggplot2::scale_colour_manual(name=ylab, values=c(ObsColor, H0Color)) +
-    ggplot2::scale_linetype_manual(name=ylab, values=c(1, 2))
+    ggplot2::scale_colour_manual(name=ylab, values=col) +
+    ggplot2::scale_linetype_manual(name=ylab, values=lty)
   
   return(thePlot)
 }
