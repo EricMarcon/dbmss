@@ -19,6 +19,7 @@
   \code{\link{ppp.object}},
   \code{\link{wmppp}},
   \code{\link{as.wmppp}}
+  \code{\link{autoplot.wmppp}}
 }
 
 \author{
@@ -38,4 +39,7 @@ X <- wmppp(data.frame(X, Y, PointType, PointWeight), owin())
 par(mfrow=c(1,2))
 plot(X, which.marks=1, main="Point weights")
 plot(X, which.marks=2, main="Point types")
+
+# Or use autoplot for a ggplot
+autoplot(X)
 }
