@@ -15,7 +15,8 @@
   \method{autoplot}{fv}(object, fmla, \dots, ObsColor = "black", 
         H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
         xlab = NULL, ylab = NULL, LegendLabels = NULL)
-  \method{autoplot}{wmppp}(object, \dots, show.window = TRUE,
+  \method{autoplot}{wmppp}(object, \dots, show.window = TRUE, 
+        ignore.types = length(unique(object$marks$PointType)) > 9,
         main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
         labelSize = "Weight", labelColor = "Type", palette="Set1",
         windowColor = "black", windowFill = "transparent", alpha = 0)
@@ -55,6 +56,9 @@
   }
   \item{show.window}{
   if `TRUE`, the borders of the window containing the points are shown on the point map.
+  }
+  \item{ignore.types}{
+  if `TRUE`, all points are seen as belonging to the same type. Useful when too many point types prevent the plot from being readable. By default, the limit is 9 point types.
   }
   \item{labelSize}{
   The guide of the point size legend in point maps, i.e. what the `PointSize` mark represents. 

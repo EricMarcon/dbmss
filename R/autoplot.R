@@ -138,13 +138,15 @@ autoplot.fv <- function(object, fmla, ...,
 }
 
 
-autoplot.wmppp <- function(object, ..., show.window = TRUE,
+autoplot.wmppp <- function(object, ..., show.window = TRUE, 
+                           ignore.types = length(unique(object$marks$PointType)) > 9,
                            main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
                            labelSize = "Weight", labelColor = "Type", palette="Set1",
                            windowColor = "black", windowFill = "transparent", alpha = 0)
 {
   # Arrange the data
   thePoints <- with(object, data.frame(x, y, PointWeight=marks$PointWeight, PointType=marks$PointType))
+  if (ignore.types) {thePoints$PointType <- as.factor("all")}
 
   # Plot the points
   thePlot <- ggplot2::ggplot(thePoints) +
