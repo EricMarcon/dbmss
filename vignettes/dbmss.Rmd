@@ -39,7 +39,7 @@ An example dataset is provided: it is a point pattern from the Paracou forest in
 Two species of trees are identified, other trees are of type "Other".
 Point weights are their basal area, in square centimeters.
 
-```{r paracou, fig.width=4}
+```{r paracou}
 # Plot (second column of marks is Point Types) 
 autoplot(paracou16, 
   labelSize = expression("Basal area (" ~cm^2~ ")"), 
@@ -58,7 +58,7 @@ These are the $M$ and $m$ and $K_d$ functions.
 
 The bivariate $M$ function can be calculated for _Q. Rosea_ trees around _V. Americana_ trees:
 
-```{r m, fig.width=6, fig.height=5}
+```{r m}
 autoplot(Mhat(paracou16, , "V. Americana", "Q. Rosea"), main="")
 ```
 
@@ -68,7 +68,7 @@ autoplot(Mhat(paracou16, , "V. Americana", "Q. Rosea"), main="")
 Confidence envelopes of various null hypotheses can be calculated.
 The univariate distribution of _Q. Rosea_ is tested against the null hypothesis of random location.
 
-```{r, fig.width=6, fig.height=5}
+```{r}
 autoplot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE), main="")
 ```
 
