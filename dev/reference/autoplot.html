@@ -167,7 +167,8 @@
         H0Color <span class='op'>=</span> <span class='st'>"red"</span>, ShadeColor <span class='op'>=</span> <span class='st'>"grey75"</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, main <span class='op'>=</span> <span class='cn'>NULL</span>, 
         xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
   <span class='co'># S3 method for wmppp</span>
-<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, show.window <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, show.window <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+        ignore.types <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>$</span><span class='va'>marks</span><span class='op'>$</span><span class='va'>PointType</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>9</span>,
         main <span class='op'>=</span> <span class='cn'>NULL</span>, xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span>, 
         labelSize <span class='op'>=</span> <span class='st'>"Weight"</span>, labelColor <span class='op'>=</span> <span class='st'>"Type"</span>, palette<span class='op'>=</span><span class='st'>"Set1"</span>,
         windowColor <span class='op'>=</span> <span class='st'>"black"</span>, windowFill <span class='op'>=</span> <span class='st'>"transparent"</span>, alpha <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
@@ -220,6 +221,10 @@
     <tr>
       <th>show.window</th>
       <td><p>if `TRUE`, the borders of the window containing the points are shown on the point map.</p></td>
+    </tr>
+    <tr>
+      <th>ignore.types</th>
+      <td><p>if `TRUE`, all points are seen as belonging to the same type. Useful when too many point types prevent the plot from being readable. By default, the limit is 9 point types.</p></td>
     </tr>
     <tr>
       <th>labelSize</th>
