@@ -27,15 +27,11 @@ GoFtest(Envelope)
   
   Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. International \emph{Journal of Ecology} 2012(Article ID 619281): 11.  
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \note{
   No support exists in the literature to apply the GoF test to non-cumulative functions (\emph{g}, \emph{Kd}...).
   
   \code{\link{Ktest}} is a much better test (it does not rely on simulations) but it is limited to the \emph{K} function against complete spatial randomness (CSR) in a rectangle window.
 }
-
 \seealso{
   \code{\link{Ktest}}
 }

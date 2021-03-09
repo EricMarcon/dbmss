@@ -35,10 +35,6 @@ ghat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
 \references{
   Stoyan, D. and Stoyan, H. (1994) \emph{Fractals, random shapes and point fields: methods of geometrical statistics}. John Wiley and Sons. 
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{gEnvelope}}
 }

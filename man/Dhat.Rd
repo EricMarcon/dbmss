@@ -41,13 +41,9 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
   
   Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \note{
   The computation of \code{Dhat} relies on spatstat functions \code{\link{Kest}} and \code{\link{Kcross}}.
 }
-
 \seealso{
   \code{\link{Khat}}, \code{\link{DEnvelope}}, \code{\link{Kest}}, \code{\link{Kcross}}
 }

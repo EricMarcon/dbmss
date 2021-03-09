@@ -15,9 +15,4 @@ CheckdbmssArguments()
 \details{
   The function compares the arguments passed to its parent function to the type they should be and performs some extra tests (\emph{e.g.} risk threshold must be between 0 and 1). It stops if an argument is not correct.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
-
 \keyword{internal}

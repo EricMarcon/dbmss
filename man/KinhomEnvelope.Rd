@@ -69,13 +69,9 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   
   Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{Kinhomhat}}
 }
-
 \examples{
 data(paracou16)
 # Keep only 20\% of points to run this example

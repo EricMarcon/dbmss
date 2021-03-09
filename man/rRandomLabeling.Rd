@@ -26,10 +26,6 @@ rRandomLabeling(X, CheckArguments = TRUE)
 \references{
   Goreaud, F. et Pelissier, R. (2003). Avoiding misinterpretation of biotic interactions with the intertype K12 fonction: population independence vs random labelling hypotheses. \emph{Journal of Vegetation Science} 14(5): 681-692.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{rRandomLabelingM}}, \code{\link{rPopulationIndependenceK}}
 }

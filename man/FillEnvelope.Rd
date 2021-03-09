@@ -23,10 +23,4 @@ FillEnvelope(Envelope, Alpha, Global)
 \value{
   Returns the envelope object (\code{\link{envelope}}) with \code{hi} and \code{lo} values calculated from the simlations.
 }
-
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
-
 \keyword{internal}

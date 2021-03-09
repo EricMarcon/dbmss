@@ -14,7 +14,7 @@ Gabriel Lang,
 Stephane Traissac,
 Florence Puech
 
-Maintainer: Eric Marcon <Eric.Marcon@ecofog.gf>
+Maintainer: Eric Marcon <Eric.Marcon@agroparistech.fr>
 }
 \references{
   Marcon, E., and Puech, F. (2003). Evaluating the Geographic Concentration of Industries Using Distance-Based Methods. \emph{Journal of Economic Geography}, 3(4), 409-428.

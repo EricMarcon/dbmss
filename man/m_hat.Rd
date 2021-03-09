@@ -88,9 +88,6 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 
   Silverman, B. W. (1986). \emph{Density estimation for statistics and data analysis}. Chapman and Hall, London.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{mEnvelope}}, \code{\link{Kdhat}}
 }

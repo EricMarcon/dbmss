@@ -23,9 +23,6 @@
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \examples{
 data(paracou16)
 plot(paracou16)
@@ -36,4 +33,3 @@ Envelope <- KEnvelope(paracou16, NumberOfSimulations = 20, Global = TRUE,
 autoplot(Envelope)
 summary(Envelope)
 }
-

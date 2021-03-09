@@ -57,13 +57,9 @@ DEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   
   Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{Dhat}}
 }
-
 \examples{
 data(paracou16)
 # Keep only 20\% of points to run this example
@@ -71,7 +67,6 @@ X <- as.wmppp(rthin(paracou16, 0.2))
 autoplot(X, 
   labelSize = expression("Basal area (" ~cm^2~ ")"), 
   labelColor = "Species")
-
 
 # Calculate confidence envelope (should be 1000 simulations, reduced to 20 to save time)
 r <- 0:30

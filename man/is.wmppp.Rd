@@ -17,10 +17,6 @@ is.wmppp(X)
 \value{
   \code{TRUE} if \code{X} is a weighted, marked, planar point pattern, otherwise \code{FALSE}.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{wmppp.object}}
 }
-

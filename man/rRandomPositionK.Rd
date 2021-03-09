@@ -31,10 +31,6 @@ rRandomPositionK(X, Precision = 0, CheckArguments = TRUE)
   
   Actual data coordinates are often rounded. Use the \code{Precision} argument to simulate point patterns with the same rounding procedure. For example, if point coordinates are in meters and rounded to the nearest half meter, use \code{Precision = 0.5} so that the same approximation is applied to the simulated point patterns.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{rRandomLocation}}
 }

@@ -77,7 +77,4 @@ CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType)
 \details{
   These routines are called internally.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \keyword{internal}

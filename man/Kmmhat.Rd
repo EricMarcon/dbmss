@@ -34,13 +34,9 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   
   Penttinen, A. (2006). Statistics for Marked Point Patterns. in \emph{The Yearbook of the Finnish Statistical Society}. The Finnish Statistical Society, Helsinki: 70-91.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \note{
   The function is computed using \code{\link{markcorrint}} in spatstat.
 }
-
 \seealso{
   \code{\link{Lmmhat}}, \code{\link{LmmEnvelope}}, \code{\link{markcorrint}}
 }

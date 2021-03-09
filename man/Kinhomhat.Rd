@@ -42,9 +42,6 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
   
   Arbia, G., G. Espa, et al. (2012). Clusters of firms in an inhomogeneous space: The high-tech industries in Milan. \emph{Economic Modelling} 29(1): 3-11.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \note{
   The computation of \code{Kinhomhat} relies on spatstat functions \code{\link{Kinhom}}, \code{\link{density.ppp}} and \code{\link{bw.diggle}}.
 }

@@ -50,9 +50,6 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   Marcon, E., and Puech, F. (2017). A Typology of Distance-Based Measures of Spatial Concentration. \emph{Regional Science and Urban Economics} 62:56-67
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{MEnvelope}}, \code{\link{Kdhat}}
 }

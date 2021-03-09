@@ -31,10 +31,6 @@ rPopulationIndependenceM(X, ReferenceType, CheckArguments = TRUE)
   
   Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. \emph{International Journal of Ecology} 2012(Article ID 619281): 11.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{rPopulationIndependenceK}}, \code{\link{rRandomLabelingM}}
 }

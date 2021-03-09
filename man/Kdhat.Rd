@@ -81,9 +81,6 @@
   
   Silverman, B. W. (1986). \emph{Density estimation for statistics and data analysis}. Chapman and Hall, London.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{KdEnvelope}}, \code{\link{Mhat}}
 }

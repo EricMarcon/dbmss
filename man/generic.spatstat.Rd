@@ -45,10 +45,6 @@
 \value{
   An object of class \code{"wmppp"}.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{sharpen.ppp}}, \code{\link{split.ppp}}, \code{\link{superimpose.ppp}}, \code{\link{unique.ppp}}
 }
-

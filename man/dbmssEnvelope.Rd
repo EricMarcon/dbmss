@@ -12,13 +12,8 @@
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{summary.dbmssEnvelope}},
   \code{\link{KdEnvelope}},
   \code{\link{MEnvelope}}
 }
-
- 

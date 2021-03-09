@@ -29,7 +29,7 @@ Ktest(X, r)
   Marcon, E., S. Traissac, and Lang, G. (2013). A Statistical Test for Ripley's Function Rejection of Poisson Null Hypothesis. \emph{ISRN Ecology} 2013(Article ID 753475): 9.
 }
 \author{
-  Gabriel Lang <Gabriel.Lang@agroparistech.fr>, Eric Marcon<Eric.Marcon@ecofog.gf>
+  Gabriel Lang <Gabriel.Lang@agroparistech.fr>, Eric Marcon<Eric.Marcon@agroparistech.fr>
 }
 \seealso{
   \code{\link{Khat}}, \code{\link{GoFtest}}

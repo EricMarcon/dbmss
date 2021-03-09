@@ -31,10 +31,6 @@ rRandomLocation(X, ReferenceType = "", CheckArguments = TRUE)
   
   Marcon, E. and Puech, F. (2010). Measures of the Geographic Concentration of Industries: Improving Distance-Based Methods. \emph{Journal of Economic Geography} 10(5): 745-762.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{rRandomPositionK}}
 }
@@ -58,5 +54,4 @@ plot(Y, main="Randomized pattern, Point Type", which.marks=2)
 # But weights are unchanged
 Y <- Z
 plot(Y, main="Randomized pattern, Point Weight", which.marks=1)
-
 }

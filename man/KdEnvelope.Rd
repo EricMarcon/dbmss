@@ -87,13 +87,9 @@ KdEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType,
 
   Silverman, B. W. (1986). \emph{Density estimation for statistics and data analysis}. Chapman and Hall, London.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{Kdhat}}
 }
-
 \examples{
 data(paracou16)
 plot(paracou16[paracou16$marks$PointType=="Q. Rosea"])

@@ -29,9 +29,6 @@ wmppp(df, window = NULL, unitname = NULL)
 \value{
   An object of class \code{"wmppp"}.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{wmppp.object}},
 }

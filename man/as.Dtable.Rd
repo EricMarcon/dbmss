@@ -29,9 +29,6 @@ as.Dtable(X, \dots)
 \value{
   An object of class \code{"Dtable"}.
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{as.wmppp}}
 }

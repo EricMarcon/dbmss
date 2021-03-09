@@ -21,10 +21,6 @@
   \code{\link{as.wmppp}}
   \code{\link{autoplot.wmppp}}
 }
-
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \examples{
 # Draw the coordinates of 10 points
 X <- runif(10)

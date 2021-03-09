@@ -31,9 +31,6 @@ Dtable(Dmatrix, PointType = NULL, PointWeight = NULL)
   \item{n}{The number of points.}
   \item{marks}{A list of two items: \code{PointType}, a vector of factors containing the point types and \code{PointWeight}, the numeric vector of weights.}
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
 \seealso{
   \code{\link{as.Dtable}}
 }

@@ -34,10 +34,6 @@ Lmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   
   Espa, G., Giuliani, D. and Arbia, G. (2010). Weighting Ripley's K-function to account for the firm dimension in the analysis of spatial concentration. \emph{Discussion Papers}, 12/2010. Universita di Trento, Trento: 26.  
 }
-\author{
-  Eric Marcon <Eric.Marcon@ecofog.gf>
-}
-
 \seealso{
   \code{\link{Kmmhat}}, \code{\link{LmmEnvelope}}
 }
