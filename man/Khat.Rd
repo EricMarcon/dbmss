@@ -45,7 +45,7 @@ Khat(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArgumen
 }
 \examples{
 data(paracou16)
-plot(paracou16)
+autoplot(paracou16)
 
 # Calculate K
 r <- 0:30

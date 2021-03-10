@@ -25,7 +25,7 @@
 }
 \examples{
 data(paracou16)
-plot(paracou16)
+autoplot(paracou16)
 
 # Calculate intertype K envelope
 Envelope <- KEnvelope(paracou16, NumberOfSimulations = 20, Global = TRUE,

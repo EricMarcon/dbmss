@@ -93,7 +93,7 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
 }
 \examples{
 data(paracou16)
-plot(paracou16)
+autoplot(paracou16)
 
 # Calculate M
 autoplot(mhat(paracou16, , "V. Americana", "Q. Rosea"))

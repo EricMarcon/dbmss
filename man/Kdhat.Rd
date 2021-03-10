@@ -86,7 +86,7 @@
 }
 \examples{
 data(paracou16)
-plot(paracou16)
+autoplot(paracou16)
 
 # Calculate Kd
 (Paracou <- Kdhat(paracou16, , "Q. Rosea", "V. Americana"))

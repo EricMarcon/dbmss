@@ -25,7 +25,7 @@ data(paracou16)
 \examples{
 data(paracou16)
 # Plot (second column of marks is Point Types) 
-plot(paracou16, which.marks=2, leg.side="right")
+autoplot(paracou16, which.marks=2, leg.side="right")
 
 }
 \keyword{datasets}

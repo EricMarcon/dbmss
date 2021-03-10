@@ -40,7 +40,7 @@ ghat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
 }
 \examples{
 data(paracou16)
-plot(paracou16)
+autoplot(paracou16)
 
 # Calculate g
 r <- 0:30
