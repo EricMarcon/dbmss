@@ -142,7 +142,7 @@ autoplot.wmppp <- function(object, ..., show.window = TRUE,
                            ignore.types = length(unique(object$marks$PointType)) > 9,
                            main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
                            labelSize = "Weight", labelColor = "Type", palette="Set1",
-                           windowColor = "black", windowFill = "transparent", alpha = 0)
+                           windowColor = "black", windowFill = "transparent", alpha = 1)
 {
   # Arrange the data
   thePoints <- with(object, data.frame(x, y, PointWeight=marks$PointWeight, PointType=marks$PointType))
@@ -150,7 +150,7 @@ autoplot.wmppp <- function(object, ..., show.window = TRUE,
 
   # Plot the points
   thePlot <- ggplot2::ggplot(thePoints) +
-    ggplot2::geom_point(ggplot2::aes_(x=~x, y=~y, size=~PointWeight, color=~PointType)) + 
+    ggplot2::geom_point(ggplot2::aes_(x=~x, y=~y, size=~PointWeight, color=~PointType), alpha=alpha) + 
     ggplot2::coord_fixed() + ggplot2::scale_color_brewer(palette = palette) +
     ggplot2::labs(title=main, x=xlab, y=ylab, size=labelSize, color=labelColor)
   

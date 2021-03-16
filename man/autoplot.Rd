@@ -19,7 +19,7 @@
         ignore.types = length(unique(object$marks$PointType)) > 9,
         main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
         labelSize = "Weight", labelColor = "Type", palette="Set1",
-        windowColor = "black", windowFill = "transparent", alpha = 0)
+        windowColor = "black", windowFill = "transparent", alpha = 1)
 }
 \arguments{
   \item{object}{
@@ -41,7 +41,7 @@
   The color of the confidence envelope.
   }
   \item{alpha}{
-  The opacity of the confidence envelope (in function values) or the window (in maps), between 0 and 1.
+  The opacity of the confidence envelope (in function values) or the points (in maps), between 0 and 1.
   }
   \item{main}{
   The title of the plot.
@@ -90,6 +90,7 @@
 data(paracou16)
 # Keep only 20\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.2))
+autoplot(X)
 
 # Plot the envelope (should be 1000 simulations, reduced to 20 to save time)
 autoplot(KdEnvelope(X, ReferenceType="Q. Rosea", NumberOfSimulations=20))
