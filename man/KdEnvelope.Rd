@@ -95,7 +95,7 @@ data(paracou16)
 autoplot(paracou16[paracou16$marks$PointType=="Q. Rosea"])
 
 # Calculate confidence envelope
-autoplot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE))
+plot(KdEnvelope(paracou16, , ReferenceType="Q. Rosea", Global=TRUE))
 
 # Center of the confidence interval
 Kdhat(paracou16, ReferenceType="") -> kd
