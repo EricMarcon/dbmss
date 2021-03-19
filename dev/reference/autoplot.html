@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.7-4.9005</span>
       </span>
     </div>
 
@@ -171,7 +171,7 @@
         ignore.types <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>$</span><span class='va'>marks</span><span class='op'>$</span><span class='va'>PointType</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>9</span>,
         main <span class='op'>=</span> <span class='cn'>NULL</span>, xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, LegendLabels <span class='op'>=</span> <span class='cn'>NULL</span>, 
         labelSize <span class='op'>=</span> <span class='st'>"Weight"</span>, labelColor <span class='op'>=</span> <span class='st'>"Type"</span>, palette<span class='op'>=</span><span class='st'>"Set1"</span>,
-        windowColor <span class='op'>=</span> <span class='st'>"black"</span>, windowFill <span class='op'>=</span> <span class='st'>"transparent"</span>, alpha <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
+        windowColor <span class='op'>=</span> <span class='st'>"black"</span>, windowFill <span class='op'>=</span> <span class='st'>"transparent"</span>, alpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,7 +202,7 @@
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>The opacity of the confidence envelope (in function values) or the window (in maps), between 0 and 1.</p></td>
+      <td><p>The opacity of the confidence envelope (in function values) or the points (in maps), between 0 and 1.</p></td>
     </tr>
     <tr>
       <th>main</th>
@@ -263,13 +263,14 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 <span class='co'># Keep only 20% of points to run this example</span>
 <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='fu'>rthin</span><span class='op'>(</span><span class='va'>paracou16</span>, <span class='fl'>0.2</span><span class='op'>)</span><span class='op'>)</span>
-
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+</div><div class='img'><img src='autoplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Plot the envelope (should be 1000 simulations, reduced to 20 to save time)</span>
 <span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'><a href='KdEnvelope.html'>KdEnvelope</a></span><span class='op'>(</span><span class='va'>X</span>, ReferenceType<span class='op'>=</span><span class='st'>"Q. Rosea"</span>, NumberOfSimulations<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Generating 20 simulations by evaluating expression  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.
 #&gt; 
-#&gt; Done.</div><div class='img'><img src='autoplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; Done.</div><div class='img'><img src='autoplot-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># With a formula and a compact legend</span>
 <span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'><a href='KEnvelope.html'>KEnvelope</a></span><span class='op'>(</span><span class='va'>X</span>, NumberOfSimulations<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>, 
     <span class='va'>.</span><span class='op'>/</span><span class='op'>(</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>r</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>r</span>,
@@ -277,7 +278,7 @@
 </div><div class='output co'>#&gt; Generating 20 simulations by evaluating expression  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.
 #&gt; 
-#&gt; Done.</div><div class='img'><img src='autoplot-2.png' alt='' width='700' height='433' /></div></pre>
+#&gt; Done.</div><div class='img'><img src='autoplot-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
