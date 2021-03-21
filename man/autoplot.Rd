@@ -16,7 +16,7 @@
         H0Color = "red", ShadeColor = "grey75", alpha = 0.3, main = NULL, 
         xlab = NULL, ylab = NULL, LegendLabels = NULL)
   \method{autoplot}{wmppp}(object, \dots, show.window = TRUE, 
-        ignore.types = length(unique(object$marks$PointType)) > 9,
+        MaxPointTypes = 6, Other = "Other",
         main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
         labelSize = "Weight", labelColor = "Type", palette="Set1",
         windowColor = "black", windowFill = "transparent", alpha = 1)
@@ -57,8 +57,11 @@
   \item{show.window}{
   if `TRUE`, the borders of the window containing the points are shown on the point map.
   }
-  \item{ignore.types}{
-  if `TRUE`, all points are seen as belonging to the same type. Useful when too many point types prevent the plot from being readable. By default, the limit is 9 point types.
+  \item{MaxPointTypes}{
+  The maximum number of different point types to show. If the point set contains more of them, the less frequent ones are gathered as "Other". This number must be limited for readability and not to exceed the number of colors offered by the palette.
+  }
+  \item{Other}{
+  The name of the point types gathered as "Other".
   }
   \item{labelSize}{
   The guide of the point size legend in point maps, i.e. what the `PointSize` mark represents. 

@@ -139,14 +139,25 @@ autoplot.fv <- function(object, fmla, ...,
 
 
 autoplot.wmppp <- function(object, ..., show.window = TRUE, 
-                           ignore.types = length(unique(object$marks$PointType)) > 9,
+                           MaxPointTypes = 6, Other = "Other",
                            main = NULL, xlab = NULL, ylab = NULL, LegendLabels = NULL, 
                            labelSize = "Weight", labelColor = "Type", palette="Set1",
                            windowColor = "black", windowFill = "transparent", alpha = 1)
 {
   # Arrange the data
   thePoints <- with(object, data.frame(x, y, PointWeight=marks$PointWeight, PointType=marks$PointType))
-  if (ignore.types) {thePoints$PointType <- as.factor("all")}
+
+  # Control the point types to display
+  NbPointTypes <- length(unique(thePoints$PointType))
+  if (NbPointTypes > MaxPointTypes) {
+    MostFrequentTypes <- sort(table(thePoints$PointType), decreasing = TRUE)[1:MaxPointTypes]
+    MostFrequentTypes <- dimnames(MostFrequentTypes)[[1]]
+    if (!(Other %in% levels(thePoints$PointType)))
+      levels(thePoints$PointType) <- c(levels(thePoints$PointType), Other)
+    for (i in 1:length(thePoints$PointType))
+      if (!(thePoints$PointType[i] %in% MostFrequentTypes))
+        thePoints$PointType[i] <- Other
+  }
 
   # Plot the points
   thePlot <- ggplot2::ggplot(thePoints) +
