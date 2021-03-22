@@ -82,9 +82,16 @@ autoplot.fv <- function(object, fmla, ...,
     colnames(alldata)[which(datacols==shade[1])] <- "lo"
     colnames(alldata)[which(datacols==shade[2])] <- "hi"
     # Confidence envelope
+    if (is.null(attr(object, "einfo")$Alpha)) {
+      # Envelope from spatstat
+      CI <- 2 * attr(object, "einfo")$nrank / (1 + attr(object, "einfo")$nsim)*100
+    } else {
+      # Envelope from dbmss
+      CI <- attr(object, "einfo")$Alpha*100
+    }
     thePlot <- thePlot +
       ggplot2::geom_ribbon(data=alldata, ggplot2::aes_(x=~x, ymin=~lo, ymax=~hi, fill=ShadeColor), alpha=alpha) +
-      ggplot2::scale_fill_identity(name=LegendLabels[3], guide="legend", labels=paste(attr(object, "einfo")$Alpha*100, "%", sep=""))
+      ggplot2::scale_fill_identity(name=LegendLabels[3], guide="legend", labels=paste(CI, "%", sep=""))
   }
 
   # Melt observed and expected values to prepare geom_line
