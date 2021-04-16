@@ -1,4 +1,4 @@
-# dbmss 2.7-4.9007
+# dbmss 2.7-5
 
 ## Improvements
 
@@ -6,6 +6,7 @@
 - `autoplot.fv()` added.
 - `autoplot.wmppp()` added.
 - CodeFactor optimization applied.
+- Suggests rmarkdown (https://github.com/yihui/knitr/issues/1864)
 
 
 # dbmss 2.7-4
