@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -185,7 +185,7 @@
 <p>Marcon, E., S. Traissac, and Lang, G. (2013). A Statistical Test for Ripley's Function Rejection of Poisson Null Hypothesis. <em>ISRN Ecology</em> 2013(Article ID 753475): 9.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Gabriel Lang &lt;Gabriel.Lang@agroparistech.fr&gt;, Eric Marcon&lt;Eric.Marcon@ecofog.gf&gt;</p>
+    <p>Gabriel Lang &lt;Gabriel.Lang@agroparistech.fr&gt;, Eric Marcon&lt;Eric.Marcon@agroparistech.fr&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='Khat.html'>Khat</a></code>, <code><a href='GoFtest.html'>GoFtest</a></code></p></div>
@@ -196,7 +196,7 @@
   <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>runifdisc</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>radius</span>, centre<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>x0</span>, <span class='va'>y0</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
 <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'>rNeymanScott</span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>0.1</span>, <span class='va'>nclust</span>, radius<span class='op'>=</span><span class='fl'>0.2</span>, n<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='Ktest-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Test it</span>
 <span class='fu'>Ktest</span><span class='op'>(</span><span class='va'>X</span>, r<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>.5</span>, <span class='fl'>.1</span><span class='op'>)</span><span class='op'>)</span>

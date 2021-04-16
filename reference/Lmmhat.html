@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -191,9 +191,6 @@
 
     <p>Penttinen, A., Stoyan, D. and Henttonen, H. M. (1992). Marked Point Processes in Forest Statistics. <em>Forest Science</em> 38(4): 806-824.</p>  
 <p>Espa, G., Giuliani, D. and Arbia, G. (2010). Weighting Ripley's K-function to account for the firm dimension in the analysis of spatial concentration. <em>Discussion Papers</em>, 12/2010. Universita di Trento, Trento: 26.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='Kmmhat.html'>Kmmhat</a></code>, <code><a href='LmmEnvelope.html'>LmmEnvelope</a></code></p></div>
@@ -202,7 +199,9 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 <span class='co'># Keep only 50% of points to run this example</span>
 <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='fu'>rthin</span><span class='op'>(</span><span class='va'>paracou16</span>, <span class='fl'>0.5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>X</span>, 
+  labelSize <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='st'>"Basal area ("</span> <span class='op'>~</span><span class='va'>cm</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>~</span> <span class='st'>")"</span><span class='op'>)</span>, 
+  labelColor <span class='op'>=</span> <span class='st'>"Species"</span><span class='op'>)</span>
 </div><div class='img'><img src='Lmmhat-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate Lmm</span>
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>30</span>, <span class='fl'>2</span><span class='op'>)</span>
@@ -221,7 +220,7 @@
 #&gt; Available range of argument r: [0, 50]
 #&gt; Unit of length: 1 meter</div><div class='input'>
 <span class='co'># Plot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
 </div><div class='img'><img src='Lmmhat-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

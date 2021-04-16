@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -194,9 +194,6 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Besag, J. E. (1977). Comments on Ripley's paper. <em>Journal of the Royal Statistical Society B</em> 39(2): 193-195.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p><em>L</em> was originally defined as \(L(r)=\sqrt{\frac{K}{\pi}}\). It has been used as \(L(r)=\sqrt{\frac{K}{\pi}}-r\) in a part of the literature because this normalization is easier to plot.</p>
@@ -206,7 +203,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 </div><div class='img'><img src='Lhat-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate L</span>
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>30</span>
@@ -225,7 +222,7 @@
 #&gt; Available range of argument r: [0, 30]
 #&gt; Unit of length: 1 meter</div><div class='input'>
 <span class='co'># Plot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
 </div><div class='img'><img src='Lhat-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

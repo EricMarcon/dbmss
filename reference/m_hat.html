@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -243,19 +243,16 @@
 <p>Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, <em>Journal of Geographical Systems</em> 17(4): 333-351.</p>
 <p>Sheather, S. J. and Jones, M. C. (1991) A reliable data-based bandwidth selection method for kernel density estimation. <em>Journal of the Royal Statistical Society series B</em>, 53, 683-690.</p>
 <p>Silverman, B. W. (1986). <em>Density estimation for statistics and data analysis</em>. Chapman and Hall, London.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='mEnvelope.html'>mEnvelope</a></code>, <code><a href='Kdhat.html'>Kdhat</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 </div><div class='img'><img src='m_hat-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate M</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mhat</span><span class='op'>(</span><span class='va'>paracou16</span>, , <span class='st'>"V. Americana"</span>, <span class='st'>"Q. Rosea"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>mhat</span><span class='op'>(</span><span class='va'>paracou16</span>, , <span class='st'>"V. Americana"</span>, <span class='st'>"Q. Rosea"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='m_hat-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

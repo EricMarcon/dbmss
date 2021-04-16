@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -194,16 +194,13 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Stoyan, D. and Stoyan, H. (1994) <em>Fractals, random shapes and point fields: methods of geometrical statistics</em>. John Wiley and Sons.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='gEnvelope.html'>gEnvelope</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 </div><div class='img'><img src='ghat-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate g</span>
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>30</span>
@@ -217,12 +214,12 @@
 #&gt; iso  hat(g)[iso](r) Ripley isotropic correction estimate of g(r)
 #&gt; ................................................................
 #&gt; Default plot formula:  .~r
-#&gt; where “.” stands for ‘iso’, ‘theo’
+#&gt; where “.” stands for ‘theo’, ‘iso’
 #&gt; Recommended range of argument r: [0, 30]
 #&gt; Available range of argument r: [0, 30]
 #&gt; Unit of length: 1 meter</div><div class='input'>
 <span class='co'># Plot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>Paracou</span><span class='op'>)</span>
 </div><div class='img'><img src='ghat-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

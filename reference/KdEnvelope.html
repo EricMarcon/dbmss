@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -248,16 +248,13 @@
 <p>Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. <em>Regional Science and Urban Economics</em>. 62:56-67.</p>
 <p>Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, <em>Journal of Geographical Systems</em> 17(4): 333-351.</p>
 <p>Silverman, B. W. (1986). <em>Density estimation for statistics and data analysis</em>. Chapman and Hall, London.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='Kdhat.html'>Kdhat</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>[</span><span class='va'>paracou16</span><span class='op'>$</span><span class='va'>marks</span><span class='op'>$</span><span class='va'>PointType</span><span class='op'>==</span><span class='st'>"Q. Rosea"</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>[</span><span class='va'>paracou16</span><span class='op'>$</span><span class='va'>marks</span><span class='op'>$</span><span class='va'>PointType</span><span class='op'>==</span><span class='st'>"Q. Rosea"</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='img'><img src='KdEnvelope-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate confidence envelope</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>KdEnvelope</span><span class='op'>(</span><span class='va'>paracou16</span>, , ReferenceType<span class='op'>=</span><span class='st'>"Q. Rosea"</span>, Global<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>

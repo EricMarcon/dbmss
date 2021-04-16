@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-5</span>
       </span>
     </div>
 
@@ -204,9 +204,6 @@
 <p>Kenkel, N. C. (1988). Pattern of Self-Thinning in Jack Pine: Testing the Random Mortality Hypothesis. <em>Ecology</em> 69(4): 1017-1024.</p>  
 <p>Loosmore, N. B. and Ford, E. D. (2006). Statistical inference using the G or K point pattern spatial statistics. <em>Ecology</em> 87(8): 1925-1931.</p>  
 <p>Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. <em>Regional Science and Urban Economics</em>. 62:56-67.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Eric Marcon &lt;Eric.Marcon@ecofog.gf&gt;</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='Lmmhat.html'>Lmmhat</a></code></p></div>
@@ -215,13 +212,15 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>paracou16</span><span class='op'>)</span>
 <span class='co'># Keep only 20% of points to run this example</span>
 <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.wmppp.html'>as.wmppp</a></span><span class='op'>(</span><span class='fu'>rthin</span><span class='op'>(</span><span class='va'>paracou16</span>, <span class='fl'>0.2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>X</span>, 
+  labelSize <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='st'>"Basal area ("</span> <span class='op'>~</span><span class='va'>cm</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>~</span> <span class='st'>")"</span><span class='op'>)</span>, 
+  labelColor <span class='op'>=</span> <span class='st'>"Species"</span><span class='op'>)</span>
 </div><div class='img'><img src='LmmEnvelope-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)</span>
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>30</span>, <span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>NumberOfSimulations</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
 <span class='va'>Alpha</span> <span class='op'>&lt;-</span> <span class='fl'>.10</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>LmmEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>, <span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>LmmEnvelope</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>r</span>, <span class='va'>NumberOfSimulations</span>, <span class='va'>Alpha</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Generating 4 simulations by evaluating expression  ...
 #&gt; 1, 2, 3,  4.
 #&gt; 
