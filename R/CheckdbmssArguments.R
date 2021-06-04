@@ -14,19 +14,28 @@ function() {
     return (TRUE)
   }
   
-  ErrorFunction <- paste("Error in ", ParentFunction, ":")
-  
-  # Find the arguments. match.fun does not work with entropart::function
-  ParentFunctionNoNS <- as.name(gsub("dbmss::", "", as.character(ParentFunction)))
+  # Find the arguments. match.fun does not work with dbmss::function
+  # as.character creates a vector. The name of the function is the last item
+  ParentFunction_split <- as.character(ParentFunction)
+  ParentFunctionNoNS <- ParentFunction_split[length(ParentFunction_split)]
   Args <- formals(match.fun(ParentFunctionNoNS))
   
+  ErrorFunction <- paste("Error in ", ParentFunctionNoNS, ":")
+  
+  ErrorMessage <- function(Message, Argument) {
+    cat(deparse(substitute(Argument)), "cannot be:\n")
+    print(utils::head(Argument))
+    cat(paste(ErrorFunction, Message, "\n"))
+    stop("Check the function arguments.", call. = FALSE)
+  }
+  
+
   # Get the point pattern or the Dtable
   X <- eval(expression(X), parent.frame())
-  
   # X 
   if (!is.na(names(Args["X"]))) {
     if (!(inherits(X, "wmppp") | (inherits(X, "Dtable"))))
-      stop(paste(ErrorFunction, "X must be of class wmppp or Dtable"))    
+      ErrorMessage("X must be of class wmppp or Dtable", X)
   }
 
   # r
@@ -34,13 +43,13 @@ function() {
     r <- eval(expression(r), parent.frame())
     if (!is.null(r)) {
       if (!is.numeric(r) && !is.vector(r)) 
-        stop(paste(ErrorFunction, "r must be a numeric vector"))
+        ErrorMessage("r must be a numeric vector", r)
       if (length(r) < 2) 
-        stop(paste(ErrorFunction, "r has length", length(r), "- must be at least 2"))
+        ErrorMessage(paste("r has length", length(r), "- must be at least 2"), r)
       if (r[1] != 0) 
-        stop(paste(ErrorFunction, "First r value must be 0"))
+        ErrorMessage("First r value must be 0", r)
       if (any(diff(r) <= 0)) 
-        stop(paste(ErrorFunction, "successive values of r must be increasing"))  
+        ErrorMessage("successive values of r must be increasing", r)  
     }
   }
     
@@ -48,26 +57,26 @@ function() {
   if (!is.na(names(Args["ReferenceType"]))) {
     ReferenceType <- eval(expression(ReferenceType), parent.frame())
     if (ReferenceType!="" & !ReferenceType %in% X$marks$PointType)
-      stop(paste(ErrorFunction, "ReferenceType must be a point type of the point pattern, it cannot be", sQuote(ReferenceType)))    
+      ErrorMessage("ReferenceType must be a point type of the point pattern", ReferenceType)
   }
   # NeighborType 
   if (!is.na(names(Args["NeighborType"]))) {
     NeighborType <- eval(expression(NeighborType), parent.frame())
     if (NeighborType!="" & !NeighborType %in% X$marks$PointType)
-      stop(paste(ErrorFunction, "NeighborType must be a point type of the point pattern, it cannot be", sQuote(NeighborType)))    
+      ErrorMessage("NeighborType must be a point type of the point pattern", NeighborType)
   }
   # Cases 
   if (!is.na(names(Args["Cases"]))) {
     Cases <- eval(expression(Cases), parent.frame())
     if (!Cases %in% X$marks$PointType)
-      stop(paste(ErrorFunction, "Cases must be a point type of the point pattern, it cannot be", sQuote(Cases)))    
+      ErrorMessage("Cases must be a point type of the point pattern", Cases)
   }
   # Controls 
   if (!is.na(names(Args["Controls"]))) {
     Controls <- eval(expression(Controls), parent.frame())
     if (!is.null(Controls)) {
       if (!(Controls %in% X$marks$PointType))
-        stop(paste(ErrorFunction, "Controls must be a point type of the point pattern, it cannot be", sQuote(Controls)))
+        ErrorMessage("Controls must be a point type of the point pattern", Controls)
     }
   }
   
@@ -75,25 +84,25 @@ function() {
   if (!is.na(names(Args["CaseControl"]))) {
     CaseControl <- eval(expression(CaseControl), parent.frame())
     if (!is.logical(CaseControl))
-      stop(paste(ErrorFunction, "CaseControl must be TRUE or FALSE, it cannot be", sQuote(CaseControl)))    
+      ErrorMessage("CaseControl must be TRUE or FALSE", CaseControl)
   }
   # Intertype 
   if (!is.na(names(Args["Intertype"]))) {
     Intertype <- eval(expression(Intertype), parent.frame())
     if (!is.logical(Intertype))
-      stop(paste(ErrorFunction, "Intertype must be TRUE or FALSE, it cannot be", sQuote(Intertype)))    
+      ErrorMessage("Intertype must be TRUE or FALSE", Intertype)
   }
   # Weighted 
   if (!is.na(names(Args["Weighted"]))) {
     Weighted <- eval(expression(Weighted), parent.frame())
     if (!is.logical(Weighted))
-      stop(paste(ErrorFunction, "Weighted must be TRUE or FALSE, it cannot be", sQuote(Weighted)))    
+      ErrorMessage("Weighted must be TRUE or FALSE", Weighted)
   }
   # Original 
   if (!is.na(names(Args["Original"]))) {
     Original <- eval(expression(Original), parent.frame())
     if (!is.logical(Original))
-      stop(paste(ErrorFunction, "Original must be TRUE or FALSE, it cannot be", sQuote(Original)))    
+      ErrorMessage("Original must be TRUE or FALSE", Original)
   }
 
   # lambda
@@ -101,7 +110,7 @@ function() {
     lambda <- eval(expression(lambda), parent.frame())
     if (!is.null(lambda)) {
       if (!inherits(lambda, "im") & !is.numeric(lambda))
-        stop(paste(ErrorFunction, "lambda must be an image of class im or a numeric vector, it cannot be", sQuote(lambda)))
+        ErrorMessage("lambda must be an image of class im or a numeric vector", lambda)
     }
   }
   
@@ -109,77 +118,77 @@ function() {
   if (!is.na(names(Args["NumberOfSimulations"]))) {
     NumberOfSimulations <- eval(expression(NumberOfSimulations), parent.frame())
     if (!is.numeric(NumberOfSimulations))
-      stop(paste(ErrorFunction, "NumberOfSimulations must be a number, it cannot be", sQuote(NumberOfSimulations)))    
+      ErrorMessage("NumberOfSimulations must be a number", NumberOfSimulations)
     if (NumberOfSimulations <= 0)
-      stop(paste(ErrorFunction, "NumberOfSimulations must be positive, it cannot be", sQuote(NumberOfSimulations)))    
+      ErrorMessage("NumberOfSimulations must be positive", NumberOfSimulations)
   }
   
   # Alpha 
   if (!is.na(names(Args["Alpha"]))) {
     Alpha <- eval(expression(Alpha), parent.frame())
     if (!is.numeric(Alpha))
-      stop(paste(ErrorFunction, "Alpha must be a number, it cannot be", sQuote(Alpha)))    
+      ErrorMessage("Alpha must be a number", Alpha)
     if (Alpha < 0)
-      stop(paste(ErrorFunction, "Alpha must be positive, it cannot be", sQuote(Alpha)))    
+      ErrorMessage("Alpha must be positive", Alpha)   
   }
   
   # alpha 
   if (!is.na(names(Args["alpha"]))) {
     alpha <- eval(expression(alpha), parent.frame())
     if (!is.numeric(alpha))
-      stop(paste(ErrorFunction, "alpha must be a number, it cannot be", sQuote(alpha)))    
+      ErrorMessage("alpha must be a number", alpha)
     if (alpha < 0)
-      stop(paste(ErrorFunction, "alpha must be positive, it cannot be", sQuote(alpha)))    
+      ErrorMessage("alpha must be positive", alpha)
     if (alpha > 1)
-      stop(paste(ErrorFunction, "alpha must be less than or equal to 1, it cannot be", sQuote(alpha)))    
+      ErrorMessage("alpha must be less than or equal to 1", alpha)
   }
   
   # Adjust 
   if (!is.na(names(Args["Adjust"]))) {
     Adjust <- eval(expression(Adjust), parent.frame())
     if (!is.numeric(Adjust))
-      stop(paste(ErrorFunction, "Adjust must be a number, it cannot be", sQuote(Adjust)))    
+      ErrorMessage("Adjust must be a number", Adjust)
     if (Adjust<=0)
-      stop(paste(ErrorFunction, "Adjust must be strictly positive, it cannot be", sQuote(Adjust)))    
+      ErrorMessage("Adjust must be strictly positive", Adjust)
   }
   
   # Approximate 
   if (!is.na(names(Args["Approximate"]))) {
     Approximate <- eval(expression(Approximate), parent.frame())
     if (!is.numeric(Approximate))
-      stop(paste(ErrorFunction, "Approximate must be a number, it cannot be", sQuote(Approximate)))    
+      ErrorMessage("Approximate must be a number", Approximate)
     if (Approximate < 0)
-      stop(paste(ErrorFunction, "Approximate must be positive, it cannot be", sQuote(Approximate)))    
+      ErrorMessage("Approximate must be positive", Approximate)
   }
 
   # StartFromMinR 
   if (!is.na(names(Args["StartFromMinR"]))) {
     StartFromMinR <- eval(expression(StartFromMinR), parent.frame())
     if (!is.logical(StartFromMinR))
-      stop(paste(ErrorFunction, "StartFromMinR must be TRUE or FALSE, it cannot be", sQuote(StartFromMinR)))    
+      ErrorMessage("StartFromMinR must be TRUE or FALSE", StartFromMinR)
   }
   
   # Individual 
   if (!is.na(names(Args["Individual"]))) {
     Individual <- eval(expression(Individual), parent.frame())
     if (!is.logical(Individual))
-      stop(paste(ErrorFunction, "Individual must be TRUE or FALSE, it cannot be", sQuote(Individual)))    
+      ErrorMessage("Individual must be TRUE or FALSE", Individual)
   }
   
   # Precision 
   if (!is.na(names(Args["Precision"]))) {
     Precision <- eval(expression(Precision), parent.frame())
     if (!is.numeric(Precision))
-      stop(paste(ErrorFunction, "Precision must be a number, it cannot be", sQuote(Precision)))    
+      ErrorMessage("Precision must be a number", Precision)
     if (Precision < 0)
-      stop(paste(ErrorFunction, "Precision must be positive, it cannot be", sQuote(Precision)))    
+      ErrorMessage("Precision must be positive", Precision)
   }
 
   # show.window 
   if (!is.na(names(Args["show.window"]))) {
     show.window <- eval(expression(show.window), parent.frame())
     if (!is.logical(show.window))
-      stop(paste(ErrorFunction, "show.window must be TRUE or FALSE, it cannot be", sQuote(show.window)))    
+      ErrorMessage("show.window must be TRUE or FALSE", show.window)
   }
   
   return (TRUE)

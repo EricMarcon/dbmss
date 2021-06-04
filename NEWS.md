@@ -1,3 +1,10 @@
+# dbmss 2.7-6
+
+## Bug correction
+
+- An error occurred when a function was called with `dbmss::` prefix and `CheckArguments = TRUE` and dbmss was loaded. 
+
+
 # dbmss 2.7-5
 
 ## Improvements
