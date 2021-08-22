@@ -69,7 +69,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
     # Adjust distances: values are the centers of intervals
     rseq <- c(0, (rseq[2:Nr]+rseq[seq_len(Nr)-1])/2)
     
-    # Estimate the bandwidth according to adjust if requested.
+    # Estimate the bandwidth according to Adjust if requested.
     # Distances are the values of rseq corresponding to at least a pair of points (reference and neighbor)
     if (Original) {
       h <- stats::bw.nrd0(rseq[colSums(Nbd[, seq_len(Nr)]) > 0])*Adjust
@@ -102,14 +102,14 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
       Nbd[Nbd < 0] <- NA
     }
     
-    # Choose the bandwith based on all distance pairs between reference and neighbor points
+    # Choose the bandwidth based on all distance pairs between reference and neighbor points
     # Prepare the data
     RefDistances <- Nbd[, IsNeighborType]
-    if (ReferenceType==NeighborType) {
+    if (ReferenceType == NeighborType) {
       # RefDistances is a square matrix: keep the upper half as a vector
       RefDistances <- RefDistances[upper.tri(RefDistances)]
     }
-    # Only pairs of points up to 2rmax are considered for consistency with approximated computation
+    # Only pairs of points up to 2 rmax are considered for consistency with approximated computation
     if (Original) {
       h <- stats::bw.nrd0(RefDistances[RefDistances<=rmax*2]) * Adjust
     } else {
@@ -120,12 +120,18 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
       # Min distance obtained from the data rather than 0
       rmin <- min(Nbd, na.rm=TRUE)
       # Max distance may be obtained from the data rather than from the window
-      if (MaxRange == "DO2005") rmax <- stats::median(Nbd, na.rm = TRUE)
+      if (MaxRange == "DO2005") rmax <- stats::median(Nbd, na.rm=TRUE)
     }
 
-    # Calculate densities of neighbors (with unnormalized weights so suppress warnings)
-    Djc <- t(apply(Nbd[, IsNeighborType], 1, function(x) suppressWarnings(stats::density(x, bw=h, weights=X$marks$PointWeight[IsNeighborType][!is.na(x)], from=rmin, to=rmax, na.rm=TRUE))$y))
-    Dj <- t(apply(Nbd, 1, function(x) suppressWarnings(stats::density(x, bw=h, weights=X$marks$PointWeight[!is.na(x)], from=rmin, to=rmax, na.rm=TRUE))$y))
+    # Calculate densities of neighbors (with unnormalized weights => 'subdensity=TRUE' / suppress warnings in R <= 4.2.0)
+    wdensityNA <- # R 4.2 fixes bug with missing x and weights: this code is from Martin Maechler
+      if(getRversion() >= "4.2.0") # fixed bug PR#18151 (Aug.2021):
+        function(x, weights) stats::density(x, bw=h, weights=weights, subdensity=TRUE, from=rmin, to=rmax, na.rm=TRUE)$y
+    else
+      function(x, weights) suppressWarnings(stats::density(x, bw=h, weights=weights[!is.na(x)], from=rmin, to=rmax, na.rm=TRUE))$y
+    Djc <- t(apply(Nbd[, IsNeighborType], 1, function(x) wdensityNA(x, weights=X$marks$PointWeight[IsNeighborType])))
+    Dj  <- t(apply(Nbd,                   1, function(x) wdensityNA(x, weights=X$marks$PointWeight)))
+    
     # Get the x values of the density estimation: estimate one vector
     x <- stats::density(Nbd[1, IsNeighborType], bw=h, from=rmin, to=rmax, na.rm=TRUE)$x
   }

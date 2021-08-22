@@ -1,8 +1,14 @@
+# dbmss 2.7-7
+
+## External changes
+
+- Following R fixed bug [PR#18151](https://bugs.r-project.org/show_bug.cgi?id=18151), `mhat()` code is modified by Martin Maechler.
+
 # dbmss 2.7-6
 
 ## Bug correction
 
-- An error occurred when a function was called with `dbmss::` prefix and `CheckArguments = TRUE` and dbmss was loaded. 
+- An error occurred when a function was called with `dbmss::` prefix and `CheckArguments = TRUE` and dbmss was loaded.
 
 
 # dbmss 2.7-5
