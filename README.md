@@ -1,6 +1,7 @@
 # Distance Based Measures of Spatial Structures <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN version](http://www.r-pkg.org/badges/version/dbmss)](https://CRAN.r-project.org/package=dbmss)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/dbmss)](https://CRAN.R-project.org/grand-total/package=dbmss)
 [![](http://cranlogs.r-pkg.org/badges/dbmss)](https://CRAN.R-project.org/package=dbmss)
 ![R-CMD-check](https://github.com/EricMarcon/dbmss/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/github/EricMarcon/dbmss/branch/master/graphs/badge.svg)](https://codecov.io/github/EricMarcon/dbmss)
