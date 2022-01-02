@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ericmarcon.github.io/dbmss/404.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/articles/bandwidth.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/articles/dbmss.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/articles/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/authors.html</loc>
+  </url>
+  <url>
     <loc>https://ericmarcon.github.io/dbmss/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ericmarcon.github.io/dbmss/news/index.html</loc>
   </url>
   <url>
     <loc>https://ericmarcon.github.io/dbmss/reference/CheckdbmssArguments.html</loc>
@@ -100,6 +121,9 @@
     <loc>https://ericmarcon.github.io/dbmss/reference/ghat.html</loc>
   </url>
   <url>
+    <loc>https://ericmarcon.github.io/dbmss/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://ericmarcon.github.io/dbmss/reference/is.wmppp.html</loc>
   </url>
   <url>
@@ -140,14 +164,5 @@
   </url>
   <url>
     <loc>https://ericmarcon.github.io/dbmss/reference/wmppp.object.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/articles/articles/bandwidth.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/articles/articles/reference.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/articles/dbmss.html</loc>
   </url>
 </urlset>
