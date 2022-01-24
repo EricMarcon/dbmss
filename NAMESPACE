@@ -2,6 +2,7 @@ useDynLib("dbmss", .registration = TRUE)
 
 import("spatstat.core")
 import("spatstat.geom")
+importFrom("spatstat.random", "rlabel", "rshift", "runifpoint")
 import("Rcpp")
 importFrom("ggplot2", "autoplot")
 importFrom("RcppParallel", "RcppParallelLibs")
