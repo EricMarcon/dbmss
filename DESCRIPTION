@@ -14,8 +14,8 @@ Description: Simple computation of spatial statistic functions of distance to ch
 URL: https://github.com/EricMarcon/dbmss
 BugReports: https://github.com/EricMarcon/dbmss/issues
 License: GNU General Public License
-Depends: R (>= 3.5.0), spatstat.core, spatstat.geom, Rcpp (>= 0.12.14), ggplot2
-Imports: cubature, RcppParallel, reshape2, spatstat.utils, stats, tibble
+Depends: R (>= 3.5.0), spatstat.core, Rcpp (>= 0.12.14), ggplot2
+Imports: cubature, RcppParallel, reshape2, spatstat.utils, stats, tibble, spatstat.geom, spatstat.random
 Suggests: testthat, knitr, pkgdown, rmarkdown
 LinkingTo: Rcpp, RcppParallel
 VignetteBuilder: knitr
