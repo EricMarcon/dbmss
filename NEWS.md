@@ -1,8 +1,16 @@
+# dbmss 2.7-8
+
+## External changes
+
+- The new package spatstat.random is now imported.
+
+
 # dbmss 2.7-7
 
 ## External changes
 
 - Following R fixed bug [PR#18151](https://bugs.r-project.org/show_bug.cgi?id=18151), `mhat()` code is modified by Martin Maechler.
+
 
 # dbmss 2.7-6
 
