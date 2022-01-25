@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-8</span>
       </span>
     </div>
 
@@ -112,9 +112,9 @@
     
 <p>The <em>dbmss</em> package allows simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley’s K and others) and more recent ones used by spatial economists (Duranton and Overman’s <span class="math inline">\(K_d\)</span>, Marcon and Puech’s <span class="math inline">\(M\)</span>). It relies on <em>spatstat</em> for some core calculation.</p>
 <p>This vignette contains a quick introduction.</p>
-<div class="section level1">
-<h1 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
-</h1>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <p>The main data format is <code>wmppp</code> for weighted, marked point pattern. It inherits from the <code>ppp</code> class of the <em>spatstat</em> package.</p>
 <p>A <code>wmppp</code> object can be created from the coordinates of points, their type and their weight.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -135,9 +135,9 @@
   labelColor <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></code></pre></div>
 <p><img src="dbmss_files/figure-html/paracou-1.png" width="700"></p>
 </div>
-<div class="section level1">
-<h1 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
-</h1>
+<div class="section level2">
+<h2 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
+</h2>
 <p>The main functions of the packages are designed to calculate distance-based measures of spatial structure. Those are non-parametric statistics able to summarize and test the spatial distribution (concentration, dispersion) of points.</p>
 <p>The classical, topographic functions such as Ripley’s <em>K</em> are provided by the <em>spatstat</em> package and supported by <em>dbmss</em> for convenience.</p>
 <p>Relative functions are available in <em>dbmss</em> only. These are the <span class="math inline">\(M\)</span> and <span class="math inline">\(m\)</span> and <span class="math inline">\(K_d\)</span> functions.</p>
@@ -146,9 +146,9 @@
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Mhat.html">Mhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , <span class="st">"V. Americana"</span>, <span class="st">"Q. Rosea"</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
 <p><img src="dbmss_files/figure-html/m-1.png" width="700"></p>
 </div>
-<div class="section level1">
-<h1 id="confidence-envelopes">Confidence envelopes<a class="anchor" aria-label="anchor" href="#confidence-envelopes"></a>
-</h1>
+<div class="section level2">
+<h2 id="confidence-envelopes">Confidence envelopes<a class="anchor" aria-label="anchor" href="#confidence-envelopes"></a>
+</h2>
 <p>Confidence envelopes of various null hypotheses can be calculated. The univariate distribution of <em>Q. Rosea</em> is tested against the null hypothesis of random location.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
@@ -161,9 +161,9 @@
 <p><img src="dbmss_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 <p>Significant concentration is detected between about 10 and 20 meters.</p>
 </div>
-<div class="section level1">
-<h1 id="full-documentation">Full documentation<a class="anchor" aria-label="anchor" href="#full-documentation"></a>
-</h1>
+<div class="section level2">
+<h2 id="full-documentation">Full documentation<a class="anchor" aria-label="anchor" href="#full-documentation"></a>
+</h2>
 <p><a href="https://ericmarcon.github.io/dbmss/" class="uri">https://ericmarcon.github.io/dbmss/</a></p>
 </div>
   </div>
@@ -185,7 +185,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

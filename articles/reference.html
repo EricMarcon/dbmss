@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbmss</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.7-8</span>
       </span>
     </div>
 
@@ -122,39 +122,39 @@
 <p>Relative and absolute functions have been built from descriptive statistics of point patterns, not related to the underlying point processes, so they are seen as heuristic and ignored by the statistical literature <span class="citation">(Illian et al. 2008)</span>. Topographic functions are implemented in the <em>spatstat</em> package [<span class="citation">Baddeley and Turner (2005)</span>} but absolute and relative functions are missing. We fill this gap by proposing the <em>dbmss</em> package. It makes the computation of the whole set of distance-based methods simple for empirical researchers by introducing measures that are not available elsewhere and wrapping some topographic measures available in <em>spatstat</em> so that all can be used the same way.</p>
 <p>Estimated values of the functions must be tested against a null hypothesis. The usual empirical way to characterize a spatial structure consists in computing the appropriate function and comparing it to the quantiles of a large number of simulations of the null hypothesis to reject <span class="citation">(Kenkel 1988)</span>. We propose extended possibilities to evaluate confidence envelopes, including <em>global envelopes</em> <span class="citation">(Duranton and Overman 2005)</span>, a goodness-of-fit test <span class="citation">(Diggle 1983)</span> and an analytical test <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang 2013)</span>.</p>
 <p>Definitions of all functions and formulas for their estimation can be found in <span class="citation">Marcon and Puech (2017)</span> and are not repeated here, but they are summarized in the statistical background section. Their implementation is presented in the package content section.</p>
-<div class="section level1">
-<h1 id="rationale-and-statistical-background">Rationale and statistical background<a class="anchor" aria-label="anchor" href="#rationale-and-statistical-background"></a>
-</h1>
-<p>We consider a map of points which often represents establishments in economic geography or trees in vegetation science. These points have two marks: a type (an industrial sector, a species…) and a weight (a number of employees, a basal area…). We want to apply to this point pattern a variety of exploratory statistics which are functions of distance between points, able to test the null hypothesis of independence between point locations. These functions are either topographic, absolute or relative. They can be interpreted as the ratio between the observed number of neighbors and the expected number of neighbors if points where located independently from each other. If reference and neighbor points are of the same type, the functions are univariate, to study concentration or dispersion. They are bivariate if the types differ, to address the colocation of types. We detail this approach below.</p>
 <div class="section level2">
-<h2 id="topographic-homogeneous-functions">Topographic, homogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-homogeneous-functions"></a>
+<h2 id="rationale-and-statistical-background">Rationale and statistical background<a class="anchor" aria-label="anchor" href="#rationale-and-statistical-background"></a>
 </h2>
+<p>We consider a map of points which often represents establishments in economic geography or trees in vegetation science. These points have two marks: a type (an industrial sector, a species…) and a weight (a number of employees, a basal area…). We want to apply to this point pattern a variety of exploratory statistics which are functions of distance between points, able to test the null hypothesis of independence between point locations. These functions are either topographic, absolute or relative. They can be interpreted as the ratio between the observed number of neighbors and the expected number of neighbors if points where located independently from each other. If reference and neighbor points are of the same type, the functions are univariate, to study concentration or dispersion. They are bivariate if the types differ, to address the colocation of types. We detail this approach below.</p>
+<div class="section level3">
+<h3 id="topographic-homogeneous-functions">Topographic, homogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-homogeneous-functions"></a>
+</h3>
 <p>Topographic, homogeneous functions are Ripley’s <span class="math inline">\(K\)</span> and its derivative <span class="math inline">\(g\)</span>. Their null hypothesis is a Poisson homogeneous process: rejecting it means that the process underlying the observed pattern is either not homogeneous or not independent. These functions are applied when homogeneity is assumed so independence only is tested by comparing the observed values of the function to their confidence envelope under CSR. Bivariate functions are tested against the null hypothesis of random labeling (points locations are kept unchanged but marks are redistributed randomly) or population independence (the reference point type is kept unchanged, the neighbor point type is shifted) following <span class="citation">Goreaud and Pélissier (2003)</span>. The random labeling hypothesis considers that points preexist and their marks are the result of a process to test (e.g. are dead trees independently distributed in a forest?). The population independence one considers that points belong to two different populations with their own spatial structure and wants to test whether they are independent from each other.</p>
 <p>Edge effect correction is compulsory to compute topographic functions: points located close to boundaries have less neighbors because of the lack of knowledge outside the observation window. The <em>spatstat</em> package provides corrections following <span class="citation">Ripley (1988)</span>, we use them.</p>
 </div>
-<div class="section level2">
-<h2 id="topographic-inhomogeneous-functions">Topographic, inhomogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-inhomogeneous-functions"></a>
-</h2>
+<div class="section level3">
+<h3 id="topographic-inhomogeneous-functions">Topographic, inhomogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-inhomogeneous-functions"></a>
+</h3>
 <p><span class="math inline">\(K_{inhom}\)</span> <span class="citation">(Baddeley, Møller, and Waagepetersen 2000)</span> is the generalization of <span class="math inline">\(K\)</span> to inhomogeneous processes: it tests independence of points assuming the intensity of the process is known. Empirically, it generally has to be estimated from the data after assumptions on the way to do it relying on the theoretical knowledge of the process. The null hypothesis (<em>random position</em>) is that the pattern comes from an inhomogeneous Poisson process of this intensity, which can be simulated. Applying <span class="math inline">\(K_{inhom}\)</span> to a single point type allows using the <em>random location</em> null hypothesis, following <span class="citation">Duranton and Overman (2005)</span>: observed points (with their marks) are shuffled among observed locations to test for independence. Bivariate <span class="math inline">\(K_{inhom}\)</span> null hypotheses may be random labeling or population independence as defined by <span class="citation">Marcon and Puech (2010)</span>: reference points are kept unchanged, other points are redistributed across observed locations.</p>
 <p><span class="math inline">\(K_{mm}\)</span> <span class="citation">(Penttinen 2006; Penttinen, Stoyan, and Henttonen 1992)</span> generalizes <span class="math inline">\(K\)</span> to weighted points (weights are continuous marks of the points). Its null hypothesis in <em>dbmss</em> is random location. <span class="citation">Penttinen, Stoyan, and Henttonen (1992)</span> inferred the point process from the point pattern, and used the inferred process to simulate the null hypothesis patterns. This requires advanced spatial statistics techniques and knowledge about the process that is generally not available. The random location hypothesis is a way to draw null patterns simply, but ignoring the stochasticity of the point process.</p>
 <p>The <span class="math inline">\(D\)</span> <span class="citation">(Diggle and Chetwynd 1991)</span> function compares the <span class="math inline">\(K\)</span> function of points of interest (cases) to that of other points (controls). Its null hypothesis is random labeling.</p>
 </div>
-<div class="section level2">
-<h2 id="absolute-functions">Absolute functions<a class="anchor" aria-label="anchor" href="#absolute-functions"></a>
-</h2>
+<div class="section level3">
+<h3 id="absolute-functions">Absolute functions<a class="anchor" aria-label="anchor" href="#absolute-functions"></a>
+</h3>
 <p>In their seminal paper, Duranton and Overman <span class="citation">(Duranton and Overman 2005)</span> study the distribution of industrial establishments in Great Britain. Every establishment, represented by a point, is characterized by its position (geographic coordinates), its sector of activity (point type) and its number of employees (point weight). The <span class="math inline">\(K_d\)</span> function <span class="citation">(Duranton and Overman 2005)</span> is the probability density to find a neighbor a given distance apart from a point of interest in a finite point process. The <span class="math inline">\(K^{emp}\)</span> function integrates the weights of points: it is the density probability to find an employee <span class="math inline">\(r\)</span> apart from an employee of interest.</p>
 <p><span class="math inline">\(K_d\)</span> and <span class="math inline">\(K^{emp}\)</span> are absolute measures since their value is not normalized by the measure of space or any other reference: for a binomial process, <span class="math inline">\(K_d\)</span> increases proportionally to <span class="math inline">\(r\)</span> if the window is large enough to ignore edge effects <span class="citation">(the probability density is proportional to the perimeter of the circle of radius <span class="math inline">\(r\)</span>, Bonneu and Thomas-Agnan 2015)</span>, then edge effects make it decrease to 0 when <span class="math inline">\(r\)</span> becomes larger than the window’s size: it is a bell-shaped curve. <span class="math inline">\(K_d\)</span> values are not interpreted but compared to the confidence envelope of the null hypothesis, which is random location. Bivariate functions null hypotheses are random labeling, following <span class="citation">Duranton and Overman (2005)</span>, i.e. point types are redistributed across locations while weights are kept unchanged, or population independence (as for <span class="math inline">\(K_{inhom}\)</span>). It is not corrected for edge effects. <span class="math inline">\(K_d\)</span> was designed to characterize the spatial structure of an economic sector, comparing it to the distribution of the whole activity. From this point of view, it has been considered as a relative function <span class="citation">Marcon and Puech (2010)</span>. We prefer to be more accurate and distinguish it from strict relative functions which directly calculate a ratio or a difference between the number of points of the type of interest and the total number of points. What makes it relative is only its null hypothesis: changing it for random location (that of univariate <span class="math inline">\(K_{inhom}\)</span>) would make univariate <span class="math inline">\(K_d\)</span> behave as a topographic function (testing independence of the distribution supposing its intensity is that of the whole activity).</p>
 <p><span class="math inline">\(K_d\)</span> is a leading tool in spatial economics. A great number of its applications can be found in the literature that confirms the recent interest for distance-based methods in spatial economics. A recent major study can be found in <span class="citation">Ellison, Glaeser, and Kerr (2010)</span>.</p>
 </div>
-<div class="section level2">
-<h2 id="relative-functions">Relative functions<a class="anchor" aria-label="anchor" href="#relative-functions"></a>
-</h2>
+<div class="section level3">
+<h3 id="relative-functions">Relative functions<a class="anchor" aria-label="anchor" href="#relative-functions"></a>
+</h3>
 <p>The univariate and bivariate <span class="math inline">\(M\)</span> function <span class="citation">(Marcon and Puech 2010)</span> are the ratio of neighbors of interest up to distance <span class="math inline">\(r\)</span> normalized by its value over the whole domain. Their null hypotheses are the same as <span class="math inline">\(K_d\)</span>’s. They do not suffer edge effects. <span class="citation">Marcon and Puech (2010)</span> show that the <span class="math inline">\(M\)</span> function respect most of the axioms generally accepted as the <em>good properties</em> to evaluate geographic concentration in spatial economics <span class="citation">(Combes and Overman 2004; Duranton and Overman 2005)</span>.</p>
 <p><span class="math inline">\(m\)</span> <span class="citation">(Lang, Marcon, and Puech 2014)</span> is the density function measuring the same ratio as <span class="math inline">\(M\)</span>, at distance <span class="math inline">\(r\)</span>.</p>
 </div>
-<div class="section level2">
-<h2 id="unification">Unification<a class="anchor" aria-label="anchor" href="#unification"></a>
-</h2>
+<div class="section level3">
+<h3 id="unification">Unification<a class="anchor" aria-label="anchor" href="#unification"></a>
+</h3>
 <p>Empirically, all estimators can be seen as variations in a unique framework: neighbors of each reference point are counted, their number is averaged and divided by a reference measure. Last, this average local result is divided by its reference value, calculated over the whole point pattern instead of around each point.</p>
 <p>Choosing reference and neighbor point types allows defining univariate or bivariate functions, counting neighbors up to or at a distance defines cumulative or density functions, taking an area or a number of points as the reference measure defines topographic or relative functions. These steps are detailed for two functions to clarify them: we focus on Ripley’s <span class="math inline">\(g\)</span> and Marcon and Puech’s <span class="math inline">\(M\)</span> bivariate function. See <span class="citation">Marcon and Puech (2017)</span> for a full review.</p>
 <p>Reference points are denoted <span class="math inline">\(x_i\)</span>, neighbor points are <span class="math inline">\(x_j\)</span>. For density functions such as <span class="math inline">\(g\)</span>, neighbors of <span class="math inline">\(x_i\)</span> are counted at a chosen distance <span class="math inline">\(r\)</span>:</p>
@@ -176,9 +176,9 @@
 <p><span class="math inline">\(W_\mathcal{N}\)</span> is the total weight of neighbor points, <span class="math inline">\(W\)</span> that of all points. Finally, despite the functions are quite different (density vs. cumulative, topographic vs. relative, univariate vs. bivariate), both estimators can be written as <span class="math inline">\({\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}\)</span>. Their value (except for absolute functions) can be interpreted as a location quotient: <span class="math inline">\(g(r)=2\)</span> or <span class="math inline">\(M(r)=2\)</span> means than twice more neighbors are observed at (or up to) distance <span class="math inline">\(r\)</span> than expected on average, i.e. ignoring the point locations in the window. The appropriate function will be chosen among the toolbox according to the question raised.</p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="package-content">Package content<a class="anchor" aria-label="anchor" href="#package-content"></a>
-</h1>
+<div class="section level2">
+<h2 id="package-content">Package content<a class="anchor" aria-label="anchor" href="#package-content"></a>
+</h2>
 <p>The <em>dbmss</em> package contains a full (within the limits of the literature reviewed in section 2) set of functions to characterize the spatial structure of a point pattern, including tools to compute the confidence interval of the counterfactual. It allows addressing big datasets thanks to C++ code used to calculate distances between pairs of points <span class="citation">(using <em>Rcpp</em> and <em>RcppParallel</em> infrastructure: Eddelbuettel and François 2011; Allaire et al. 2015)</span>. Computational requirements actually are an issue starting from say 10,000 points <span class="citation">(see Ellison, Glaeser, and Kerr 2010 for instance)</span>. Memory requirement is <span class="math inline">\(O(n)\)</span>, i.e. proportional to the number of points to store their location and type. We use loops to calculate distances and increment summary statistics rather than store a distance matrix which is <span class="math inline">\(O(n^2)\)</span>, following <span class="citation">Scholl and Brenner (2015)</span>. Computation time is <span class="math inline">\(O(n^2)\)</span> because <span class="math inline">\(n(n-1)/2\)</span> pair distances must be calculated.</p>
 <p>We consider planar points patterns (sets of points in a 2-dimensional space) with marks of a special kind: each point comes with a continuous mark (its weight) and a discrete one (its type). We call this special type of point pattern <em>weighted, marked, planar point patterns</em> and define objects of class <code>wmppp</code>, which derives from <code>ppp</code> class as defined in <em>spatstat</em>. Marks are a dataframe with two columns, <code>PointWeight</code> containing the weights of points, and <code>PointTypes</code> containing the types, as factors.</p>
 <p>A <code>wmppp</code> object can be created by the <code><a href="../reference/wmppp.html">wmppp()</a></code> function which accepts a dataframe as argument, or converted from a <code>ppp</code> object by <code><a href="../reference/as.wmppp.html">as.wmppp()</a></code>. Starting from a csv file containing point coordinates, their type and their weight in four columns, a <code>wmppp</code> object can be created by just reading the file with <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> and applying <code><a href="../reference/wmppp.html">wmppp()</a></code> to the result. Options are available to specify the observation window or guess it from the point coordinates and set default weights or types to points when they are not in the dataframe, see the package help for details. The simplest code to create a <code>wmppp</code> with 100 points is as follows. It draws point coordinates between 0 and 1, and creates a <code>wmppp</code> with a default window, all points are of the same type named <em>All</em> and their weight is 1.</p>
@@ -193,7 +193,22 @@
 <pre><code><span class="co">## spatstat.core 2.3-2</span></code></pre>
 <pre><code><span class="co">## Loading required package: Rcpp</span></code></pre>
 <pre><code><span class="co">## Loading required package: ggplot2</span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## Registered S3 methods overwritten by 'spatstat.random':</span>
+<span class="co">##   method                  from         </span>
+<span class="co">##   as.owin.rmhmodel        spatstat.core</span>
+<span class="co">##   domain.rmhmodel         spatstat.core</span>
+<span class="co">##   print.rmhcontrol        spatstat.core</span>
+<span class="co">##   print.rmhexpand         spatstat.core</span>
+<span class="co">##   print.rmhInfoList       spatstat.core</span>
+<span class="co">##   print.rmhmodel          spatstat.core</span>
+<span class="co">##   print.rmhstart          spatstat.core</span>
+<span class="co">##   print.summary.rmhexpand spatstat.core</span>
+<span class="co">##   rjitter.psp             spatstat.core</span>
+<span class="co">##   summary.rmhexpand       spatstat.core</span>
+<span class="co">##   update.rmhcontrol       spatstat.core</span>
+<span class="co">##   update.rmhstart         spatstat.core</span>
+<span class="co">##   Window.rmhmodel         spatstat.core</span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Marked planar point pattern:  100 points</span>
@@ -214,9 +229,9 @@
 <span class="co">## Window: rectangle = [0.004359, 0.9922431] x [0.0029645, 0.9866648] units</span>
 <span class="co">##                     (0.9879 x 0.9837 units)</span>
 <span class="co">## Window area = 0.971782 square units</span></code></pre>
-<div class="section level2">
-<h2 id="distance-based-functions">Distance-based functions<a class="anchor" aria-label="anchor" href="#distance-based-functions"></a>
-</h2>
+<div class="section level3">
+<h3 id="distance-based-functions">Distance-based functions<a class="anchor" aria-label="anchor" href="#distance-based-functions"></a>
+</h3>
 <p>All functions are named <code>Xhat</code> where <code>X</code> is the name of the function:</p>
 <ul>
 <li><p>Ripley’s <span class="math inline">\(g\)</span> and <span class="math inline">\(K\)</span>, and <span class="math inline">\(K\)</span>’s normalization, Besag’s <span class="math inline">\(L\)</span> <span class="citation">(1977)</span>;</p></li>
@@ -237,89 +252,89 @@
 <p>Topographic functions require edge-effect corrections, provided by <em>spatstat</em>: the <code>best</code> correction is systematically used. Relative functions ignore the window. Technical details are provided in help files.</p>
 <p>These functions return an <code>fv</code> object, as defined in <em>spatstat</em>, which can be plotted.</p>
 </div>
-<div class="section level2">
-<h2 id="confidence-envelopes">Confidence envelopes<a class="anchor" aria-label="anchor" href="#confidence-envelopes"></a>
-</h2>
+<div class="section level3">
+<h3 id="confidence-envelopes">Confidence envelopes<a class="anchor" aria-label="anchor" href="#confidence-envelopes"></a>
+</h3>
 <p>The classical confidence intervals, calculated by Monte-Carlo simulations <span class="citation">(Kenkel 1988)</span> are obtained by the <code>XEnvelope</code> functions, where <code>X</code> is the function’s name. Arguments are the number of simulations to run, the risk level, those of the function and the null hypothesis to simulate. These functions return a <code>dbmssEnvelope</code> object which can be plotted.</p>
 <p>Null hypotheses have been discussed by <span class="citation">Goreaud and Pélissier (2003)</span> for topographic functions such as <span class="math inline">\(K\)</span> and by <span class="citation">Marcon and Puech (2010)</span> for relative functions. The null hypothesis for univariate functions is random position (points are drawn in a Poisson process for topographic functions) or random location (points are redistributed across actual locations for relative functions). Bivariate functions support random labeling and population independence null hypotheses. The possible values of arguments are detailed in the help file of each function.</p>
 <p>Building a confidence envelope this way is problematic because the test is repeated at each distance. The underestimation of the risk has been discussed by <span class="citation">Loosmore and Ford (2006)</span>. <span class="citation">Duranton and Overman (2005)</span> proposed a global envelope computed by the repeated elimination of simulations reaching an extreme value at any distance until the desired level is reached. The argument <code>Global = TRUE</code> is used to obtain it instead of the local one.</p>
 </div>
-<div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
-</h2>
+<div class="section level3">
+<h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h3>
 <p>We illustrate the main features of the package by two examples. The first one comes from the economic literature <span class="citation">(Bonneu 2007)</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"CSBIGS.Rdata"</span><span class="op">)</span>
 <span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,
    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Other"</span>, <span class="st">"Biggest"</span><span class="op">)</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">X</span>, Y<span class="op">=</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">Y</span>, PointType<span class="op">=</span><span class="va">Category</span><span class="op">)</span>, win<span class="op">=</span><span class="va">Region</span><span class="op">)</span>
 <span class="va">X</span><span class="op">$</span><span class="va">window</span><span class="op">$</span><span class="va">units</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"meter"</span>,<span class="st">"meters"</span><span class="op">)</span>
 <span class="va">X2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">$</span><span class="va">n</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">$</span><span class="va">n</span><span class="op">)</span>
+<span class="fu">marks</span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">$</span><span class="va">n</span><span class="op">)</span>
+<span class="fu">marks</span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">$</span><span class="va">n</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>  
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span>, main<span class="op">=</span><span class="st">""</span>, maxsize<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>,  <span class="fl">1826800</span>, <span class="st">"a"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span>, main<span class="op">=</span><span class="st">""</span>, maxsize<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>,  <span class="fl">1826800</span>, <span class="st">"b"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/Toulouse-1.png" width="700"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The map of emergencies in the urban area of Toulouse, France, during year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies recorded (many points are confused at the figure scale) and (b) the locations of the 10 percent most serious ones. The workload associated to each emergency (the number of men <span class="math inline">\(\times\)</span> hours it required) is known. The original study tested the dependence between workload and location of emergencies: it did not exclude the null hypothesis of random labeling. We have a complementary approach here: we consider the 10 percent more serious emergencies, i.e. those which caused the highest workload. <span class="math inline">\(K_d\)</span> may detect concentration (or dispersion) if, at a distance <span class="math inline">\(r\)</span> from a serious emergency, the probability to find another serious emergency is greater (or lower) than that of finding an emergency whatever its workload:</p>
 <p>The <code>Emergencies</code> data frame contains point coordinates (in meters) in columns <code>X</code> and <code>Y</code> and workload in column <code>M</code>. The second line of the code creates a vector containing a factor describing the workload to separate its 10% higher values. A <code>wmppp</code> object is created then, containing the points and their mark. The <code>KdEnvelope</code> function is run from 0 to 10km by steps of 100m for the most serious emergencies. The figure below shows that the 10% most serious emergencies are more dispersed than the distribution of all emergencies at all distances up to 10km.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, NumberOfSimulations<span class="op">=</span><span class="fl">1000</span>, ReferenceType<span class="op">=</span><span class="st">"Biggest"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Generating 1000 simulations by evaluating expression  ...</span>
-<span class="co">## 1, 2, 3, ......10 [etd 15:05] .........20 [etd 14:58] .........</span>
-<span class="co">## 30 [etd 14:47] .........40 [etd 14:38] .........50 [etd 14:28] ........</span>
-<span class="co">## .60 [etd 14:18] .........70 [etd 14:09] .........80 [etd 13:59] .......</span>
-<span class="co">## ..90 [etd 13:50] .........100 [etd 13:41] .........110 [etd 13:32] ......</span>
-<span class="co">## ...120 [etd 13:23] .........130 [etd 13:14] .........140 [etd 13:05] .....</span>
-<span class="co">## ....150 [etd 12:55] .........160 [etd 12:46] .........170 [etd 12:37] ....</span>
-<span class="co">## .....180 [etd 12:29] .........190 [etd 12:20] .........200 [etd 12:11] ...</span>
-<span class="co">## ......210 [etd 12:02] .........220 [etd 11:53] .........230 [etd 11:44] ..</span>
-<span class="co">## .......240 [etd 11:35] .........250 [etd 11:26] .........260 [etd 11:16] .</span>
-<span class="co">## ........270 [etd 11:07] .........280 [etd 10:58] .........290</span>
-<span class="co">##  [etd 10:49] .........300 [etd 10:40] .........310 [etd 10:30] .........</span>
-<span class="co">## 320 [etd 10:21] .........330 [etd 10:12] .........340 [etd 10:03] ........</span>
-<span class="co">## .350 [etd 9:54] .........360 [etd 9:45] .........370 [etd 9:35] .......</span>
-<span class="co">## ..380 [etd 9:26] .........390 [etd 9:17] .........400 [etd 9:08] ......</span>
-<span class="co">## ...410 [etd 8:59] .........420 [etd 8:50] .........430 [etd 8:41] .....</span>
-<span class="co">## ....440 [etd 8:31] .........450 [etd 8:22] .........460 [etd 8:13] ....</span>
-<span class="co">## .....470 [etd 8:04] .........480 [etd 7:55] .........490 [etd 7:46] ...</span>
-<span class="co">## ......500 [etd 7:37] .........510 [etd 7:27] .........520 [etd 7:18] ..</span>
-<span class="co">## .......530 [etd 7:09] .........540 [etd 7:00] .........550 [etd 6:51] .</span>
-<span class="co">## ........560 [etd 6:42] .........570 [etd 6:33] .........580</span>
-<span class="co">##  [etd 6:23] .........590 [etd 6:14] .........600 [etd 6:05] .........</span>
-<span class="co">## 610 [etd 5:56] .........620 [etd 5:47] .........630 [etd 5:38] ........</span>
-<span class="co">## .640 [etd 5:29] .........650 [etd 5:20] .........660 [etd 5:11] .......</span>
-<span class="co">## ..670 [etd 5:02] .........680 [etd 4:52] .........690 [etd 4:43] ......</span>
-<span class="co">## ...700 [etd 4:34] .........710 [etd 4:25] .........720 [etd 4:16] .....</span>
-<span class="co">## ....730 [etd 4:07] .........740 [etd 3:58] .........750 [etd 3:49] ....</span>
-<span class="co">## .....760 [etd 3:39] .........770 [etd 3:30] .........780 [etd 3:21] ...</span>
-<span class="co">## ......790 [etd 3:12] .........800 [etd 3:03] .........810 [etd 2:54] ..</span>
-<span class="co">## .......820 [etd 2:45] .........830 [etd 2:35] .........840 [etd 2:26] .</span>
-<span class="co">## ........850 [etd 2:17] .........860 [etd 2:08] .........870</span>
-<span class="co">##  [etd 1:59] .........880 [etd 1:50] .........890 [etd 1:41] .........</span>
-<span class="co">## 900 [etd 1:31] .........910 [etd 1:22] .........920 [etd 1:13] ........</span>
-<span class="co">## .930 [etd 1:04] .........940 [etd 55 sec] .........950 [etd 46 sec] .......</span>
-<span class="co">## ..960 [etd 37 sec] .........970 [etd 27 sec] .........980 [etd 18 sec] ......</span>
-<span class="co">## ...990 [etd 9 sec] ......... 1000.</span>
+<span class="co">## 1, 2, 3, ......10 [etd 20:18] .........20 [etd 18:06] .........</span>
+<span class="co">## 30 [etd 18:36] .........40 [etd 18:11] .........50 [etd 17:45] ........</span>
+<span class="co">## .60 [etd 17:28] .........70 [etd 17:23] .........80 [etd 17:05] .......</span>
+<span class="co">## ..90 [etd 16:48] .........100 [etd 16:30] .........110 [etd 16:11] ......</span>
+<span class="co">## ...120 [etd 15:55] .........130 [etd 15:37] .........140 [etd 15:29] .....</span>
+<span class="co">## ....150 [etd 15:17] .........160 [etd 15:04] .........170 [etd 14:52] ....</span>
+<span class="co">## .....180 [etd 14:39] .........190 [etd 14:30] .........200 [etd 14:17] ...</span>
+<span class="co">## ......210 [etd 14:03] .........220 [etd 13:50] .........230 [etd 13:37] ..</span>
+<span class="co">## .......240 [etd 13:24] .........250 [etd 13:15] .........260 [etd 13:03] .</span>
+<span class="co">## ........270 [etd 12:51] .........280 [etd 12:41] .........290</span>
+<span class="co">##  [etd 12:29] .........300 [etd 12:18] .........310 [etd 12:06] .........</span>
+<span class="co">## 320 [etd 11:55] .........330 [etd 11:43] .........340 [etd 11:32] ........</span>
+<span class="co">## .350 [etd 11:20] .........360 [etd 11:09] .........370 [etd 10:57] .......</span>
+<span class="co">## ..380 [etd 10:46] .........390 [etd 10:34] .........400 [etd 10:23] ......</span>
+<span class="co">## ...410 [etd 10:11] .........420 [etd 10:00] .........430 [etd 9:48] .....</span>
+<span class="co">## ....440 [etd 9:37] .........450 [etd 9:26] .........460 [etd 9:15] ....</span>
+<span class="co">## .....470 [etd 9:03] .........480 [etd 8:53] .........490 [etd 8:42] ...</span>
+<span class="co">## ......500 [etd 8:31] .........510 [etd 8:20] .........520 [etd 8:09] ..</span>
+<span class="co">## .......530 [etd 7:59] .........540 [etd 7:48] .........550 [etd 7:37] .</span>
+<span class="co">## ........560 [etd 7:27] .........570 [etd 7:16] .........580</span>
+<span class="co">##  [etd 7:06] .........590 [etd 6:55] .........600 [etd 6:45] .........</span>
+<span class="co">## 610 [etd 6:34] .........620 [etd 6:24] .........630 [etd 6:14] ........</span>
+<span class="co">## .640 [etd 6:03] .........650 [etd 5:53] .........660 [etd 5:43] .......</span>
+<span class="co">## ..670 [etd 5:33] .........680 [etd 5:22] .........690 [etd 5:12] ......</span>
+<span class="co">## ...700 [etd 5:02] .........710 [etd 4:52] .........720 [etd 4:42] .....</span>
+<span class="co">## ....730 [etd 4:32] .........740 [etd 4:21] .........750 [etd 4:11] ....</span>
+<span class="co">## .....760 [etd 4:01] .........770 [etd 3:51] .........780 [etd 3:41] ...</span>
+<span class="co">## ......790 [etd 3:31] .........800 [etd 3:20] .........810 [etd 3:10] ..</span>
+<span class="co">## .......820 [etd 3:00] .........830 [etd 2:50] .........840 [etd 2:40] .</span>
+<span class="co">## ........850 [etd 2:30] .........860 [etd 2:20] .........870</span>
+<span class="co">##  [etd 2:10] .........880 [etd 2:00] .........890 [etd 1:50] .........</span>
+<span class="co">## 900 [etd 1:40] .........910 [etd 1:30] .........920 [etd 1:20] ........</span>
+<span class="co">## .930 [etd 1:10] .........940 [etd 1:00] .........950 [etd 50 sec] .......</span>
+<span class="co">## ..960 [etd 40 sec] .........970 [etd 30 sec] .........980 [etd 20 sec] ......</span>
+<span class="co">## ...990 [etd 10 sec] ......... 1000.</span>
 <span class="co">## </span>
 <span class="co">## Done.</span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">KdE</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/KdCode-1.png" width="576"></p>
 <p>The solid, black curve is <span class="math inline">\(K_d\)</span>. The dotted red curve is the average simulated value and the shaded area is the confidence envelope under the null hypothesis of random location. The risk level is 5%, 1000 simulations have been run. distances are in meters.</p>
 <p>This opens the way to discuss on the optimal location of fire stations.</p>
 <p>The second example uses the <code>paracou16</code> point pattern provided in the package. It represents the distribution of trees in a 4.1-ha tropical forest plot in the Paracou field station in French Guiana <span class="citation">(Gourlet-Fleury, Guehl, and Laroussinie 2004)</span>. It contains 2426 trees, whose species is either <em>Qualea rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300 species). Weights are basal areas (the area of the stems virtually cut 1.3 meter above ground), measured in square centimeters.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">paracou16</span>,
   labelSize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Basal area ("</span> <span class="op">~</span><span class="va">cm</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>, 
   labelColor <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></code></pre></div>
 <p>On the map, circles are centered on trees in the forest plot (the containing rectangle is 200m wide by 250m long). Circle sizes are proportional to the basal areas of trees.</p>
 <p>The question to test is dependence between the distributions of the two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000 simulations are run to build the global confidence envelope.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, NumberOfSimulations 
    <span class="op">=</span> <span class="fl">1000</span>, Alpha <span class="op">=</span> <span class="fl">0.05</span>, ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, NeighborType 
    <span class="op">=</span> <span class="st">"Q. Rosea"</span>, SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -341,38 +356,38 @@
 <span class="co">## .......960.........970.........980.........990......... 1000.</span>
 <span class="co">## </span>
 <span class="co">## Done.</span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">Envelope</span>, main<span class="op">=</span><span class="st">""</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference_files/figure-html/MCode-1.png" width="700"></p>
 <p><span class="math inline">\(M(r)\)</span> values of <em>Qualea rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid, black curve is <span class="math inline">\(M\)</span>. The dotted red curve is the average simulated value. The shaded area is the confidence envelope. <span class="math inline">\(M=1\)</span> is expected if points are independently distributed. The risk level is 5%, 1000 simulations have been run. Distances are in meters.</p>
 <p>The calculated function is <span class="math inline">\(M\)</span>, showing the repulsion between <em>V. Americana</em> and <em>Q. rosea</em> up to 30 m. Significance is unclear, since the observed values of the function are very close to the lower bound of the envelope. The complete study, with a larger dataset allowing significant results, can be found in <span class="citation">Marcon, Puech, and Traissac (2012)</span>.</p>
 </div>
-<div class="section level2">
-<h2 id="goodness-of-fit-test">Goodness-of-fit test<a class="anchor" aria-label="anchor" href="#goodness-of-fit-test"></a>
-</h2>
+<div class="section level3">
+<h3 id="goodness-of-fit-test">Goodness-of-fit test<a class="anchor" aria-label="anchor" href="#goodness-of-fit-test"></a>
+</h3>
 <p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has been proposed by <span class="citation">Diggle (1983)</span>, applied to <span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon, Puech, and Traissac (2012)</span>. It calculates the distance between the actual values of the function and its average value obtained in simulations of the null hypothesis. The same distance is calculated for each simulated point pattern, and the returned <span class="math inline">\(p\)</span>-value of the test if the ratio of simulations whose distance is larger than that of the real point pattern. The test is performed by the <code>GoFtest</code> function whose argument is the envelope previously calculated (actually, the function uses the simulation values).</p>
 <p>Applied to the example of Paracou trees, the <span class="math inline">\(p\)</span>-value is:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/GoFtest.html">GoFtest</a></span><span class="op">(</span><span class="va">Envelope</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 0.267</span></code></pre>
 </div>
-<div class="section level2">
-<h2 id="ktest">Ktest<a class="anchor" aria-label="anchor" href="#ktest"></a>
-</h2>
+<div class="section level3">
+<h3 id="ktest">Ktest<a class="anchor" aria-label="anchor" href="#ktest"></a>
+</h3>
 <p>The <code>Ktest</code> has been developed by Lang and Marcon <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang 2013)</span>. It does not rely on simulations and returns the <span class="math inline">\(p\)</span>-value to erroneously reject complete spatial randomness (CSR) given the values of <span class="math inline">\(K\)</span>. It relies on the exact variance of <span class="math inline">\(K\)</span> calculated with edge-effect corrections. It only works in a rectangular window.</p>
 <p>The following example tests a 1.5-ha subset of <code>paracou16</code> (100m by 150m, origin at the southwestern corner).</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"paracou16"</span><span class="op">)</span>
-<span class="va">RectWindow</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/owin.html" class="external-link">owin</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span>
+<span class="va">RectWindow</span> <span class="op">&lt;-</span> <span class="fu">owin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span>
 <span class="va">X</span> <span class="op">&lt;-</span> <span class="va">paracou16</span><span class="op">[</span><span class="va">RectWindow</span><span class="op">]</span>
 <span class="op">(</span><span class="va">pKtest</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ktest.html">Ktest</a></span><span class="op">(</span><span class="va">X</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 0.002682576</span></code></pre>
 <p>It rejects CSR (p=0.0027).</p>
 </div>
 </div>
-<div class="section level1 unnumbered">
-<h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h1>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references">
 <div id="ref-Allaire2015">
 <p>Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>. <a href="http://CRAN.R-project.org/package=RcppParallel" class="external-link">http://CRAN.R-project.org/package=RcppParallel</a>.</p>
@@ -518,7 +533,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
