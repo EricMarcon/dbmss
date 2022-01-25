@@ -155,11 +155,7 @@
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Plot the envelope (should be 1000 simulations, reduced to 20 to save time)</span></span>
 <span class="r-in"><span class="fu">autoplot</span><span class="op">(</span><span class="fu"><a href="KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, NumberOfSimulations<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Generating 20 simulations by evaluating expression  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-plt img"><img src="autoplot-2.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in stats::bw.nrd0(Dist[Dist &lt;= rmax * 2]):</span> need at least 2 data points</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># With a formula and a compact legend</span></span>
 <span class="r-in"><span class="fu">autoplot</span><span class="op">(</span><span class="fu"><a href="KEnvelope.html">KEnvelope</a></span><span class="op">(</span><span class="va">X</span>, NumberOfSimulations<span class="op">=</span><span class="fl">20</span><span class="op">)</span>, </span>
@@ -169,7 +165,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,  20.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-plt img"><img src="autoplot-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="autoplot-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </div>
