@@ -1,3 +1,10 @@
+# dbmss 2.7-8.9000
+
+## Improvements
+
+- dbmss no longer depends on ggplot2.
+
+
 # dbmss 2.7-8
 
 ## External changes
