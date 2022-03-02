@@ -42,12 +42,12 @@ PointWeight <- runif(X$n, min=1, max=10)
 X$marks <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
-par(mfrow=c(1,2))
-plot(X, main="Original pattern, Point Type", which.marks=2)
+
+autoplot(X, main="Original pattern")
 
 # Randomize it
 Y <- rPopulationIndependenceM(X, "A")
-# Points of type "A" (circles) are unchanged, 
+# Points of type "A" are unchanged, 
 # all other points have been redistributed randomly across locations
-plot(Y, main="Randomized pattern, Point Type", which.marks=2)
+autoplot(Y, main="Randomized pattern")
 }

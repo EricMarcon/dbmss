@@ -24,7 +24,8 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
   }
 }
 \details{
-  Reference points are kept unchanged, other point positions are shifted by \code{\link{rshift}}.
+  Reference points are kept unchanged, neighbor type point positions are shifted by \code{\link{rshift}}.
+  Other points are lost and point weights are not kept (they are set to 1) since the K function ignores them.
 }
 \value{
   A new weighted, marked, planar point pattern (an object of class \code{wmppp}, see \code{\link{wmppp.object}}).
@@ -36,19 +37,19 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
   \code{\link{rPopulationIndependenceM}}, \code{\link{rRandomLabeling}}
 }
 \examples{
-# Simulate a point pattern with two types
+# Simulate a point pattern with three types
 X <- rpoispp(50) 
-PointType   <- sample(c("A", "B"), X$n, replace=TRUE)
+PointType   <- sample(c("A", "B", "C"), X$n, replace=TRUE)
 PointWeight <- runif(X$n, min=1, max=10)
 X$marks <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
-par(mfrow=c(1,2))
 # Plot the point pattern, using PointType as marks
-plot(X, main="Original pattern, Point Type", which.marks=2)
+autoplot(X, main="Original pattern")
 
 # Randomize it
 Y <- rPopulationIndependenceK(X, "A", "B")
 # Points of type "A" are unchanged, points of type "B" have been moved altogether
-plot(Y, main="Randomized pattern, Point Type", which.marks=2)
+# Other points are lost and point weights are set to 1
+autoplot(Y, main="Randomized pattern")
 }

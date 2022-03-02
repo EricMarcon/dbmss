@@ -41,16 +41,11 @@ PointWeight <- runif(X$n, min=1, max=10)
 X$marks <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
-par(mfrow=c(2,2))
-plot(X, main="Original pattern, Point Type", which.marks=2)
-plot(X, main="Original pattern, Point Weight", which.marks=1)
+autoplot(X, main="Original pattern")
 
 # Randomize it
 Y <- rRandomLabelingM(X)
-Z <- Y
 # Labels have been redistributed randomly across locations
-plot(Y, main="Randomized pattern, Point Type", which.marks=2)
 # But weights are unchanged
-Y <- Z
-plot(Y, main="Randomized pattern, Point Weight", which.marks=1)
+autoplot(Y, main="Randomized pattern")
 }

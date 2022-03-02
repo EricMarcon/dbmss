@@ -42,13 +42,10 @@ PointWeight <- runif(X$n, min=1, max=10)
 X$marks <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
-par(mfrow=c(1,2))
-plot(X, main="Original pattern, Point Type")
+autoplot(X, main="Original pattern")
 
 # Randomize it
 Y <- rRandomPositionK(X)
-# Invert the order of columns in mark to plot the point type, not the point weight
-Y$marks <- data.frame(Y$marks$PointType, Y$marks$PointWeight)
 # Points are randomly distributed
-plot(Y, main="Randomized pattern, Point Type")
+autoplot(Y, main="Randomized pattern")
 }
