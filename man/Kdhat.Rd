@@ -43,8 +43,8 @@
   if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
   }
   \item{StartFromMinR}{
-  Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, distances are smoothed down to $r=0$.
-  Ignored if \code{Approximate} is not 0: then, estimation always starts from $r=0$.
+  Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, distances are smoothed down to \eqn{r=0}.
+  Ignored if \code{Approximate} is not 0: then, estimation always starts from \eqn{r=0}.
   }
   \item{CheckArguments}{
   Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
@@ -67,7 +67,7 @@
   
   Density estimation heavily relies on the bandwith.
   Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
-  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed $Kd$ values.
+  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed \eqn{Kd} values.
   The default values (\code{r = NULL}, \code{MaxRange = "ThirdW"}) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.
 }
 \references{

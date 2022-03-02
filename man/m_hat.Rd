@@ -72,7 +72,7 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   Density estimation heavily relies on the bandwith.
   Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
-  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed $m$ values.
+  The consequence is that choosing a smaller range of distances in argument \code{r} results in less smoothed \eqn{m} values.
   The default values (\code{r = NULL}, \code{MaxRange = "ThirdW"}) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.
 }
 \references{

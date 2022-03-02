@@ -51,8 +51,8 @@ KdEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType,
   if \code{X} is a \code{\link{Dtable}} object, the diameter of the window is taken as the max distance between points.
   }
   \item{StartFromMinR}{
-  Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, by default, distances are smoothed down to $r=0$.
-  Ignored if \code{Approximate} is not 0: then, estimation always starts from $r=0$.
+  Logical; if \code{TRUE}, points are assumed to be further from each other than the minimum observed distance, So \emph{Kd} will not be estimated below it: it is assumed to be 0. If \code{FALSE}, by default, distances are smoothed down to \eqn{r=0}.
+  Ignored if \code{Approximate} is not 0: then, estimation always starts from \eqn{r=0}.
   }
   \item{SimulationType}{
   A string describing the null hypothesis to simulate. The null hypothesis may be
