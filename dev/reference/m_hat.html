@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
   Since <em>m</em> is a relative function, a ratio of densities is calculated, that makes the features of the estimation vanish.</p>  
 <p>Density estimation heavily relies on the bandwith.
   Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
-  The consequence is that choosing a smaller range of distances in argument <code>r</code> results in less smoothed $m$ values.
+  The consequence is that choosing a smaller range of distances in argument <code>r</code> results in less smoothed \(m\) values.
   The default values (<code>r = NULL</code>, <code>MaxRange = "ThirdW"</code>) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.</p>
     </div>
     <div class="section level2">

@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,28 +170,12 @@
 <pre><code><span class="co">## Loading required package: spatstat.core</span></code></pre>
 <pre><code><span class="co">## Loading required package: spatstat.data</span></code></pre>
 <pre><code><span class="co">## Loading required package: spatstat.geom</span></code></pre>
-<pre><code><span class="co">## Registered S3 method overwritten by 'spatstat.geom':</span>
-<span class="co">##   method     from</span>
-<span class="co">##   print.boxx cli</span></code></pre>
-<pre><code><span class="co">## spatstat.geom 2.3-1</span></code></pre>
+<pre><code><span class="co">## spatstat.geom 2.3-2</span></code></pre>
+<pre><code><span class="co">## Loading required package: spatstat.random</span></code></pre>
+<pre><code><span class="co">## spatstat.random 2.1-0</span></code></pre>
 <pre><code><span class="co">## Loading required package: nlme</span></code></pre>
 <pre><code><span class="co">## Loading required package: rpart</span></code></pre>
-<pre><code><span class="co">## spatstat.core 2.3-2</span></code></pre>
-<pre><code><span class="co">## Registered S3 methods overwritten by 'spatstat.random':</span>
-<span class="co">##   method                  from         </span>
-<span class="co">##   as.owin.rmhmodel        spatstat.core</span>
-<span class="co">##   domain.rmhmodel         spatstat.core</span>
-<span class="co">##   print.rmhcontrol        spatstat.core</span>
-<span class="co">##   print.rmhexpand         spatstat.core</span>
-<span class="co">##   print.rmhInfoList       spatstat.core</span>
-<span class="co">##   print.rmhmodel          spatstat.core</span>
-<span class="co">##   print.rmhstart          spatstat.core</span>
-<span class="co">##   print.summary.rmhexpand spatstat.core</span>
-<span class="co">##   rjitter.psp             spatstat.core</span>
-<span class="co">##   summary.rmhexpand       spatstat.core</span>
-<span class="co">##   update.rmhcontrol       spatstat.core</span>
-<span class="co">##   update.rmhstart         spatstat.core</span>
-<span class="co">##   Window.rmhmodel         spatstat.core</span></code></pre>
+<pre><code><span class="co">## spatstat.core 2.4-0</span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></code></pre></div>
@@ -269,41 +253,41 @@
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, NumberOfSimulations<span class="op">=</span><span class="fl">1000</span>, ReferenceType<span class="op">=</span><span class="st">"Biggest"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Generating 1000 simulations by evaluating expression  ...</span>
-<span class="co">## 1, 2, 3, ......10 [etd 18:27] .........20 [etd 19:09] .........</span>
-<span class="co">## 30 [etd 19:07] .........40 [etd 18:39] .........50 [etd 18:15] ........</span>
-<span class="co">## .60 [etd 18:26] .........70 [etd 18:23] .........80 [etd 18:25] .......</span>
-<span class="co">## ..90 [etd 18:12] .........100 [etd 17:54] .........110 [etd 17:48] ......</span>
-<span class="co">## ...120 [etd 17:34] .........130 [etd 17:20] .........140 [etd 17:00] .....</span>
-<span class="co">## ....150 [etd 16:44] .........160 [etd 16:29] .........170 [etd 16:16] ....</span>
-<span class="co">## .....180 [etd 16:04] .........190 [etd 15:49] .........200 [etd 15:35] ...</span>
-<span class="co">## ......210 [etd 15:21] .........220 [etd 15:08] .........230 [etd 14:51] ..</span>
-<span class="co">## .......240 [etd 14:38] .........250 [etd 14:23] .........260 [etd 14:11] .</span>
-<span class="co">## ........270 [etd 13:57] .........280 [etd 13:42] .........290</span>
-<span class="co">##  [etd 13:29] .........300 [etd 13:16] .........310 [etd 13:02] .........</span>
-<span class="co">## 320 [etd 12:50] .........330 [etd 12:36] .........340 [etd 12:23] ........</span>
-<span class="co">## .350 [etd 12:10] .........360 [etd 11:58] .........370 [etd 11:44] .......</span>
-<span class="co">## ..380 [etd 11:33] .........390 [etd 11:22] .........400 [etd 11:09] ......</span>
-<span class="co">## ...410 [etd 10:56] .........420 [etd 10:43] .........430 [etd 10:31] .....</span>
-<span class="co">## ....440 [etd 10:19] .........450 [etd 10:07] .........460 [etd 9:56] ....</span>
-<span class="co">## .....470 [etd 9:44] .........480 [etd 9:33] .........490 [etd 9:21] ...</span>
-<span class="co">## ......500 [etd 9:09] .........510 [etd 8:58] .........520 [etd 8:46] ..</span>
-<span class="co">## .......530 [etd 8:34] .........540 [etd 8:23] .........550 [etd 8:11] .</span>
-<span class="co">## ........560 [etd 8:00] .........570 [etd 7:48] .........580</span>
-<span class="co">##  [etd 7:37] .........590 [etd 7:26] .........600 [etd 7:15] .........</span>
-<span class="co">## 610 [etd 7:04] .........620 [etd 6:53] .........630 [etd 6:42] ........</span>
-<span class="co">## .640 [etd 6:31] .........650 [etd 6:20] .........660 [etd 6:09] .......</span>
-<span class="co">## ..670 [etd 5:58] .........680 [etd 5:47] .........690 [etd 5:36] ......</span>
-<span class="co">## ...700 [etd 5:26] .........710 [etd 5:15] .........720 [etd 5:04] .....</span>
-<span class="co">## ....730 [etd 4:53] .........740 [etd 4:42] .........750 [etd 4:31] ....</span>
-<span class="co">## .....760 [etd 4:20] .........770 [etd 4:09] .........780 [etd 3:58] ...</span>
-<span class="co">## ......790 [etd 3:47] .........800 [etd 3:36] .........810 [etd 3:25] ..</span>
-<span class="co">## .......820 [etd 3:14] .........830 [etd 3:03] .........840 [etd 2:52] .</span>
-<span class="co">## ........850 [etd 2:41] .........860 [etd 2:30] .........870</span>
-<span class="co">##  [etd 2:20] .........880 [etd 2:09] .........890 [etd 1:58] .........</span>
-<span class="co">## 900 [etd 1:47] .........910 [etd 1:36] .........920 [etd 1:26] ........</span>
-<span class="co">## .930 [etd 1:15] .........940 [etd 1:04] .........950 [etd 53 sec] .......</span>
-<span class="co">## ..960 [etd 43 sec] .........970 [etd 32 sec] .........980 [etd 21 sec] ......</span>
-<span class="co">## ...990 [etd 11 sec] ......... 1000.</span>
+<span class="co">## 1, 2, 3, ......10 [etd 15:04] .........20 [etd 14:55] .........</span>
+<span class="co">## 30 [etd 14:44] .........40 [etd 14:35] .........50 [etd 14:25] ........</span>
+<span class="co">## .60 [etd 14:14] .........70 [etd 14:04] .........80 [etd 13:53] .......</span>
+<span class="co">## ..90 [etd 13:44] .........100 [etd 13:35] .........110 [etd 13:27] ......</span>
+<span class="co">## ...120 [etd 13:19] .........130 [etd 13:10] .........140 [etd 13:02] .....</span>
+<span class="co">## ....150 [etd 12:53] .........160 [etd 12:44] .........170 [etd 12:35] ....</span>
+<span class="co">## .....180 [etd 12:26] .........190 [etd 12:17] .........200 [etd 12:08] ...</span>
+<span class="co">## ......210 [etd 11:59] .........220 [etd 11:50] .........230 [etd 11:41] ..</span>
+<span class="co">## .......240 [etd 11:32] .........250 [etd 11:23] .........260 [etd 11:14] .</span>
+<span class="co">## ........270 [etd 11:05] .........280 [etd 10:56] .........290</span>
+<span class="co">##  [etd 10:47] .........300 [etd 10:38] .........310 [etd 10:29] .........</span>
+<span class="co">## 320 [etd 10:20] .........330 [etd 10:11] .........340 [etd 10:02] ........</span>
+<span class="co">## .350 [etd 9:53] .........360 [etd 9:45] .........370 [etd 9:35] .......</span>
+<span class="co">## ..380 [etd 9:26] .........390 [etd 9:17] .........400 [etd 9:08] ......</span>
+<span class="co">## ...410 [etd 8:59] .........420 [etd 8:50] .........430 [etd 8:41] .....</span>
+<span class="co">## ....440 [etd 8:32] .........450 [etd 8:23] .........460 [etd 8:14] ....</span>
+<span class="co">## .....470 [etd 8:05] .........480 [etd 7:56] .........490 [etd 7:47] ...</span>
+<span class="co">## ......500 [etd 7:38] .........510 [etd 7:28] .........520 [etd 7:19] ..</span>
+<span class="co">## .......530 [etd 7:10] .........540 [etd 7:01] .........550 [etd 6:52] .</span>
+<span class="co">## ........560 [etd 6:43] .........570 [etd 6:33] .........580</span>
+<span class="co">##  [etd 6:24] .........590 [etd 6:15] .........600 [etd 6:06] .........</span>
+<span class="co">## 610 [etd 5:57] .........620 [etd 5:48] .........630 [etd 5:39] ........</span>
+<span class="co">## .640 [etd 5:30] .........650 [etd 5:21] .........660 [etd 5:11] .......</span>
+<span class="co">## ..670 [etd 5:02] .........680 [etd 4:53] .........690 [etd 4:44] ......</span>
+<span class="co">## ...700 [etd 4:35] .........710 [etd 4:26] .........720 [etd 4:16] .....</span>
+<span class="co">## ....730 [etd 4:07] .........740 [etd 3:58] .........750 [etd 3:49] ....</span>
+<span class="co">## .....760 [etd 3:50] .........770 [etd 3:47] .........780 [etd 3:37] ...</span>
+<span class="co">## ......790 [etd 3:27] .........800 [etd 3:17] .........810 [etd 3:07] ..</span>
+<span class="co">## .......820 [etd 2:57] .........830 [etd 2:47] .........840 [etd 2:39] .</span>
+<span class="co">## ........850 [etd 2:29] .........860 [etd 2:19] .........870</span>
+<span class="co">##  [etd 2:09] .........880 [etd 1:59] .........890 [etd 1:49] .........</span>
+<span class="co">## 900 [etd 1:39] .........910 [etd 1:29] .........920 [etd 1:19] ........</span>
+<span class="co">## .930 [etd 1:09] .........940 [etd 59 sec] .........950 [etd 49 sec] .......</span>
+<span class="co">## ..960 [etd 39 sec] .........970 [etd 30 sec] .........980 [etd 20 sec] ......</span>
+<span class="co">## ...990 [etd 10 sec] ......... 1000.</span>
 <span class="co">## </span>
 <span class="co">## Done.</span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">

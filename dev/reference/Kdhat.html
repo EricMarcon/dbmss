@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-8.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,8 +90,8 @@
   "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as <code>ReferenceType</code> and <code>NeighborType</code>, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if <code>Approximate</code> is not 0.
   if <code>X</code> is a <code><a href="Dtable.html">Dtable</a></code> object, the diameter of the window is taken as the max distance between points.</p></dd>
 <dt>StartFromMinR</dt>
-<dd><p>Logical; if <code>TRUE</code>, points are assumed to be further from each other than the minimum observed distance, So <em>Kd</em> will not be estimated below it: it is assumed to be 0. If <code>FALSE</code>, distances are smoothed down to $r=0$.
-  Ignored if <code>Approximate</code> is not 0: then, estimation always starts from $r=0$.</p></dd>
+<dd><p>Logical; if <code>TRUE</code>, points are assumed to be further from each other than the minimum observed distance, So <em>Kd</em> will not be estimated below it: it is assumed to be 0. If <code>FALSE</code>, distances are smoothed down to \(r=0\).
+  Ignored if <code>Approximate</code> is not 0: then, estimation always starts from \(r=0\).</p></dd>
 <dt>CheckArguments</dt>
 <dd><p>Logical; if <code>TRUE</code>, the function arguments are verified. Should be set to <code>FALSE</code> to save time in simulations for example, when the arguments have been checked elsewhere.</p></dd>
 </dl></div>
@@ -112,7 +112,7 @@
   Reflection is used to estimate density close to the lowest distance, that is the minimum observed distance (if <code>StartFromMinR</code> is <code>TRUE</code>) or 0: all distances below 4 times the estimation kernel bandwith apart from the lowest distance are duplicated (symmetrically with respect to the lowest distance) to avoid edge effects (underestimation of the density close to the lowest distance).</p>  
 <p>Density estimation heavily relies on the bandwith.
   Starting from version 2.7, the optimal bandwith is computed from the distribution of distances between pairs of points up to twice the maximum distance considered.
-  The consequence is that choosing a smaller range of distances in argument <code>r</code> results in less smoothed $Kd$ values.
+  The consequence is that choosing a smaller range of distances in argument <code>r</code> results in less smoothed \(Kd\) values.
   The default values (<code>r = NULL</code>, <code>MaxRange = "ThirdW"</code>) are such that almost all the pairs of points (except those more than 2/3 of the window diameter apart) are taken into account to determine the bandwith.</p>
     </div>
     <div class="section level2">
