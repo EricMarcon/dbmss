@@ -47,7 +47,7 @@ sticker_autoplot <- function(object, ..., ObsColor = "black", H0Color = "red", S
   
   # Confidence envelope
   thePlot <- ggplot2::ggplot() +
-    ggplot2::geom_ribbon(ggplot2::aes_(x=~r, ymin=~lo, ymax=~hi, fill=ShadeColor), data=object, alpha=alpha) +
+    ggplot2::geom_ribbon(ggplot2::aes(x=.data$r, ymin=.data$lo, ymax=.data$hi, fill=ShadeColor), data=object, alpha=alpha) +
     ggplot2::labs(title=main, x=xlab, y=ylab) + 
     ggplot2::scale_fill_identity(name=LegendLabels[3], guide="legend", labels=paste(attr(object, "einfo")$Alpha*100, "%", sep="")) 
   
@@ -62,7 +62,7 @@ sticker_autoplot <- function(object, ..., ObsColor = "black", H0Color = "red", S
   
   # Add lines to the plot
   thePlot <- thePlot +
-    ggplot2::geom_line(ggplot2::aes_(x=~r, y=~value, colour=~variable, linetype=~variable, size=0.75), data=Lines) +
+    ggplot2::geom_line(ggplot2::aes(x=.data$r, y=.data$value, colour=.data$variable, linetype=.data$variable, size=0.75), data=Lines) +
     # Merged legend if name and labels are identical
     ggplot2::scale_colour_manual(name=ylab,  values=c(ObsColor, H0Color), labels=LegendLabels[1:2]) +
     ggplot2::scale_linetype_manual(name=ylab,  values=c(1, 2), labels=LegendLabels[1:2])

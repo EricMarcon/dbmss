@@ -6,6 +6,7 @@ importFrom("spatstat.random", "rlabel", "rshift", "runifpoint")
 import("Rcpp")
 importFrom("ggplot2", "autoplot")
 importFrom("RcppParallel", "RcppParallelLibs")
+importFrom("rlang", ".data")
 
 export("as.Dtable")
 export("as.wmppp")

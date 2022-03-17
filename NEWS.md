@@ -1,8 +1,9 @@
-# dbmss 2.7-8.9001
+# dbmss 2.7-8.9002
 
 ## Improvements
 
 - dbmss no longer depends on ggplot2.
+- Deprecated `aes_(x=~var)` aesthetics in ggplots replaced by `aes(x=.data$var)`.
 - documentation improvements.
 
 

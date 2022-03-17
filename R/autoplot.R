@@ -90,7 +90,7 @@ autoplot.fv <- function(object, fmla, ...,
       CI <- attr(object, "einfo")$Alpha*100
     }
     thePlot <- thePlot +
-      ggplot2::geom_ribbon(data=alldata, ggplot2::aes_(x=~x, ymin=~lo, ymax=~hi, fill=ShadeColor), alpha=alpha) +
+      ggplot2::geom_ribbon(data=alldata, ggplot2::aes(x=.data$x, ymin=.data$lo, ymax=.data$hi, fill=ShadeColor), alpha=alpha) +
       ggplot2::scale_fill_identity(name=LegendLabels[3], guide="legend", labels=paste(CI, "%", sep=""))
   }
 
@@ -136,7 +136,7 @@ autoplot.fv <- function(object, fmla, ...,
 
   # Add lines to the plot
   thePlot <- thePlot +
-    ggplot2::geom_line(data=Lines, ggplot2::aes_(x=~x, y=~value, colour=~variable, linetype=~variable)) +
+    ggplot2::geom_line(data=Lines, ggplot2::aes(x=.data$x, y=.data$value, colour=.data$variable, linetype=.data$variable)) +
     # Merged legend if name and labels are identical
     ggplot2::scale_colour_manual(name=ylab, values=col) +
     ggplot2::scale_linetype_manual(name=ylab, values=lty)
@@ -168,7 +168,7 @@ autoplot.wmppp <- function(object, ..., show.window = TRUE,
 
   # Plot the points
   thePlot <- ggplot2::ggplot(thePoints) +
-    ggplot2::geom_point(ggplot2::aes_(x=~x, y=~y, size=~PointWeight, color=~PointType), alpha=alpha) + 
+    ggplot2::geom_point(ggplot2::aes(x=.data$x, y=.data$y, size=.data$PointWeight, color=.data$PointType), alpha=alpha) + 
     ggplot2::coord_fixed() + ggplot2::scale_color_brewer(palette = palette) +
     ggplot2::labs(title=main, x=xlab, y=ylab, size=labelSize, color=labelColor)
   
@@ -180,7 +180,7 @@ autoplot.wmppp <- function(object, ..., show.window = TRUE,
                                  ymin=object$window$yrange[1],
                                  ymax=object$window$yrange[2])
       thePlot <- thePlot +
-        ggplot2::geom_rect(theRectangle, mapping=ggplot2::aes_(xmin=~xmin, xmax=~xmax, ymin=~ymin, ymax=~ymax),
+        ggplot2::geom_rect(theRectangle, mapping=ggplot2::aes(xmin=.data$xmin, xmax=.data$xmax, ymin=.data$ymin, ymax=.data$ymax),
                            color=windowColor, fill=windowFill, alpha=0)
     }
     if (object$window$type == "polygonal") {
@@ -188,7 +188,7 @@ autoplot.wmppp <- function(object, ..., show.window = TRUE,
         thePolygon <- data.frame(x=polygon$x,
                                  y=polygon$y)
         thePlot <- thePlot +
-          ggplot2::geom_polygon(thePolygon, mapping=ggplot2::aes_(x=~x, y=~y),
+          ggplot2::geom_polygon(thePolygon, mapping=ggplot2::aes(x=.data$x, y=.data$y),
                              color=windowColor, fill=windowFill, alpha=0)
       }
     }
