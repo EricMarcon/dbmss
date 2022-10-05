@@ -19,6 +19,10 @@ Ktest(X, r)
 }
 \details{
   The test returns the risk to reject CSR erroneously, i.e. the p-value of the test, based on the distribution of the \emph{K} function.
+  
+  If \code{r} includes 0, it will be silently removed because no neighbor point can be found at distance 0.
+  The longer \code{r}, the more accurate the test is in theory but at the cost of computation time first, and of computation accuracy then because a matrix of size the length of \code{r} must be inverted.
+  10 values in \code{r} seems to be a reasonable choice.
 }
 \value{
   A p-value.

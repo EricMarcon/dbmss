@@ -1,3 +1,10 @@
+# dbmss 2.7-10.9000
+
+## Improvements
+
+- `Ktest()` automatically drops 0 in `r` to avoid an obcure error message.
+
+
 # dbmss 2.7-10
 
 ## Improvements

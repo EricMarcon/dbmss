@@ -7,6 +7,8 @@ Ktest <- function(X, r)
   # Verify r
   if (!is.numeric(r) && !is.vector(r)) 
     stop("r must be a numeric vector")
+  # Eliminate 0 because there is no neighbor at distance 0
+  r <- r[r != 0]
   if (length(r) < 2) 
     stop(paste("r has length", length(r), "- must be at least 2"))
   if (any(diff(r) <= 0)) 
