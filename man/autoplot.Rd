@@ -87,7 +87,7 @@
   A \code{\link{ggplot}} object.
 }
 \author{
-  Eric Marcon <Eric.Marcon@agroparistech.fr>, parts of the code from \code{spatstat.core::plot.fv}.
+  Eric Marcon <Eric.Marcon@agroparistech.fr>, parts of the code from \code{spatstat.explore::plot.fv}.
 }
 \examples{
 data(paracou16)

@@ -16,7 +16,7 @@ autoplot.fv <- function(object, fmla, ...,
                               LegendLabels = NULL)
 {
   # Formula
-  # Code adapted from spatstat.core::plot.fv
+  # Code adapted from spatstat.explore::plot.fv
   indata <- as.data.frame(object)
   # No formula
   defaultplot <- missing(fmla) || is.null(fmla)
@@ -25,7 +25,7 @@ autoplot.fv <- function(object, fmla, ...,
   # May be a string: convert it to a formula
   fmla <- stats::as.formula(fmla, env=parent.frame())
   # expand "."
-  umap <- spatstat.core::fvexprmap(object)
+  umap <- spatstat.explore::fvexprmap(object)
   fmla.expanded <- eval(substitute(substitute(fom, um), list(fom=fmla, um=umap)))
   # extract LHS and RHS of formula
   lhs <- fmla.expanded[[2]]
