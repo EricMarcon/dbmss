@@ -30,6 +30,9 @@ Imports:
   spatstat.geom, 
   spatstat.random
 Remotes: 
+  spatstat/spatstat.data
+  spatstat/spatstat.geom
+  spatstat/spatstat.random
   spatstat/spatstat.explore
 Suggests: 
   testthat, 
