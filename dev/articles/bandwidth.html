@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-10.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.7-10.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,16 +107,15 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss" class="external-link">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.core</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 2.4-0</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.0-3</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 2.2-0</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.0-0</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: rpart</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.core 2.4-4</span></span></code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## spatstat.explore 3.0-0</span></span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sheather and Jones bandwidth in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># Original bandwith in red</span></span>
@@ -127,12 +126,12 @@
 <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h2>
 <p>The data used by those algorithms is the set of distances between pairs of points. In <span class="math inline">\(dbmss\)</span>, only pairs of points less than twice the maximum value of <span class="math inline">\(r\)</span> are considered: very distant pairs of points are of little interest to estimate functions based on the number of neighbors of points. With the default arguments, almost all point pairs are included, except for the most distant ones, i.e. more than two thirds of the window’s diameter apart. If the user wants to focus on small distances, i.e. choose <span class="math inline">\(r\)</span> much less than the default value, then the most distant point pairs (more than twice the max value of <span class="math inline">\(r\)</span>) will be ignored, resulting in a smaller bandwidth and consequently a more acute (less smoothed) estimation of the functions. The following figure shows this effect on the estimation of the <span class="math inline">\(K_d\)</span> function applied to the <code>paracou16</code> point set. The default distance range is used for the black curve. The red curve is the same function estimated up to 30 meters only, resulting into a narrower bandwith: the curve of <span class="math inline">\(K_d\)</span> is less smoothed.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, r<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">30</span> , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="st">"red"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bandwidth_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>The approximated algorithm used to calculate <span class="math inline">\(K_d\)</span> and <span class="math inline">\(m\)</span> retains point pairs up to twice the max value of <span class="math inline">\(r\)</span> and rounds their distances in 2048 (this number can be increased by the <code>Approximate</code> argument) equally-spaced values. This set of distances (actually, only those corresponding to at least a pair of points) is used to choose the bandwidth. Simulations show that the approximated algorithm yields bandwidths very similar to those obtained by exact computation.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exact computation in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
 <span><span class="co"># Approximated computation in green</span></span>
@@ -143,7 +142,7 @@
 <h2 id="fine-tuning">Fine tuning<a class="anchor" aria-label="anchor" href="#fine-tuning"></a>
 </h2>
 <p>The users can choose to multiply the bandwidth by argument <code>Adjust</code>. Values over 1 will smooth the density estimation; under 1, they will sharpen it.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default bandwith in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
 <span><span class="co"># Adjusted (half) bandwidth in red</span></span>
