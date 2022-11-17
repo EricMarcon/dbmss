@@ -62,7 +62,7 @@ sticker_autoplot <- function(object, ..., ObsColor = "black", H0Color = "red", S
   
   # Add lines to the plot
   thePlot <- thePlot +
-    ggplot2::geom_line(ggplot2::aes(x=.data$r, y=.data$value, colour=.data$variable, linetype=.data$variable, size=0.75), data=Lines) +
+    ggplot2::geom_line(ggplot2::aes(x=.data$r, y=.data$value, colour=.data$variable, linetype=.data$variable, linewidth=0.75), data=Lines) +
     # Merged legend if name and labels are identical
     ggplot2::scale_colour_manual(name=ylab,  values=c(ObsColor, H0Color), labels=LegendLabels[1:2]) +
     ggplot2::scale_linetype_manual(name=ylab,  values=c(1, 2), labels=LegendLabels[1:2])
