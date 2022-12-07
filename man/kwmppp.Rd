@@ -47,6 +47,9 @@
   \item{Palette}{
     The color palette of the map.
   }
+  \item{SuppressMargins }{
+    If \code{TRUE}, the margins around the map are suppressed.
+  }
   \item{Contournlevels}{
     The number of levels of contours.
   }
