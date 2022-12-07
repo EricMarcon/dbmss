@@ -1,7 +1,7 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.7-11
+Version: 2.7-11.9000
 Authors@R: c(
   person("Eric", "Marcon", email="eric.marcon@agroparistech.fr", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
   person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0002-4325-6044")),
@@ -19,14 +19,19 @@ Depends:
   Rcpp (>= 0.12.14),
   spatstat.explore
 Imports: 
-  cubature, 
+  automap,
+  cubature,
+  dplyr,
   ggplot2, 
   RcppParallel, 
   reshape2, 
   rlang, 
   spatstat.utils, 
   stats, 
-  tibble, 
+  tibble,
+  tidyr,
+  tidyselect,
+  sp,
   spatstat.geom, 
   spatstat.random
 Suggests: 

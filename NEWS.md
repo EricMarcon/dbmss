@@ -1,3 +1,11 @@
+# dbmss 2.7-11.9000
+
+## Significant user-visible changes
+
+- `kwmppp()` creates a krigged, weighted, marked, planar point pattern to map individual distance-based statistics.
+- `plot.kwmppp()` (called as `plot()`) allows plotting `kwmppp` objects.
+
+
 # dbmss 2.7-11
 
 ## Improvements
@@ -215,6 +223,7 @@
 # dbmss 2.2-0
 
 ## Significant user-visible changes
+
 - `m` function added.
 - Default value `Controls=NULL` for `Dhat`: controls are by default all points except for cases.
 - `Kd` and `m` are both computed by default up to one third of the diameter of the window, other options are added.
