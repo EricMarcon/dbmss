@@ -26,7 +26,7 @@
   An object to be plotted.
   }
   \item{fmla}{
-  An R language formula determining which variables or expressions are plotted. Either a formula object, or a string that can be parsed as a formula. See \code{\link[spatstat.core]{plot.fv}}.
+  An R language formula determining which variables or expressions are plotted. Either a formula object, or a string that can be parsed as a formula. See \code{\link[spatstat.explore]{plot.fv}}.
   }
   \item{\dots}{
   Extra arguments, currently unused.
