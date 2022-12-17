@@ -11,7 +11,8 @@ KdEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType,
            NeighborType = ReferenceType, Weighted = FALSE, Original = TRUE, 
            Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1, MaxRange = "ThirdW", 
            StartFromMinR = FALSE,
-           SimulationType = "RandomLocation", Global = FALSE)
+           SimulationType = "RandomLocation", Global = FALSE, 
+           verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -61,7 +62,10 @@ KdEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType,
   "\emph{PopulationIndependence}": keeps reference points unchanged, randomizes other point locations.
   }
   \item{Global}{
-  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{

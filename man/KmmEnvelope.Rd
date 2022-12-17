@@ -8,7 +8,7 @@
 }
 \usage{
 KmmEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "",
-            Global = FALSE)
+            Global = FALSE, verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -28,6 +28,9 @@ KmmEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType 
   }
   \item{Global}{
   Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{

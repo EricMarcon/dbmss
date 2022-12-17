@@ -10,7 +10,8 @@
 mEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
           ReferenceType, NeighborType = ReferenceType, CaseControl = FALSE,
           Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1, 
-          MaxRange = "ThirdW", SimulationType = "RandomLocation", Global = FALSE)
+          MaxRange = "ThirdW", SimulationType = "RandomLocation", Global = FALSE,
+          verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -56,6 +57,9 @@ mEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   }
   \item{Global}{
   Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{

@@ -9,7 +9,8 @@
 \usage{
 KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
           ReferenceType = "", NeighborType = ReferenceType, 
-          SimulationType = "RandomPosition", Precision = 0, Global = FALSE)
+          SimulationType = "RandomPosition", Precision = 0, Global = FALSE,
+          verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -40,7 +41,10 @@ KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   Accuracy of point coordinates, measured as a part of distance unit. See \code{\link{rRandomPositionK}}. Default is 0 for no approximation.
   }
   \item{Global}{
-  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{

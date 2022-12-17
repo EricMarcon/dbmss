@@ -1,5 +1,6 @@
 KmmEnvelope <-
-function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "", Global = FALSE) {
+function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "", 
+         Global = FALSE, verbose = interactive()) {
 
   CheckdbmssArguments()
   
@@ -10,7 +11,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "
   Envelope <- envelope(X, fun=Kmmhat, nsim=NumberOfSimulations, nrank=1,
                        r=r, ReferenceType=ReferenceType, 
                        CheckArguments = FALSE,
-                       simulate=SimulatedPP, savefuns=TRUE
+                       simulate=SimulatedPP, verbose=verbose, savefuns=TRUE
                        )
   attr(Envelope, "einfo")$H0 <- "Random Location"
   

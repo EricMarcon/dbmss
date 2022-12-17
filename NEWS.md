@@ -1,9 +1,10 @@
-# dbmss 2.7-11.9001
+# dbmss 2.7-11.9002
 
 ## Significant user-visible changes
 
 - `kwmppp()` creates a krigged, weighted, marked, planar point pattern to map individual distance-based statistics.
 - `plot.kwmppp()` (called as `plot()`) allows plotting `kwmppp` objects.
+- argument `verbose` in all envelope functions allows to hide the progress of simulations.
 
 
 # dbmss 2.7-11

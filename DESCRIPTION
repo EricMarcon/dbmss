@@ -1,7 +1,7 @@
 Package: dbmss
 Type: Package
 Title: Distance-Based Measures of Spatial Structures
-Version: 2.7-11.9001
+Version: 2.7-11.9002
 Authors@R: c(
   person("Eric", "Marcon", email="eric.marcon@agroparistech.fr", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
   person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0002-4325-6044")),

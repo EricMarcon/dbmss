@@ -1,6 +1,7 @@
 gEnvelope <-
 function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-         ReferenceType = "", NeighborType = "", SimulationType = "RandomPosition", Global = FALSE) {
+         ReferenceType = "", NeighborType = "", SimulationType = "RandomPosition", 
+         Global = FALSE, verbose = interactive()) {
 
   CheckdbmssArguments()
   
@@ -16,7 +17,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   Envelope <- envelope(X, fun=ghat, nsim=NumberOfSimulations, nrank=1,
                        r=r, ReferenceType=ReferenceType, NeighborType=NeighborType, 
                        CheckArguments = FALSE,
-                       simulate=SimulatedPP, savefuns=TRUE
+                       simulate=SimulatedPP, verbose=verbose, savefuns=TRUE
                        )
   attr(Envelope, "einfo")$H0 <- switch (SimulationType,
                                         RandomPosition = "Random Position",

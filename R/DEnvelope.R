@@ -1,6 +1,6 @@
 DEnvelope <-
 function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-         Cases, Controls, Intertype = FALSE, Global = FALSE) {
+         Cases, Controls, Intertype = FALSE, Global = FALSE, verbose = interactive()) {
 
   CheckdbmssArguments()
   
@@ -11,7 +11,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   Envelope <- envelope(X, fun=Dhat, nsim=NumberOfSimulations, nrank=1,
                        r=r, Cases=Cases, Controls=Controls, Intertype=Intertype, 
                        CheckArguments = FALSE,
-                       simulate=SimulatedPP, savefuns=TRUE
+                       simulate=SimulatedPP, verbose=verbose, savefuns=TRUE
                        )
   attr(Envelope, "einfo")$H0 <- "Random Location"
   

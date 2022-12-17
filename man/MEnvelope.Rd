@@ -9,7 +9,8 @@
 \usage{
 MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
           ReferenceType, NeighborType = ReferenceType, 
-          CaseControl = FALSE, SimulationType = "RandomLocation", Global = FALSE)
+          CaseControl = FALSE, SimulationType = "RandomLocation", Global = FALSE,
+          verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -40,7 +41,10 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   "\emph{PopulationIndependence}": keeps reference points unchanged, randomizes other point locations.
   }
   \item{Global}{
-  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{

@@ -2,7 +2,8 @@ mEnvelope <-
 function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
          ReferenceType, NeighborType = ReferenceType, CaseControl = FALSE, 
          Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1, 
-         MaxRange = "ThirdW", SimulationType = "RandomLocation", Global = FALSE) {
+         MaxRange = "ThirdW", SimulationType = "RandomLocation", Global = FALSE,
+         verbose = interactive()) {
   
   CheckdbmssArguments()
   
@@ -20,7 +21,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
                        CaseControl=CaseControl, Original = Original, Approximate = Approximate, 
                        Adjust=Adjust, MaxRange=MaxRange, 
                        CheckArguments = FALSE,
-                       simulate=SimulatedPP, savefuns=TRUE
+                       simulate=SimulatedPP, verbose=verbose, savefuns=TRUE
                       )
   attr(Envelope, "einfo")$H0 <- switch (SimulationType,
                                         RandomLocation = "Random Location",

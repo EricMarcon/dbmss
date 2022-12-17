@@ -1,7 +1,8 @@
 LmmEnvelope <-
-function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "", Global = FALSE) {
+function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, ReferenceType = "", 
+         Global = FALSE, verbose = interactive()) {
   # Calculate the envelope of Kmm
-  Envelope <- KmmEnvelope(X, r, NumberOfSimulations, Alpha, ReferenceType, Global)
+  Envelope <- KmmEnvelope(X, r, NumberOfSimulations, Alpha, ReferenceType, Global, verbose)
   # Transform K to L
   Columns <- names(Envelope)[-1]
   for(i in Columns) {

@@ -8,7 +8,8 @@
 }
 \usage{
 DEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-          Cases, Controls, Intertype = FALSE, Global = FALSE)
+          Cases, Controls, Intertype = FALSE, Global = FALSE,
+          verbose = interactive())
 }
 \arguments{
   \item{X}{
@@ -33,7 +34,10 @@ DEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   Logical; if \code{TRUE}, \emph{D} is computed as \emph{Di} in Marcon and Puech (2012). 
   }
   \item{Global}{
-  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
 }
 \details{
