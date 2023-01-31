@@ -18,24 +18,15 @@ parallelCountNbdCC(r, x, y, Weight, IsReferenceType, IsNeighborType)
 parallelCountNbdm(x, y, ReferencePoints)
 parallelCountNbdDt(r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
 parallelCountNbdDtCC(r, Dmatrix, Weight, IsReferenceType, IsNeighborType)
-DistKd(Rx, Ry, RPointWeight, RWeight, RDist, RIsReferenceType, RIsNeighborType)
-CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType)
+DistKd(x, y, PointWeight, Weight, Dist, IsReferenceType, IsNeighborType)
+CountNbdKd(r, x, y, Weight, Nbd, IsReferenceType, IsNeighborType)
 }
 \arguments{
-  \item{Rr}{
-  A vector of distances.
-  }
   \item{r}{
   A vector of distances.
   }
-  \item{Rx}{
-  A vector of \emph{x} coordinates.
-  }
   \item{x}{
   A vector of \emph{x} coordinates.
-  }
-  \item{Ry}{
-  A vector of \emph{y} coordinates.
   }
   \item{y}{
   A vector of \emph{y} coordinates.
@@ -43,10 +34,7 @@ CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType)
   \item{Dmatrix}{
   A matrix of distances.
   }
-  \item{RPointWeight}{
-  A vector of point weights.
-  }
-  \item{RWeight}{
+  \item{PointWeight}{
   A vector of point weights.
   }
   \item{Weight}{
@@ -55,20 +43,14 @@ CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType)
   \item{ReferencePoints}{
   A vector of pont indices.
   }
-  \item{RNbd}{
+  \item{Nbd}{
   A matrix to store the weight of neighbors.
   }
-  \item{RDist}{
+  \item{Dist}{
   A vector of point-pair distances.
-  }
-  \item{RIsReferenceType}{
-  A boolean vector to recognize reference points.
   }
   \item{IsReferenceType}{
   A boolean vector to recognize reference points.
-  }
-  \item{RIsNeighborType}{
-  A boolean vector to recognize neighbor points.
   }
   \item{IsNeighborType}{
   A boolean vector to recognize neighbor points.
