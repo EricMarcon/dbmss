@@ -3,23 +3,22 @@
 using namespace Rcpp;
 
 // Kd
-// [[Rcpp::export]]
-void DistKd(SEXP Rx, SEXP Ry, SEXP RPointWeight, SEXP RWeight, SEXP RDist, SEXP RIsReferenceType, SEXP RIsNeighborType) {
 // Fill a distance vector between each (reference point, neighbor point) pair for Kd
 // If weighted, also fill a similar vector with the product of point Weights
-
-  // x, y coordinates of points
-  NumericVector x(Rx);
-  NumericVector y(Ry);
-  // Point weights
-  NumericVector PointWeight(RPointWeight);
-  // A vector for weights of point pairs
-  NumericVector Weight(RWeight);
-  // A vector for distances between point pairs
-  NumericVector Dist(RDist);
-  // Boolean vectors describing reference and neighbor points
-  IntegerVector IsReferenceType(RIsReferenceType);
-  IntegerVector IsNeighborType(RIsNeighborType);
+// x, y: x, y coordinates of points
+// PointWeight: Point weights
+// Weight: A vector for weights of point pairs
+// Dist: A vector for distances between point pairs
+// IsReferenceType, IsNeighborType: Boolean vectors describing reference and neighbor points
+// [[Rcpp::export]]
+void DistKd(
+    NumericVector x, 
+    NumericVector y, 
+    NumericVector PointWeight, 
+    NumericVector Weight, 
+    NumericVector Dist, 
+    IntegerVector IsReferenceType, 
+    IntegerVector IsNeighborType) {
 
   // Kd is weighted if a vector has been passed by R. Else, a single numeric value has been passed.
   bool Weighted = (Weight.length() > 1);
@@ -46,26 +45,25 @@ void DistKd(SEXP Rx, SEXP Ry, SEXP RPointWeight, SEXP RWeight, SEXP RDist, SEXP 
 }
 
 // Kd, approximated
-// [[Rcpp::export]]
-void CountNbdKd(SEXP Rr, SEXP Rx, SEXP Ry, SEXP RWeight, SEXP RNbd, SEXP RIsReferenceType, SEXP RIsNeighborType) {
 // Count the number of neighbors around each point for Kd, same as CountNbd but 
-   // consider neighbors of interest only
-   // do no attribute neighbors to each point, mix them
+// - consider neighbors of interest only.
+// - do no attribute neighbors to each point, mix them.
 // Only ReferenceType points are considered. 
 // The weights of NeighborType points are counted.
-
-  //Distances
-  NumericVector r(Rr);
-  // x, y coordinates of points
-  NumericVector x(Rx);
-  NumericVector y(Ry);
-  // Point weights
-  NumericVector Weight(RWeight);
-  // Matrix (single row) counting the number of neighbors. Modified by this routine.
-  NumericMatrix Nbd(RNbd);
-  // Boolean vectors describing reference and neighbor points
-  IntegerVector IsReferenceType(RIsReferenceType);
-  IntegerVector IsNeighborType(RIsNeighborType);
+// r: Distances
+// x, y: x, y coordinates of points
+// Weight: Point weights
+// Nbd: Matrix (single row) counting the number of neighbors. Modified by this routine.
+// IsReferenceType, IsNeighborType: Boolean vectors describing reference and neighbor points
+// [[Rcpp::export]]
+void CountNbdKd(
+    NumericVector r, 
+    NumericVector x, 
+    NumericVector y, 
+    NumericVector Weight, 
+    NumericMatrix Nbd, 
+    IntegerVector IsReferenceType, 
+    IntegerVector IsNeighborType) {
 
   double Distance2, dx, dy;
   double Nr = r.length();
@@ -154,11 +152,15 @@ struct CountNbdWrkr : public Worker
   RMatrix<double> RNbd;
   
   // constructor
-  CountNbdWrkr(const NumericVector r2, 
-               const NumericVector x, const NumericVector y, const NumericVector Weight, 
-               const LogicalVector IsReferenceType, const LogicalVector IsNeighborType,
-               NumericMatrix Nbd) 
-    : r2(r2), Rx(x), Ry(y), RWeight(Weight), RIsReferenceType(IsReferenceType), RIsNeighborType(IsNeighborType), RNbd(Nbd) {}
+  CountNbdWrkr(
+    const NumericVector r2, 
+    const NumericVector x, 
+    const NumericVector y, 
+    const NumericVector Weight, 
+    const LogicalVector IsReferenceType, 
+    const LogicalVector IsNeighborType,
+    NumericMatrix Nbd
+  ): r2(r2), Rx(x), Ry(y), RWeight(Weight), RIsReferenceType(IsReferenceType), RIsNeighborType(IsNeighborType), RNbd(Nbd) {}
 
   // count neighbors
   void operator()(std::size_t begin, std::size_t end) {

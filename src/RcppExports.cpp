@@ -11,34 +11,34 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // DistKd
-void DistKd(SEXP Rx, SEXP Ry, SEXP RPointWeight, SEXP RWeight, SEXP RDist, SEXP RIsReferenceType, SEXP RIsNeighborType);
-RcppExport SEXP _dbmss_DistKd(SEXP RxSEXP, SEXP RySEXP, SEXP RPointWeightSEXP, SEXP RWeightSEXP, SEXP RDistSEXP, SEXP RIsReferenceTypeSEXP, SEXP RIsNeighborTypeSEXP) {
+void DistKd(NumericVector x, NumericVector y, NumericVector PointWeight, NumericVector Weight, NumericVector Dist, IntegerVector IsReferenceType, IntegerVector IsNeighborType);
+RcppExport SEXP _dbmss_DistKd(SEXP xSEXP, SEXP ySEXP, SEXP PointWeightSEXP, SEXP WeightSEXP, SEXP DistSEXP, SEXP IsReferenceTypeSEXP, SEXP IsNeighborTypeSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type Rx(RxSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type Ry(RySEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RPointWeight(RPointWeightSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RWeight(RWeightSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RDist(RDistSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RIsReferenceType(RIsReferenceTypeSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RIsNeighborType(RIsNeighborTypeSEXP);
-    DistKd(Rx, Ry, RPointWeight, RWeight, RDist, RIsReferenceType, RIsNeighborType);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type PointWeight(PointWeightSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Weight(WeightSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Dist(DistSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type IsReferenceType(IsReferenceTypeSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type IsNeighborType(IsNeighborTypeSEXP);
+    DistKd(x, y, PointWeight, Weight, Dist, IsReferenceType, IsNeighborType);
     return R_NilValue;
 END_RCPP
 }
 // CountNbdKd
-void CountNbdKd(SEXP Rr, SEXP Rx, SEXP Ry, SEXP RWeight, SEXP RNbd, SEXP RIsReferenceType, SEXP RIsNeighborType);
-RcppExport SEXP _dbmss_CountNbdKd(SEXP RrSEXP, SEXP RxSEXP, SEXP RySEXP, SEXP RWeightSEXP, SEXP RNbdSEXP, SEXP RIsReferenceTypeSEXP, SEXP RIsNeighborTypeSEXP) {
+void CountNbdKd(NumericVector r, NumericVector x, NumericVector y, NumericVector Weight, NumericMatrix Nbd, IntegerVector IsReferenceType, IntegerVector IsNeighborType);
+RcppExport SEXP _dbmss_CountNbdKd(SEXP rSEXP, SEXP xSEXP, SEXP ySEXP, SEXP WeightSEXP, SEXP NbdSEXP, SEXP IsReferenceTypeSEXP, SEXP IsNeighborTypeSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type Rr(RrSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type Rx(RxSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type Ry(RySEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RWeight(RWeightSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RNbd(RNbdSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RIsReferenceType(RIsReferenceTypeSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type RIsNeighborType(RIsNeighborTypeSEXP);
-    CountNbdKd(Rr, Rx, Ry, RWeight, RNbd, RIsReferenceType, RIsNeighborType);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Weight(WeightSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type Nbd(NbdSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type IsReferenceType(IsReferenceTypeSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type IsNeighborType(IsNeighborTypeSEXP);
+    CountNbdKd(r, x, y, Weight, Nbd, IsReferenceType, IsNeighborType);
     return R_NilValue;
 END_RCPP
 }
