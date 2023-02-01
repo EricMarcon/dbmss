@@ -264,8 +264,7 @@ struct CountNbdDtWrkr : public Worker {
     const NumericVector Weight, 
     const LogicalVector IsReferenceType, 
     const LogicalVector IsNeighborType,
-    NumericMatrix Nbd
-    ) : 
+    NumericMatrix Nbd) : 
     r1(r1), 
     RDmatrix(Dmatrix), 
     RWeight(Weight), 
@@ -365,8 +364,7 @@ struct CountNbdCCWrkr : public Worker {
     const NumericVector Weight, 
     const LogicalVector IsReferenceType, 
     const LogicalVector IsNeighborType,
-    NumericMatrix Nbd
-    ) : 
+    NumericMatrix Nbd) : 
     r2(r2), 
     Rx(x), 
     Ry(y), 
@@ -471,8 +469,7 @@ struct CountNbdDtCCWrkr : public Worker {
     const NumericVector Weight, 
     const LogicalVector IsReferenceType,
     const LogicalVector IsNeighborType,
-    NumericMatrix Nbd
-    ) :
+    NumericMatrix Nbd) :
     r1(r1),
     RDmatrix(Dmatrix), 
     RWeight(Weight),
@@ -487,7 +484,7 @@ struct CountNbdDtCCWrkr : public Worker {
     double Npoints = RIsNeighborType.length();
     unsigned int k, c;
     // c is the index of case points in the RNbd output matrix, whilst i is their index in input data
-    c = std::count(RIsReferenceType.begin(), RIsReferenceType.begin()+begin, true);
+    c = std::count(RIsReferenceType.begin(), RIsReferenceType.begin() + begin, true);
     
     for (unsigned int i = begin; i < end; i++) {
       // Consider cases
@@ -506,7 +503,7 @@ struct CountNbdDtCCWrkr : public Worker {
                 }
                 // The neighbor is a control: add j's weight to i's neighborhood
                 if (RIsNeighborType[j]) {
-                  RNbd(c, Nr+k) += RWeight[j];
+                  RNbd(c, Nr + k) += RWeight[j];
                 }
                 // The neighbor is a case: add it to i's neighborhood
                 if (RIsReferenceType[j]) {
@@ -559,8 +556,7 @@ struct CountNbdmWrkr : public Worker {
     const NumericVector x,
     const NumericVector y,
     const IntegerVector ReferencePoints,
-    NumericMatrix Nbd
-    ) : 
+    NumericMatrix Nbd) : 
     Rx(x), 
     Ry(y), 
     RReferencePoints(ReferencePoints), 
