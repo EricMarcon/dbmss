@@ -21,7 +21,7 @@ function(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments 
   }
   # Calculate the difference (a difference between fv's yields a dataframe)
   Dvalues <- KCases-KControls
-  DEstimate <- cbind(as.data.frame(KCases)[1], Dvalues[2:3])
+  DEstimate <- cbind(as.data.frame(KCases)[1], as.data.frame(Dvalues[2:3]))
     
   # Return the values of D(r)
   D <- fv(DEstimate, argu="r", 

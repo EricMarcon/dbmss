@@ -1,8 +1,12 @@
-# dbmss 2.8-0.9002
+# dbmss 2.8-0.9003
 
 ## Improvements
 
 - C code cleaned up.
+
+## External changes
+ 
+- `Dhat()` code modified according to _spatstat.explore_ v.3.2-1 new features (thanks to Prof. Adrian Baddeley).
 
 
 # dbmss 2.8-0
