@@ -4,7 +4,7 @@
 [![](http://cranlogs.r-pkg.org/badges/grand-total/dbmss)](https://CRAN.R-project.org/package=dbmss)
 [![](http://cranlogs.r-pkg.org/badges/dbmss)](https://CRAN.R-project.org/package=dbmss)
 ![R-CMD-check](https://github.com/EricMarcon/dbmss/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/github/EricMarcon/dbmss/branch/master/graphs/badge.svg)](https://codecov.io/github/EricMarcon/dbmss)
+[![codecov](https://codecov.io/github/EricMarcon/dbmss/branch/master/graphs/badge.svg)](https://app.codecov.io/github/EricMarcon/dbmss)
 [![CodeFactor](https://www.codefactor.io/repository/github/ericmarcon/dbmss/badge)](https://www.codefactor.io/repository/github/ericmarcon/dbmss)
 
 dbmss is an R package for simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley's *K* and others) and more recent ones used by spatial economists (Duranton and Overman's *Kd*, Marcon and Puech's *M*). It relies on spatstat for some core calculation.
