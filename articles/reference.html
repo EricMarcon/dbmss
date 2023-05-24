@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,10 +79,12 @@
 
 
 
-<script src="reference_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>dbmss Package Reference</h1>
-            <h3 data-toc-skip class="subtitle">Distance-Based Measures of Spatial Structures</h3>
+            <h3 data-toc-skip class="subtitle">Distance-Based Measures
+of Spatial Structures</h3>
             
       
       <small class="dont-index">Source: <a href="https://github.com/EricMarcon/dbmss/blob/HEAD/vignettes/articles/reference.Rmd" class="external-link"><code>vignettes/articles/reference.Rmd</code></a></small>
@@ -91,89 +93,359 @@
 
     
     
-<p>The <em>dbmss</em> package allows simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, including classical ones (Ripley’s K and others) and more recent ones used by spatial economists (Duranton and Overman’s <span class="math inline">\(K_d\)</span>, Marcon and Puech’s <span class="math inline">\(M\)</span>). It relies on <em>spatstat</em> for some core calculation.</p>
+<p>The <em>dbmss</em> package allows simple computation of spatial
+statistic functions of distance to characterize the spatial structures
+of mapped objects, including classical ones (Ripley’s K and others) and
+more recent ones used by spatial economists (Duranton and Overman’s
+<span class="math inline">\(K_d\)</span>, Marcon and Puech’s <span class="math inline">\(M\)</span>). It relies on <em>spatstat</em> for
+some core calculation.</p>
 <p>This vignette contains its reference guide.</p>
-<p>Characterizing spatial distributions of objects concerns numerous researchers in various fields. Amongst many questions, ecologists have been addressing the spatial attraction between species <span class="citation">(Duncan 1991)</span> or the non-independence of the location of dead trees in a forest <span class="citation">(Haase et al. 1997)</span>. Analyzing the spatial distribution of plants, economists may be concerned by the location of new entrants <span class="citation">(Duranton and Overman 2008)</span> or by the location of shops according to the types of good sold <span class="citation">(Picone, Ridley, and Zandbergen 2009)</span>. In epidemiology, researchers want to identify the spatial distribution of sick individuals in comparison to the population <span class="citation">(Diggle and Chetwynd 1991)</span>. In these fields of research, the point process theory undoubtedly helps dealing with these questions. Exploratory statistics of point patterns widely rely on Ripley’s seminal work <span class="citation">(Ripley 1976, 1977)</span>, namely the <span class="math inline">\(K\)</span> function. A review of similar methods has been made by <span class="citation">Marcon and Puech (2017)</span> who called them distance-based measures of spatial concentration. We will write spatial structures here since both dispersion and concentration can be characterized. They are considered as novel and promising tools in spatial economics <span class="citation">(Combes, Mayer, and Thisse 2008)</span>. The traditional approach to detect localization, i.e. the degree of dissimilarity between the geographical distribution of an industry and that of a reference <span class="citation">(Hoover 1936)</span>, relies on discrete space (a country is divided in regions for example) and measures of inequality between zones, such as the classical Gini <span class="citation">(1912)</span> index or the more advanced Ellison and Glaeser <span class="citation">(1997)</span> index. This approach suffers several limitations, mainly the Modifiable Areal Unit Problem (MAUP): results depend on the way zones are delimited and on the scale of observation <span class="citation">(Openshaw and Taylor 1979)</span>. Distance-based methods have the advantage to consider space as continuous, i.e. without any zoning, allowing detecting spatial structures at all scales simultaneously and solve MAUP issues.</p>
-<p>These methods estimate the value of a function of distance to each point calculated on a planar point pattern, typically objects on a map. They all consist in counting <em>neighbors</em> (up to or exactly at the chosen distance) around each <em>reference point</em> and transform their number into a meaningful statistic. There are basically three possible approaches: just count neighbors, count neighbors per surface area or calculate the proportion of neighbors of interest among all neighbors. They define the three families of functions: absolute (how many neighbors are there?), topographic (how many neighbors per unit of area?) and relative (what is the ratio of neighbors of interest?). The function values are not the main motivation. The purpose is rather to test the point pattern against the null hypothesis that it is a realization of a known point process which does not integrate a property of interest. The basic purpose of Ripley’s <span class="math inline">\(K\)</span> is to test the observed point pattern against complete spatial randomness (CSR), i.e. a homogeneous Poisson process, to detect dependence between point locations (the null hypothesis supposes independent points) assuming homogeneity (i.e. the probability to find a point is the same everywhere). Ripley-like functions, available in the <em>dbmss</em> package, can be classified in three families:</p>
+<p>Characterizing spatial distributions of objects concerns numerous
+researchers in various fields. Amongst many questions, ecologists have
+been addressing the spatial attraction between species <span class="citation">(Duncan 1991)</span> or the non-independence of the
+location of dead trees in a forest <span class="citation">(Haase et al.
+1997)</span>. Analyzing the spatial distribution of plants, economists
+may be concerned by the location of new entrants <span class="citation">(Duranton and Overman 2008)</span> or by the location
+of shops according to the types of good sold <span class="citation">(Picone, Ridley, and Zandbergen 2009)</span>. In
+epidemiology, researchers want to identify the spatial distribution of
+sick individuals in comparison to the population <span class="citation">(Diggle and Chetwynd 1991)</span>. In these fields of
+research, the point process theory undoubtedly helps dealing with these
+questions. Exploratory statistics of point patterns widely rely on
+Ripley’s seminal work <span class="citation">(Ripley 1976, 1977)</span>,
+namely the <span class="math inline">\(K\)</span> function. A review of
+similar methods has been made by <span class="citation">Marcon and Puech
+(2017)</span> who called them distance-based measures of spatial
+concentration. We will write spatial structures here since both
+dispersion and concentration can be characterized. They are considered
+as novel and promising tools in spatial economics <span class="citation">(Combes, Mayer, and Thisse 2008)</span>. The
+traditional approach to detect localization, i.e. the degree of
+dissimilarity between the geographical distribution of an industry and
+that of a reference <span class="citation">(Hoover 1936)</span>, relies
+on discrete space (a country is divided in regions for example) and
+measures of inequality between zones, such as the classical Gini <span class="citation">(1912)</span> index or the more advanced Ellison and
+Glaeser <span class="citation">(1997)</span> index. This approach
+suffers several limitations, mainly the Modifiable Areal Unit Problem
+(MAUP): results depend on the way zones are delimited and on the scale
+of observation <span class="citation">(Openshaw and Taylor 1979)</span>.
+Distance-based methods have the advantage to consider space as
+continuous, i.e. without any zoning, allowing detecting spatial
+structures at all scales simultaneously and solve MAUP issues.</p>
+<p>These methods estimate the value of a function of distance to each
+point calculated on a planar point pattern, typically objects on a map.
+They all consist in counting <em>neighbors</em> (up to or exactly at the
+chosen distance) around each <em>reference point</em> and transform
+their number into a meaningful statistic. There are basically three
+possible approaches: just count neighbors, count neighbors per surface
+area or calculate the proportion of neighbors of interest among all
+neighbors. They define the three families of functions: absolute (how
+many neighbors are there?), topographic (how many neighbors per unit of
+area?) and relative (what is the ratio of neighbors of interest?). The
+function values are not the main motivation. The purpose is rather to
+test the point pattern against the null hypothesis that it is a
+realization of a known point process which does not integrate a property
+of interest. The basic purpose of Ripley’s <span class="math inline">\(K\)</span> is to test the observed point pattern
+against complete spatial randomness (CSR), i.e. a homogeneous Poisson
+process, to detect dependence between point locations (the null
+hypothesis supposes independent points) assuming homogeneity (i.e. the
+probability to find a point is the same everywhere). Ripley-like
+functions, available in the <em>dbmss</em> package, can be classified in
+three families:</p>
 <ul>
-<li><p>Topographic measures such as <span class="math inline">\(K\)</span> take space as their reference. They have been widely used in ecology <span class="citation">(Fortin and Dale 2005)</span>. They have been built from the point process theory and have a strong mathematical background.</p></li>
-<li><p>Relative measures such as <span class="math inline">\(M\)</span> <span class="citation">(Marcon and Puech 2010)</span> compare the structure of a point type to that of another type (they can be considered as cases and controls). They have been developed in economics, where comparing the distribution of a sector of activity to that of the whole economic activity is a classical approach <span class="citation">(Combes, Mayer, and Thisse 2008)</span>, but introduced only recently in ecology <span class="citation">(Marcon, Puech, and Traissac 2012)</span>.</p></li>
-<li><p>Absolute functions such as <span class="math inline">\(K_d\)</span> <span class="citation">(Duranton and Overman 2005)</span> have no reference at all but their value can be compared to the appropriate null hypothesis to test it.</p></li>
+<li><p>Topographic measures such as <span class="math inline">\(K\)</span> take space as their reference. They
+have been widely used in ecology <span class="citation">(Fortin and Dale
+2005)</span>. They have been built from the point process theory and
+have a strong mathematical background.</p></li>
+<li><p>Relative measures such as <span class="math inline">\(M\)</span>
+<span class="citation">(Marcon and Puech 2010)</span> compare the
+structure of a point type to that of another type (they can be
+considered as cases and controls). They have been developed in
+economics, where comparing the distribution of a sector of activity to
+that of the whole economic activity is a classical approach <span class="citation">(Combes, Mayer, and Thisse 2008)</span>, but introduced
+only recently in ecology <span class="citation">(Marcon, Puech, and
+Traissac 2012)</span>.</p></li>
+<li><p>Absolute functions such as <span class="math inline">\(K_d\)</span> <span class="citation">(Duranton and
+Overman 2005)</span> have no reference at all but their value can be
+compared to the appropriate null hypothesis to test it.</p></li>
 </ul>
-<p>Relative and absolute functions have been built from descriptive statistics of point patterns, not related to the underlying point processes, so they are seen as heuristic and ignored by the statistical literature <span class="citation">(Illian et al. 2008)</span>. Topographic functions are implemented in the <em>spatstat</em> package [<span class="citation">Baddeley and Turner (2005)</span>} but absolute and relative functions are missing. We fill this gap by proposing the <em>dbmss</em> package. It makes the computation of the whole set of distance-based methods simple for empirical researchers by introducing measures that are not available elsewhere and wrapping some topographic measures available in <em>spatstat</em> so that all can be used the same way.</p>
-<p>Estimated values of the functions must be tested against a null hypothesis. The usual empirical way to characterize a spatial structure consists in computing the appropriate function and comparing it to the quantiles of a large number of simulations of the null hypothesis to reject <span class="citation">(Kenkel 1988)</span>. We propose extended possibilities to evaluate confidence envelopes, including <em>global envelopes</em> <span class="citation">(Duranton and Overman 2005)</span>, a goodness-of-fit test <span class="citation">(Diggle 1983)</span> and an analytical test <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang 2013)</span>.</p>
-<p>Definitions of all functions and formulas for their estimation can be found in <span class="citation">Marcon and Puech (2017)</span> and are not repeated here, but they are summarized in the statistical background section. Their implementation is presented in the package content section.</p>
+<p>Relative and absolute functions have been built from descriptive
+statistics of point patterns, not related to the underlying point
+processes, so they are seen as heuristic and ignored by the statistical
+literature <span class="citation">(Illian et al. 2008)</span>.
+Topographic functions are implemented in the <em>spatstat</em> package
+[<span class="citation">Baddeley and Turner (2005)</span>} but absolute
+and relative functions are missing. We fill this gap by proposing the
+<em>dbmss</em> package. It makes the computation of the whole set of
+distance-based methods simple for empirical researchers by introducing
+measures that are not available elsewhere and wrapping some topographic
+measures available in <em>spatstat</em> so that all can be used the same
+way.</p>
+<p>Estimated values of the functions must be tested against a null
+hypothesis. The usual empirical way to characterize a spatial structure
+consists in computing the appropriate function and comparing it to the
+quantiles of a large number of simulations of the null hypothesis to
+reject <span class="citation">(Kenkel 1988)</span>. We propose extended
+possibilities to evaluate confidence envelopes, including <em>global
+envelopes</em> <span class="citation">(Duranton and Overman
+2005)</span>, a goodness-of-fit test <span class="citation">(Diggle
+1983)</span> and an analytical test <span class="citation">(Lang and
+Marcon 2013; Marcon, Traissac, and Lang 2013)</span>.</p>
+<p>Definitions of all functions and formulas for their estimation can be
+found in <span class="citation">Marcon and Puech (2017)</span> and are
+not repeated here, but they are summarized in the statistical background
+section. Their implementation is presented in the package content
+section.</p>
 <div class="section level2">
 <h2 id="rationale-and-statistical-background">Rationale and statistical background<a class="anchor" aria-label="anchor" href="#rationale-and-statistical-background"></a>
 </h2>
-<p>We consider a map of points which often represents establishments in economic geography or trees in vegetation science. These points have two marks: a type (an industrial sector, a species…) and a weight (a number of employees, a basal area…). We want to apply to this point pattern a variety of exploratory statistics which are functions of distance between points, able to test the null hypothesis of independence between point locations. These functions are either topographic, absolute or relative. They can be interpreted as the ratio between the observed number of neighbors and the expected number of neighbors if points where located independently from each other. If reference and neighbor points are of the same type, the functions are univariate, to study concentration or dispersion. They are bivariate if the types differ, to address the colocation of types. We detail this approach below.</p>
+<p>We consider a map of points which often represents establishments in
+economic geography or trees in vegetation science. These points have two
+marks: a type (an industrial sector, a species…) and a weight (a number
+of employees, a basal area…). We want to apply to this point pattern a
+variety of exploratory statistics which are functions of distance
+between points, able to test the null hypothesis of independence between
+point locations. These functions are either topographic, absolute or
+relative. They can be interpreted as the ratio between the observed
+number of neighbors and the expected number of neighbors if points where
+located independently from each other. If reference and neighbor points
+are of the same type, the functions are univariate, to study
+concentration or dispersion. They are bivariate if the types differ, to
+address the colocation of types. We detail this approach below.</p>
 <div class="section level3">
 <h3 id="topographic-homogeneous-functions">Topographic, homogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-homogeneous-functions"></a>
 </h3>
-<p>Topographic, homogeneous functions are Ripley’s <span class="math inline">\(K\)</span> and its derivative <span class="math inline">\(g\)</span>. Their null hypothesis is a Poisson homogeneous process: rejecting it means that the process underlying the observed pattern is either not homogeneous or not independent. These functions are applied when homogeneity is assumed so independence only is tested by comparing the observed values of the function to their confidence envelope under CSR. Bivariate functions are tested against the null hypothesis of random labeling (points locations are kept unchanged but marks are redistributed randomly) or population independence (the reference point type is kept unchanged, the neighbor point type is shifted) following <span class="citation">Goreaud and Pélissier (2003)</span>. The random labeling hypothesis considers that points preexist and their marks are the result of a process to test (e.g. are dead trees independently distributed in a forest?). The population independence one considers that points belong to two different populations with their own spatial structure and wants to test whether they are independent from each other.</p>
-<p>Edge effect correction is compulsory to compute topographic functions: points located close to boundaries have less neighbors because of the lack of knowledge outside the observation window. The <em>spatstat</em> package provides corrections following <span class="citation">Ripley (1988)</span>, we use them.</p>
+<p>Topographic, homogeneous functions are Ripley’s <span class="math inline">\(K\)</span> and its derivative <span class="math inline">\(g\)</span>. Their null hypothesis is a Poisson
+homogeneous process: rejecting it means that the process underlying the
+observed pattern is either not homogeneous or not independent. These
+functions are applied when homogeneity is assumed so independence only
+is tested by comparing the observed values of the function to their
+confidence envelope under CSR. Bivariate functions are tested against
+the null hypothesis of random labeling (points locations are kept
+unchanged but marks are redistributed randomly) or population
+independence (the reference point type is kept unchanged, the neighbor
+point type is shifted) following <span class="citation">Goreaud and
+Pélissier (2003)</span>. The random labeling hypothesis considers that
+points preexist and their marks are the result of a process to test
+(e.g. are dead trees independently distributed in a forest?). The
+population independence one considers that points belong to two
+different populations with their own spatial structure and wants to test
+whether they are independent from each other.</p>
+<p>Edge effect correction is compulsory to compute topographic
+functions: points located close to boundaries have less neighbors
+because of the lack of knowledge outside the observation window. The
+<em>spatstat</em> package provides corrections following <span class="citation">Ripley (1988)</span>, we use them.</p>
 </div>
 <div class="section level3">
 <h3 id="topographic-inhomogeneous-functions">Topographic, inhomogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-inhomogeneous-functions"></a>
 </h3>
-<p><span class="math inline">\(K_{inhom}\)</span> <span class="citation">(Baddeley, Møller, and Waagepetersen 2000)</span> is the generalization of <span class="math inline">\(K\)</span> to inhomogeneous processes: it tests independence of points assuming the intensity of the process is known. Empirically, it generally has to be estimated from the data after assumptions on the way to do it relying on the theoretical knowledge of the process. The null hypothesis (<em>random position</em>) is that the pattern comes from an inhomogeneous Poisson process of this intensity, which can be simulated. Applying <span class="math inline">\(K_{inhom}\)</span> to a single point type allows using the <em>random location</em> null hypothesis, following <span class="citation">Duranton and Overman (2005)</span>: observed points (with their marks) are shuffled among observed locations to test for independence. Bivariate <span class="math inline">\(K_{inhom}\)</span> null hypotheses may be random labeling or population independence as defined by <span class="citation">Marcon and Puech (2010)</span>: reference points are kept unchanged, other points are redistributed across observed locations.</p>
-<p><span class="math inline">\(K_{mm}\)</span> <span class="citation">(Penttinen 2006; Penttinen, Stoyan, and Henttonen 1992)</span> generalizes <span class="math inline">\(K\)</span> to weighted points (weights are continuous marks of the points). Its null hypothesis in <em>dbmss</em> is random location. <span class="citation">Penttinen, Stoyan, and Henttonen (1992)</span> inferred the point process from the point pattern, and used the inferred process to simulate the null hypothesis patterns. This requires advanced spatial statistics techniques and knowledge about the process that is generally not available. The random location hypothesis is a way to draw null patterns simply, but ignoring the stochasticity of the point process.</p>
-<p>The <span class="math inline">\(D\)</span> <span class="citation">(Diggle and Chetwynd 1991)</span> function compares the <span class="math inline">\(K\)</span> function of points of interest (cases) to that of other points (controls). Its null hypothesis is random labeling.</p>
+<p><span class="math inline">\(K_{inhom}\)</span> <span class="citation">(Baddeley, Møller, and Waagepetersen 2000)</span> is
+the generalization of <span class="math inline">\(K\)</span> to
+inhomogeneous processes: it tests independence of points assuming the
+intensity of the process is known. Empirically, it generally has to be
+estimated from the data after assumptions on the way to do it relying on
+the theoretical knowledge of the process. The null hypothesis
+(<em>random position</em>) is that the pattern comes from an
+inhomogeneous Poisson process of this intensity, which can be simulated.
+Applying <span class="math inline">\(K_{inhom}\)</span> to a single
+point type allows using the <em>random location</em> null hypothesis,
+following <span class="citation">Duranton and Overman (2005)</span>:
+observed points (with their marks) are shuffled among observed locations
+to test for independence. Bivariate <span class="math inline">\(K_{inhom}\)</span> null hypotheses may be random
+labeling or population independence as defined by <span class="citation">Marcon and Puech (2010)</span>: reference points are
+kept unchanged, other points are redistributed across observed
+locations.</p>
+<p><span class="math inline">\(K_{mm}\)</span> <span class="citation">(Penttinen 2006; Penttinen, Stoyan, and Henttonen
+1992)</span> generalizes <span class="math inline">\(K\)</span> to
+weighted points (weights are continuous marks of the points). Its null
+hypothesis in <em>dbmss</em> is random location. <span class="citation">Penttinen, Stoyan, and Henttonen (1992)</span> inferred
+the point process from the point pattern, and used the inferred process
+to simulate the null hypothesis patterns. This requires advanced spatial
+statistics techniques and knowledge about the process that is generally
+not available. The random location hypothesis is a way to draw null
+patterns simply, but ignoring the stochasticity of the point
+process.</p>
+<p>The <span class="math inline">\(D\)</span> <span class="citation">(Diggle and Chetwynd 1991)</span> function compares the
+<span class="math inline">\(K\)</span> function of points of interest
+(cases) to that of other points (controls). Its null hypothesis is
+random labeling.</p>
 </div>
 <div class="section level3">
 <h3 id="absolute-functions">Absolute functions<a class="anchor" aria-label="anchor" href="#absolute-functions"></a>
 </h3>
-<p>In their seminal paper, Duranton and Overman <span class="citation">(Duranton and Overman 2005)</span> study the distribution of industrial establishments in Great Britain. Every establishment, represented by a point, is characterized by its position (geographic coordinates), its sector of activity (point type) and its number of employees (point weight). The <span class="math inline">\(K_d\)</span> function <span class="citation">(Duranton and Overman 2005)</span> is the probability density to find a neighbor a given distance apart from a point of interest in a finite point process. The <span class="math inline">\(K^{emp}\)</span> function integrates the weights of points: it is the density probability to find an employee <span class="math inline">\(r\)</span> apart from an employee of interest.</p>
-<p><span class="math inline">\(K_d\)</span> and <span class="math inline">\(K^{emp}\)</span> are absolute measures since their value is not normalized by the measure of space or any other reference: for a binomial process, <span class="math inline">\(K_d\)</span> increases proportionally to <span class="math inline">\(r\)</span> if the window is large enough to ignore edge effects <span class="citation">(the probability density is proportional to the perimeter of the circle of radius <span class="math inline">\(r\)</span>, Bonneu and Thomas-Agnan 2015)</span>, then edge effects make it decrease to 0 when <span class="math inline">\(r\)</span> becomes larger than the window’s size: it is a bell-shaped curve. <span class="math inline">\(K_d\)</span> values are not interpreted but compared to the confidence envelope of the null hypothesis, which is random location. Bivariate functions null hypotheses are random labeling, following <span class="citation">Duranton and Overman (2005)</span>, i.e. point types are redistributed across locations while weights are kept unchanged, or population independence (as for <span class="math inline">\(K_{inhom}\)</span>). It is not corrected for edge effects. <span class="math inline">\(K_d\)</span> was designed to characterize the spatial structure of an economic sector, comparing it to the distribution of the whole activity. From this point of view, it has been considered as a relative function <span class="citation">Marcon and Puech (2010)</span>. We prefer to be more accurate and distinguish it from strict relative functions which directly calculate a ratio or a difference between the number of points of the type of interest and the total number of points. What makes it relative is only its null hypothesis: changing it for random location (that of univariate <span class="math inline">\(K_{inhom}\)</span>) would make univariate <span class="math inline">\(K_d\)</span> behave as a topographic function (testing independence of the distribution supposing its intensity is that of the whole activity).</p>
-<p><span class="math inline">\(K_d\)</span> is a leading tool in spatial economics. A great number of its applications can be found in the literature that confirms the recent interest for distance-based methods in spatial economics. A recent major study can be found in <span class="citation">Ellison, Glaeser, and Kerr (2010)</span>.</p>
+<p>In their seminal paper, Duranton and Overman <span class="citation">(Duranton and Overman 2005)</span> study the
+distribution of industrial establishments in Great Britain. Every
+establishment, represented by a point, is characterized by its position
+(geographic coordinates), its sector of activity (point type) and its
+number of employees (point weight). The <span class="math inline">\(K_d\)</span> function <span class="citation">(Duranton and Overman 2005)</span> is the probability
+density to find a neighbor a given distance apart from a point of
+interest in a finite point process. The <span class="math inline">\(K^{emp}\)</span> function integrates the weights
+of points: it is the density probability to find an employee <span class="math inline">\(r\)</span> apart from an employee of interest.</p>
+<p><span class="math inline">\(K_d\)</span> and <span class="math inline">\(K^{emp}\)</span> are absolute measures since their
+value is not normalized by the measure of space or any other reference:
+for a binomial process, <span class="math inline">\(K_d\)</span>
+increases proportionally to <span class="math inline">\(r\)</span> if
+the window is large enough to ignore edge effects <span class="citation">(the probability density is proportional to the
+perimeter of the circle of radius <span class="math inline">\(r\)</span>, Bonneu and Thomas-Agnan 2015)</span>,
+then edge effects make it decrease to 0 when <span class="math inline">\(r\)</span> becomes larger than the window’s size:
+it is a bell-shaped curve. <span class="math inline">\(K_d\)</span>
+values are not interpreted but compared to the confidence envelope of
+the null hypothesis, which is random location. Bivariate functions null
+hypotheses are random labeling, following <span class="citation">Duranton and Overman (2005)</span>, i.e. point types
+are redistributed across locations while weights are kept unchanged, or
+population independence (as for <span class="math inline">\(K_{inhom}\)</span>). It is not corrected for edge
+effects. <span class="math inline">\(K_d\)</span> was designed to
+characterize the spatial structure of an economic sector, comparing it
+to the distribution of the whole activity. From this point of view, it
+has been considered as a relative function <span class="citation">Marcon
+and Puech (2010)</span>. We prefer to be more accurate and distinguish
+it from strict relative functions which directly calculate a ratio or a
+difference between the number of points of the type of interest and the
+total number of points. What makes it relative is only its null
+hypothesis: changing it for random location (that of univariate <span class="math inline">\(K_{inhom}\)</span>) would make univariate <span class="math inline">\(K_d\)</span> behave as a topographic function
+(testing independence of the distribution supposing its intensity is
+that of the whole activity).</p>
+<p><span class="math inline">\(K_d\)</span> is a leading tool in spatial
+economics. A great number of its applications can be found in the
+literature that confirms the recent interest for distance-based methods
+in spatial economics. A recent major study can be found in <span class="citation">Ellison, Glaeser, and Kerr (2010)</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="relative-functions">Relative functions<a class="anchor" aria-label="anchor" href="#relative-functions"></a>
 </h3>
-<p>The univariate and bivariate <span class="math inline">\(M\)</span> function <span class="citation">(Marcon and Puech 2010)</span> are the ratio of neighbors of interest up to distance <span class="math inline">\(r\)</span> normalized by its value over the whole domain. Their null hypotheses are the same as <span class="math inline">\(K_d\)</span>’s. They do not suffer edge effects. <span class="citation">Marcon and Puech (2010)</span> show that the <span class="math inline">\(M\)</span> function respect most of the axioms generally accepted as the <em>good properties</em> to evaluate geographic concentration in spatial economics <span class="citation">(Combes and Overman 2004; Duranton and Overman 2005)</span>.</p>
-<p><span class="math inline">\(m\)</span> <span class="citation">(Lang, Marcon, and Puech 2014)</span> is the density function measuring the same ratio as <span class="math inline">\(M\)</span>, at distance <span class="math inline">\(r\)</span>.</p>
+<p>The univariate and bivariate <span class="math inline">\(M\)</span>
+function <span class="citation">(Marcon and Puech 2010)</span> are the
+ratio of neighbors of interest up to distance <span class="math inline">\(r\)</span> normalized by its value over the whole
+domain. Their null hypotheses are the same as <span class="math inline">\(K_d\)</span>’s. They do not suffer edge effects.
+<span class="citation">Marcon and Puech (2010)</span> show that the
+<span class="math inline">\(M\)</span> function respect most of the
+axioms generally accepted as the <em>good properties</em> to evaluate
+geographic concentration in spatial economics <span class="citation">(Combes and Overman 2004; Duranton and Overman
+2005)</span>.</p>
+<p><span class="math inline">\(m\)</span> <span class="citation">(Lang,
+Marcon, and Puech 2014)</span> is the density function measuring the
+same ratio as <span class="math inline">\(M\)</span>, at distance <span class="math inline">\(r\)</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="unification">Unification<a class="anchor" aria-label="anchor" href="#unification"></a>
 </h3>
-<p>Empirically, all estimators can be seen as variations in a unique framework: neighbors of each reference point are counted, their number is averaged and divided by a reference measure. Last, this average local result is divided by its reference value, calculated over the whole point pattern instead of around each point.</p>
-<p>Choosing reference and neighbor point types allows defining univariate or bivariate functions, counting neighbors up to or at a distance defines cumulative or density functions, taking an area or a number of points as the reference measure defines topographic or relative functions. These steps are detailed for two functions to clarify them: we focus on Ripley’s <span class="math inline">\(g\)</span> and Marcon and Puech’s <span class="math inline">\(M\)</span> bivariate function. See <span class="citation">Marcon and Puech (2017)</span> for a full review.</p>
-<p>Reference points are denoted <span class="math inline">\(x_i\)</span>, neighbor points are <span class="math inline">\(x_j\)</span>. For density functions such as <span class="math inline">\(g\)</span>, neighbors of <span class="math inline">\(x_i\)</span> are counted at a chosen distance <span class="math inline">\(r\)</span>:</p>
-<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\ }i\ne j}{k\left(\left\|x_i{\rm -}x_j\right\|,r\right)c\left(i,j\right)}\]</span></p>
-<p><span class="math inline">\(k(\left\|x_i{\rm -}x_j\right\|,r)\)</span> is a kernel estimator, necessary to evaluate the number of neighbors at distance <span class="math inline">\(r\)</span>, and <span class="math inline">\(c(i,j)\)</span> is an edge-effect correction (points located close to boundaries have less neighbors because of the lack of knowledge outside the observation window).</p>
-<p>To compute the bivariate <span class="math inline">\(M\)</span> function, reference points are of a particular type in a marked point pattern: <span class="math inline">\(x_i \in \mathcal{R}\)</span>, where <span class="math inline">\(\mathcal{R}\)</span> is the set of points of the reference type. Neighbors of the chosen type are denoted <span class="math inline">\(x_j \in \mathcal{N}\)</span>. In cumulative functions such as <span class="math inline">\(M\)</span>, neighbors are counted up to <span class="math inline">\(r\)</span>:</p>
-<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{x_j \in \mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le r\right)w\left(x_j\right)}\]</span></p>
-<p>Points can be weighted, <span class="math inline">\(w(x_j)\)</span> is the neighbor’s weight.</p>
+<p>Empirically, all estimators can be seen as variations in a unique
+framework: neighbors of each reference point are counted, their number
+is averaged and divided by a reference measure. Last, this average local
+result is divided by its reference value, calculated over the whole
+point pattern instead of around each point.</p>
+<p>Choosing reference and neighbor point types allows defining
+univariate or bivariate functions, counting neighbors up to or at a
+distance defines cumulative or density functions, taking an area or a
+number of points as the reference measure defines topographic or
+relative functions. These steps are detailed for two functions to
+clarify them: we focus on Ripley’s <span class="math inline">\(g\)</span> and Marcon and Puech’s <span class="math inline">\(M\)</span> bivariate function. See <span class="citation">Marcon and Puech (2017)</span> for a full review.</p>
+<p>Reference points are denoted <span class="math inline">\(x_i\)</span>, neighbor points are <span class="math inline">\(x_j\)</span>. For density functions such as <span class="math inline">\(g\)</span>, neighbors of <span class="math inline">\(x_i\)</span> are counted at a chosen distance
+<span class="math inline">\(r\)</span>:</p>
+<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\
+}i\ne j}{k\left(\left\|x_i{\rm
+-}x_j\right\|,r\right)c\left(i,j\right)}\]</span></p>
+<p><span class="math inline">\(k(\left\|x_i{\rm
+-}x_j\right\|,r)\)</span> is a kernel estimator, necessary to evaluate
+the number of neighbors at distance <span class="math inline">\(r\)</span>, and <span class="math inline">\(c(i,j)\)</span> is an edge-effect correction
+(points located close to boundaries have less neighbors because of the
+lack of knowledge outside the observation window).</p>
+<p>To compute the bivariate <span class="math inline">\(M\)</span>
+function, reference points are of a particular type in a marked point
+pattern: <span class="math inline">\(x_i \in \mathcal{R}\)</span>, where
+<span class="math inline">\(\mathcal{R}\)</span> is the set of points of
+the reference type. Neighbors of the chosen type are denoted <span class="math inline">\(x_j \in \mathcal{N}\)</span>. In cumulative
+functions such as <span class="math inline">\(M\)</span>, neighbors are
+counted up to <span class="math inline">\(r\)</span>:</p>
+<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{x_j \in
+\mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
+r\right)w\left(x_j\right)}\]</span></p>
+<p>Points can be weighted, <span class="math inline">\(w(x_j)\)</span>
+is the neighbor’s weight.</p>
 <p>The number of neighbors is averaged then. <span class="math inline">\(n\)</span> is the number of reference points:</p>
 <p><span class="math display">\[\bar{n}\left(r\right)=\frac{1}{n}\sum_i{n\left(x_i,r\right)}\]</span></p>
-<p>The average number of neighbors is compared to a reference measure. It may be a measure of space (the perimeter of the circle of radius <span class="math inline">\(r\)</span> for <span class="math inline">\(g\)</span>), defining topographic functions:</p>
+<p>The average number of neighbors is compared to a reference measure.
+It may be a measure of space (the perimeter of the circle of radius
+<span class="math inline">\(r\)</span> for <span class="math inline">\(g\)</span>), defining topographic functions:</p>
 <p><span class="math display">\[z\left(r\right)=2 \pi r\]</span></p>
-<p>It may also be the average number of neighbors of all types in a relative function such as <span class="math inline">\(M\)</span>:</p>
-<p><span class="math display">\[z\left(r\right)=\frac{1}{n}\sum_{j,i\ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le r\right)w\left(x_j\right)}\]</span></p>
-<p>Finally, <span class="math inline">\(\frac{\bar{n}(r)}{z(r)}\)</span> is compared to the same ratio computed on the whole window. For <span class="math inline">\(g\)</span>:</p>
-<p><span class="math display">\[\frac{\bar{n}_0}{z_0}{\rm =}\frac{n-1}{A}\]</span></p>
-<p><span class="math inline">\(A\)</span> is the area of the window, <span class="math inline">\(\bar{n}_0\)</span> and <span class="math inline">\(z_0\)</span> are the limit values of <span class="math inline">\(\bar{n}(r)\)</span> and <span class="math inline">\(z(r)\)</span> when <span class="math inline">\(r\)</span> gets larger than the window’s size. For <span class="math inline">\(M\)</span>, it comes:</p>
+<p>It may also be the average number of neighbors of all types in a
+relative function such as <span class="math inline">\(M\)</span>:</p>
+<p><span class="math display">\[z\left(r\right)=\frac{1}{n}\sum_{j,i\ne
+j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
+r\right)w\left(x_j\right)}\]</span></p>
+<p>Finally, <span class="math inline">\(\frac{\bar{n}(r)}{z(r)}\)</span>
+is compared to the same ratio computed on the whole window. For <span class="math inline">\(g\)</span>:</p>
+<p><span class="math display">\[\frac{\bar{n}_0}{z_0}{\rm
+=}\frac{n-1}{A}\]</span></p>
+<p><span class="math inline">\(A\)</span> is the area of the window,
+<span class="math inline">\(\bar{n}_0\)</span> and <span class="math inline">\(z_0\)</span> are the limit values of <span class="math inline">\(\bar{n}(r)\)</span> and <span class="math inline">\(z(r)\)</span> when <span class="math inline">\(r\)</span> gets larger than the window’s size. For
+<span class="math inline">\(M\)</span>, it comes:</p>
 <p><span class="math display">\[\frac{{\bar{n}}_0}{z_0}=\sum_i{\frac{W_\mathcal{N}}{W-w\left(x_i\right)}}\]</span></p>
-<p><span class="math inline">\(W_\mathcal{N}\)</span> is the total weight of neighbor points, <span class="math inline">\(W\)</span> that of all points. Finally, despite the functions are quite different (density vs. cumulative, topographic vs. relative, univariate vs. bivariate), both estimators can be written as <span class="math inline">\({\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}\)</span>. Their value (except for absolute functions) can be interpreted as a location quotient: <span class="math inline">\(g(r)=2\)</span> or <span class="math inline">\(M(r)=2\)</span> means than twice more neighbors are observed at (or up to) distance <span class="math inline">\(r\)</span> than expected on average, i.e. ignoring the point locations in the window. The appropriate function will be chosen among the toolbox according to the question raised.</p>
+<p><span class="math inline">\(W_\mathcal{N}\)</span> is the total
+weight of neighbor points, <span class="math inline">\(W\)</span> that
+of all points. Finally, despite the functions are quite different
+(density vs. cumulative, topographic vs. relative, univariate
+vs. bivariate), both estimators can be written as <span class="math inline">\({\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}\)</span>.
+Their value (except for absolute functions) can be interpreted as a
+location quotient: <span class="math inline">\(g(r)=2\)</span> or <span class="math inline">\(M(r)=2\)</span> means than twice more neighbors
+are observed at (or up to) distance <span class="math inline">\(r\)</span> than expected on average, i.e. ignoring
+the point locations in the window. The appropriate function will be
+chosen among the toolbox according to the question raised.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="package-content">Package content<a class="anchor" aria-label="anchor" href="#package-content"></a>
 </h2>
-<p>The <em>dbmss</em> package contains a full (within the limits of the literature reviewed in section 2) set of functions to characterize the spatial structure of a point pattern, including tools to compute the confidence interval of the counterfactual. It allows addressing big datasets thanks to C++ code used to calculate distances between pairs of points <span class="citation">(using <em>Rcpp</em> and <em>RcppParallel</em> infrastructure: Eddelbuettel and François 2011; Allaire et al. 2015)</span>. Computational requirements actually are an issue starting from say 10,000 points <span class="citation">(see Ellison, Glaeser, and Kerr 2010 for instance)</span>. Memory requirement is <span class="math inline">\(O(n)\)</span>, i.e. proportional to the number of points to store their location and type. We use loops to calculate distances and increment summary statistics rather than store a distance matrix which is <span class="math inline">\(O(n^2)\)</span>, following <span class="citation">Scholl and Brenner (2015)</span>. Computation time is <span class="math inline">\(O(n^2)\)</span> because <span class="math inline">\(n(n-1)/2\)</span> pair distances must be calculated.</p>
-<p>We consider planar points patterns (sets of points in a 2-dimensional space) with marks of a special kind: each point comes with a continuous mark (its weight) and a discrete one (its type). We call this special type of point pattern <em>weighted, marked, planar point patterns</em> and define objects of class <code>wmppp</code>, which derives from <code>ppp</code> class as defined in <em>spatstat</em>. Marks are a dataframe with two columns, <code>PointWeight</code> containing the weights of points, and <code>PointTypes</code> containing the types, as factors.</p>
-<p>A <code>wmppp</code> object can be created by the <code><a href="../reference/wmppp.html">wmppp()</a></code> function which accepts a dataframe as argument, or converted from a <code>ppp</code> object by <code><a href="../reference/as.wmppp.html">as.wmppp()</a></code>. Starting from a csv file containing point coordinates, their type and their weight in four columns, a <code>wmppp</code> object can be created by just reading the file with <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> and applying <code><a href="../reference/wmppp.html">wmppp()</a></code> to the result. Options are available to specify the observation window or guess it from the point coordinates and set default weights or types to points when they are not in the dataframe, see the package help for details. The simplest code to create a <code>wmppp</code> with 100 points is as follows. It draws point coordinates between 0 and 1, and creates a <code>wmppp</code> with a default window, all points are of the same type named <em>All</em> and their weight is 1.</p>
+<p>The <em>dbmss</em> package contains a full (within the limits of the
+literature reviewed in section 2) set of functions to characterize the
+spatial structure of a point pattern, including tools to compute the
+confidence interval of the counterfactual. It allows addressing big
+datasets thanks to C++ code used to calculate distances between pairs of
+points <span class="citation">(using <em>Rcpp</em> and
+<em>RcppParallel</em> infrastructure: Eddelbuettel and François 2011;
+Allaire et al. 2015)</span>. Computational requirements actually are an
+issue starting from say 10,000 points <span class="citation">(see
+Ellison, Glaeser, and Kerr 2010 for instance)</span>. Memory requirement
+is <span class="math inline">\(O(n)\)</span>, i.e. proportional to the
+number of points to store their location and type. We use loops to
+calculate distances and increment summary statistics rather than store a
+distance matrix which is <span class="math inline">\(O(n^2)\)</span>,
+following <span class="citation">Scholl and Brenner (2015)</span>.
+Computation time is <span class="math inline">\(O(n^2)\)</span> because
+<span class="math inline">\(n(n-1)/2\)</span> pair distances must be
+calculated.</p>
+<p>We consider planar points patterns (sets of points in a 2-dimensional
+space) with marks of a special kind: each point comes with a continuous
+mark (its weight) and a discrete one (its type). We call this special
+type of point pattern <em>weighted, marked, planar point patterns</em>
+and define objects of class <code>wmppp</code>, which derives from
+<code>ppp</code> class as defined in <em>spatstat</em>. Marks are a
+dataframe with two columns, <code>PointWeight</code> containing the
+weights of points, and <code>PointTypes</code> containing the types, as
+factors.</p>
+<p>A <code>wmppp</code> object can be created by the
+<code><a href="../reference/wmppp.html">wmppp()</a></code> function which accepts a dataframe as argument, or
+converted from a <code>ppp</code> object by <code><a href="../reference/as.wmppp.html">as.wmppp()</a></code>.
+Starting from a csv file containing point coordinates, their type and
+their weight in four columns, a <code>wmppp</code> object can be created
+by just reading the file with <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> and applying
+<code><a href="../reference/wmppp.html">wmppp()</a></code> to the result. Options are available to specify the
+observation window or guess it from the point coordinates and set
+default weights or types to points when they are not in the dataframe,
+see the package help for details. The simplest code to create a
+<code>wmppp</code> with 100 points is as follows. It draws point
+coordinates between 0 and 1, and creates a <code>wmppp</code> with a
+default window, all points are of the same type named <em>All</em> and
+their weight is 1.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss" class="external-link">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.0-5</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.2-1</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.1-3</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.1-5</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.0-6</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.explore 3.2-1</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></span></code></pre></div>
@@ -198,37 +470,72 @@
 <div class="section level3">
 <h3 id="distance-based-functions">Distance-based functions<a class="anchor" aria-label="anchor" href="#distance-based-functions"></a>
 </h3>
-<p>All functions are named <code>Xhat</code> where <code>X</code> is the name of the function:</p>
+<p>All functions are named <code>Xhat</code> where <code>X</code> is the
+name of the function:</p>
 <ul>
 <li><p>Ripley’s <span class="math inline">\(g\)</span> and <span class="math inline">\(K\)</span>, and <span class="math inline">\(K\)</span>’s normalization, Besag’s <span class="math inline">\(L\)</span> <span class="citation">(1977)</span>;</p></li>
 <li><p>Penttinen’s <span class="math inline">\(K_{mm}\)</span> and <span class="math inline">\(L_{mm}\)</span>;</p></li>
 <li><p>Diggle and Chetwynd’s <span class="math inline">\(D\)</span>;</p></li>
-<li><p>Baddeley et al.’s <span class="math inline">\(K_{inhom}\)</span> and its derivative <span class="math inline">\(g_{inhom}\)</span>;</p></li>
+<li><p>Baddeley et al.’s <span class="math inline">\(K_{inhom}\)</span>
+and its derivative <span class="math inline">\(g_{inhom}\)</span>;</p></li>
 <li><p>Marcon and Puech’s <span class="math inline">\(M\)</span>;</p></li>
-<li><p>Duranton and Overman’s <span class="math inline">\(K_d\)</span> (including its weighted version <span class="math inline">\(K^{emp}\)</span>).</p></li>
+<li><p>Duranton and Overman’s <span class="math inline">\(K_d\)</span>
+(including its weighted version <span class="math inline">\(K^{emp}\)</span>).</p></li>
 </ul>
-<p>The suffix <code>hat</code> has been used to avoid confusion with other functions in R: <code>D</code> exists in the <em>stats</em> package for example.</p>
+<p>The suffix <code>hat</code> has been used to avoid confusion with
+other functions in R: <code>D</code> exists in the <em>stats</em>
+package for example.</p>
 <p>Arguments are:</p>
 <ul>
-<li><p>A weighted, marked planar point pattern (a <code>wmppp</code> class object). The window can be a polygon or a binary image, as in <em>spatstat</em>.</p></li>
+<li><p>A weighted, marked planar point pattern (a <code>wmppp</code>
+class object). The window can be a polygon or a binary image, as in
+<em>spatstat</em>.</p></li>
 <li><p>A vector of distances.</p></li>
-<li><p>Optionally a reference and a neighbor point type to calculate bivariate functions, or equivalently the types of cases and controls for the <span class="math inline">\(D\)</span> function.</p></li>
+<li><p>Optionally a reference and a neighbor point type to calculate
+bivariate functions, or equivalently the types of cases and controls for
+the <span class="math inline">\(D\)</span> function.</p></li>
 <li><p>Some optional arguments, specific to some functions.</p></li>
 </ul>
-<p>Topographic functions require edge-effect corrections, provided by <em>spatstat</em>: the <code>best</code> correction is systematically used. Relative functions ignore the window. Technical details are provided in help files.</p>
-<p>These functions return an <code>fv</code> object, as defined in <em>spatstat</em>, which can be plotted.</p>
+<p>Topographic functions require edge-effect corrections, provided by
+<em>spatstat</em>: the <code>best</code> correction is systematically
+used. Relative functions ignore the window. Technical details are
+provided in help files.</p>
+<p>These functions return an <code>fv</code> object, as defined in
+<em>spatstat</em>, which can be plotted.</p>
 </div>
 <div class="section level3">
 <h3 id="confidence-envelopes">Confidence envelopes<a class="anchor" aria-label="anchor" href="#confidence-envelopes"></a>
 </h3>
-<p>The classical confidence intervals, calculated by Monte-Carlo simulations <span class="citation">(Kenkel 1988)</span> are obtained by the <code>XEnvelope</code> functions, where <code>X</code> is the function’s name. Arguments are the number of simulations to run, the risk level, those of the function and the null hypothesis to simulate. These functions return a <code>dbmssEnvelope</code> object which can be plotted.</p>
-<p>Null hypotheses have been discussed by <span class="citation">Goreaud and Pélissier (2003)</span> for topographic functions such as <span class="math inline">\(K\)</span> and by <span class="citation">Marcon and Puech (2010)</span> for relative functions. The null hypothesis for univariate functions is random position (points are drawn in a Poisson process for topographic functions) or random location (points are redistributed across actual locations for relative functions). Bivariate functions support random labeling and population independence null hypotheses. The possible values of arguments are detailed in the help file of each function.</p>
-<p>Building a confidence envelope this way is problematic because the test is repeated at each distance. The underestimation of the risk has been discussed by <span class="citation">Loosmore and Ford (2006)</span>. <span class="citation">Duranton and Overman (2005)</span> proposed a global envelope computed by the repeated elimination of simulations reaching an extreme value at any distance until the desired level is reached. The argument <code>Global = TRUE</code> is used to obtain it instead of the local one.</p>
+<p>The classical confidence intervals, calculated by Monte-Carlo
+simulations <span class="citation">(Kenkel 1988)</span> are obtained by
+the <code>XEnvelope</code> functions, where <code>X</code> is the
+function’s name. Arguments are the number of simulations to run, the
+risk level, those of the function and the null hypothesis to simulate.
+These functions return a <code>dbmssEnvelope</code> object which can be
+plotted.</p>
+<p>Null hypotheses have been discussed by <span class="citation">Goreaud
+and Pélissier (2003)</span> for topographic functions such as <span class="math inline">\(K\)</span> and by <span class="citation">Marcon
+and Puech (2010)</span> for relative functions. The null hypothesis for
+univariate functions is random position (points are drawn in a Poisson
+process for topographic functions) or random location (points are
+redistributed across actual locations for relative functions). Bivariate
+functions support random labeling and population independence null
+hypotheses. The possible values of arguments are detailed in the help
+file of each function.</p>
+<p>Building a confidence envelope this way is problematic because the
+test is repeated at each distance. The underestimation of the risk has
+been discussed by <span class="citation">Loosmore and Ford
+(2006)</span>. <span class="citation">Duranton and Overman (2005)</span>
+proposed a global envelope computed by the repeated elimination of
+simulations reaching an extreme value at any distance until the desired
+level is reached. The argument <code>Global = TRUE</code> is used to
+obtain it instead of the local one.</p>
 </div>
 <div class="section level3">
 <h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h3>
-<p>We illustrate the main features of the package by two examples. The first one comes from the economic literature <span class="citation">(Bonneu 2007)</span><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The dataset can be downloaded from &lt;a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="external-link uri"&gt;http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a></p>
+<p>We illustrate the main features of the package by two examples. The
+first one comes from the economic literature <span class="citation">(Bonneu 2007)</span> <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The dataset can be downloaded from &lt;a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="external-link uri"&gt;http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"CSBIGS.Rdata"</span><span class="op">)</span></span>
 <span><span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -246,34 +553,93 @@
 <p><img src="reference_files/figure-html/Toulouse-1.png" width="700"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>The map of emergencies in the urban area of Toulouse, France, during year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies recorded (many points are confused at the figure scale) and (b) the locations of the 10 percent most serious ones. The workload associated to each emergency (the number of men <span class="math inline">\(\times\)</span> hours it required) is known. The original study tested the dependence between workload and location of emergencies: it did not exclude the null hypothesis of random labeling. We have a complementary approach here: we consider the 10 percent more serious emergencies, i.e. those which caused the highest workload. <span class="math inline">\(K_d\)</span> may detect concentration (or dispersion) if, at a distance <span class="math inline">\(r\)</span> from a serious emergency, the probability to find another serious emergency is greater (or lower) than that of finding an emergency whatever its workload:</p>
-<p>The <code>Emergencies</code> data frame contains point coordinates (in meters) in columns <code>X</code> and <code>Y</code> and workload in column <code>M</code>. The second line of the code creates a vector containing a factor describing the workload to separate its 10% higher values. A <code>wmppp</code> object is created then, containing the points and their mark. The <code>KdEnvelope</code> function is run from 0 to 10km by steps of 100m for the most serious emergencies. The figure below shows that the 10% most serious emergencies are more dispersed than the distribution of all emergencies at all distances up to 10km.</p>
+<p>The map of emergencies in the urban area of Toulouse, France, during
+year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies
+recorded (many points are confused at the figure scale) and (b) the
+locations of the 10 percent most serious ones. The workload associated
+to each emergency (the number of men <span class="math inline">\(\times\)</span> hours it required) is known. The
+original study tested the dependence between workload and location of
+emergencies: it did not exclude the null hypothesis of random labeling.
+We have a complementary approach here: we consider the 10 percent more
+serious emergencies, i.e. those which caused the highest workload. <span class="math inline">\(K_d\)</span> may detect concentration (or
+dispersion) if, at a distance <span class="math inline">\(r\)</span>
+from a serious emergency, the probability to find another serious
+emergency is greater (or lower) than that of finding an emergency
+whatever its workload:</p>
+<p>The <code>Emergencies</code> data frame contains point coordinates
+(in meters) in columns <code>X</code> and <code>Y</code> and workload in
+column <code>M</code>. The second line of the code creates a vector
+containing a factor describing the workload to separate its 10% higher
+values. A <code>wmppp</code> object is created then, containing the
+points and their mark. The <code>KdEnvelope</code> function is run from
+0 to 10km by steps of 100m for the most serious emergencies. The figure
+below shows that the 10% most serious emergencies are more dispersed
+than the distribution of all emergencies at all distances up to
+10km.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, NumberOfSimulations<span class="op">=</span><span class="fl">1000</span>, ReferenceType<span class="op">=</span><span class="st">"Biggest"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">KdE</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/KdCode-1.png" width="576"></p>
-<p>The solid, black curve is <span class="math inline">\(K_d\)</span>. The dotted red curve is the average simulated value and the shaded area is the confidence envelope under the null hypothesis of random location. The risk level is 5%, 1000 simulations have been run. distances are in meters.</p>
-<p>This opens the way to discuss on the optimal location of fire stations.</p>
-<p>The second example uses the <code>paracou16</code> point pattern provided in the package. It represents the distribution of trees in a 4.1-ha tropical forest plot in the Paracou field station in French Guiana <span class="citation">(Gourlet-Fleury, Guehl, and Laroussinie 2004)</span>. It contains 2426 trees, whose species is either <em>Qualea rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300 species). Weights are basal areas (the area of the stems virtually cut 1.3 meter above ground), measured in square centimeters.</p>
+<p>The solid, black curve is <span class="math inline">\(K_d\)</span>.
+The dotted red curve is the average simulated value and the shaded area
+is the confidence envelope under the null hypothesis of random location.
+The risk level is 5%, 1000 simulations have been run. distances are in
+meters.</p>
+<p>This opens the way to discuss on the optimal location of fire
+stations.</p>
+<p>The second example uses the <code>paracou16</code> point pattern
+provided in the package. It represents the distribution of trees in a
+4.1-ha tropical forest plot in the Paracou field station in French
+Guiana <span class="citation">(Gourlet-Fleury, Guehl, and Laroussinie
+2004)</span>. It contains 2426 trees, whose species is either <em>Qualea
+rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300
+species). Weights are basal areas (the area of the stems virtually cut
+1.3 meter above ground), measured in square centimeters.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">paracou16</span>,</span>
 <span>  labelSize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Basal area ("</span> <span class="op">~</span><span class="va">cm</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>, </span>
 <span>  labelColor <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
-<p>On the map, circles are centered on trees in the forest plot (the containing rectangle is 200m wide by 250m long). Circle sizes are proportional to the basal areas of trees.</p>
-<p>The question to test is dependence between the distributions of the two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000 simulations are run to build the global confidence envelope.</p>
+<p>On the map, circles are centered on trees in the forest plot (the
+containing rectangle is 200m wide by 250m long). Circle sizes are
+proportional to the basal areas of trees.</p>
+<p>The question to test is dependence between the distributions of the
+two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000
+simulations are run to build the global confidence envelope.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, NumberOfSimulations </span>
 <span>   <span class="op">=</span> <span class="fl">1000</span>, Alpha <span class="op">=</span> <span class="fl">0.05</span>, ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, NeighborType </span>
 <span>   <span class="op">=</span> <span class="st">"Q. Rosea"</span>, SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">Envelope</span>, main<span class="op">=</span><span class="st">""</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/MCode-1.png" width="700"></p>
-<p><span class="math inline">\(M(r)\)</span> values of <em>Qualea rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid, black curve is <span class="math inline">\(M\)</span>. The dotted red curve is the average simulated value. The shaded area is the confidence envelope. <span class="math inline">\(M=1\)</span> is expected if points are independently distributed. The risk level is 5%, 1000 simulations have been run. Distances are in meters.</p>
-<p>The calculated function is <span class="math inline">\(M\)</span>, showing the repulsion between <em>V. Americana</em> and <em>Q. rosea</em> up to 30 m. Significance is unclear, since the observed values of the function are very close to the lower bound of the envelope. The complete study, with a larger dataset allowing significant results, can be found in <span class="citation">Marcon, Puech, and Traissac (2012)</span>.</p>
+<p><span class="math inline">\(M(r)\)</span> values of <em>Qualea
+rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid,
+black curve is <span class="math inline">\(M\)</span>. The dotted red
+curve is the average simulated value. The shaded area is the confidence
+envelope. <span class="math inline">\(M=1\)</span> is expected if points
+are independently distributed. The risk level is 5%, 1000 simulations
+have been run. Distances are in meters.</p>
+<p>The calculated function is <span class="math inline">\(M\)</span>,
+showing the repulsion between <em>V. Americana</em> and <em>Q.
+rosea</em> up to 30 m. Significance is unclear, since the observed
+values of the function are very close to the lower bound of the
+envelope. The complete study, with a larger dataset allowing significant
+results, can be found in <span class="citation">Marcon, Puech, and
+Traissac (2012)</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="goodness-of-fit-test">Goodness-of-fit test<a class="anchor" aria-label="anchor" href="#goodness-of-fit-test"></a>
 </h3>
-<p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has been proposed by <span class="citation">Diggle (1983)</span>, applied to <span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon, Puech, and Traissac (2012)</span>. It calculates the distance between the actual values of the function and its average value obtained in simulations of the null hypothesis. The same distance is calculated for each simulated point pattern, and the returned <span class="math inline">\(p\)</span>-value of the test if the ratio of simulations whose distance is larger than that of the real point pattern. The test is performed by the <code>GoFtest</code> function whose argument is the envelope previously calculated (actually, the function uses the simulation values).</p>
+<p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has
+been proposed by <span class="citation">Diggle (1983)</span>, applied to
+<span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon,
+Puech, and Traissac (2012)</span>. It calculates the distance between
+the actual values of the function and its average value obtained in
+simulations of the null hypothesis. The same distance is calculated for
+each simulated point pattern, and the returned <span class="math inline">\(p\)</span>-value of the test if the ratio of
+simulations whose distance is larger than that of the real point
+pattern. The test is performed by the <code>GoFtest</code> function
+whose argument is the envelope previously calculated (actually, the
+function uses the simulation values).</p>
 <p>Applied to the example of Paracou trees, the <span class="math inline">\(p\)</span>-value is:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/GoFtest.html">GoFtest</a></span><span class="op">(</span><span class="va">Envelope</span><span class="op">)</span></span></code></pre></div>
@@ -282,8 +648,13 @@
 <div class="section level3">
 <h3 id="ktest">Ktest<a class="anchor" aria-label="anchor" href="#ktest"></a>
 </h3>
-<p>The <code>Ktest</code> has been developed by Lang and Marcon <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang 2013)</span>. It does not rely on simulations and returns the <span class="math inline">\(p\)</span>-value to erroneously reject complete spatial randomness (CSR) given the values of <span class="math inline">\(K\)</span>. It relies on the exact variance of <span class="math inline">\(K\)</span> calculated with edge-effect corrections. It only works in a rectangular window.</p>
-<p>The following example tests a 1.5-ha subset of <code>paracou16</code> (100m by 150m, origin at the southwestern corner).</p>
+<p>The <code>Ktest</code> has been developed by Lang and Marcon <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang
+2013)</span>. It does not rely on simulations and returns the <span class="math inline">\(p\)</span>-value to erroneously reject complete
+spatial randomness (CSR) given the values of <span class="math inline">\(K\)</span>. It relies on the exact variance of
+<span class="math inline">\(K\)</span> calculated with edge-effect
+corrections. It only works in a rectangular window.</p>
+<p>The following example tests a 1.5-ha subset of <code>paracou16</code>
+(100m by 150m, origin at the southwestern corner).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"paracou16"</span><span class="op">)</span></span>
 <span><span class="va">RectWindow</span> <span class="op">&lt;-</span> <span class="fu">owin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
@@ -294,125 +665,210 @@
 </div>
 </div>
 <div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references">
-<div id="ref-Allaire2015">
-<p>Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>. <a href="http://CRAN.R-project.org/package=RcppParallel" class="external-link">http://CRAN.R-project.org/package=RcppParallel</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Allaire2015" class="csl-entry">
+Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and
+Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>.
+<a href="http://CRAN.R-project.org/package=RcppParallel" class="external-link">http://CRAN.R-project.org/package=RcppParallel</a>.
 </div>
-<div id="ref-Baddeley2000">
-<p>Baddeley, Adrian J., Jesper Møller, and Rasmus Plenge Waagepetersen. 2000. “Non- and Semi-Parametric Estimation of Interaction in Inhomogeneous Point Patterns.” <em>Statistica Neerlandica</em> 54 (3): 329–50.</p>
+<div id="ref-Baddeley2000" class="csl-entry">
+Baddeley, Adrian J., Jesper Møller, and Rasmus Plenge Waagepetersen.
+2000. <span>“Non- and Semi-Parametric Estimation of Interaction in
+Inhomogeneous Point Patterns.”</span> <em>Statistica Neerlandica</em> 54
+(3): 329–50.
 </div>
-<div id="ref-Baddeley2005">
-<p>Baddeley, Adrian J., and R Turner. 2005. “Spatstat: An R Package for Analyzing Spatial Point Patterns.” <em>Journal of Statistical Software</em> 12 (6): 1–42.</p>
+<div id="ref-Baddeley2005" class="csl-entry">
+Baddeley, Adrian J., and R Turner. 2005. <span>“Spatstat: An Package for
+Analyzing Spatial Point Patterns.”</span> <em>Journal of Statistical
+Software</em> 12 (6): 1–42.
 </div>
-<div id="ref-Besag1977">
-<p>Besag, Julian E. 1977. “Comments on Ripley’s Paper.” <em>Journal of the Royal Statistical Society</em> B 39 (2): 193–95.</p>
+<div id="ref-Besag1977" class="csl-entry">
+Besag, Julian E. 1977. <span>“Comments on Ripley’s Paper.”</span>
+<em>Journal of the Royal Statistical Society</em> B 39 (2): 193–95.
 </div>
-<div id="ref-Bonneu2007">
-<p>Bonneu, Florent. 2007. “Exploring and Modeling Fire Department Emergencies with a Spatio-Temporal Marked Point Process.” <em>Case Studies in Business, Industry and Government Statistics</em> 1 (2): 139–52.</p>
+<div id="ref-Bonneu2007" class="csl-entry">
+Bonneu, Florent. 2007. <span>“Exploring and Modeling Fire Department
+Emergencies with a Spatio-Temporal Marked Point Process.”</span>
+<em>Case Studies in Business, Industry and Government Statistics</em> 1
+(2): 139–52.
 </div>
-<div id="ref-Thomas2013">
-<p>Bonneu, Florent, and Christine Thomas-Agnan. 2015. “Measuring and Testing Spatial Mass Concentration of Micro-Geographic Data.” <em>Spatial Economic Analysis</em> 10 (3): 289–316.</p>
+<div id="ref-Thomas2013" class="csl-entry">
+Bonneu, Florent, and Christine Thomas-Agnan. 2015. <span>“Measuring and
+Testing Spatial Mass Concentration of Micro-Geographic Data.”</span>
+<em>Spatial Economic Analysis</em> 10 (3): 289–316.
 </div>
-<div id="ref-Combes2008">
-<p>Combes, Pierre-Philippe, Thierry Mayer, and Jacques-François Thisse. 2008. <em>Economic Geography</em>. Princeton, New Jersey: Princeton University Press.</p>
+<div id="ref-Combes2008" class="csl-entry">
+Combes, Pierre-Philippe, Thierry Mayer, and Jacques-François Thisse.
+2008. <em>Economic Geography</em>. Princeton, New Jersey: Princeton
+University Press.
 </div>
-<div id="ref-Combes2004">
-<p>Combes, Pierre-Philippe, and Henry G Overman. 2004. “The Spatial Distribution of Economic Activities in the European Union.” In <em>Handbook of Urban and Regional Economics</em>, edited by J. Vernon Henderson and Jacques-François Thisse, 4:2845–2909. Amsterdam: Elsevier. North Holland.</p>
+<div id="ref-Combes2004" class="csl-entry">
+Combes, Pierre-Philippe, and Henry G Overman. 2004. <span>“The Spatial
+Distribution of Economic Activities in the European Union.”</span> In
+<em>Handbook of Urban and Regional Economics</em>, edited by J. Vernon
+Henderson and Jacques-François Thisse, 4:2845–2909. Amsterdam: Elsevier.
+North Holland.
 </div>
-<div id="ref-Diggle1983">
-<p>Diggle, Peter J. 1983. <em>Statistical Analysis of Spatial Point Patterns</em>. London: Academic Press.</p>
+<div id="ref-Diggle1983" class="csl-entry">
+Diggle, Peter J. 1983. <em>Statistical Analysis of Spatial Point
+Patterns</em>. London: Academic Press.
 </div>
-<div id="ref-Diggle1991">
-<p>Diggle, Peter J., and A. G. Chetwynd. 1991. “Second-Order Analysis of Spatial Clustering for Inhomogeneous Populations.” <em>Biometrics</em> 47 (3): 1155–63.</p>
+<div id="ref-Diggle1991" class="csl-entry">
+Diggle, Peter J., and A. G. Chetwynd. 1991. <span>“Second-Order Analysis
+of Spatial Clustering for Inhomogeneous Populations.”</span>
+<em>Biometrics</em> 47 (3): 1155–63.
 </div>
-<div id="ref-Duncan1991">
-<p>Duncan, Richard P. 1991. “Competition and the Coexistence of Species in a Mixed Podocarp Stand.” <em>Journal of Ecology</em> 79 (4): 1073–84.</p>
+<div id="ref-Duncan1991" class="csl-entry">
+Duncan, Richard P. 1991. <span>“Competition and the Coexistence of
+Species in a Mixed Podocarp Stand.”</span> <em>Journal of Ecology</em>
+79 (4): 1073–84.
 </div>
-<div id="ref-Duranton2005">
-<p>Duranton, Gilles, and Henry G. Overman. 2005. “Testing for Localisation Using Micro-Geographic Data.” <em>Review of Economic Studies</em> 72 (4): 1077–1106.</p>
+<div id="ref-Duranton2005" class="csl-entry">
+Duranton, Gilles, and Henry G. Overman. 2005. <span>“Testing for
+Localisation Using Micro-Geographic Data.”</span> <em>Review of Economic
+Studies</em> 72 (4): 1077–1106.
 </div>
-<div id="ref-Duranton2008">
-<p>———. 2008. “Exploring the Detailed Location Patterns of Uk Manufacturing Industries Using Microgeographic Data.” <em>Journal of Regional Science</em> 48 (1): 213–43.</p>
+<div id="ref-Duranton2008" class="csl-entry">
+———. 2008. <span>“Exploring the Detailed Location Patterns of UK
+Manufacturing Industries Using Microgeographic Data.”</span> <em>Journal
+of Regional Science</em> 48 (1): 213–43.
 </div>
-<div id="ref-Eddelbuettel2011">
-<p>Eddelbuettel, Dirk, and Romain François. 2011. “Rcpp: Seamless R and C++ Integration.” <em>Journal of Statistical Software</em> 40 (8): 1–18. <a href="http://www.jstatsoft.org/v40/i08/" class="external-link">http://www.jstatsoft.org/v40/i08/</a>.</p>
+<div id="ref-Eddelbuettel2011" class="csl-entry">
+Eddelbuettel, Dirk, and Romain François. 2011. <span>“Rcpp: Seamless r
+and c++ Integration.”</span> <em>Journal of Statistical Software</em> 40
+(8): 1–18. <a href="http://www.jstatsoft.org/v40/i08/" class="external-link">http://www.jstatsoft.org/v40/i08/</a>.
 </div>
-<div id="ref-Ellison1997">
-<p>Ellison, Glenn, and Edward L. Glaeser. 1997. “Geographic Concentration in U.s. Manufacturing Industries: A Dartboard Approach.” <em>Journal of Political Economy</em> 105 (5): 889–927.</p>
+<div id="ref-Ellison1997" class="csl-entry">
+Ellison, Glenn, and Edward L. Glaeser. 1997. <span>“Geographic
+Concentration in u.s. Manufacturing Industries: A Dartboard
+Approach.”</span> <em>Journal of Political Economy</em> 105 (5):
+889–927.
 </div>
-<div id="ref-Ellison2010">
-<p>Ellison, Glenn, Edward L. Glaeser, and William R. Kerr. 2010. “What Causes Industry Agglomeration? Evidence from Coagglomeration Patterns.” <em>The American Economic Review</em> 100 (3): 1195–1213.</p>
+<div id="ref-Ellison2010" class="csl-entry">
+Ellison, Glenn, Edward L. Glaeser, and William R. Kerr. 2010.
+<span>“What Causes Industry Agglomeration? Evidence from Coagglomeration
+Patterns.”</span> <em>The American Economic Review</em> 100 (3):
+1195–1213.
 </div>
-<div id="ref-Fortin2005">
-<p>Fortin, Marie-Josée, and Mark R. T. Dale. 2005. <em>Spatial Analysis. A Guide for Ecologists.</em> Cambridge: Cambridge University Press.</p>
+<div id="ref-Fortin2005" class="csl-entry">
+Fortin, Marie-Josée, and Mark R. T. Dale. 2005. <em>Spatial Analysis. A
+Guide for Ecologists.</em> Cambridge: Cambridge University Press.
 </div>
-<div id="ref-Gini1912">
-<p>Gini, Corrado. 1912. <em>Variabilità E Mutabilità</em>. Vol. 3. Studi Economico-Giuridici Dell’Università Di Cagliari. Università di Cagliari.</p>
+<div id="ref-Gini1912" class="csl-entry">
+Gini, Corrado. 1912. <em>Variabilità e Mutabilità</em>. Vol. 3. Studi
+Economico-Giuridici Dell’università Di Cagliari. Università di Cagliari.
 </div>
-<div id="ref-Goreaud2003">
-<p>Goreaud, François, and Raphaël Pélissier. 2003. “Avoiding Misinterpretation of Biotic Interactions with the Intertype K12 Fonction: Population Independence Vs Random Labelling Hypotheses.” <em>Journal of Vegetation Science</em> 14 (5): 681–92.</p>
+<div id="ref-Goreaud2003" class="csl-entry">
+Goreaud, François, and Raphaël Pélissier. 2003. <span>“Avoiding
+Misinterpretation of Biotic Interactions with the Intertype K12
+Fonction: Population Independence Vs Random Labelling
+Hypotheses.”</span> <em>Journal of Vegetation Science</em> 14 (5):
+681–92.
 </div>
-<div id="ref-Gourlet2004">
-<p>Gourlet-Fleury, Sylvie, Jean Marc Guehl, and Olivier Laroussinie. 2004. <em>Ecology &amp; Management of a Neotropical Rainforest. Lessons Drawn from Paracou, a Long-Term Experimental Research Site in French Guiana</em>. Paris, France: Elsevier.</p>
+<div id="ref-Gourlet2004" class="csl-entry">
+Gourlet-Fleury, Sylvie, Jean Marc Guehl, and Olivier Laroussinie. 2004.
+<em>Ecology &amp; Management of a Neotropical Rainforest. Lessons Drawn
+from Paracou, a Long-Term Experimental Research Site in French
+Guiana</em>. Paris, France: Elsevier.
 </div>
-<div id="ref-Haase1997">
-<p>Haase, Peter, Francisco I. Pugnaire, S. C. Clark, and L. D. Incoll. 1997. “Spatial Pattern in Anthyllis Cytisoides Shrubland on Abandoned Land in Southeastern Spain.” <em>Journal of Vegetation Science</em> 8 (5): 627–34.</p>
+<div id="ref-Haase1997" class="csl-entry">
+Haase, Peter, Francisco I. Pugnaire, S. C. Clark, and L. D. Incoll.
+1997. <span>“Spatial Pattern in Anthyllis Cytisoides Shrubland on
+Abandoned Land in Southeastern Spain.”</span> <em>Journal of Vegetation
+Science</em> 8 (5): 627–34.
 </div>
-<div id="ref-Hoover1936">
-<p>Hoover, Edgar M. 1936. “The Measurement of Industrial Localization.” <em>The Review of Economics and Statistics</em> 18 (4): 162–71.</p>
+<div id="ref-Hoover1936" class="csl-entry">
+Hoover, Edgar M. 1936. <span>“The Measurement of Industrial
+Localization.”</span> <em>The Review of Economics and Statistics</em> 18
+(4): 162–71.
 </div>
-<div id="ref-Illian2008">
-<p>Illian, Janine, Antti Penttinen, Helga Stoyan, and Dietrich Stoyan. 2008. <em>Statistical Analysis and Modelling of Spatial Point Patterns</em>. Chichester, England: John Wiley &amp; Sons.</p>
+<div id="ref-Illian2008" class="csl-entry">
+Illian, Janine, Antti Penttinen, Helga Stoyan, and Dietrich Stoyan.
+2008. <em>Statistical Analysis and Modelling of Spatial Point
+Patterns</em>. Chichester, England: John Wiley &amp; Sons.
 </div>
-<div id="ref-Kenkel1988">
-<p>Kenkel, N. C. 1988. “Pattern of Self-Thinning in Jack Pine: Testing the Random Mortality Hypothesis.” <em>Ecology</em> 69 (4): 1017–24.</p>
+<div id="ref-Kenkel1988" class="csl-entry">
+Kenkel, N. C. 1988. <span>“Pattern of Self-Thinning in Jack Pine:
+Testing the Random Mortality Hypothesis.”</span> <em>Ecology</em> 69
+(4): 1017–24.
 </div>
-<div id="ref-Lang2010">
-<p>Lang, Gabriel, and Eric Marcon. 2013. “Testing Randomness of Spatial Point Patterns with the Ripley Statistic.” <em>ESAIM: Probability and Statistics</em> 17: 767–88.</p>
+<div id="ref-Lang2010" class="csl-entry">
+Lang, Gabriel, and Eric Marcon. 2013. <span>“Testing Randomness of
+Spatial Point Patterns with the Ripley Statistic.”</span> <em>ESAIM:
+Probability and Statistics</em> 17: 767–88.
 </div>
-<div id="ref-Lang2014">
-<p>Lang, Gabriel, Eric Marcon, and Florence Puech. 2014. “Distance-Based Measures of Spatial Concentration: Introducing a Relative Density Function.” <em>HAL</em> 01082178 (version 2).</p>
+<div id="ref-Lang2014" class="csl-entry">
+Lang, Gabriel, Eric Marcon, and Florence Puech. 2014.
+<span>“Distance-Based Measures of Spatial Concentration: Introducing a
+Relative Density Function.”</span> <em>HAL</em> 01082178 (version 2).
 </div>
-<div id="ref-Loosmore2006">
-<p>Loosmore, N. B., and E. D. Ford. 2006. “Statistical Inference Using the G or K Point Pattern Spatial Statistics.” <em>Ecology</em> 87 (8): 1925–31.</p>
+<div id="ref-Loosmore2006" class="csl-entry">
+Loosmore, N. B., and E. D. Ford. 2006. <span>“Statistical Inference
+Using the g or k Point Pattern Spatial Statistics.”</span>
+<em>Ecology</em> 87 (8): 1925–31.
 </div>
-<div id="ref-Marcon2010">
-<p>Marcon, Eric, and Florence Puech. 2010. “Measures of the Geographic Concentration of Industries: Improving Distance-Based Methods.” <em>Journal of Economic Geography</em> 10 (5): 745–62.</p>
+<div id="ref-Marcon2010" class="csl-entry">
+Marcon, Eric, and Florence Puech. 2010. <span>“Measures of the
+Geographic Concentration of Industries: Improving Distance-Based
+Methods.”</span> <em>Journal of Economic Geography</em> 10 (5): 745–62.
 </div>
-<div id="ref-Marcon2012c">
-<p>———. 2017. “A Typology of Distance-Based Measures of Spatial Concentration.” <em>Regional Science and Urban Economics</em> 62: 56–67.</p>
+<div id="ref-Marcon2012c" class="csl-entry">
+———. 2017. <span>“A Typology of Distance-Based Measures of Spatial
+Concentration.”</span> <em>Regional Science and Urban Economics</em> 62:
+56–67.
 </div>
-<div id="ref-Marcon2012">
-<p>Marcon, Eric, Florence Puech, and Stéphane Traissac. 2012. “Characterizing the Relative Spatial Structure of Point Patterns.” <em>International Journal of Ecology</em> 2012 (Article ID 619281): 11.</p>
+<div id="ref-Marcon2012" class="csl-entry">
+Marcon, Eric, Florence Puech, and Stéphane Traissac. 2012.
+<span>“Characterizing the Relative Spatial Structure of Point
+Patterns.”</span> <em>International Journal of Ecology</em> 2012
+(Article ID 619281): 11.
 </div>
-<div id="ref-Marcon2013">
-<p>Marcon, Eric, Stéphane Traissac, and Gabriel Lang. 2013. “A Statistical Test for Ripley’s Function Rejection of Poisson Null Hypothesis.” <em>ISRN Ecology</em> 2013 (Article ID 753475): 9.</p>
+<div id="ref-Marcon2013" class="csl-entry">
+Marcon, Eric, Stéphane Traissac, and Gabriel Lang. 2013. <span>“A
+Statistical Test for Ripley’s Function Rejection of Poisson Null
+Hypothesis.”</span> <em>ISRN Ecology</em> 2013 (Article ID 753475): 9.
 </div>
-<div id="ref-Openshaw1979">
-<p>Openshaw, S., and P. J. Taylor. 1979. “A Million or so Correlation Coefficients: Three Experiments on the Modifiable Areal Unit Problem.” In <em>Statistical Applications in the Spatial Sciences</em>, edited by N. Wrigley, 127–44. London: Pion.</p>
+<div id="ref-Openshaw1979" class="csl-entry">
+Openshaw, S., and P. J. Taylor. 1979. <span>“A Million or so Correlation
+Coefficients: Three Experiments on the Modifiable Areal Unit
+Problem.”</span> In <em>Statistical Applications in the Spatial
+Sciences</em>, edited by N. Wrigley, 127–44. London: Pion.
 </div>
-<div id="ref-Penttinen2006">
-<p>Penttinen, Antti. 2006. “Statistics for Marked Point Patterns.” In <em>The Yearbook of the Finnish Statistical Society</em>, 70–91. Helsinki: The Finnish Statistical Society.</p>
+<div id="ref-Penttinen2006" class="csl-entry">
+Penttinen, Antti. 2006. <span>“Statistics for Marked Point
+Patterns.”</span> In <em>The Yearbook of the Finnish Statistical
+Society</em>, 70–91. Helsinki: The Finnish Statistical Society.
 </div>
-<div id="ref-Penttinen1992">
-<p>Penttinen, Antti, Dietrich Stoyan, and Helena M. Henttonen. 1992. “Marked Point Processes in Forest Statistics.” <em>Forest Science</em> 38 (4): 806–24.</p>
+<div id="ref-Penttinen1992" class="csl-entry">
+Penttinen, Antti, Dietrich Stoyan, and Helena M. Henttonen. 1992.
+<span>“Marked Point Processes in Forest Statistics.”</span> <em>Forest
+Science</em> 38 (4): 806–24.
 </div>
-<div id="ref-Picone2009">
-<p>Picone, G. A., D. B. Ridley, and P. A. Zandbergen. 2009. “Distance Decreases with Differentiation: Strategic Agglomeration by Retailers.” <em>International Journal of Industrial Organization</em> 27 (3): 463–73.</p>
+<div id="ref-Picone2009" class="csl-entry">
+Picone, G. A., D. B. Ridley, and P. A. Zandbergen. 2009. <span>“Distance
+Decreases with Differentiation: Strategic Agglomeration by
+Retailers.”</span> <em>International Journal of Industrial
+Organization</em> 27 (3): 463–73.
 </div>
-<div id="ref-Ripley1976">
-<p>Ripley, Brian D. 1976. “The Second-Order Analysis of Stationary Point Processes.” <em>Journal of Applied Probability</em> 13 (2): 255–66.</p>
+<div id="ref-Ripley1976" class="csl-entry">
+Ripley, Brian D. 1976. <span>“The Second-Order Analysis of Stationary
+Point Processes.”</span> <em>Journal of Applied Probability</em> 13 (2):
+255–66.
 </div>
-<div id="ref-Ripley1977">
-<p>———. 1977. “Modelling Spatial Patterns.” <em>Journal of the Royal Statistical Society</em> B 39 (2): 172–212.</p>
+<div id="ref-Ripley1977" class="csl-entry">
+———. 1977. <span>“Modelling Spatial Patterns.”</span> <em>Journal of the
+Royal Statistical Society</em> B 39 (2): 172–212.
 </div>
-<div id="ref-Ripley1988">
-<p>———. 1988. <em>Statistical Inference for Spatial Processes</em>. Cambridge University Press.</p>
+<div id="ref-Ripley1988" class="csl-entry">
+———. 1988. <em>Statistical Inference for Spatial Processes</em>.
+Cambridge University Press.
 </div>
-<div id="ref-Scholl2013">
-<p>Scholl, Tobias, and Thomas Brenner. 2015. “Optimizing Distance-Based Methods for Large Data Sets.” <em>Journal of Geographical Systems</em> 4 (17): 333–51.</p>
+<div id="ref-Scholl2013" class="csl-entry">
+Scholl, Tobias, and Thomas Brenner. 2015. <span>“Optimizing
+Distance-Based Methods for Large Data Sets.”</span> <em>Journal of
+Geographical Systems</em> 4 (17): 333–51.
 </div>
 </div>
 </div>

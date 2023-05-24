@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,26 +66,17 @@
 <span><span class="fu">parallelCountNbdm</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">ReferencePoints</span><span class="op">)</span></span>
 <span><span class="fu">parallelCountNbdDt</span><span class="op">(</span><span class="va">r</span>, <span class="va">Dmatrix</span>, <span class="va">Weight</span>, <span class="va">IsReferenceType</span>, <span class="va">IsNeighborType</span><span class="op">)</span></span>
 <span><span class="fu">parallelCountNbdDtCC</span><span class="op">(</span><span class="va">r</span>, <span class="va">Dmatrix</span>, <span class="va">Weight</span>, <span class="va">IsReferenceType</span>, <span class="va">IsNeighborType</span><span class="op">)</span></span>
-<span><span class="fu">DistKd</span><span class="op">(</span><span class="va">Rx</span>, <span class="va">Ry</span>, <span class="va">RPointWeight</span>, <span class="va">RWeight</span>, <span class="va">RDist</span>, <span class="va">RIsReferenceType</span>, <span class="va">RIsNeighborType</span><span class="op">)</span></span>
-<span><span class="fu">CountNbdKd</span><span class="op">(</span><span class="va">Rr</span>, <span class="va">Rx</span>, <span class="va">Ry</span>, <span class="va">RWeight</span>, <span class="va">RNbd</span>, <span class="va">RIsReferenceType</span>, <span class="va">RIsNeighborType</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">DistKd</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">PointWeight</span>, <span class="va">Weight</span>, <span class="va">Dist</span>, <span class="va">IsReferenceType</span>, <span class="va">IsNeighborType</span><span class="op">)</span></span>
+<span><span class="fu">CountNbdKd</span><span class="op">(</span><span class="va">r</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">Weight</span>, <span class="va">Nbd</span>, <span class="va">IsReferenceType</span>, <span class="va">IsNeighborType</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>Rr</dt>
+    <dl><dt>r</dt>
 <dd><p>A vector of distances.</p></dd>
-
-  <dt>r</dt>
-<dd><p>A vector of distances.</p></dd>
-
-  <dt>Rx</dt>
-<dd><p>A vector of <em>x</em> coordinates.</p></dd>
 
   <dt>x</dt>
 <dd><p>A vector of <em>x</em> coordinates.</p></dd>
-
-  <dt>Ry</dt>
-<dd><p>A vector of <em>y</em> coordinates.</p></dd>
 
   <dt>y</dt>
 <dd><p>A vector of <em>y</em> coordinates.</p></dd>
@@ -93,10 +84,7 @@
   <dt>Dmatrix</dt>
 <dd><p>A matrix of distances.</p></dd>
 
-  <dt>RPointWeight</dt>
-<dd><p>A vector of point weights.</p></dd>
-
-  <dt>RWeight</dt>
+  <dt>PointWeight</dt>
 <dd><p>A vector of point weights.</p></dd>
 
   <dt>Weight</dt>
@@ -105,20 +93,14 @@
   <dt>ReferencePoints</dt>
 <dd><p>A vector of pont indices.</p></dd>
 
-  <dt>RNbd</dt>
+  <dt>Nbd</dt>
 <dd><p>A matrix to store the weight of neighbors.</p></dd>
 
-  <dt>RDist</dt>
+  <dt>Dist</dt>
 <dd><p>A vector of point-pair distances.</p></dd>
-
-  <dt>RIsReferenceType</dt>
-<dd><p>A boolean vector to recognize reference points.</p></dd>
 
   <dt>IsReferenceType</dt>
 <dd><p>A boolean vector to recognize reference points.</p></dd>
-
-  <dt>RIsNeighborType</dt>
-<dd><p>A boolean vector to recognize neighbor points.</p></dd>
 
   <dt>IsNeighborType</dt>
 <dd><p>A boolean vector to recognize neighbor points.</p></dd>
