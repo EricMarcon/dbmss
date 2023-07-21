@@ -1,5 +1,5 @@
 rRandomLocation <-
-function(X, ReferenceType = "", CheckArguments = TRUE) {
+function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
   
   if (CheckArguments)
     CheckdbmssArguments()
@@ -31,6 +31,21 @@ function(X, ReferenceType = "", CheckArguments = TRUE) {
     return(X)
   } else {
     # wmppp case
+    if (!is.null(ReferencePoint)) {
+      # The reference point must be < than the number of points
+      if (ReferencePoint > X$n) {
+        stop("The number of the reference point must be smaller than the number of points in the point pattern.")
+      }
+      # The reference point must belong to the reference point type
+      if (ReferenceType != "") {
+        if (X$marks$PointType[ReferencePoint] != ReferenceType) {
+          stop("The reference point must be of the reference point type.")
+        }
+      }
+      # Save the reference point
+      ReferencePoint_ppp <- X[ReferencePoint]
+      X <- X[-ReferencePoint]
+    }
     if (ReferenceType != "") {
       # Retain a single point type
       X.reduced <- X[X$marks$PointType == ReferenceType]
@@ -38,7 +53,10 @@ function(X, ReferenceType = "", CheckArguments = TRUE) {
     } else {
       RandomizedX <- rlabel(X)
     }
-    
+    if (!is.null(ReferencePoint)) {
+      # Restore the reference point
+      RandomizedX <- superimpose(RandomizedX, ReferencePoint_ppp)
+    }
     class(RandomizedX) <- c("wmppp", "ppp")
     return (RandomizedX)
   }
