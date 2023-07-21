@@ -1,6 +1,6 @@
 useDynLib("dbmss", .registration = TRUE)
 
-import("spatstat.explore", except=c("rlabel", "rshift", "runifpoint"))
+import("spatstat.explore")
 import("spatstat.geom")
 importFrom("spatstat.random", "rlabel", "rshift", "runifpoint")
 import("Rcpp")
