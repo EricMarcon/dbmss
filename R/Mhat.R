@@ -1,6 +1,7 @@
 Mhat <-
 function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, 
-         CaseControl = FALSE, Individual = FALSE, CheckArguments = TRUE)
+         CaseControl = FALSE, Individual = FALSE, ReferencePoint = NULL, 
+         CheckArguments = TRUE)
 {
   # Eliminate erroneous configurations
   if (CheckArguments) {
@@ -26,6 +27,20 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   # Vectors to recognize point types
   IsReferenceType <- X$marks$PointType==ReferenceType
   IsNeighborType <- X$marks$PointType==NeighborType
+  
+  if (!is.null(ReferencePoint)) {
+    if (!Individual) {
+      warning("The reference point is ignored because Individual is FALSE.")
+      ReferencePoint <- NULL
+    }
+    if (IsReferenceType[ReferencePoint]) {
+      # Remember the name of the reference point in the dataset of reference type
+      ReferencePoint_name <- row.names(X$marks[ReferencePoint, ])
+    } else {
+      # The reference point must be in the reference type
+      stop("The reference point must be of the reference point type.")
+    }
+  }
   
   # Global ratio
   if (ReferenceType==NeighborType | CaseControl) {
@@ -71,11 +86,19 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   # Calculate the ratio of points of interest around each point
   LocalRatio <- NbdInt/NbdAll
-  # Divide it by the global ratio. Ignore points with no neighbor at all.
-  Mvalues <- apply(LocalRatio, 2, function(x) sum(x[is.finite(x)])/sum(GlobalRatio[is.finite(x)]))
-  # Keep individual values
-  if (Individual) {
-    Mvalues <- cbind(Mvalues, t(LocalRatio/GlobalRatio))
+  
+  if (is.null(ReferencePoint)) {
+    # Divide it by the global ratio. Ignore points with no neighbor at all.
+    Mvalues <- apply(LocalRatio, 2, function(x) sum(x[is.finite(x)])/sum(GlobalRatio[is.finite(x)]))
+    # Keep individual values
+    if (Individual) {
+      Mvalues <- cbind(Mvalues, t(LocalRatio/GlobalRatio))
+    }
+  } else {
+    # Find the reference point in the set of points of the reference type
+    ReferencePoint_index <- which(rownames(X[IsReferenceType]$marks) == ReferencePoint_name)
+    # Only keep the value of the reference point
+    Mvalues <- LocalRatio[ReferencePoint_index, ]/GlobalRatio[ReferencePoint_index]
   }
   
   # Put the results into an fv object
@@ -83,7 +106,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   ColNames <- c("r", "theo", "M")
   Labl <- c("r", "%s[theo](r)", "hat(%s)(r)")
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
-  if (Individual) {
+  if (Individual & is.null(ReferencePoint)) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
     ColNumbers <- row.names(X$marks[IsReferenceType, ])
     ColNames <- c(ColNames, paste("M", ColNumbers, sep="_"))

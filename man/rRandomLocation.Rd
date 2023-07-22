@@ -7,7 +7,7 @@
   Simulates of a point pattern according to the null hypothesis of random location.
 }
 \usage{
-rRandomLocation(X, ReferenceType = "", CheckArguments = TRUE)
+rRandomLocation(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
@@ -16,13 +16,18 @@ rRandomLocation(X, ReferenceType = "", CheckArguments = TRUE)
   \item{ReferenceType}{
   One of the point types.
   }
+  \item{ReferencePoint}{
+  The index of one of the points, i.e. an integer number between 1 and the number of points of the point pattern. 
+  The reference point kept untouched during simulations.
+  }
   \item{CheckArguments}{
   Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
   Points are redistributed randomly across the locations of the original point pattern. This randomization is equivalent to random labeling, considering the label is both point type and point weight.
-  If \code{ReferenceType} is specified, then only reference type points are kept in the orginal point pattern before randomization.
+  If \code{ReferenceType} is specified, then only reference type points are kept in the original point pattern before randomization.
+  If \code{ReferencePoint} is specified, then this point is not modified in all simulations.
 }
 \value{
   A new weighted, marked, planar point pattern (an object of class \code{wmppp}, see \code{\link{wmppp.object}}).

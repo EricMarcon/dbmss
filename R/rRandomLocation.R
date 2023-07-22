@@ -54,8 +54,8 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
       RandomizedX <- rlabel(X)
     }
     if (!is.null(ReferencePoint)) {
-      # Restore the reference point
-      RandomizedX <- superimpose(RandomizedX, ReferencePoint_ppp)
+      # Restore the reference point with index 1
+      RandomizedX <- superimpose(ReferencePoint_ppp, RandomizedX)
     }
     class(RandomizedX) <- c("wmppp", "ppp")
     return (RandomizedX)
