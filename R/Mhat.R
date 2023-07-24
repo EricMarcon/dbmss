@@ -182,7 +182,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
       # Progress bar
       if (verbose) utils::setTxtProgressBar(ProgressBar, i)
     }
-    close(ProgressBar)
+    if (verbose) close(ProgressBar)
     # Save the quantiles as an attribute of the fv
     attr(M, "Quantiles") <- MQuantiles
   }
