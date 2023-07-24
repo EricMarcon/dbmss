@@ -187,12 +187,14 @@ function() {
   # ReferencePoint 
   if (!is.na(names(Args["ReferencePoint"]))) {
     ReferencePoint <- eval(expression(ReferencePoint), parent.frame())
-    if (!is.numeric(ReferencePoint))
-      ErrorMessage("ReferencePoint must be a number", ReferencePoint)
-    if (ReferencePoint <= 0)
-      ErrorMessage("ReferencePoint must be positive", ReferencePoint)
-    if (as.integer(ReferencePoint) !=  ReferencePoint)
-      ErrorMessage("ReferencePoint must be an integer", ReferencePoint)
+    if (!is.null(ReferencePoint)) {
+      if (!is.numeric(ReferencePoint))
+        ErrorMessage("ReferencePoint must be a number", ReferencePoint)
+      if (ReferencePoint <= 0)
+        ErrorMessage("ReferencePoint must be positive", ReferencePoint)
+      if (as.integer(ReferencePoint) !=  ReferencePoint)
+        ErrorMessage("ReferencePoint must be an integer", ReferencePoint)
+    }
   }
 
   # show.window 
