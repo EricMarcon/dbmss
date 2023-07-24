@@ -53,6 +53,10 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
       ]
     # Smooth requires the top class of X to be ppp
     class(X) <- "ppp"
+    # Eliminate NA's before smoothing
+    is_na <- is.na(X$marks)
+    weights <- weights[!is_na]
+    X<- X[!is_na]
     Image <- Smooth.ppp(X, sigma = r_to_plot/2, weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
   } else {
     # Smooth the values of the dbm
@@ -61,6 +65,10 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
     X$marks <- fvind.matrix [which(fvind.matrix [, 1] == r_to_plot), -(1:3)]
     # Smooth requires the top class of X to be ppp
     class(X) <- "ppp"
+    # Eliminate NA's before smoothing
+    is_na <- is.na(X$marks)
+    weights <- weights[!is_na]
+    X<- X[!is_na]
     Image <- Smooth.ppp(X, sigma = r_to_plot/2, weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
   }
   return(Image)
