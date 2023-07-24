@@ -6,7 +6,7 @@ swmppp <-
   if (CheckArguments)
     CheckdbmssArguments()
   
-  # Reduce the community to the reference type
+  # Reduce the point pattern to the reference type
   if (ReferenceType != "") {
     is_ReferenceType <- X$marks$PointType == ReferenceType
     X <- X[is_ReferenceType]

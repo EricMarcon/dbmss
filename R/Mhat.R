@@ -11,11 +11,10 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
       warning("Cases and controls are identical.")
       return(rep(1,length(r)))
     }
+    if (Quantiles & !Individual)
+      stop("Quantiles can't be TRUE if Individual is FALSE.")
   }
   
-  if (Quantiles & !Individual)
-    stop("Quantiles can't be TRUE if Individual is FALSE.")
-    
   # Default r values: 64 values up to half the max distance
   if (is.null(r)) {
     if (inherits(X, "Dtable")) {
@@ -188,5 +187,5 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     attr(M, "Quantiles") <- MQuantiles
   }
   
-  return (M)
+  return(M)
 }
