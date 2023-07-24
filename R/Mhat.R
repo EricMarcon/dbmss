@@ -1,7 +1,8 @@
 Mhat <-
 function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, 
-         CaseControl = FALSE, Individual = FALSE, ReferencePoint = NULL, 
-         CheckArguments = TRUE)
+         CaseControl = FALSE, Individual = FALSE, ReferencePoint = NULL,
+         Quantiles = FALSE, NumberOfSimulations = 100, Alpha = 0.05, 
+         verbose = interactive(), CheckArguments = TRUE)
 {
   # Eliminate erroneous configurations
   if (CheckArguments) {
@@ -12,6 +13,9 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     }
   }
   
+  if (Quantiles & !Individual)
+    stop("Quantiles can't be TRUE if Individual is FALSE.")
+    
   # Default r values: 64 values up to half the max distance
   if (is.null(r)) {
     if (inherits(X, "Dtable")) {
@@ -82,7 +86,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   # Cumulate weights up to each distance
   NbdInt <- t(apply(Nbd[, seq_len(Nr)], 1, cumsum))
-  NbdAll <- t(apply(Nbd[, (Nr+1):(2*Nr)], 1, cumsum))
+  NbdAll <- t(apply(Nbd[, (Nr + 1):(2 * Nr)], 1, cumsum))
   
   # Calculate the ratio of points of interest around each point
   LocalRatio <- NbdInt/NbdAll
@@ -115,10 +119,74 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   }
   colnames(MEstimate) <- ColNames
   
-  # Return the values of M(r)
+  # Make an fv object
   M <- fv(MEstimate, argu="r", ylab=quote(M(r)), valu="M", 
           fmla= "cbind(M,theo)~r", alim=c(0, max(r)), labl=Labl, 
           desc=Desc, unitname=X$window$unit, fname="M")
   fvnames(M, ".") <- ColNames[-1]
+  
+  
+  # Calculate the quantiles of the individual values with respect to the null hypothesis
+  if (Quantiles) {
+    # Run Monte Carlo simulations of Mhat for each reference point
+    nReferencePoints <- sum(IsReferenceType)
+    # Prepare a matrix to save quantiles
+    MQuantiles <- matrix(0, nrow = length(r), ncol = nReferencePoints)
+    colnames(MQuantiles) <- paste("M", ColNumbers, sep="_")
+    rownames(MQuantiles) <- r
+    if (verbose) ProgressBar <- utils::txtProgressBar(min = 0, max = nReferencePoints)
+    for (i in seq_len(nReferencePoints)) {
+      # Null hypothesis
+      SimulatedPP <- expression(
+        rRandomLocation(
+          X, 
+          ReferencePoint = which(X$marks$PointType == ReferenceType)[i], 
+          CheckArguments = FALSE
+        )
+      )
+      # Compute the simulations. The envelope is useless: we need the simulated values.
+      Envelope <- envelope(
+        # The value Mhat(X) is not used but the point #1 must be of ReferenceType
+        # so retain points of ReferenceType only to save time
+        X[X$marks$PointType == ReferenceType], 
+        fun = Mhat, 
+        nsim = NumberOfSimulations, 
+        # nrank may be any value because the envelope is not used
+        nrank = 1,
+        # Arguments for Mhat()
+        r = r, 
+        ReferenceType = ReferenceType, 
+        NeighborType = NeighborType, 
+        CaseControl = CaseControl, 
+        Individual = TRUE, 
+        # The reference point is always 1 after rRandomLocation()
+        ReferencePoint = 1, 
+        CheckArguments = FALSE,
+        # Arguments for envelope()
+        simulate = SimulatedPP, 
+        # Do not show the progress
+        verbose = FALSE, 
+        # Save individual simulations into attribute simfuns
+        savefuns = TRUE
+      )
+      # Get the distribution of simulated values (eliminate the "r" column). 
+      Simulations <- as.matrix(attr(Envelope, "simfuns"))[, -1]
+      # Calculate the quantiles of observed values
+      for (r_i in seq_along(r)) {
+        if (any(!is.na(Simulations[r_i, ]))) {
+          # Check that at least one simulated value is not NaN so that ecdf() works.
+          MQuantiles[r_i, i] <- stats::ecdf(Simulations[r_i, ])(Mvalues[r_i, i])
+        } else {
+          MQuantiles[r_i, i] <- NaN
+        }
+      }
+      # Progress bar
+      if (verbose) utils::setTxtProgressBar(ProgressBar, i)
+    }
+    close(ProgressBar)
+    # Save the quantiles as an attribute of the fv
+    attr(M, "Quantiles") <- MQuantiles
+  }
+  
   return (M)
 }
