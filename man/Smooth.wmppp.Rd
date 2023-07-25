@@ -2,9 +2,9 @@
 \alias{Smooth.wmppp}
 \title{Spatial smoothing of individual dbmss's}
 \usage{
-  \method{Smooth}{wmppp} (X, fvind, ReferenceType = "", distance = NULL, 
-                          Quantiles = FALSE, Weighted = TRUE, Adjust = 1, 
-                          Nbx = 128, Nby = 128, \dots, CheckArguments = TRUE)
+  \method{Smooth}{wmppp} (X, fvind, distance = NULL, Quantiles = FALSE, 
+      Weighted = TRUE, Adjust = 1, 
+      Nbx = 128, Nby = 128, \dots, CheckArguments = TRUE)
 }
 \description{
   Performs spatial smoothing of the individual values of distance-based measures computed in the neighborhood of each point.
@@ -15,10 +15,6 @@
   }
   \item{fvind}{
     An object of class \code{fv}, see \code{\link{fv.object}}, obtained a distance-based method, such as \code{\link{Mhat}} with individual values (argument \code{Individual = TRUE}).
-  }
-  \item{ReferenceType}{
-    The point type used to calculate the function values.
-    The default value is "", i.e. all point types, but it will generate an error if the actual reference type is different.
   }
   \item{distance}{
     The distance at which the function value must be considered.
@@ -48,14 +44,15 @@
 }
 \value{
   An image that can be plotted.
+  If quantiles are computed, attributes "High" and "Low" contain logical vectors to indentify significantly high and low quantiles ( )
 }
 \examples{
   ReferenceType <- "V. Americana"
   NeighborType <- "Q. Rosea"
   # Calculate individual intertype M(distance) values
-  fvind <- Mhat(paracou16, , ReferenceType, NeighborType, Individual=TRUE)
+  fvind <- Mhat(paracou16, r=c(0, 30), ReferenceType, NeighborType, Individual=TRUE)
   # Plot the point pattern with values of M(30 meters)
-  p16_map <- Smooth(paracou16, fvind, ReferenceType, distance=30)
+  p16_map <- Smooth(paracou16, fvind, distance=30)
   plot(p16_map, main = "")
   # Add the reference points to the plot
   is.ReferenceType <- paracou16$marks$PointType == ReferenceType

@@ -32,10 +32,8 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   IsNeighborType <- X$marks$PointType==NeighborType
   
   if (!is.null(ReferencePoint)) {
-    if (!Individual) {
-      warning("The reference point is ignored because Individual is FALSE.")
-      ReferencePoint <- NULL
-    }
+    # Set individual to TRUE if a refernce point is given
+    Individual <- TRUE
     if (IsReferenceType[ReferencePoint]) {
       # Remember the name of the reference point in the dataset of reference type
       ReferencePoint_name <- row.names(X$marks[ReferencePoint, ])
@@ -185,7 +183,12 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     if (verbose) close(ProgressBar)
     # Save the quantiles as an attribute of the fv
     attr(M, "Quantiles") <- MQuantiles
+    attr(M, "Alpha") <- Alpha
   }
   
+  if (Individual & is.null(ReferencePoint)) {
+    # Save the reference type for future smoothing
+    attr(M, "ReferenceType") <- ReferenceType
+  }
   return(M)
 }

@@ -1,11 +1,23 @@
-Smooth.wmppp <- function(X, fvind, ReferenceType = "", distance = NULL, 
-                         Quantiles = FALSE, Weighted = TRUE, Adjust = 1, 
+Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE, 
+                         Weighted = TRUE, Adjust = 1, 
                          Nbx = 128, Nby = 128,..., CheckArguments = TRUE)
 {
   # Check the arguments
   if (CheckArguments) {
     CheckdbmssArguments()
   }
+  
+  if (Quantiles) {
+    # Read the risk level in fvind
+    Alpha <- attr(fvind, "Alpha")
+    if (is.null(Alpha))
+      stop("The risk level 'Alpha' could not be read in 'fvind'. Was it computed with argument 'Quantiles = TRUE' ?")
+  }
+
+  # Read the reference type in fvind
+  ReferenceType <- attr(fvind, "ReferenceType")
+  if (is.null(ReferenceType))
+    stop("The refence type could not be read in 'fvind'. Was it computed with argument 'Indivivual = TRUE' ?")
   
   # Reduce the point pattern to the reference type
   if (ReferenceType != "") {
@@ -45,7 +57,10 @@ Smooth.wmppp <- function(X, fvind, ReferenceType = "", distance = NULL,
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
+    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
+    # Statistical significance saved in attributes
+    attr(Image, "High") <- X$marks >= 1 - Alpha / 2
+    attr(Image, "Low") <- X$marks <= Alpha / 2
   } else {
     # Smooth the values of the dbm
     fvind.matrix <- as.matrix(fvind)
@@ -57,7 +72,7 @@ Smooth.wmppp <- function(X, fvind, ReferenceType = "", distance = NULL,
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
+    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
   }
   return(Image)
 }
