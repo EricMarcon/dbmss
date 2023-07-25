@@ -9,7 +9,8 @@
 \usage{
 Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     CaseControl = FALSE, Individual = FALSE, ReferencePoint = NULL,
-    CheckArguments = TRUE)
+    Quantiles = FALSE, NumberOfSimulations = 100, Alpha = 0.05, 
+    verbose = interactive(), CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
@@ -32,6 +33,18 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   }
   \item{Individual}{
   Logical; if \code{TRUE}, values of the function around each individual point are returned.
+  }
+  \item{Quantiles}{
+  If \code{TRUE}, Monte-Carlo simulations are run to obtain the distribution of each individual \emph{M} value under the null hypothesis of random location of points (i.e. all points except for the reference point are relocated).
+  }
+  \item{NumberOfSimulations}{
+  The number of simulations to run, 100 by default.
+  }
+  \item{Alpha}{
+  The risk level, 5\% by default.
+  }
+  \item{verbose}{
+  Logical; if \code{TRUE}, print progress reports during the simulations.
   }
   \item{CheckArguments}{
   Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.

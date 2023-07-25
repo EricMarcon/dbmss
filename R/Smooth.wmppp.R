@@ -1,6 +1,6 @@
-Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "", 
+Smooth.wmppp <- function(X, fvind, ReferenceType = "", distance = NULL, 
                          Quantiles = FALSE, Weighted = TRUE, Adjust = 1, 
-                         Nbx = 128, Nby = 128, CheckArguments = TRUE)
+                         Nbx = 128, Nby = 128,..., CheckArguments = TRUE)
 {
   # Check the arguments
   if (CheckArguments) {
@@ -11,19 +11,7 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
   if (ReferenceType != "") {
     is_ReferenceType <- X$marks$PointType == ReferenceType
     X <- X[is_ReferenceType]
-  } 
-  
-  # Smooth the point weights. 
-  if (is.null(fv)) {
-    # Marks as a numeric vector
-    X$marks <- X$marks$PointWeight
-    # Smooth requires the top class of X to be ppp
-    class(X) <- "ppp"
-    Image <- Smooth.ppp(X, dimyx = c(Nbx, Nby))
-    return(Image)
   }
-  
-  # Smooth the individual function values
    
   # Check the consistency between X and fvind
   if (X$n != sum(startsWith(colnames(fvind), paste0(attr(fvind, "valu"), "_"))))
@@ -40,7 +28,7 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
   if (Weighted) {
     weights <- X$marks$PointWeight
   } else {
-    weights <- rep(1, x$n)
+    weights <- rep(1, X$n)
   }
   
   if (Quantiles) {
@@ -57,7 +45,7 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot/2, weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
+    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
   } else {
     # Smooth the values of the dbm
     fvind.matrix <- as.matrix(fvind)
@@ -69,7 +57,7 @@ Smooth.wmppp <- function(X, fvind = NULL, distance = NULL, ReferenceType = "",
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot/2, weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
+    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nbx, Nby))
   }
   return(Image)
 }
