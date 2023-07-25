@@ -57,7 +57,7 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
+    Image <- Smooth.ppp(X, sigma = 2*r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
     # Statistical significance saved in attributes
     attr(Image, "High") <- X$marks >= 1 - Alpha / 2
     attr(Image, "Low") <- X$marks <= Alpha / 2
@@ -72,7 +72,7 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
+    Image <- Smooth.ppp(X, sigma = 2*r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
   }
   return(Image)
 }
