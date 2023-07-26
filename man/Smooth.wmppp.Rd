@@ -3,7 +3,7 @@
 \title{Spatial smoothing of individual dbmss's}
 \usage{
   \method{Smooth}{wmppp} (X, fvind, distance = NULL, Quantiles = FALSE, 
-      Weighted = TRUE, Adjust = 1, 
+      sigma = bw.scott(X, isotropic = TRUE), Weighted = TRUE, Adjust = 1, 
       Nbx = 128, Nby = 128, \dots, CheckArguments = TRUE)
 }
 \description{
@@ -27,8 +27,13 @@
   \item{Weighted}{
     If \code{TRUE} (default), the point weights are taken into account for smoothing.
   }
+  \item{sigma}{
+  The bandwidth used for smoothing.
+  A Gaussian kernel is used (see \code{\link{Smooth.ppp}}).
+  Its bandwidth is chosen by default according to Scott's rule (see \code{\link{bw.scott}}).
+  }
   \item{Adjust}{
-  Force the selected bandwidth (equal to \code{distance}) to be multiplied by \code{Adjust}. Setting it to values greater than one (2 for example) will smooth the estimation. 
+  Force the selected bandwidth (\code{sigma}) to be multiplied by \code{Adjust}. Setting it to values smaller than one (1/2 for example) will sharpen the estimation. 
   }
   \item{Nbx, Nby}{
     The number of columns and rows (pixels) of the resulting map, 128 by default.
@@ -44,7 +49,7 @@
 }
 \value{
   An image that can be plotted.
-  If quantiles are computed, attributes "High" and "Low" contain logical vectors to indentify significantly high and low quantiles ( )
+  If quantiles have been computed in \code{fvind}, attributes "High" and "Low" contain logical vectors to indentify significantly high and low quantiles.
 }
 \examples{
   ReferenceType <- "V. Americana"

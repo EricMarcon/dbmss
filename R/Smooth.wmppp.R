@@ -1,5 +1,5 @@
 Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE, 
-                         Weighted = TRUE, Adjust = 1, 
+                         sigma = bw.scott(X, isotropic = TRUE), Weighted = TRUE, Adjust = 1, 
                          Nbx = 128, Nby = 128,..., CheckArguments = TRUE)
 {
   # Check the arguments
@@ -9,9 +9,10 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
   
   if (Quantiles) {
     # Read the risk level in fvind
-    Alpha <- attr(fvind, "Alpha")
-    if (is.null(Alpha))
+    if (is.null(attr(fvind, "Alpha")))
       stop("The risk level 'Alpha' could not be read in 'fvind'. Was it computed with argument 'Quantiles = TRUE' ?")
+    if (is.null(attr(fvind, "Quantiles")))
+      stop("The quantiles of 'fvind' are not available. Was it computed with argument 'Quantiles = TRUE' ?")
   }
 
   # Read the reference type in fvind
@@ -43,24 +44,23 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
     weights <- rep(1, X$n)
   }
   
+  # Read the attributes of the fvind
+  if (!is.null(attr(fvind, "Alpha"))) {
+    Alpha <- attr(fvind, "Alpha")
+    Qvalues <- attr(fvind, "Quantiles")[which(rownames(attr(fvind, "Quantiles")) == r_to_plot), ]
+  }
+  
   if (Quantiles) {
-    # Smooth the quantiles of the dbmss
-    if (is.null(attr(fvind, "Quantiles")))
-      stop("The quantiles of fvind are not available.")
+    # Smooth the quantiles of the dbm
     # Make the quantiles the marks of X
-    X$marks <- attr(fvind, "Quantiles")[
-        which(rownames(attr(fvind, "Quantiles")) == r_to_plot), 
-      ]
-    # Smooth requires the top class of X to be ppp
+    X$marks <- Qvalues
+    # Smooth() requires the top class of X to be ppp
     class(X) <- "ppp"
     # Eliminate NA's before smoothing
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = 2*r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
-    # Statistical significance saved in attributes
-    attr(Image, "High") <- X$marks >= 1 - Alpha / 2
-    attr(Image, "Low") <- X$marks <= Alpha / 2
+    Image <- Smooth.ppp(X, sigma = sigma, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
   } else {
     # Smooth the values of the dbm
     fvind.matrix <- as.matrix(fvind)
@@ -72,7 +72,14 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
     is_na <- is.na(X$marks)
     weights <- weights[!is_na]
     X<- X[!is_na]
-    Image <- Smooth.ppp(X, sigma = 2*r_to_plot, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
+    Image <- Smooth.ppp(X, sigma = sigma, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
+  }
+  # Statistical significance saved in attributes
+  if (!is.null(attr(fvind, "Alpha"))) {
+    # Eliminate NAs to obtain FALSE in attributes High and Low
+    Qvalues[is.na(Qvalues)] <- 0.5
+    attr(Image, "High") <- Qvalues >= 1 - Alpha / 2
+    attr(Image, "Low") <- Qvalues <= Alpha / 2
   }
   return(Image)
 }
