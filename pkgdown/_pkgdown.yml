@@ -5,10 +5,6 @@ development:
 
 template:
   bootstrap: 5
-  params:
-    docsearch:
-      api_key: 34d07893d7877757953d7bd46f236a5e
-      index_name: dbmss
 
 reference:
   - title: Package summary
