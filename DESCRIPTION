@@ -18,8 +18,7 @@ Depends:
   R (>= 3.5.0), 
   Rcpp (>= 0.12.14),
   spatstat.explore
-Imports: 
-  automap,
+Imports:
   cubature,
   dplyr,
   ggplot2, 
@@ -31,7 +30,6 @@ Imports:
   tibble,
   tidyr,
   tidyselect,
-  sp,
   spatstat.geom, 
   spatstat.random
 Suggests: 
