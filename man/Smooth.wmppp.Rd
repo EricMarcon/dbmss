@@ -7,7 +7,7 @@
       Nbx = 128, Nby = 128, \dots, CheckArguments = TRUE)
 }
 \description{
-  Performs spatial smoothing of the individual values of distance-based measures computed in the neighborhood of each point.
+  Performs spatial smoothing of the individual values of distance-based measures computed in the neighborhood of each point (Marcon and Puech, 2023).
 }
 \arguments{
   \item{X}{
@@ -50,6 +50,9 @@
 \value{
   An image that can be plotted.
   If quantiles have been computed in \code{fvind}, attributes "High" and "Low" contain logical vectors to indentify significantly high and low quantiles.
+}
+\references{
+  Marcon, E. and Puech, F. (2023). Mapping distributions in non-homogeneous space with distance-based methods. \emph{Journal of Spatial Econometrics} 4(1), 13.
 }
 \examples{
   ReferenceType <- "V. Americana"
