@@ -8,9 +8,7 @@
 }
 \usage{
 Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
-    CaseControl = FALSE, Individual = FALSE, ReferencePoint = NULL,
-    Quantiles = FALSE, NumberOfSimulations = 100, Alpha = 0.05, 
-    verbose = interactive(), CheckArguments = TRUE)
+    CaseControl = FALSE, Individual = FALSE, CheckArguments = TRUE)
 }
 \arguments{
   \item{X}{
@@ -22,9 +20,6 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \item{ReferenceType}{
   One of the point types.
   }
-  \item{ReferencePoint}{
-  The index of one of the points, i.e. an integer number between 1 and the number of points of the point pattern. 
-  }
   \item{NeighborType}{
   One of the point types. By default, the same as reference type.
   }
@@ -34,18 +29,6 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \item{Individual}{
   Logical; if \code{TRUE}, values of the function around each individual point are returned.
   }
-  \item{Quantiles}{
-  If \code{TRUE}, Monte-Carlo simulations are run to obtain the distribution of each individual \emph{M} value under the null hypothesis of random location of points (i.e. all points except for the reference point are relocated).
-  }
-  \item{NumberOfSimulations}{
-  The number of simulations to run, 100 by default.
-  }
-  \item{Alpha}{
-  The risk level, 5\% by default.
-  }
-  \item{verbose}{
-  Logical; if \code{TRUE}, print progress reports during the simulations.
-  }
   \item{CheckArguments}{
   Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
@@ -54,8 +37,6 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   \emph{M} is a weighted, cumulative, relative measure of a point pattern structure. Its value at any distance is the ratio of neighbors of the \emph{NeighborType} to all points around \emph{ReferenceType} points, normalized by its value over the windows.
   
   If \emph{CaseControl} is \code{TRUE}, then \emph{ReferenceType} points are cases and \emph{NeighborType} points are controls. The univariate concentration of cases is calculated as if \emph{NeighborType} was equal to \emph{ReferenceType}, but only controls are considered when counting all points around cases (Marcon et al., 2012). This makes sense when the sampling design is such that all points of \emph{ReferenceType} (the cases) but only a sample of the other points (the controls) are recorded. Then, the whole distribution of points is better represented by the controls alone.
-  
-  If \emph{Individual} is \code{TRUE}, then the individual values \emph{M} in the neighborhood of each point are returned. If \emph{ReferencePoint} is also specified, then \emph{only} the individual value of M around the reference point is returned.
 }
 \value{
   An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
