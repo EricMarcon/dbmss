@@ -4,7 +4,7 @@
   Test whether an object is a weighted, marked, planar point pattern
 }
 \description{
-  Check whether its argument is an object of class {"wmppp"} (\code{\link{wmppp.object}}).
+  Check whether its argument is an object of class "wmppp" (\code{\link{wmppp.object}}).
 }
 \usage{
 is.wmppp(X)
