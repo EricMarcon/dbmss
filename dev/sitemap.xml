@@ -10,6 +10,9 @@
     <loc>https://ericmarcon.github.io/dbmss/dev/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://ericmarcon.github.io/dbmss/dev/articles/maps.html</loc>
+  </url>
+  <url>
     <loc>https://ericmarcon.github.io/dbmss/dev/articles/reference.html</loc>
   </url>
   <url>
@@ -91,6 +94,9 @@
     <loc>https://ericmarcon.github.io/dbmss/dev/reference/Rcpp.html</loc>
   </url>
   <url>
+    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Smooth.wmppp.html</loc>
+  </url>
+  <url>
     <loc>https://ericmarcon.github.io/dbmss/dev/reference/as.Dtable.html</loc>
   </url>
   <url>
@@ -122,9 +128,6 @@
   </url>
   <url>
     <loc>https://ericmarcon.github.io/dbmss/dev/reference/is.wmppp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/kwmppp.html</loc>
   </url>
   <url>
     <loc>https://ericmarcon.github.io/dbmss/dev/reference/m_Envelope.html</loc>
