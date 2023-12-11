@@ -13,7 +13,7 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache = TRUE)
 set.seed(97310)
 ```
 
@@ -27,7 +27,7 @@ Amongst many questions, ecologists have been addressing the spatial attraction b
 Analyzing the spatial distribution of plants, economists may be concerned by the location of new entrants [@Duranton2008] or by the location of shops according to the types of good sold [@Picone2009]. 
 In epidemiology, researchers want to identify the spatial distribution of sick individuals in comparison to the population [@Diggle1991]. 
 In these fields of research, the point process theory undoubtedly helps dealing with these questions. 
-Exploratory statistics of point patterns widely rely on Ripley's seminal work [@Ripley1976; @Ripley1977], namely the $K$ function. 
+Exploratory statistics of point patterns widely rely on Ripley's seminal work [@Ripley1976a; @Ripley1977], namely the $K$ function. 
 A review of similar methods has been made by @Marcon2012c who called them distance-based measures of spatial concentration. 
 We will write spatial structures here since both dispersion and concentration can be characterized. 
 They are considered as novel and promising tools in spatial economics [@Combes2008]. 
@@ -44,11 +44,8 @@ The basic purpose of Ripley's $K$ is to test the observed point pattern against 
 Ripley-like functions, available in the _dbmss_ package, can be classified in three families:
 
 - Topographic measures such as $K$ take space as their reference. They have been widely used in ecology [@Fortin2005]. They have been built from the point process theory and have a strong mathematical background.
-
 - Relative measures such as $M$ [@Marcon2010] compare the structure of a point type to that of another type (they can be considered as cases and controls). They have been developed in economics, where comparing the distribution of a sector of activity to that of the whole economic activity is a classical approach [@Combes2008], but introduced only recently in ecology [@Marcon2012].
-
 - Absolute functions such as $K_d$ [@Duranton2005] have no reference at all but their value can be compared to the appropriate null hypothesis to test it.
-
 
 Relative and absolute functions have been built from descriptive statistics of point patterns, not related to the underlying point processes, so they are seen as heuristic and ignored by the statistical literature [@Illian2008]. 
 Topographic functions are implemented in the _spatstat_ package [@Baddeley2005} but absolute and relative functions are missing. 
@@ -57,7 +54,7 @@ It makes the computation of the whole set of distance-based methods simple for e
 
 Estimated values of the functions must be tested against a null hypothesis. 
 The usual empirical way to characterize a spatial structure consists in computing the appropriate function and comparing it to the quantiles of a large number of simulations of the null hypothesis to reject [@Kenkel1988]. 
-We propose extended possibilities to evaluate confidence envelopes, including _global envelopes_ [@Duranton2005], a goodness-of-fit test [@Diggle1983] and an analytical test [@Lang2010; @Marcon2013].
+We propose extended possibilities to evaluate confidence envelopes, including _global envelopes_ [@Duranton2005], a goodness-of-fit test [@Diggle2013] and an analytic test [@Lang2013; @Marcon2013].
 
 Definitions of all functions and formulas for their estimation can be found in @Marcon2012c and are not repeated here, but they are summarized in the statistical background section. 
 Their implementation is presented in the package content section.
@@ -211,7 +208,7 @@ It draws point coordinates between 0 and 1, and creates a `wmppp` with a default
 
 ```{r SimpleWmppp, warning=FALSE}
 library("dbmss")
-Pattern <- wmppp(data.frame(X=runif(100), Y=runif(100)))
+Pattern <- wmppp(data.frame(X = runif(100), Y = runif(100)))
 summary(Pattern)
 ```
 
@@ -220,16 +217,11 @@ summary(Pattern)
 
 All functions are named `Xhat` where `X` is the name of the function: 
 
-- Ripley's $g$ and $K$, and $K$'s normalization, Besag's $L$ [-@Besag1977]; 
-
+- Ripley's $g$ and $K$, and $K$'s normalization, Besag's $L$ [-@Besag1977a]; 
 - Penttinen's $K_{mm}$ and $L_{mm}$; 
-
 - Diggle and Chetwynd's $D$; 
-
 - Baddeley et al.'s $K_{inhom}$ and its derivative $g_{inhom}$; 
-
 - Marcon and Puech's $M$;
-
 - Duranton and Overman's $K_d$ (including its weighted version $K^{emp}$).
 
 
@@ -238,11 +230,8 @@ The suffix `hat` has been used to avoid confusion with other functions in R: `D`
 Arguments are:
 
 - A weighted, marked planar point pattern (a `wmppp` class object). The window can be a polygon or a binary image, as in _spatstat_.
-
 - A vector of distances.
-
 - Optionally a reference and a neighbor point type to calculate bivariate functions, or equivalently the types of cases and controls for the $D$ function.
-
 - Some optional arguments, specific to some functions.
 
 
@@ -279,19 +268,26 @@ The first one comes from the economic literature [@Bonneu2007] [^1]
 
 ```{r Toulouse, warning=FALSE}
 load("CSBIGS.Rdata")
-Category <- cut(Emergencies$M, quantile(Emergencies$M, c(0, 0.9, 1)),
-   labels = c("Other", "Biggest"), include.lowest = TRUE)
-X <- wmppp(data.frame(X=Emergencies$X, Y=Emergencies$Y, PointType=Category), win=Region)
+Category <- cut(
+  Emergencies$M, 
+  quantile(Emergencies$M, probs = c(0, 0.9, 1)),
+  labels = c("Other", "Biggest"), 
+  include.lowest = TRUE
+)
+X <- wmppp(
+  data.frame(X = Emergencies$X, Y = Emergencies$Y, PointType = Category), 
+  win=Region
+)
 X$window$units <- c("meter","meters")
 X2 <- split(X)
 marks(X2$Other) <- rep(1, X2$Other$n)
 marks(X2$Biggest) <- rep(1, X2$Biggest$n)
-par(mfrow=c(1,2), mar=c(0,0,0,0))  
-plot(X2$Other, main="", maxsize=1, legend=FALSE)
-text(514300,  1826800, "a")
-plot(X2$Biggest, main="", maxsize=1, legend=FALSE)
-text(514300,  1826800, "b")
-par(mfrow=c(1,1))
+par(mfrow = c(1, 2), mar = c(0, 0, 0, 0))  
+plot(X2$Other, main="", maxsize = 1, legend = FALSE)
+text(514300, 1826800, "a")
+plot(X2$Biggest, main = "", maxsize = 1, legend = FALSE)
+text(514300, 1826800, "b")
+par(mfrow = c(1, 1))
 ```
 
 The map of emergencies in the urban area of Toulouse, France, during year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies recorded (many points are confused at the figure scale) and (b) the locations of the 10 percent most serious ones.
@@ -307,8 +303,14 @@ The `KdEnvelope` function is run from 0 to 10km by steps of 100m for the most se
 The figure below shows that the 10% most serious emergencies are more dispersed than the distribution of all emergencies at all distances up to 10km.
 
 ```{r KdCode, fig.width=6, fig.height=5}
-KdE <- KdEnvelope(X, r=seq(0, 10000, 100), NumberOfSimulations=1000, ReferenceType="Biggest", Global=TRUE)
-autoplot(KdE, main="")
+KdE <- KdEnvelope(
+  X, 
+  r = seq(0, 10000, 100), 
+  NumberOfSimulations = 1000, 
+  ReferenceType = "Biggest", 
+  Global = TRUE
+)
+autoplot(KdE, main = "")
 ```
 
 The solid, black curve is  $K_d$. 
@@ -319,14 +321,16 @@ distances are in meters.
 This opens the way to discuss on the optimal location of fire stations.
 
 The second example uses the `paracou16` point pattern provided in the package. 
-It represents the distribution of trees in a 4.1-ha tropical forest plot in the Paracou field station in French Guiana [@Gourlet2004]. 
+It represents the distribution of trees in a 4.1-ha tropical forest plot in the Paracou field station in French Guiana [@Gourlet-Fleury2004]. 
 It contains 2426 trees, whose species is either _Qualea rosea_, _Vouacapoua americana_ or Other (one of more than 300 species). 
 Weights are basal areas (the area of the stems virtually cut 1.3 meter above ground), measured in square centimeters.
 
 ```{r P16Code, eval=FALSE}
-autoplot(paracou16,
+autoplot(
+  paracou16,
   labelSize = expression("Basal area (" ~cm^2~ ")"), 
-  labelColor = "Species")
+  labelColor = "Species"
+)
 ```
 
 On the map, circles are centered on trees in the forest plot (the containing rectangle is 200m wide by 250m long). 
@@ -337,10 +341,17 @@ Bivariate $M(r)$ is calculated for $r$ between 0 and 30 meters.
 1000 simulations are run to build the global confidence envelope.
 
 ```{r MCode}
-Envelope <- MEnvelope(paracou16, r = seq(0, 30, 2), NumberOfSimulations 
-   = 1000, Alpha = 0.05, ReferenceType = "V. Americana", NeighborType 
-   = "Q. Rosea", SimulationType = "RandomLabeling", Global = TRUE)
-autoplot(Envelope, main="", ylim=c(0, 20))
+Envelope <- MEnvelope(
+  paracou16, 
+  r = seq(0, 30, 2), 
+  NumberOfSimulations = 1000,
+  Alpha = 0.05, 
+  ReferenceType = "V. Americana", 
+  NeighborType = "Q. Rosea", 
+  SimulationType = "RandomLabeling", 
+  Global = TRUE
+)
+autoplot(Envelope, main = "", ylim = c(0, 20))
 ```
 
 $M(r)$ values of _Qualea rosea_ around _Vouacapoua Americana_ are plotted.
@@ -358,7 +369,7 @@ The complete study, with a larger dataset allowing significant results, can be f
 
 ## Goodness-of-fit test
 
-A Goodness-of-fit test for $K$ has been proposed by @Diggle1983, applied to $K$ by @Loosmore2006 and to $M$ by @Marcon2012. 
+A Goodness-of-fit test for $K$ has been proposed by @Diggle2013, applied to $K$ by @Loosmore2006 and to $M$ by @Marcon2012. 
 It calculates the  distance between the actual values of the function and its average value obtained in simulations of the null hypothesis.
 The same distance is calculated for each simulated point pattern, and the returned $p$-value of the test if the ratio of simulations whose distance is larger than that of the real point pattern.
 The test is performed by the `GoFtest` function whose argument is the envelope previously calculated (actually, the function uses the simulation values). 
@@ -372,7 +383,7 @@ GoFtest(Envelope)
 
 ## Ktest
 
-The `Ktest` has been developed by Lang and Marcon [@Lang2010; @Marcon2013]. 
+The `Ktest` has been developed by Lang and Marcon [@Lang2013; @Marcon2013]. 
 It does not rely on simulations and returns the $p$-value to erroneously reject complete spatial randomness (CSR) given the values of $K$. 
 It relies on the exact variance of $K$ calculated with edge-effect corrections. 
 It only works in a rectangular window.

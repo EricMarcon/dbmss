@@ -12,7 +12,7 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache = TRUE)
 set.seed(97310)
 ```
 
@@ -47,9 +47,25 @@ The following figure shows this difference on the estimation of the $m$ function
 ```{r}
 library("dbmss")
 # Sheather and Jones bandwidth in black
-plot(mhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), main="", legend=FALSE)
-# Original bandwith in red
-plot(mhat(paracou16, , ReferenceType="Q. Rosea"), col="red", main="", add=TRUE)
+plot(
+  mhat(
+    paracou16, 
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE
+  ), 
+  main = "", 
+  legend = FALSE
+)
+# Original bandwidth in red
+plot(
+  mhat(
+    paracou16, 
+    ReferenceType = "Q. Rosea"
+  ), 
+  col ="red", 
+  main = "", 
+  add = TRUE
+)
 ```
 
 # Data
@@ -63,8 +79,25 @@ The default distance range is used for the black curve.
 The red curve is the same function estimated up to 30 meters only, resulting into a narrower bandwith: the curve of $K_d$ is less smoothed.
 
 ```{r message=FALSE}
-plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), ylim=c(0, 0.008), main="")
-plot(Kdhat(paracou16, r=0:30 , ReferenceType="Q. Rosea", Original=FALSE), main="", col="red", add=TRUE)
+plot(
+  Kdhat(
+    paracou16,
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE
+  ), 
+  ylim = c(0, 0.008), 
+  main = ""
+)
+plot(
+  Kdhat(
+    paracou16, 
+    r = 0:30, 
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE
+  ), 
+  main = "", 
+  col = "red", 
+  add = TRUE)
 ```
 
 The approximated algorithm used to calculate $K_d$ and $m$ retains point pairs up to twice the max value of $r$ and rounds their distances in 2048 (this number can be increased by the `Approximate` argument) equally-spaced values.
@@ -73,9 +106,26 @@ Simulations show that the approximated algorithm yields bandwidths very similar 
 
 ```{r}
 # Exact computation in black
-plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), main="")
+plot(
+  Kdhat(
+    paracou16,
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE
+  ), 
+  main = ""
+)
 # Approximated computation in green
-plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE, Approximate = 1), main="", col="green", add=TRUE)
+plot(
+  Kdhat(
+    paracou16, 
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE, 
+    Approximate = 1
+  ), 
+  main = "", 
+  col = "green", 
+  add = TRUE
+)
 ```
 
 # Fine tuning
@@ -85,9 +135,27 @@ Values over 1 will smooth the density estimation; under 1, they will sharpen it.
 
 ```{r}
 # Default bandwith in black
-plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE), ylim=c(0, 0.008), main="")
+plot(
+  Kdhat(
+    paracou16,
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE
+  ), 
+  ylim = c(0, 0.008),
+  main = ""
+)
 # Adjusted (half) bandwidth in red
-plot(Kdhat(paracou16, , ReferenceType="Q. Rosea", Original=FALSE, Adjust = 1/2), main="", col="red", add=TRUE)
+plot(
+  Kdhat(
+    paracou16,
+    ReferenceType = "Q. Rosea", 
+    Original = FALSE, 
+    Adjust = 1/2
+  ), 
+  main = "", 
+  col = "red", 
+  add = TRUE
+)
 ```
 
 # Conclusion

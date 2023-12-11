@@ -1,8 +1,12 @@
-# dbmss 2.8-2.9000
+# dbmss 2.8-2.9105
 
 ## Improvements
 
 - NAMESPACE cleaned up.
+
+## Significant user-visible changes
+
+- `Smooth.wmppp()` smooths wmppp's to map individual values of functions such as $M$ in the neighborhood of points.
 
 
 # dbmss 2.8-2
