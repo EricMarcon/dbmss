@@ -20,7 +20,6 @@ Depends:
   spatstat.explore
 Imports:
   cubature,
-  dplyr,
   ggplot2, 
   RcppParallel, 
   reshape2, 
@@ -28,8 +27,6 @@ Imports:
   spatstat.utils, 
   stats, 
   tibble,
-  tidyr,
-  tidyselect,
   spatstat.geom, 
   spatstat.random
 Suggests: 
