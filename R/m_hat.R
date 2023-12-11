@@ -166,10 +166,15 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   }
   colnames(mEstimate) <- ColNames
   
-  # Return the values of m(r)
+  # Make an fv object
   m <- fv(mEstimate, argu="r", ylab=quote(m(r)), valu="m", 
           fmla= "cbind(m,theo)~r", alim=c(0, max(r)), labl=Labl, desc=Desc, 
           unitname=X$window$unit, fname="m")
   fvnames(m, ".") <- ColNames[-1]
-  return (m) 
+  if (Individual) {
+    # Save the reference type for future smoothing
+    attr(m, "ReferenceType") <- ReferenceType
+  }
+  # Return the values of m(r)
+  return(m)
 }
