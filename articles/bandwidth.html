@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Bandwidth choice">
 <meta property="og:description" content="dbmss">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.9-0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/bandwidth.html">Bandwidth choice</a>
+    <a class="dropdown-item" href="../articles/maps.html">Mapping local values of measures</a>
     <a class="dropdown-item" href="../articles/reference.html">dbmss Package Reference</a>
   </div>
 </li>
@@ -98,7 +99,7 @@
 density to find a neighbor a given distance apart from a point of
 interest in a finite point process. The <span class="math inline">\(K^{emp}\)</span> function integrates the weights
 of points: it is the density probability to find an employee <span class="math inline">\(r\)</span> apart from an employee of interest. The
-<span class="math inline">\(m\)</span> function <span class="citation">(Lang, Marcon, and Puech 2014)</span> is the ratio of
+<span class="math inline">\(m\)</span> function <span class="citation">(Lang, Marcon, and Puech 2020)</span> is the ratio of
 neighbors of interest at distance <span class="math inline">\(r\)</span>
 normalized by its value over the whole domain.</p>
 <p>All those functions require smoothing the observed data: the
@@ -139,16 +140,32 @@ estimation, the black one uses the Sheather and Jones bandwidth.</p>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.2-1</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.2-7</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.1-5</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.2-2</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.2-1</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.explore 3.2-5</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sheather and Jones bandwidth in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co"># Original bandwith in red</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, main<span class="op">=</span><span class="st">""</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>, </span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>  legend <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># Original bandwidth in red</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>, </span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  col <span class="op">=</span><span class="st">"red"</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>  add <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="bandwidth_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 </div>
 <div class="section level2">
@@ -171,8 +188,25 @@ shows this effect on the estimation of the <span class="math inline">\(K_d\)</sp
 the black curve. The red curve is the same function estimated up to 30
 meters only, resulting into a narrower bandwith: the curve of <span class="math inline">\(K_d\)</span> is less smoothed.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, r<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">30</span> , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="st">"red"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>,</span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>, </span>
+<span>    r <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">30</span>, </span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>  col <span class="op">=</span> <span class="st">"red"</span>, </span>
+<span>  add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bandwidth_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>The approximated algorithm used to calculate <span class="math inline">\(K_d\)</span> and <span class="math inline">\(m\)</span> retains point pairs up to twice the max
 value of <span class="math inline">\(r\)</span> and rounds their
@@ -184,9 +218,26 @@ approximated algorithm yields bandwidths very similar to those obtained
 by exact computation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exact computation in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>,</span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co"># Approximated computation in green</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span>, Approximate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="st">"green"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>, </span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>    Approximate <span class="op">=</span> <span class="fl">1</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>  col <span class="op">=</span> <span class="st">"green"</span>, </span>
+<span>  add <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="bandwidth_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div class="section level2">
@@ -197,9 +248,27 @@ by exact computation.</p>
 under 1, they will sharpen it.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default bandwith in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>,</span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co"># Adjusted (half) bandwidth in red</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span><span class="va">paracou16</span>, , ReferenceType<span class="op">=</span><span class="st">"Q. Rosea"</span>, Original<span class="op">=</span><span class="cn">FALSE</span>, Adjust <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>, main<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="st">"red"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
+<span>    <span class="va">paracou16</span>,</span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>    Original <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>    Adjust <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span></span>
+<span>  <span class="op">)</span>, </span>
+<span>  main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>  col <span class="op">=</span> <span class="st">"red"</span>, </span>
+<span>  add <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="bandwidth_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 <div class="section level2">
@@ -231,24 +300,25 @@ null hypothesis consistently.</p>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Duranton2005" class="csl-entry">
-Duranton, Gilles, and Henry G. Overman. 2005. <span>“Testing for
+Duranton, Gilles, and Henry G Overman. 2005. <span>“Testing for
 Localisation Using Micro-Geographic Data.”</span> <em>Review of Economic
-Studies</em> 72 (4): 1077–1106.
+Studies</em> 72 (4): 1077–1106. <a href="https://doi.org/10.1111/0034-6527.00362" class="external-link">https://doi.org/10.1111/0034-6527.00362</a>.
 </div>
 <div id="ref-Lang2014" class="csl-entry">
-Lang, Gabriel, Eric Marcon, and Florence Puech. 2014.
-<span>“Distance-Based Measures of Spatial Concentration: Introducing a
-Relative Density Function.”</span> <em>HAL</em> 01082178 (version 2).
+Lang, Gabriel, Eric Marcon, and Florence Puech. 2020.
+<span>“Distance-Based Measures of Spatial Concentration:
+<span>Introducing</span> a Relative Density Function.”</span> <em>The
+Annals of Regional Science</em> 64: 243–65. <a href="https://doi.org/10.1007/s00168-019-00946-7" class="external-link">https://doi.org/10.1007/s00168-019-00946-7</a>.
 </div>
 <div id="ref-Sheather1991" class="csl-entry">
 Sheather, S. J., and M. C. Jones. 1991. <span>“A Reliable Data-Based
 Bandwidth Selection Method for Kernel Density Estimation.”</span>
 <em>Journal of the Royal Statistical Society: Series B (Statistical
-Methodology)</em> 53 (3): 683–90.
+Methodology)</em> 53 (3): 683–90. <a href="https://doi.org/10.2307/2345597" class="external-link">https://doi.org/10.2307/2345597</a>.
 </div>
 <div id="ref-Silverman1986" class="csl-entry">
 Silverman, B. W. 1986. <em>Density Estimation for Statistics and Data
-Analysis</em>. London: Chapman; Hall.
+Analysis</em>. <span>London</span>: <span>Chapman and Hall</span>.
 </div>
 </div>
 </div>

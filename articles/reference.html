@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="dbmss Package Reference">
 <meta property="og:description" content="dbmss">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.8-2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.9-0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/bandwidth.html">Bandwidth choice</a>
+    <a class="dropdown-item" href="../articles/maps.html">Mapping local values of measures</a>
     <a class="dropdown-item" href="../articles/reference.html">dbmss Package Reference</a>
   </div>
 </li>
@@ -151,21 +152,23 @@ probability to find a point is the same everywhere). Ripley-like
 functions, available in the <em>dbmss</em> package, can be classified in
 three families:</p>
 <ul>
-<li><p>Topographic measures such as <span class="math inline">\(K\)</span> take space as their reference. They
-have been widely used in ecology <span class="citation">(Fortin and Dale
-2005)</span>. They have been built from the point process theory and
-have a strong mathematical background.</p></li>
-<li><p>Relative measures such as <span class="math inline">\(M\)</span>
+<li>Topographic measures such as <span class="math inline">\(K\)</span>
+take space as their reference. They have been widely used in ecology
+<span class="citation">(Fortin and Dale 2005)</span>. They have been
+built from the point process theory and have a strong mathematical
+background.</li>
+<li>Relative measures such as <span class="math inline">\(M\)</span>
 <span class="citation">(Marcon and Puech 2010)</span> compare the
 structure of a point type to that of another type (they can be
 considered as cases and controls). They have been developed in
 economics, where comparing the distribution of a sector of activity to
 that of the whole economic activity is a classical approach <span class="citation">(Combes, Mayer, and Thisse 2008)</span>, but introduced
 only recently in ecology <span class="citation">(Marcon, Puech, and
-Traissac 2012)</span>.</p></li>
-<li><p>Absolute functions such as <span class="math inline">\(K_d\)</span> <span class="citation">(Duranton and
-Overman 2005)</span> have no reference at all but their value can be
-compared to the appropriate null hypothesis to test it.</p></li>
+Traissac 2012)</span>.</li>
+<li>Absolute functions such as <span class="math inline">\(K_d\)</span>
+<span class="citation">(Duranton and Overman 2005)</span> have no
+reference at all but their value can be compared to the appropriate null
+hypothesis to test it.</li>
 </ul>
 <p>Relative and absolute functions have been built from descriptive
 statistics of point patterns, not related to the underlying point
@@ -187,7 +190,7 @@ reject <span class="citation">(Kenkel 1988)</span>. We propose extended
 possibilities to evaluate confidence envelopes, including <em>global
 envelopes</em> <span class="citation">(Duranton and Overman
 2005)</span>, a goodness-of-fit test <span class="citation">(Diggle
-1983)</span> and an analytical test <span class="citation">(Lang and
+2013)</span> and an analytic test <span class="citation">(Lang and
 Marcon 2013; Marcon, Traissac, and Lang 2013)</span>.</p>
 <p>Definitions of all functions and formulas for their estimation can be
 found in <span class="citation">Marcon and Puech (2017)</span> and are
@@ -321,7 +324,7 @@ axioms generally accepted as the <em>good properties</em> to evaluate
 geographic concentration in spatial economics <span class="citation">(Combes and Overman 2004; Duranton and Overman
 2005)</span>.</p>
 <p><span class="math inline">\(m\)</span> <span class="citation">(Lang,
-Marcon, and Puech 2014)</span> is the density function measuring the
+Marcon, and Puech 2020)</span> is the density function measuring the
 same ratio as <span class="math inline">\(M\)</span>, at distance <span class="math inline">\(r\)</span>.</p>
 </div>
 <div class="section level3">
@@ -401,7 +404,7 @@ confidence interval of the counterfactual. It allows addressing big
 datasets thanks to C++ code used to calculate distances between pairs of
 points <span class="citation">(using <em>Rcpp</em> and
 <em>RcppParallel</em> infrastructure: Eddelbuettel and François 2011;
-Allaire et al. 2015)</span>. Computational requirements actually are an
+Allaire et al. 2023)</span>. Computational requirements actually are an
 issue starting from say 10,000 points <span class="citation">(see
 Ellison, Glaeser, and Kerr 2010 for instance)</span>. Memory requirement
 is <span class="math inline">\(O(n)\)</span>, i.e. proportional to the
@@ -441,13 +444,13 @@ their weight is 1.</p>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.2-1</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.2-7</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.1-5</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.2-2</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.2-1</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.explore 3.2-5</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Marked planar point pattern:  100 points</span></span>
 <span><span class="co">## Average intensity 102.9038 points per square unit</span></span>
@@ -473,28 +476,28 @@ their weight is 1.</p>
 <p>All functions are named <code>Xhat</code> where <code>X</code> is the
 name of the function:</p>
 <ul>
-<li><p>Ripley’s <span class="math inline">\(g\)</span> and <span class="math inline">\(K\)</span>, and <span class="math inline">\(K\)</span>’s normalization, Besag’s <span class="math inline">\(L\)</span> <span class="citation">(1977)</span>;</p></li>
-<li><p>Penttinen’s <span class="math inline">\(K_{mm}\)</span> and <span class="math inline">\(L_{mm}\)</span>;</p></li>
-<li><p>Diggle and Chetwynd’s <span class="math inline">\(D\)</span>;</p></li>
-<li><p>Baddeley et al.’s <span class="math inline">\(K_{inhom}\)</span>
-and its derivative <span class="math inline">\(g_{inhom}\)</span>;</p></li>
-<li><p>Marcon and Puech’s <span class="math inline">\(M\)</span>;</p></li>
-<li><p>Duranton and Overman’s <span class="math inline">\(K_d\)</span>
-(including its weighted version <span class="math inline">\(K^{emp}\)</span>).</p></li>
+<li>Ripley’s <span class="math inline">\(g\)</span> and <span class="math inline">\(K\)</span>, and <span class="math inline">\(K\)</span>’s normalization, Besag’s <span class="math inline">\(L\)</span> <span class="citation">(1977)</span>;</li>
+<li>Penttinen’s <span class="math inline">\(K_{mm}\)</span> and <span class="math inline">\(L_{mm}\)</span>;</li>
+<li>Diggle and Chetwynd’s <span class="math inline">\(D\)</span>;</li>
+<li>Baddeley et al.’s <span class="math inline">\(K_{inhom}\)</span> and
+its derivative <span class="math inline">\(g_{inhom}\)</span>;</li>
+<li>Marcon and Puech’s <span class="math inline">\(M\)</span>;</li>
+<li>Duranton and Overman’s <span class="math inline">\(K_d\)</span>
+(including its weighted version <span class="math inline">\(K^{emp}\)</span>).</li>
 </ul>
 <p>The suffix <code>hat</code> has been used to avoid confusion with
 other functions in R: <code>D</code> exists in the <em>stats</em>
 package for example.</p>
 <p>Arguments are:</p>
 <ul>
-<li><p>A weighted, marked planar point pattern (a <code>wmppp</code>
-class object). The window can be a polygon or a binary image, as in
-<em>spatstat</em>.</p></li>
-<li><p>A vector of distances.</p></li>
-<li><p>Optionally a reference and a neighbor point type to calculate
+<li>A weighted, marked planar point pattern (a <code>wmppp</code> class
+object). The window can be a polygon or a binary image, as in
+<em>spatstat</em>.</li>
+<li>A vector of distances.</li>
+<li>Optionally a reference and a neighbor point type to calculate
 bivariate functions, or equivalently the types of cases and controls for
-the <span class="math inline">\(D\)</span> function.</p></li>
-<li><p>Some optional arguments, specific to some functions.</p></li>
+the <span class="math inline">\(D\)</span> function.</li>
+<li>Some optional arguments, specific to some functions.</li>
 </ul>
 <p>Topographic functions require edge-effect corrections, provided by
 <em>spatstat</em>: the <code>best</code> correction is systematically
@@ -538,21 +541,28 @@ obtain it instead of the local one.</p>
 first one comes from the economic literature <span class="citation">(Bonneu 2007)</span> <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The dataset can be downloaded from &lt;a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="external-link uri"&gt;http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"CSBIGS.Rdata"</span><span class="op">)</span></span>
-<span><span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>   labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Other"</span>, <span class="st">"Biggest"</span><span class="op">)</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">X</span>, Y<span class="op">=</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">Y</span>, PointType<span class="op">=</span><span class="va">Category</span><span class="op">)</span>, win<span class="op">=</span><span class="va">Region</span><span class="op">)</span></span>
+<span><span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
+<span>  <span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Other"</span>, <span class="st">"Biggest"</span><span class="op">)</span>, </span>
+<span>  include.lowest <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X <span class="op">=</span> <span class="va">Emergencies</span><span class="op">$</span><span class="va">X</span>, Y <span class="op">=</span> <span class="va">Emergencies</span><span class="op">$</span><span class="va">Y</span>, PointType <span class="op">=</span> <span class="va">Category</span><span class="op">)</span>, </span>
+<span>  win<span class="op">=</span><span class="va">Region</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">X</span><span class="op">$</span><span class="va">window</span><span class="op">$</span><span class="va">units</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"meter"</span>,<span class="st">"meters"</span><span class="op">)</span></span>
 <span><span class="va">X2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="fu">marks</span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Other</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
 <span><span class="fu">marks</span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>  </span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span>, main<span class="op">=</span><span class="st">""</span>, maxsize<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>,  <span class="fl">1826800</span>, <span class="st">"a"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span>, main<span class="op">=</span><span class="st">""</span>, maxsize<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>,  <span class="fl">1826800</span>, <span class="st">"b"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Other</span>, main<span class="op">=</span><span class="st">""</span>, maxsize <span class="op">=</span> <span class="fl">1</span>, legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>, <span class="fl">1826800</span>, <span class="st">"a"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span>, main <span class="op">=</span> <span class="st">""</span>, maxsize <span class="op">=</span> <span class="fl">1</span>, legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>, <span class="fl">1826800</span>, <span class="st">"b"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/Toulouse-1.png" width="700"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The map of emergencies in the urban area of Toulouse, France, during
 year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies
 recorded (many points are confused at the figure scale) and (b) the
@@ -577,8 +587,14 @@ below shows that the 10% most serious emergencies are more dispersed
 than the distribution of all emergencies at all distances up to
 10km.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">X</span>, r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, NumberOfSimulations<span class="op">=</span><span class="fl">1000</span>, ReferenceType<span class="op">=</span><span class="st">"Biggest"</span>, Global<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">KdE</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span></span>
+<span>  <span class="va">X</span>, </span>
+<span>  r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, </span>
+<span>  NumberOfSimulations <span class="op">=</span> <span class="fl">1000</span>, </span>
+<span>  ReferenceType <span class="op">=</span> <span class="st">"Biggest"</span>, </span>
+<span>  Global <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">KdE</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/KdCode-1.png" width="576"></p>
 <p>The solid, black curve is <span class="math inline">\(K_d\)</span>.
 The dotted red curve is the average simulated value and the shaded area
@@ -596,9 +612,11 @@ rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300
 species). Weights are basal areas (the area of the stems virtually cut
 1.3 meter above ground), measured in square centimeters.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">paracou16</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">paracou16</span>,</span>
 <span>  labelSize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Basal area ("</span> <span class="op">~</span><span class="va">cm</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>, </span>
-<span>  labelColor <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
+<span>  labelColor <span class="op">=</span> <span class="st">"Species"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>On the map, circles are centered on trees in the forest plot (the
 containing rectangle is 200m wide by 250m long). Circle sizes are
 proportional to the basal areas of trees.</p>
@@ -606,10 +624,17 @@ proportional to the basal areas of trees.</p>
 two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000
 simulations are run to build the global confidence envelope.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, NumberOfSimulations </span>
-<span>   <span class="op">=</span> <span class="fl">1000</span>, Alpha <span class="op">=</span> <span class="fl">0.05</span>, ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, NeighborType </span>
-<span>   <span class="op">=</span> <span class="st">"Q. Rosea"</span>, SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">Envelope</span>, main<span class="op">=</span><span class="st">""</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span></span>
+<span>  <span class="va">paracou16</span>, </span>
+<span>  r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>  NumberOfSimulations <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  Alpha <span class="op">=</span> <span class="fl">0.05</span>, </span>
+<span>  ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, </span>
+<span>  NeighborType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
+<span>  SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, </span>
+<span>  Global <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">Envelope</span>, main <span class="op">=</span> <span class="st">""</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/MCode-1.png" width="700"></p>
 <p><span class="math inline">\(M(r)\)</span> values of <em>Qualea
 rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid,
@@ -630,7 +655,7 @@ Traissac (2012)</span>.</p>
 <h3 id="goodness-of-fit-test">Goodness-of-fit test<a class="anchor" aria-label="anchor" href="#goodness-of-fit-test"></a>
 </h3>
 <p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has
-been proposed by <span class="citation">Diggle (1983)</span>, applied to
+been proposed by <span class="citation">Diggle (2013)</span>, applied to
 <span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon,
 Puech, and Traissac (2012)</span>. It calculates the distance between
 the actual values of the function and its average value obtained in
@@ -669,24 +694,26 @@ corrections. It only works in a rectangular window.</p>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Allaire2015" class="csl-entry">
-Allaire, JJ, Romain Francois, Gregory Vandenbrouck, Marcus Geelnard, and
-Intel. 2015. <em>RcppParallel: Parallel Programming Tools for Rcpp</em>.
-<a href="http://CRAN.R-project.org/package=RcppParallel" class="external-link">http://CRAN.R-project.org/package=RcppParallel</a>.
+Allaire, JJ, Romain Francois, Kevin Ushey, Gregory Vandenbrouck, Marcus
+Geelnard, and Intel. 2023. <em><span>RcppParallel</span>:
+<span>Parallel</span> Programming Tools for ’<span>Rcpp</span>’</em>.
+Manual.
 </div>
 <div id="ref-Baddeley2000" class="csl-entry">
 Baddeley, Adrian J., Jesper Møller, and Rasmus Plenge Waagepetersen.
 2000. <span>“Non- and Semi-Parametric Estimation of Interaction in
 Inhomogeneous Point Patterns.”</span> <em>Statistica Neerlandica</em> 54
-(3): 329–50.
+(3): 329–50. <a href="https://doi.org/10.1111/1467-9574.00144" class="external-link">https://doi.org/10.1111/1467-9574.00144</a>.
 </div>
 <div id="ref-Baddeley2005" class="csl-entry">
-Baddeley, Adrian J., and R Turner. 2005. <span>“Spatstat: An Package for
-Analyzing Spatial Point Patterns.”</span> <em>Journal of Statistical
-Software</em> 12 (6): 1–42.
+Baddeley, Adrian J., and Rolf Turner. 2005. <span>“Spatstat: An
+<span>R</span> Package for Analyzing Spatial Point Patterns.”</span>
+<em>Journal of Statistical Software</em> 12 (6): 1–42. <a href="https://doi.org/10.18637/jss.v012.i06" class="external-link">https://doi.org/10.18637/jss.v012.i06</a>.
 </div>
-<div id="ref-Besag1977" class="csl-entry">
-Besag, Julian E. 1977. <span>“Comments on Ripley’s Paper.”</span>
-<em>Journal of the Royal Statistical Society</em> B 39 (2): 193–95.
+<div id="ref-Besag1977a" class="csl-entry">
+Besag, Julian E. 1977. <span>“Comments on <span>Ripley</span>’s
+Paper.”</span> <em>Journal of the Royal Statistical Society: Series B
+(Statistical Methodology)</em> 39 (2): 193–95.
 </div>
 <div id="ref-Bonneu2007" class="csl-entry">
 Bonneu, Florent. 2007. <span>“Exploring and Modeling Fire Department
@@ -696,88 +723,94 @@ Emergencies with a Spatio-Temporal Marked Point Process.”</span>
 </div>
 <div id="ref-Thomas2013" class="csl-entry">
 Bonneu, Florent, and Christine Thomas-Agnan. 2015. <span>“Measuring and
-Testing Spatial Mass Concentration of Micro-Geographic Data.”</span>
-<em>Spatial Economic Analysis</em> 10 (3): 289–316.
+<span>Testing Spatial Mass Concentration</span> with <span class="nocase">Micro-geographic Data</span>.”</span> <em>Spatial
+Economic Analysis</em> 10 (3): 289–316. <a href="https://doi.org/10.1080/17421772.2015.1062124" class="external-link">https://doi.org/10.1080/17421772.2015.1062124</a>.
 </div>
 <div id="ref-Combes2008" class="csl-entry">
 Combes, Pierre-Philippe, Thierry Mayer, and Jacques-François Thisse.
-2008. <em>Economic Geography</em>. Princeton, New Jersey: Princeton
-University Press.
+2008. <span>“Economic Geography.”</span> In <em>The Integration of
+Regions and Nations</em>, 1–416. <span>Princeton, New Jersey</span>:
+<span>Princeton University Press</span>.
 </div>
 <div id="ref-Combes2004" class="csl-entry">
 Combes, Pierre-Philippe, and Henry G Overman. 2004. <span>“The Spatial
-Distribution of Economic Activities in the European Union.”</span> In
-<em>Handbook of Urban and Regional Economics</em>, edited by J. Vernon
-Henderson and Jacques-François Thisse, 4:2845–2909. Amsterdam: Elsevier.
-North Holland.
+Distribution of Economic Activities in the <span>European
+Union</span>.”</span> In <em>Handbook of Urban and Regional
+Economics</em>, edited by J Vernon Henderson and Jacques-François
+Thisse, 4:2845–2909. <span>Amsterdam</span>: <span>Elsevier. North
+Holland</span>.
 </div>
-<div id="ref-Diggle1983" class="csl-entry">
-Diggle, Peter J. 1983. <em>Statistical Analysis of Spatial Point
-Patterns</em>. London: Academic Press.
+<div id="ref-Diggle2013" class="csl-entry">
+Diggle, Peter J. 2013. <em>Statistical Analysis of Spatial and
+Spatio-Temporal Point Patterns</em>. 3rd Editio. <span>Chapman and
+Hall/CRC</span>.
 </div>
 <div id="ref-Diggle1991" class="csl-entry">
 Diggle, Peter J., and A. G. Chetwynd. 1991. <span>“Second-Order Analysis
 of Spatial Clustering for Inhomogeneous Populations.”</span>
-<em>Biometrics</em> 47 (3): 1155–63.
+<em>Biometrics</em> 47 (3): 1155–63. <a href="https://doi.org/10.2307/2532668" class="external-link">https://doi.org/10.2307/2532668</a>.
 </div>
 <div id="ref-Duncan1991" class="csl-entry">
 Duncan, Richard P. 1991. <span>“Competition and the Coexistence of
 Species in a Mixed Podocarp Stand.”</span> <em>Journal of Ecology</em>
-79 (4): 1073–84.
+79 (4): 1073–84. <a href="https://doi.org/10.2307/2261099" class="external-link">https://doi.org/10.2307/2261099</a>.
 </div>
 <div id="ref-Duranton2005" class="csl-entry">
-Duranton, Gilles, and Henry G. Overman. 2005. <span>“Testing for
+Duranton, Gilles, and Henry G Overman. 2005. <span>“Testing for
 Localisation Using Micro-Geographic Data.”</span> <em>Review of Economic
-Studies</em> 72 (4): 1077–1106.
+Studies</em> 72 (4): 1077–1106. <a href="https://doi.org/10.1111/0034-6527.00362" class="external-link">https://doi.org/10.1111/0034-6527.00362</a>.
 </div>
 <div id="ref-Duranton2008" class="csl-entry">
-———. 2008. <span>“Exploring the Detailed Location Patterns of UK
-Manufacturing Industries Using Microgeographic Data.”</span> <em>Journal
-of Regional Science</em> 48 (1): 213–43.
+———. 2008. <span>“Exploring the Detailed Location Patterns of
+<span>UK</span> Manufacturing Industries Using Microgeographic
+Data.”</span> <em>Journal of Regional Science</em> 48 (1): 213–43. <a href="https://doi.org/10.1111/j.1365-2966.2006.0547.x" class="external-link">https://doi.org/10.1111/j.1365-2966.2006.0547.x</a>.
 </div>
 <div id="ref-Eddelbuettel2011" class="csl-entry">
-Eddelbuettel, Dirk, and Romain François. 2011. <span>“Rcpp: Seamless r
-and c++ Integration.”</span> <em>Journal of Statistical Software</em> 40
-(8): 1–18. <a href="http://www.jstatsoft.org/v40/i08/" class="external-link">http://www.jstatsoft.org/v40/i08/</a>.
+Eddelbuettel, Dirk, and Romain François. 2011. <span>“Rcpp:
+<span>Seamless R</span> and <span>C</span>++ Integration.”</span>
+<em>Journal of Statistical Software</em> 40 (8): 1–18. <a href="https://doi.org/10.18637/jss.v040.i08" class="external-link">https://doi.org/10.18637/jss.v040.i08</a>.
 </div>
 <div id="ref-Ellison1997" class="csl-entry">
-Ellison, Glenn, and Edward L. Glaeser. 1997. <span>“Geographic
-Concentration in u.s. Manufacturing Industries: A Dartboard
-Approach.”</span> <em>Journal of Political Economy</em> 105 (5):
-889–927.
+Ellison, Glenn, and Edward L Glaeser. 1997. <span>“Geographic
+Concentration in <span>U</span>.<span>S</span>. Manufacturing
+Industries: <span>A</span> Dartboard Approach.”</span> <em>Journal of
+Political Economy</em> 105 (5): 889–927. <a href="https://doi.org/10.1086/262098" class="external-link">https://doi.org/10.1086/262098</a>.
 </div>
 <div id="ref-Ellison2010" class="csl-entry">
-Ellison, Glenn, Edward L. Glaeser, and William R. Kerr. 2010.
-<span>“What Causes Industry Agglomeration? Evidence from Coagglomeration
-Patterns.”</span> <em>The American Economic Review</em> 100 (3):
-1195–1213.
+Ellison, Glenn, Edward L Glaeser, and William R Kerr. 2010. <span>“What
+Causes Industry Agglomeration? <span>Evidence</span> from
+Coagglomeration Patterns.”</span> <em>The American Economic Review</em>
+100 (3): 1195–1213. <a href="https://doi.org/10.1257/aer.100.3.1195" class="external-link">https://doi.org/10.1257/aer.100.3.1195</a>.
 </div>
 <div id="ref-Fortin2005" class="csl-entry">
-Fortin, Marie-Josée, and Mark R. T. Dale. 2005. <em>Spatial Analysis. A
-Guide for Ecologists.</em> Cambridge: Cambridge University Press.
+Fortin, Marie-Josée, and Mark R T Dale. 2005. <em>Spatial Analysis.
+<span>A</span> Guide for Ecologists.</em> <span>Cambridge</span>:
+<span>Cambridge University Press</span>.
 </div>
 <div id="ref-Gini1912" class="csl-entry">
-Gini, Corrado. 1912. <em>Variabilità e Mutabilità</em>. Vol. 3. Studi
-Economico-Giuridici Dell’università Di Cagliari. Università di Cagliari.
+Gini, Corrado. 1912. <em>Variabilit<span>à</span> e
+Mutabilit<span>à</span></em>. <span>Bologna</span>: <span>C.
+Cuppini</span>.
 </div>
 <div id="ref-Goreaud2003" class="csl-entry">
 Goreaud, François, and Raphaël Pélissier. 2003. <span>“Avoiding
-Misinterpretation of Biotic Interactions with the Intertype K12
-Fonction: Population Independence Vs Random Labelling
+Misinterpretation of Biotic Interactions with the Intertype
+<span>K12</span> Function: Population Independence Vs Random Labelling
 Hypotheses.”</span> <em>Journal of Vegetation Science</em> 14 (5):
-681–92.
+681–92. <a href="https://doi.org/10.1111/j.1654-1103.2003.tb02200.x" class="external-link">https://doi.org/10.1111/j.1654-1103.2003.tb02200.x</a>.
 </div>
-<div id="ref-Gourlet2004" class="csl-entry">
+<div id="ref-Gourlet-Fleury2004" class="csl-entry">
 Gourlet-Fleury, Sylvie, Jean Marc Guehl, and Olivier Laroussinie. 2004.
-<em>Ecology &amp; Management of a Neotropical Rainforest. Lessons Drawn
-from Paracou, a Long-Term Experimental Research Site in French
-Guiana</em>. Paris, France: Elsevier.
+<em>Ecology &amp; Management of a Neotropical Rainforest.
+<span>Lessons</span> Drawn from <span>Paracou</span>, a Long-Term
+Experimental Research Site in <span>French Guiana</span></em>.
+<span>Paris</span>: <span>Elsevier</span>.
 </div>
 <div id="ref-Haase1997" class="csl-entry">
 Haase, Peter, Francisco I. Pugnaire, S. C. Clark, and L. D. Incoll.
-1997. <span>“Spatial Pattern in Anthyllis Cytisoides Shrubland on
-Abandoned Land in Southeastern Spain.”</span> <em>Journal of Vegetation
-Science</em> 8 (5): 627–34.
+1997. <span>“Spatial Pattern in <span>Anthyllis</span> Cytisoides
+Shrubland on Abandoned Land in Southeastern <span>Spain</span>.”</span>
+<em>Journal of Vegetation Science</em> 8 (5): 627–34.
 </div>
 <div id="ref-Hoover1936" class="csl-entry">
 Hoover, Edgar M. 1936. <span>“The Measurement of Industrial
@@ -786,89 +819,96 @@ Localization.”</span> <em>The Review of Economics and Statistics</em> 18
 </div>
 <div id="ref-Illian2008" class="csl-entry">
 Illian, Janine, Antti Penttinen, Helga Stoyan, and Dietrich Stoyan.
-2008. <em>Statistical Analysis and Modelling of Spatial Point
-Patterns</em>. Chichester, England: John Wiley &amp; Sons.
+2008. <span>“Statistical Analysis and Modelling of Spatial Point
+Patterns.”</span> In <em>Statistics in Practice</em>, 1–534.
+<span>Chichester</span>: <span>Wiley-Interscience</span>.
 </div>
 <div id="ref-Kenkel1988" class="csl-entry">
 Kenkel, N. C. 1988. <span>“Pattern of Self-Thinning in Jack Pine:
-Testing the Random Mortality Hypothesis.”</span> <em>Ecology</em> 69
-(4): 1017–24.
+<span>Testing</span> the Random Mortality Hypothesis.”</span>
+<em>Ecology</em> 69 (4): 1017–24. <a href="https://doi.org/10.2307/1941257" class="external-link">https://doi.org/10.2307/1941257</a>.
 </div>
-<div id="ref-Lang2010" class="csl-entry">
+<div id="ref-Lang2013" class="csl-entry">
 Lang, Gabriel, and Eric Marcon. 2013. <span>“Testing Randomness of
-Spatial Point Patterns with the Ripley Statistic.”</span> <em>ESAIM:
-Probability and Statistics</em> 17: 767–88.
+Spatial Point Patterns with the <span>Ripley</span> Statistic.”</span>
+<em>ESAIM: Probability and Statistics</em> 17: 767–88. <a href="https://doi.org/10.1051/ps/2012027" class="external-link">https://doi.org/10.1051/ps/2012027</a>.
 </div>
 <div id="ref-Lang2014" class="csl-entry">
-Lang, Gabriel, Eric Marcon, and Florence Puech. 2014.
-<span>“Distance-Based Measures of Spatial Concentration: Introducing a
-Relative Density Function.”</span> <em>HAL</em> 01082178 (version 2).
+Lang, Gabriel, Eric Marcon, and Florence Puech. 2020.
+<span>“Distance-Based Measures of Spatial Concentration:
+<span>Introducing</span> a Relative Density Function.”</span> <em>The
+Annals of Regional Science</em> 64: 243–65. <a href="https://doi.org/10.1007/s00168-019-00946-7" class="external-link">https://doi.org/10.1007/s00168-019-00946-7</a>.
 </div>
 <div id="ref-Loosmore2006" class="csl-entry">
 Loosmore, N. B., and E. D. Ford. 2006. <span>“Statistical Inference
-Using the g or k Point Pattern Spatial Statistics.”</span>
-<em>Ecology</em> 87 (8): 1925–31.
+Using the <span>G</span> or <span>K</span> Point Pattern Spatial
+Statistics.”</span> <em>Ecology</em> 87 (8): 1925–31. <a href="https://doi.org/10.1890/001" class="external-link">https://doi.org/10.1890/001</a>.
 </div>
 <div id="ref-Marcon2010" class="csl-entry">
 Marcon, Eric, and Florence Puech. 2010. <span>“Measures of the
-Geographic Concentration of Industries: Improving Distance-Based
-Methods.”</span> <em>Journal of Economic Geography</em> 10 (5): 745–62.
+Geographic Concentration of Industries: <span>Improving</span>
+Distance-Based Methods.”</span> <em>Journal of Economic Geography</em>
+10 (5): 745–62. <a href="https://doi.org/10.1093/jeg/lbp056" class="external-link">https://doi.org/10.1093/jeg/lbp056</a>.
 </div>
 <div id="ref-Marcon2012c" class="csl-entry">
 ———. 2017. <span>“A Typology of Distance-Based Measures of Spatial
 Concentration.”</span> <em>Regional Science and Urban Economics</em> 62:
-56–67.
+56–67. <a href="https://doi.org/10.1016/j.regsciurbeco.2016.10.004" class="external-link">https://doi.org/10.1016/j.regsciurbeco.2016.10.004</a>.
 </div>
 <div id="ref-Marcon2012" class="csl-entry">
 Marcon, Eric, Florence Puech, and Stéphane Traissac. 2012.
 <span>“Characterizing the Relative Spatial Structure of Point
 Patterns.”</span> <em>International Journal of Ecology</em> 2012
-(Article ID 619281): 11.
+(Article ID 619281): 11. <a href="https://doi.org/10.1155/2012/619281" class="external-link">https://doi.org/10.1155/2012/619281</a>.
 </div>
 <div id="ref-Marcon2013" class="csl-entry">
 Marcon, Eric, Stéphane Traissac, and Gabriel Lang. 2013. <span>“A
-Statistical Test for Ripley’s Function Rejection of Poisson Null
-Hypothesis.”</span> <em>ISRN Ecology</em> 2013 (Article ID 753475): 9.
+Statistical Test for <span>Ripley</span>’s Function Rejection of Poisson
+Null Hypothesis.”</span> <em>ISRN Ecology</em> 2013 (Article ID 753475):
+9. <a href="https://doi.org/10.1155/2013/753475" class="external-link">https://doi.org/10.1155/2013/753475</a>.
 </div>
 <div id="ref-Openshaw1979" class="csl-entry">
 Openshaw, S., and P. J. Taylor. 1979. <span>“A Million or so Correlation
 Coefficients: Three Experiments on the Modifiable Areal Unit
 Problem.”</span> In <em>Statistical Applications in the Spatial
-Sciences</em>, edited by N. Wrigley, 127–44. London: Pion.
+Sciences</em>, edited by N Wrigley, 127–44. <span>London</span>:
+<span>Pion</span>.
 </div>
 <div id="ref-Penttinen2006" class="csl-entry">
 Penttinen, Antti. 2006. <span>“Statistics for Marked Point
 Patterns.”</span> In <em>The Yearbook of the Finnish Statistical
-Society</em>, 70–91. Helsinki: The Finnish Statistical Society.
+Society</em>, 70–91. <span>Helsinki</span>: <span>The Finnish
+Statistical Society</span>.
 </div>
 <div id="ref-Penttinen1992" class="csl-entry">
-Penttinen, Antti, Dietrich Stoyan, and Helena M. Henttonen. 1992.
+Penttinen, Antti, Dietrich Stoyan, and Helena M Henttonen. 1992.
 <span>“Marked Point Processes in Forest Statistics.”</span> <em>Forest
-Science</em> 38 (4): 806–24.
+Science</em> 38 (4): 806–24. <a href="https://doi.org/10.1093/forestscience/38.4.806" class="external-link">https://doi.org/10.1093/forestscience/38.4.806</a>.
 </div>
 <div id="ref-Picone2009" class="csl-entry">
-Picone, G. A., D. B. Ridley, and P. A. Zandbergen. 2009. <span>“Distance
-Decreases with Differentiation: Strategic Agglomeration by
-Retailers.”</span> <em>International Journal of Industrial
-Organization</em> 27 (3): 463–73.
+Picone, Gabriel A., David B. Ridley, and Paul A. Zandbergen. 2009.
+<span>“Distance Decreases with Differentiation: <span>Strategic</span>
+Agglomeration by Retailers.”</span> <em>International Journal of
+Industrial Organization</em> 27 (3): 463–73.
 </div>
-<div id="ref-Ripley1976" class="csl-entry">
+<div id="ref-Ripley1976a" class="csl-entry">
 Ripley, Brian D. 1976. <span>“The Second-Order Analysis of Stationary
 Point Processes.”</span> <em>Journal of Applied Probability</em> 13 (2):
-255–66.
+255–66. <a href="https://doi.org/10.2307/3212829" class="external-link">https://doi.org/10.2307/3212829</a>.
 </div>
 <div id="ref-Ripley1977" class="csl-entry">
 ———. 1977. <span>“Modelling Spatial Patterns.”</span> <em>Journal of the
-Royal Statistical Society</em> B 39 (2): 172–212.
+Royal Statistical Society: Series B (Statistical Methodology)</em> 39
+(2): 172–212. <a href="https://www.jstor.org/stable/2984796" class="external-link">https://www.jstor.org/stable/2984796</a>.
 </div>
 <div id="ref-Ripley1988" class="csl-entry">
 ———. 1988. <em>Statistical Inference for Spatial Processes</em>.
-Cambridge University Press.
+<span>Cambridge University Press</span>.
 </div>
 <div id="ref-Scholl2013" class="csl-entry">
 Scholl, Tobias, and Thomas Brenner. 2015. <span>“Optimizing
 Distance-Based Methods for Large Data Sets.”</span> <em>Journal of
-Geographical Systems</em> 4 (17): 333–51.
+Geographical Systems</em> 17 (4): 333–51. <a href="https://doi.org/10.1007/s10109-015-0219-1" class="external-link">https://doi.org/10.1007/s10109-015-0219-1</a>.
 </div>
 </div>
 </div>
