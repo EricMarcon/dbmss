@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.8-2.9105</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -440,16 +440,16 @@ coordinates between 0 and 1, and creates a <code>wmppp</code> with a
 default window, all points are of the same type named <em>All</em> and
 their weight is 1.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss" class="external-link">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.2-7</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.2-8</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
 <pre><code><span><span class="co">## spatstat.random 3.2-2</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.2-5</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.explore 3.2-6</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></span></code></pre></div>
