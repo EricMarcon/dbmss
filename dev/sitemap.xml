@@ -1,174 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/articles/bandwidth.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/articles/dbmss.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/articles/maps.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/articles/reference.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/CheckdbmssArguments.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/DEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Dhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Dtable.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/FillEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/GlobalEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/GoFtest.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/KEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/KdEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Kdhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Khat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/KinhomEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Kinhomhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/KmmEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Kmmhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Ktest.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/LEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Lhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/LmmEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Lmmhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/MEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Mhat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Rcpp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/Smooth.wmppp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/as.Dtable.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/as.wmppp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/dbmss-package.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/dbmssEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/envelope.Dtable.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/gEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/generic.spatstat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/ghat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/is.wmppp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/m_Envelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/m_hat.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/paracou16.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/print.dbmssEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rPopulationIndependenceK.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rPopulationIndependenceM.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLabeling.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLabelingM.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLocation.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomPositionK.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/summary.dbmssEnvelope.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/wmppp.html</loc>
-  </url>
-  <url>
-    <loc>https://ericmarcon.github.io/dbmss/dev/reference/wmppp.object.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/articles/bandwidth.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/articles/dbmss.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/articles/index.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/articles/maps.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/articles/reference.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/authors.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/index.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/news/index.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/CheckdbmssArguments.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/DEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Dhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Dtable.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/FillEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/GlobalEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/GoFtest.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/KEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/KdEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Kdhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Khat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/KinhomEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Kinhomhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/KmmEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Kmmhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Ktest.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/LEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Lhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/LmmEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Lmmhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/MEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Mhat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Rcpp.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/Smooth.wmppp.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/as.Dtable.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/as.wmppp.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/autoplot.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/dbmss-package.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/dbmssEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/envelope.Dtable.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/gEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/generic.spatstat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/ghat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/index.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/is.wmppp.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/m_Envelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/m_hat.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/paracou16.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/print.dbmssEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rPopulationIndependenceK.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rPopulationIndependenceM.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLabeling.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLabelingM.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomLocation.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/rRandomPositionK.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/reexports.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/summary.dbmssEnvelope.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/wmppp.html</loc></url>
+<url><loc>https://ericmarcon.github.io/dbmss/dev/reference/wmppp.object.html</loc></url>
 </urlset>
+

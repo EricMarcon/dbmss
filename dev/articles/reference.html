@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="dbmss">
 <title>dbmss Package Reference • dbmss</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -15,67 +14,49 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="dbmss Package Reference">
-<meta property="og:description" content="dbmss">
-<meta property="og:image" content="https://ericmarcon.github.io/dbmss/logo.png">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="dbmss Package Reference">
 <meta name="robots" content="noindex">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9001</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/dbmss.html">Get started</a>
+<li class="nav-item"><a class="nav-link" href="../articles/dbmss.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/bandwidth.html">Bandwidth choice</a></li>
+    <li><a class="dropdown-item" href="../articles/maps.html">Mapping local values of measures</a></li>
+    <li><a class="dropdown-item" href="../articles/reference.html">dbmss Package Reference</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/bandwidth.html">Bandwidth choice</a>
-    <a class="dropdown-item" href="../articles/maps.html">Mapping local values of measures</a>
-    <a class="dropdown-item" href="../articles/reference.html">dbmss Package Reference</a>
-  </div>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/EricMarcon/dbmss/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/EricMarcon/dbmss/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -89,7 +70,7 @@
 of Spatial Structures</h3>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/dbmss/blob/HEAD/vignettes/articles/reference.Rmd" class="external-link"><code>vignettes/articles/reference.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/dbmss/blob/master/vignettes/articles/reference.Rmd" class="external-link"><code>vignettes/articles/reference.Rmd</code></a></small>
       <div class="d-none name"><code>reference.Rmd</code></div>
     </div>
 
@@ -99,8 +80,10 @@ of Spatial Structures</h3>
 statistic functions of distance to characterize the spatial structures
 of mapped objects, including classical ones (Ripley’s K and others) and
 more recent ones used by spatial economists (Duranton and Overman’s
-<span class="math inline">\(K_d\)</span>, Marcon and Puech’s <span class="math inline">\(M\)</span>). It relies on <em>spatstat</em> for
-some core calculation.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>,
+Marcon and Puech’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>).
+It relies on <em>spatstat</em> for some core calculation.</p>
 <p>This vignette contains its reference guide.</p>
 <p>Characterizing spatial distributions of objects concerns numerous
 researchers in various fields. Amongst many questions, ecologists have
@@ -114,23 +97,25 @@ sick individuals in comparison to the population <span class="citation">(Diggle 
 research, the point process theory undoubtedly helps dealing with these
 questions. Exploratory statistics of point patterns widely rely on
 Ripley’s seminal work <span class="citation">(Ripley 1976, 1977)</span>,
-namely the <span class="math inline">\(K\)</span> function. A review of
-similar methods has been made by <span class="citation">Marcon and Puech
-(2017)</span> who called them distance-based measures of spatial
-concentration. We will write spatial structures here since both
-dispersion and concentration can be characterized. They are considered
-as novel and promising tools in spatial economics <span class="citation">(Combes, Mayer, and Thisse 2008)</span>. The
-traditional approach to detect localization, i.e. the degree of
-dissimilarity between the geographical distribution of an industry and
-that of a reference <span class="citation">(Hoover 1936)</span>, relies
-on discrete space (a country is divided in regions for example) and
-measures of inequality between zones, such as the classical Gini <span class="citation">(1912)</span> index or the more advanced Ellison and
-Glaeser <span class="citation">(1997)</span> index. This approach
-suffers several limitations, mainly the Modifiable Areal Unit Problem
-(MAUP): results depend on the way zones are delimited and on the scale
-of observation <span class="citation">(Openshaw and Taylor 1979)</span>.
-Distance-based methods have the advantage to consider space as
-continuous, i.e. without any zoning, allowing detecting spatial
+namely the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+function. A review of similar methods has been made by <span class="citation">Marcon and Puech (2017)</span> who called them
+distance-based measures of spatial concentration. We will write spatial
+structures here since both dispersion and concentration can be
+characterized. They are considered as novel and promising tools in
+spatial economics <span class="citation">(Combes, Mayer, and Thisse
+2008)</span>. The traditional approach to detect localization, i.e. the
+degree of dissimilarity between the geographical distribution of an
+industry and that of a reference <span class="citation">(Hoover
+1936)</span>, relies on discrete space (a country is divided in regions
+for example) and measures of inequality between zones, such as the
+classical Gini <span class="citation">(1912)</span> index or the more
+advanced Ellison and Glaeser <span class="citation">(1997)</span> index.
+This approach suffers several limitations, mainly the Modifiable Areal
+Unit Problem (MAUP): results depend on the way zones are delimited and
+on the scale of observation <span class="citation">(Openshaw and Taylor
+1979)</span>. Distance-based methods have the advantage to consider
+space as continuous, i.e. without any zoning, allowing detecting spatial
 structures at all scales simultaneously and solve MAUP issues.</p>
 <p>These methods estimate the value of a function of distance to each
 point calculated on a planar point pattern, typically objects on a map.
@@ -145,29 +130,31 @@ area?) and relative (what is the ratio of neighbors of interest?). The
 function values are not the main motivation. The purpose is rather to
 test the point pattern against the null hypothesis that it is a
 realization of a known point process which does not integrate a property
-of interest. The basic purpose of Ripley’s <span class="math inline">\(K\)</span> is to test the observed point pattern
-against complete spatial randomness (CSR), i.e. a homogeneous Poisson
-process, to detect dependence between point locations (the null
-hypothesis supposes independent points) assuming homogeneity (i.e. the
-probability to find a point is the same everywhere). Ripley-like
-functions, available in the <em>dbmss</em> package, can be classified in
-three families:</p>
+of interest. The basic purpose of Ripley’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is to test the observed point pattern against complete spatial
+randomness (CSR), i.e. a homogeneous Poisson process, to detect
+dependence between point locations (the null hypothesis supposes
+independent points) assuming homogeneity (i.e. the probability to find a
+point is the same everywhere). Ripley-like functions, available in the
+<em>dbmss</em> package, can be classified in three families:</p>
 <ul>
-<li>Topographic measures such as <span class="math inline">\(K\)</span>
+<li>Topographic measures such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
 take space as their reference. They have been widely used in ecology
 <span class="citation">(Fortin and Dale 2005)</span>. They have been
 built from the point process theory and have a strong mathematical
 background.</li>
-<li>Relative measures such as <span class="math inline">\(M\)</span>
-<span class="citation">(Marcon and Puech 2010)</span> compare the
+<li>Relative measures such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math><span class="citation">(Marcon and Puech 2010)</span> compare the
 structure of a point type to that of another type (they can be
 considered as cases and controls). They have been developed in
 economics, where comparing the distribution of a sector of activity to
 that of the whole economic activity is a classical approach <span class="citation">(Combes, Mayer, and Thisse 2008)</span>, but introduced
 only recently in ecology <span class="citation">(Marcon, Puech, and
 Traissac 2012)</span>.</li>
-<li>Absolute functions such as <span class="math inline">\(K_d\)</span>
-<span class="citation">(Duranton and Overman 2005)</span> have no
+<li>Absolute functions such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math><span class="citation">(Duranton and Overman 2005)</span> have no
 reference at all but their value can be compared to the appropriate null
 hypothesis to test it.</li>
 </ul>
@@ -217,22 +204,26 @@ address the colocation of types. We detail this approach below.</p>
 <div class="section level3">
 <h3 id="topographic-homogeneous-functions">Topographic, homogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-homogeneous-functions"></a>
 </h3>
-<p>Topographic, homogeneous functions are Ripley’s <span class="math inline">\(K\)</span> and its derivative <span class="math inline">\(g\)</span>. Their null hypothesis is a Poisson
-homogeneous process: rejecting it means that the process underlying the
-observed pattern is either not homogeneous or not independent. These
-functions are applied when homogeneity is assumed so independence only
-is tested by comparing the observed values of the function to their
-confidence envelope under CSR. Bivariate functions are tested against
-the null hypothesis of random labeling (points locations are kept
-unchanged but marks are redistributed randomly) or population
-independence (the reference point type is kept unchanged, the neighbor
-point type is shifted) following <span class="citation">Goreaud and
-Pélissier (2003)</span>. The random labeling hypothesis considers that
-points preexist and their marks are the result of a process to test
-(e.g. are dead trees independently distributed in a forest?). The
-population independence one considers that points belong to two
-different populations with their own spatial structure and wants to test
-whether they are independent from each other.</p>
+<p>Topographic, homogeneous functions are Ripley’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+and its derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Their null hypothesis is a Poisson homogeneous process: rejecting it
+means that the process underlying the observed pattern is either not
+homogeneous or not independent. These functions are applied when
+homogeneity is assumed so independence only is tested by comparing the
+observed values of the function to their confidence envelope under CSR.
+Bivariate functions are tested against the null hypothesis of random
+labeling (points locations are kept unchanged but marks are
+redistributed randomly) or population independence (the reference point
+type is kept unchanged, the neighbor point type is shifted) following
+<span class="citation">Goreaud and Pélissier (2003)</span>. The random
+labeling hypothesis considers that points preexist and their marks are
+the result of a process to test (e.g. are dead trees independently
+distributed in a forest?). The population independence one considers
+that points belong to two different populations with their own spatial
+structure and wants to test whether they are independent from each
+other.</p>
 <p>Edge effect correction is compulsory to compute topographic
 functions: points located close to boundaries have less neighbors
 because of the lack of knowledge outside the observation window. The
@@ -241,36 +232,43 @@ because of the lack of knowledge outside the observation window. The
 <div class="section level3">
 <h3 id="topographic-inhomogeneous-functions">Topographic, inhomogeneous functions<a class="anchor" aria-label="anchor" href="#topographic-inhomogeneous-functions"></a>
 </h3>
-<p><span class="math inline">\(K_{inhom}\)</span> <span class="citation">(Baddeley, Møller, and Waagepetersen 2000)</span> is
-the generalization of <span class="math inline">\(K\)</span> to
-inhomogeneous processes: it tests independence of points assuming the
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math><span class="citation">(Baddeley, Møller, and Waagepetersen 2000)</span>
+is the generalization of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+to inhomogeneous processes: it tests independence of points assuming the
 intensity of the process is known. Empirically, it generally has to be
 estimated from the data after assumptions on the way to do it relying on
 the theoretical knowledge of the process. The null hypothesis
 (<em>random position</em>) is that the pattern comes from an
 inhomogeneous Poisson process of this intensity, which can be simulated.
-Applying <span class="math inline">\(K_{inhom}\)</span> to a single
-point type allows using the <em>random location</em> null hypothesis,
-following <span class="citation">Duranton and Overman (2005)</span>:
-observed points (with their marks) are shuffled among observed locations
-to test for independence. Bivariate <span class="math inline">\(K_{inhom}\)</span> null hypotheses may be random
-labeling or population independence as defined by <span class="citation">Marcon and Puech (2010)</span>: reference points are
-kept unchanged, other points are redistributed across observed
-locations.</p>
-<p><span class="math inline">\(K_{mm}\)</span> <span class="citation">(Penttinen 2006; Penttinen, Stoyan, and Henttonen
-1992)</span> generalizes <span class="math inline">\(K\)</span> to
-weighted points (weights are continuous marks of the points). Its null
-hypothesis in <em>dbmss</em> is random location. <span class="citation">Penttinen, Stoyan, and Henttonen (1992)</span> inferred
+Applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math>
+to a single point type allows using the <em>random location</em> null
+hypothesis, following <span class="citation">Duranton and Overman
+(2005)</span>: observed points (with their marks) are shuffled among
+observed locations to test for independence. Bivariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math>
+null hypotheses may be random labeling or population independence as
+defined by <span class="citation">Marcon and Puech (2010)</span>:
+reference points are kept unchanged, other points are redistributed
+across observed locations.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>m</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{mm}</annotation></semantics></math><span class="citation">(Penttinen 2006; Penttinen, Stoyan, and Henttonen
+1992)</span> generalizes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+to weighted points (weights are continuous marks of the points). Its
+null hypothesis in <em>dbmss</em> is random location. <span class="citation">Penttinen, Stoyan, and Henttonen (1992)</span> inferred
 the point process from the point pattern, and used the inferred process
 to simulate the null hypothesis patterns. This requires advanced spatial
 statistics techniques and knowledge about the process that is generally
 not available. The random location hypothesis is a way to draw null
 patterns simply, but ignoring the stochasticity of the point
 process.</p>
-<p>The <span class="math inline">\(D\)</span> <span class="citation">(Diggle and Chetwynd 1991)</span> function compares the
-<span class="math inline">\(K\)</span> function of points of interest
-(cases) to that of other points (controls). Its null hypothesis is
-random labeling.</p>
+<p>The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math><span class="citation">(Diggle and Chetwynd 1991)</span> function
+compares the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+function of points of interest (cases) to that of other points
+(controls). Its null hypothesis is random labeling.</p>
 </div>
 <div class="section level3">
 <h3 id="absolute-functions">Absolute functions<a class="anchor" aria-label="anchor" href="#absolute-functions"></a>
@@ -279,54 +277,83 @@ random labeling.</p>
 distribution of industrial establishments in Great Britain. Every
 establishment, represented by a point, is characterized by its position
 (geographic coordinates), its sector of activity (point type) and its
-number of employees (point weight). The <span class="math inline">\(K_d\)</span> function <span class="citation">(Duranton and Overman 2005)</span> is the probability
-density to find a neighbor a given distance apart from a point of
-interest in a finite point process. The <span class="math inline">\(K^{emp}\)</span> function integrates the weights
-of points: it is the density probability to find an employee <span class="math inline">\(r\)</span> apart from an employee of interest.</p>
-<p><span class="math inline">\(K_d\)</span> and <span class="math inline">\(K^{emp}\)</span> are absolute measures since their
-value is not normalized by the measure of space or any other reference:
-for a binomial process, <span class="math inline">\(K_d\)</span>
-increases proportionally to <span class="math inline">\(r\)</span> if
-the window is large enough to ignore edge effects <span class="citation">(the probability density is proportional to the
-perimeter of the circle of radius <span class="math inline">\(r\)</span>, Bonneu and Thomas-Agnan 2015)</span>,
-then edge effects make it decrease to 0 when <span class="math inline">\(r\)</span> becomes larger than the window’s size:
-it is a bell-shaped curve. <span class="math inline">\(K_d\)</span>
+number of employees (point weight). The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+function <span class="citation">(Duranton and Overman 2005)</span> is
+the probability density to find a neighbor a given distance apart from a
+point of interest in a finite point process. The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>e</mi><mi>m</mi><mi>p</mi></mrow></msup><annotation encoding="application/x-tex">K^{emp}</annotation></semantics></math>
+function integrates the weights of points: it is the density probability
+to find an employee
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+apart from an employee of interest.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>e</mi><mi>m</mi><mi>p</mi></mrow></msup><annotation encoding="application/x-tex">K^{emp}</annotation></semantics></math>
+are absolute measures since their value is not normalized by the measure
+of space or any other reference: for a binomial process,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+increases proportionally to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+if the window is large enough to ignore edge effects <span class="citation">(the probability density is proportional to the
+perimeter of the circle of radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+Bonneu and Thomas-Agnan 2015)</span>, then edge effects make it decrease
+to 0 when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+becomes larger than the window’s size: it is a bell-shaped curve.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
 values are not interpreted but compared to the confidence envelope of
 the null hypothesis, which is random location. Bivariate functions null
 hypotheses are random labeling, following <span class="citation">Duranton and Overman (2005)</span>, i.e. point types
 are redistributed across locations while weights are kept unchanged, or
-population independence (as for <span class="math inline">\(K_{inhom}\)</span>). It is not corrected for edge
-effects. <span class="math inline">\(K_d\)</span> was designed to
-characterize the spatial structure of an economic sector, comparing it
-to the distribution of the whole activity. From this point of view, it
-has been considered as a relative function <span class="citation">Marcon
-and Puech (2010)</span>. We prefer to be more accurate and distinguish
-it from strict relative functions which directly calculate a ratio or a
-difference between the number of points of the type of interest and the
-total number of points. What makes it relative is only its null
-hypothesis: changing it for random location (that of univariate <span class="math inline">\(K_{inhom}\)</span>) would make univariate <span class="math inline">\(K_d\)</span> behave as a topographic function
-(testing independence of the distribution supposing its intensity is
-that of the whole activity).</p>
-<p><span class="math inline">\(K_d\)</span> is a leading tool in spatial
-economics. A great number of its applications can be found in the
-literature that confirms the recent interest for distance-based methods
-in spatial economics. A recent major study can be found in <span class="citation">Ellison, Glaeser, and Kerr (2010)</span>.</p>
+population independence (as for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math>).
+It is not corrected for edge effects.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+was designed to characterize the spatial structure of an economic
+sector, comparing it to the distribution of the whole activity. From
+this point of view, it has been considered as a relative function <span class="citation">Marcon and Puech (2010)</span>. We prefer to be more
+accurate and distinguish it from strict relative functions which
+directly calculate a ratio or a difference between the number of points
+of the type of interest and the total number of points. What makes it
+relative is only its null hypothesis: changing it for random location
+(that of univariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math>)
+would make univariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+behave as a topographic function (testing independence of the
+distribution supposing its intensity is that of the whole activity).</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+is a leading tool in spatial economics. A great number of its
+applications can be found in the literature that confirms the recent
+interest for distance-based methods in spatial economics. A recent major
+study can be found in <span class="citation">Ellison, Glaeser, and Kerr
+(2010)</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="relative-functions">Relative functions<a class="anchor" aria-label="anchor" href="#relative-functions"></a>
 </h3>
-<p>The univariate and bivariate <span class="math inline">\(M\)</span>
+<p>The univariate and bivariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
 function <span class="citation">(Marcon and Puech 2010)</span> are the
-ratio of neighbors of interest up to distance <span class="math inline">\(r\)</span> normalized by its value over the whole
-domain. Their null hypotheses are the same as <span class="math inline">\(K_d\)</span>’s. They do not suffer edge effects.
-<span class="citation">Marcon and Puech (2010)</span> show that the
-<span class="math inline">\(M\)</span> function respect most of the
-axioms generally accepted as the <em>good properties</em> to evaluate
-geographic concentration in spatial economics <span class="citation">(Combes and Overman 2004; Duranton and Overman
-2005)</span>.</p>
-<p><span class="math inline">\(m\)</span> <span class="citation">(Lang,
-Marcon, and Puech 2020)</span> is the density function measuring the
-same ratio as <span class="math inline">\(M\)</span>, at distance <span class="math inline">\(r\)</span>.</p>
+ratio of neighbors of interest up to distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+normalized by its value over the whole domain. Their null hypotheses are
+the same as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>’s.
+They do not suffer edge effects. <span class="citation">Marcon and Puech
+(2010)</span> show that the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+function respect most of the axioms generally accepted as the <em>good
+properties</em> to evaluate geographic concentration in spatial
+economics <span class="citation">(Combes and Overman 2004; Duranton and
+Overman 2005)</span>.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math><span class="citation">(Lang, Marcon, and Puech 2020)</span> is the
+density function measuring the same ratio as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+at distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.</p>
 </div>
 <div class="section level3">
 <h3 id="unification">Unification<a class="anchor" aria-label="anchor" href="#unification"></a>
@@ -341,58 +368,109 @@ univariate or bivariate functions, counting neighbors up to or at a
 distance defines cumulative or density functions, taking an area or a
 number of points as the reference measure defines topographic or
 relative functions. These steps are detailed for two functions to
-clarify them: we focus on Ripley’s <span class="math inline">\(g\)</span> and Marcon and Puech’s <span class="math inline">\(M\)</span> bivariate function. See <span class="citation">Marcon and Puech (2017)</span> for a full review.</p>
-<p>Reference points are denoted <span class="math inline">\(x_i\)</span>, neighbor points are <span class="math inline">\(x_j\)</span>. For density functions such as <span class="math inline">\(g\)</span>, neighbors of <span class="math inline">\(x_i\)</span> are counted at a chosen distance
-<span class="math inline">\(r\)</span>:</p>
-<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\
+clarify them: we focus on Ripley’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+and Marcon and Puech’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+bivariate function. See <span class="citation">Marcon and Puech
+(2017)</span> for a full review.</p>
+<p>Reference points are denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>,
+neighbor points are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>.
+For density functions such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>,
+neighbors of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>
+are counted at a chosen distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>:</p>
+<p><span class="math display">$$n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\
 }i\ne j}{k\left(\left\|x_i{\rm
--}x_j\right\|,r\right)c\left(i,j\right)}\]</span></p>
-<p><span class="math inline">\(k(\left\|x_i{\rm
--}x_j\right\|,r)\)</span> is a kernel estimator, necessary to evaluate
-the number of neighbors at distance <span class="math inline">\(r\)</span>, and <span class="math inline">\(c(i,j)\)</span> is an edge-effect correction
-(points located close to boundaries have less neighbors because of the
-lack of knowledge outside the observation window).</p>
-<p>To compute the bivariate <span class="math inline">\(M\)</span>
+-}x_j\right\|,r\right)c\left(i,j\right)}$$</span></p>
+<p><span class="math inline">$k(\left\|x_i{\rm -}x_j\right\|,r)$</span>
+is a kernel estimator, necessary to evaluate the number of neighbors at
+distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">c(i,j)</annotation></semantics></math>
+is an edge-effect correction (points located close to boundaries have
+less neighbors because of the lack of knowledge outside the observation
+window).</p>
+<p>To compute the bivariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
 function, reference points are of a particular type in a marked point
-pattern: <span class="math inline">\(x_i \in \mathcal{R}\)</span>, where
-<span class="math inline">\(\mathcal{R}\)</span> is the set of points of
-the reference type. Neighbors of the chosen type are denoted <span class="math inline">\(x_j \in \mathcal{N}\)</span>. In cumulative
-functions such as <span class="math inline">\(M\)</span>, neighbors are
-counted up to <span class="math inline">\(r\)</span>:</p>
-<p><span class="math display">\[n\left(x_i,r\right){\rm =}\sum_{x_j \in
+pattern:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>∈</mo><mi>ℛ</mi></mrow><annotation encoding="application/x-tex">x_i \in \mathcal{R}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℛ</mi><annotation encoding="application/x-tex">\mathcal{R}</annotation></semantics></math>
+is the set of points of the reference type. Neighbors of the chosen type
+are denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>∈</mo><mi>𝒩</mi></mrow><annotation encoding="application/x-tex">x_j \in \mathcal{N}</annotation></semantics></math>.
+In cumulative functions such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+neighbors are counted up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>:</p>
+<p><span class="math display">$$n\left(x_i,r\right){\rm =}\sum_{x_j \in
 \mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
-r\right)w\left(x_j\right)}\]</span></p>
-<p>Points can be weighted, <span class="math inline">\(w(x_j)\)</span>
+r\right)w\left(x_j\right)}$$</span></p>
+<p>Points can be weighted,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">w(x_j)</annotation></semantics></math>
 is the neighbor’s weight.</p>
-<p>The number of neighbors is averaged then. <span class="math inline">\(n\)</span> is the number of reference points:</p>
-<p><span class="math display">\[\bar{n}\left(r\right)=\frac{1}{n}\sum_i{n\left(x_i,r\right)}\]</span></p>
+<p>The number of neighbors is averaged then.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+is the number of reference points:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munder><mo>∑</mo><mi>i</mi></munder><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\bar{n}\left(r\right)=\frac{1}{n}\sum_i{n\left(x_i,r\right)}</annotation></semantics></math></p>
 <p>The average number of neighbors is compared to a reference measure.
 It may be a measure of space (the perimeter of the circle of radius
-<span class="math inline">\(r\)</span> for <span class="math inline">\(g\)</span>), defining topographic functions:</p>
-<p><span class="math display">\[z\left(r\right)=2 \pi r\]</span></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>),
+defining topographic functions:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">z\left(r\right)=2 \pi r</annotation></semantics></math></p>
 <p>It may also be the average number of neighbors of all types in a
-relative function such as <span class="math inline">\(M\)</span>:</p>
-<p><span class="math display">\[z\left(r\right)=\frac{1}{n}\sum_{j,i\ne
+relative function such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>:</p>
+<p><span class="math display">$$z\left(r\right)=\frac{1}{n}\sum_{j,i\ne
 j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
-r\right)w\left(x_j\right)}\]</span></p>
-<p>Finally, <span class="math inline">\(\frac{\bar{n}(r)}{z(r)}\)</span>
-is compared to the same ratio computed on the whole window. For <span class="math inline">\(g\)</span>:</p>
-<p><span class="math display">\[\frac{\bar{n}_0}{z_0}{\rm
-=}\frac{n-1}{A}\]</span></p>
-<p><span class="math inline">\(A\)</span> is the area of the window,
-<span class="math inline">\(\bar{n}_0\)</span> and <span class="math inline">\(z_0\)</span> are the limit values of <span class="math inline">\(\bar{n}(r)\)</span> and <span class="math inline">\(z(r)\)</span> when <span class="math inline">\(r\)</span> gets larger than the window’s size. For
-<span class="math inline">\(M\)</span>, it comes:</p>
-<p><span class="math display">\[\frac{{\bar{n}}_0}{z_0}=\sum_i{\frac{W_\mathcal{N}}{W-w\left(x_i\right)}}\]</span></p>
-<p><span class="math inline">\(W_\mathcal{N}\)</span> is the total
-weight of neighbor points, <span class="math inline">\(W\)</span> that
-of all points. Finally, despite the functions are quite different
+r\right)w\left(x_j\right)}$$</span></p>
+<p>Finally,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><annotation encoding="application/x-tex">\frac{\bar{n}(r)}{z(r)}</annotation></semantics></math>
+is compared to the same ratio computed on the whole window. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>:</p>
+<p><span class="math display">$$\frac{\bar{n}_0}{z_0}{\rm
+=}\frac{n-1}{A}$$</span></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is the area of the window,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><annotation encoding="application/x-tex">\bar{n}_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+are the limit values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bar{n}(r)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">z(r)</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+gets larger than the window’s size. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+it comes:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mfrac><msub><mi>W</mi><mi>𝒩</mi></msub><mrow><mi>W</mi><mo>−</mo><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{{\bar{n}}_0}{z_0}=\sum_i{\frac{W_\mathcal{N}}{W-w\left(x_i\right)}}</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>W</mi><mi>𝒩</mi></msub><annotation encoding="application/x-tex">W_\mathcal{N}</annotation></semantics></math>
+is the total weight of neighbor points,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+that of all points. Finally, despite the functions are quite different
 (density vs. cumulative, topographic vs. relative, univariate
-vs. bivariate), both estimators can be written as <span class="math inline">\({\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}\)</span>.
+vs. bivariate), both estimators can be written as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mover><mi>n</mi><mo accent="true">‾</mo></mover><mi>z</mi></mfrac><mi>/</mi><mfrac><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">{\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}</annotation></semantics></math>.
 Their value (except for absolute functions) can be interpreted as a
-location quotient: <span class="math inline">\(g(r)=2\)</span> or <span class="math inline">\(M(r)=2\)</span> means than twice more neighbors
-are observed at (or up to) distance <span class="math inline">\(r\)</span> than expected on average, i.e. ignoring
-the point locations in the window. The appropriate function will be
-chosen among the toolbox according to the question raised.</p>
+location quotient:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">g(r)=2</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">M(r)=2</annotation></semantics></math>
+means than twice more neighbors are observed at (or up to) distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+than expected on average, i.e. ignoring the point locations in the
+window. The appropriate function will be chosen among the toolbox
+according to the question raised.</p>
 </div>
 </div>
 <div class="section level2">
@@ -408,14 +486,18 @@ points <span class="citation">(using <em>Rcpp</em> and
 Allaire et al. 2023)</span>. Computational requirements actually are an
 issue starting from say 10,000 points <span class="citation">(see
 Ellison, Glaeser, and Kerr 2010 for instance)</span>. Memory requirement
-is <span class="math inline">\(O(n)\)</span>, i.e. proportional to the
-number of points to store their location and type. We use loops to
-calculate distances and increment summary statistics rather than store a
-distance matrix which is <span class="math inline">\(O(n^2)\)</span>,
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>,
+i.e. proportional to the number of points to store their location and
+type. We use loops to calculate distances and increment summary
+statistics rather than store a distance matrix which is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>,
 following <span class="citation">Scholl and Brenner (2015)</span>.
-Computation time is <span class="math inline">\(O(n^2)\)</span> because
-<span class="math inline">\(n(n-1)/2\)</span> pair distances must be
-calculated.</p>
+Computation time is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n(n-1)/2</annotation></semantics></math>
+pair distances must be calculated.</p>
 <p>We consider planar points patterns (sets of points in a 2-dimensional
 space) with marks of a special kind: each point comes with a continuous
 mark (its weight) and a discrete one (its type). We call this special
@@ -444,19 +526,21 @@ their weight is 1.</p>
 <pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: spatstat.univar</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.univar 3.0-0</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.2-8</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.3-2</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.2-2</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.3-1</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.2-6</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## spatstat.explore 3.3-1</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Pattern</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wmppp.html">wmppp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, Y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Pattern</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Marked planar point pattern:  100 points</span></span>
 <span><span class="co">## Average intensity 102.9038 points per square unit</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## Coordinates are given to 8 decimal places</span></span>
+<span><span class="co">## Coordinates are given to 16 decimal places</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Mark variables: PointWeight, PointType</span></span>
 <span><span class="co">## Summary:</span></span>
@@ -477,14 +561,30 @@ their weight is 1.</p>
 <p>All functions are named <code>Xhat</code> where <code>X</code> is the
 name of the function:</p>
 <ul>
-<li>Ripley’s <span class="math inline">\(g\)</span> and <span class="math inline">\(K\)</span>, and <span class="math inline">\(K\)</span>’s normalization, Besag’s <span class="math inline">\(L\)</span> <span class="citation">(1977)</span>;</li>
-<li>Penttinen’s <span class="math inline">\(K_{mm}\)</span> and <span class="math inline">\(L_{mm}\)</span>;</li>
-<li>Diggle and Chetwynd’s <span class="math inline">\(D\)</span>;</li>
-<li>Baddeley et al.’s <span class="math inline">\(K_{inhom}\)</span> and
-its derivative <span class="math inline">\(g_{inhom}\)</span>;</li>
-<li>Marcon and Puech’s <span class="math inline">\(M\)</span>;</li>
-<li>Duranton and Overman’s <span class="math inline">\(K_d\)</span>
-(including its weighted version <span class="math inline">\(K^{emp}\)</span>).</li>
+<li>Ripley’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>’s
+normalization, Besag’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math><span class="citation">(1977)</span>;</li>
+<li>Penttinen’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>m</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{mm}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mrow><mi>m</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">L_{mm}</annotation></semantics></math>;</li>
+<li>Diggle and Chetwynd’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>;</li>
+<li>Baddeley et al.’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">K_{inhom}</annotation></semantics></math>
+and its derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mrow><mi>i</mi><mi>n</mi><mi>h</mi><mi>o</mi><mi>m</mi></mrow></msub><annotation encoding="application/x-tex">g_{inhom}</annotation></semantics></math>;</li>
+<li>Marcon and Puech’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>;</li>
+<li>Duranton and Overman’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+(including its weighted version
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>e</mi><mi>m</mi><mi>p</mi></mrow></msup><annotation encoding="application/x-tex">K^{emp}</annotation></semantics></math>).</li>
 </ul>
 <p>The suffix <code>hat</code> has been used to avoid confusion with
 other functions in R: <code>D</code> exists in the <em>stats</em>
@@ -497,7 +597,9 @@ object). The window can be a polygon or a binary image, as in
 <li>A vector of distances.</li>
 <li>Optionally a reference and a neighbor point type to calculate
 bivariate functions, or equivalently the types of cases and controls for
-the <span class="math inline">\(D\)</span> function.</li>
+the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+function.</li>
 <li>Some optional arguments, specific to some functions.</li>
 </ul>
 <p>Topographic functions require edge-effect corrections, provided by
@@ -518,14 +620,15 @@ risk level, those of the function and the null hypothesis to simulate.
 These functions return a <code>dbmssEnvelope</code> object which can be
 plotted.</p>
 <p>Null hypotheses have been discussed by <span class="citation">Goreaud
-and Pélissier (2003)</span> for topographic functions such as <span class="math inline">\(K\)</span> and by <span class="citation">Marcon
-and Puech (2010)</span> for relative functions. The null hypothesis for
-univariate functions is random position (points are drawn in a Poisson
-process for topographic functions) or random location (points are
-redistributed across actual locations for relative functions). Bivariate
-functions support random labeling and population independence null
-hypotheses. The possible values of arguments are detailed in the help
-file of each function.</p>
+and Pélissier (2003)</span> for topographic functions such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+and by <span class="citation">Marcon and Puech (2010)</span> for
+relative functions. The null hypothesis for univariate functions is
+random position (points are drawn in a Poisson process for topographic
+functions) or random location (points are redistributed across actual
+locations for relative functions). Bivariate functions support random
+labeling and population independence null hypotheses. The possible
+values of arguments are detailed in the help file of each function.</p>
 <p>Building a confidence envelope this way is problematic because the
 test is repeated at each distance. The underestimation of the risk has
 been discussed by <span class="citation">Loosmore and Ford
@@ -540,7 +643,7 @@ obtain it instead of the local one.</p>
 </h3>
 <p>We illustrate the main features of the package by two examples. The
 first one comes from the economic literature <span class="citation">(Bonneu 2007)</span> <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The dataset can be downloaded from &lt;a href="http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69" class="external-link uri"&gt;http://publications-sfds.fr/index.php/csbigs/article/downloadSuppFile/376/69&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"CSBIGS.Rdata"</span><span class="op">)</span></span>
 <span><span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
 <span>  <span class="va">Emergencies</span><span class="op">$</span><span class="va">M</span>, </span>
@@ -562,18 +665,22 @@ first one comes from the economic literature <span class="citation">(Bonneu 2007
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X2</span><span class="op">$</span><span class="va">Biggest</span>, main <span class="op">=</span> <span class="st">""</span>, maxsize <span class="op">=</span> <span class="fl">1</span>, legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">514300</span>, <span class="fl">1826800</span>, <span class="st">"b"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/Toulouse-1.png" width="700"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The map of emergencies in the urban area of Toulouse, France, during
 year 2004 (about 33 km from south to north) shows (a) 20,820 emergencies
 recorded (many points are confused at the figure scale) and (b) the
 locations of the 10 percent most serious ones. The workload associated
-to each emergency (the number of men <span class="math inline">\(\times\)</span> hours it required) is known. The
-original study tested the dependence between workload and location of
-emergencies: it did not exclude the null hypothesis of random labeling.
-We have a complementary approach here: we consider the 10 percent more
-serious emergencies, i.e. those which caused the highest workload. <span class="math inline">\(K_d\)</span> may detect concentration (or
-dispersion) if, at a distance <span class="math inline">\(r\)</span>
+to each emergency (the number of men
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>×</mo><annotation encoding="application/x-tex">\times</annotation></semantics></math>
+hours it required) is known. The original study tested the dependence
+between workload and location of emergencies: it did not exclude the
+null hypothesis of random labeling. We have a complementary approach
+here: we consider the 10 percent more serious emergencies, i.e. those
+which caused the highest workload.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
+may detect concentration (or dispersion) if, at a distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
 from a serious emergency, the probability to find another serious
 emergency is greater (or lower) than that of finding an emergency
 whatever its workload:</p>
@@ -587,7 +694,7 @@ points and their mark. The <code>KdEnvelope</code> function is run from
 below shows that the 10% most serious emergencies are more dispersed
 than the distribution of all emergencies at all distances up to
 10km.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">KdE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span></span>
 <span>  <span class="va">X</span>, </span>
 <span>  r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">100</span><span class="op">)</span>, </span>
@@ -597,7 +704,8 @@ than the distribution of all emergencies at all distances up to
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">KdE</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/KdCode-1.png" width="576"></p>
-<p>The solid, black curve is <span class="math inline">\(K_d\)</span>.
+<p>The solid, black curve is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>.
 The dotted red curve is the average simulated value and the shaded area
 is the confidence envelope under the null hypothesis of random location.
 The risk level is 5%, 1000 simulations have been run. distances are in
@@ -612,7 +720,7 @@ Guiana <span class="citation">(Gourlet-Fleury, Guehl, and Laroussinie
 rosea</em>, <em>Vouacapoua americana</em> or Other (one of more than 300
 species). Weights are basal areas (the area of the stems virtually cut
 1.3 meter above ground), measured in square centimeters.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">paracou16</span>,</span>
 <span>  labelSize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Basal area ("</span> <span class="op">~</span><span class="va">cm</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>, </span>
@@ -622,9 +730,13 @@ species). Weights are basal areas (the area of the stems virtually cut
 containing rectangle is 200m wide by 250m long). Circle sizes are
 proportional to the basal areas of trees.</p>
 <p>The question to test is dependence between the distributions of the
-two species of interest. Bivariate <span class="math inline">\(M(r)\)</span> is calculated for <span class="math inline">\(r\)</span> between 0 and 30 meters. 1000
-simulations are run to build the global confidence envelope.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+two species of interest. Bivariate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(r)</annotation></semantics></math>
+is calculated for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+between 0 and 30 meters. 1000 simulations are run to build the global
+confidence envelope.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span></span>
 <span>  <span class="va">paracou16</span>, </span>
 <span>  r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">2</span><span class="op">)</span>, </span>
@@ -637,14 +749,17 @@ simulations are run to build the global confidence envelope.</p>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">Envelope</span>, main <span class="op">=</span> <span class="st">""</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference_files/figure-html/MCode-1.png" width="700"></p>
-<p><span class="math inline">\(M(r)\)</span> values of <em>Qualea
-rosea</em> around <em>Vouacapoua Americana</em> are plotted. The solid,
-black curve is <span class="math inline">\(M\)</span>. The dotted red
-curve is the average simulated value. The shaded area is the confidence
-envelope. <span class="math inline">\(M=1\)</span> is expected if points
-are independently distributed. The risk level is 5%, 1000 simulations
-have been run. Distances are in meters.</p>
-<p>The calculated function is <span class="math inline">\(M\)</span>,
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(r)</annotation></semantics></math>
+values of <em>Qualea rosea</em> around <em>Vouacapoua Americana</em> are
+plotted. The solid, black curve is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+The dotted red curve is the average simulated value. The shaded area is
+the confidence envelope.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M=1</annotation></semantics></math>
+is expected if points are independently distributed. The risk level is
+5%, 1000 simulations have been run. Distances are in meters.</p>
+<p>The calculated function is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
 showing the repulsion between <em>V. Americana</em> and <em>Q.
 rosea</em> up to 30 m. Significance is unclear, since the observed
 values of the function are very close to the lower bound of the
@@ -655,19 +770,27 @@ Traissac (2012)</span>.</p>
 <div class="section level3">
 <h3 id="goodness-of-fit-test">Goodness-of-fit test<a class="anchor" aria-label="anchor" href="#goodness-of-fit-test"></a>
 </h3>
-<p>A Goodness-of-fit test for <span class="math inline">\(K\)</span> has
-been proposed by <span class="citation">Diggle (2013)</span>, applied to
-<span class="math inline">\(K\)</span> by <span class="citation">Loosmore and Ford (2006)</span> and to <span class="math inline">\(M\)</span> by <span class="citation">Marcon,
-Puech, and Traissac (2012)</span>. It calculates the distance between
-the actual values of the function and its average value obtained in
-simulations of the null hypothesis. The same distance is calculated for
-each simulated point pattern, and the returned <span class="math inline">\(p\)</span>-value of the test if the ratio of
-simulations whose distance is larger than that of the real point
-pattern. The test is performed by the <code>GoFtest</code> function
-whose argument is the envelope previously calculated (actually, the
-function uses the simulation values).</p>
-<p>Applied to the example of Paracou trees, the <span class="math inline">\(p\)</span>-value is:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<p>A Goodness-of-fit test for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+has been proposed by <span class="citation">Diggle (2013)</span>,
+applied to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+by <span class="citation">Loosmore and Ford (2006)</span> and to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+by <span class="citation">Marcon, Puech, and Traissac (2012)</span>. It
+calculates the distance between the actual values of the function and
+its average value obtained in simulations of the null hypothesis. The
+same distance is calculated for each simulated point pattern, and the
+returned
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-value
+of the test if the ratio of simulations whose distance is larger than
+that of the real point pattern. The test is performed by the
+<code>GoFtest</code> function whose argument is the envelope previously
+calculated (actually, the function uses the simulation values).</p>
+<p>Applied to the example of Paracou trees, the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-value
+is:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/GoFtest.html">GoFtest</a></span><span class="op">(</span><span class="va">Envelope</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.267</span></span></code></pre>
 </div>
@@ -675,13 +798,18 @@ function uses the simulation values).</p>
 <h3 id="ktest">Ktest<a class="anchor" aria-label="anchor" href="#ktest"></a>
 </h3>
 <p>The <code>Ktest</code> has been developed by Lang and Marcon <span class="citation">(Lang and Marcon 2013; Marcon, Traissac, and Lang
-2013)</span>. It does not rely on simulations and returns the <span class="math inline">\(p\)</span>-value to erroneously reject complete
-spatial randomness (CSR) given the values of <span class="math inline">\(K\)</span>. It relies on the exact variance of
-<span class="math inline">\(K\)</span> calculated with edge-effect
-corrections. It only works in a rectangular window.</p>
+2013)</span>. It does not rely on simulations and returns the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-value
+to erroneously reject complete spatial randomness (CSR) given the values
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+It relies on the exact variance of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+calculated with edge-effect corrections. It only works in a rectangular
+window.</p>
 <p>The following example tests a 1.5-ha subset of <code>paracou16</code>
 (100m by 150m, origin at the southwestern corner).</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"paracou16"</span><span class="op">)</span></span>
 <span><span class="va">RectWindow</span> <span class="op">&lt;-</span> <span class="fu">owin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">paracou16</span><span class="op">[</span><span class="va">RectWindow</span><span class="op">]</span></span>
@@ -693,7 +821,7 @@ corrections. It only works in a rectangular window.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Allaire2015" class="csl-entry">
 Allaire, JJ, Romain Francois, Kevin Ushey, Gregory Vandenbrouck, Marcus
 Geelnard, and Intel. 2023. <em><span>RcppParallel</span>:
@@ -730,16 +858,15 @@ Economic Analysis</em> 10 (3): 289–316. <a href="https://doi.org/10.1080/17421
 <div id="ref-Combes2008" class="csl-entry">
 Combes, Pierre-Philippe, Thierry Mayer, and Jacques-François Thisse.
 2008. <span>“Economic Geography.”</span> In <em>The Integration of
-Regions and Nations</em>, 1–416. <span>Princeton, New Jersey</span>:
-<span>Princeton University Press</span>.
+Regions and Nations</em>, 1–416. Princeton, New Jersey: Princeton
+University Press.
 </div>
 <div id="ref-Combes2004" class="csl-entry">
 Combes, Pierre-Philippe, and Henry G Overman. 2004. <span>“The Spatial
 Distribution of Economic Activities in the <span>European
 Union</span>.”</span> In <em>Handbook of Urban and Regional
 Economics</em>, edited by J Vernon Henderson and Jacques-François
-Thisse, 4:2845–2909. <span>Amsterdam</span>: <span>Elsevier. North
-Holland</span>.
+Thisse, 4:2845–2909. Amsterdam: Elsevier. North Holland.
 </div>
 <div id="ref-Diggle2013" class="csl-entry">
 Diggle, Peter J. 2013. <em>Statistical Analysis of Spatial and
@@ -785,13 +912,12 @@ Coagglomeration Patterns.”</span> <em>The American Economic Review</em>
 </div>
 <div id="ref-Fortin2005" class="csl-entry">
 Fortin, Marie-Josée, and Mark R T Dale. 2005. <em>Spatial Analysis.
-<span>A</span> Guide for Ecologists.</em> <span>Cambridge</span>:
-<span>Cambridge University Press</span>.
+<span>A</span> Guide for Ecologists.</em> Cambridge: Cambridge
+University Press.
 </div>
 <div id="ref-Gini1912" class="csl-entry">
 Gini, Corrado. 1912. <em>Variabilit<span>à</span> e
-Mutabilit<span>à</span></em>. <span>Bologna</span>: <span>C.
-Cuppini</span>.
+Mutabilit<span>à</span></em>. Bologna: C. Cuppini.
 </div>
 <div id="ref-Goreaud2003" class="csl-entry">
 Goreaud, François, and Raphaël Pélissier. 2003. <span>“Avoiding
@@ -804,8 +930,8 @@ Hypotheses.”</span> <em>Journal of Vegetation Science</em> 14 (5):
 Gourlet-Fleury, Sylvie, Jean Marc Guehl, and Olivier Laroussinie. 2004.
 <em>Ecology &amp; Management of a Neotropical Rainforest.
 <span>Lessons</span> Drawn from <span>Paracou</span>, a Long-Term
-Experimental Research Site in <span>French Guiana</span></em>.
-<span>Paris</span>: <span>Elsevier</span>.
+Experimental Research Site in <span>French Guiana</span></em>. Paris:
+Elsevier.
 </div>
 <div id="ref-Haase1997" class="csl-entry">
 Haase, Peter, Francisco I. Pugnaire, S. C. Clark, and L. D. Incoll.
@@ -821,8 +947,8 @@ Localization.”</span> <em>The Review of Economics and Statistics</em> 18
 <div id="ref-Illian2008" class="csl-entry">
 Illian, Janine, Antti Penttinen, Helga Stoyan, and Dietrich Stoyan.
 2008. <span>“Statistical Analysis and Modelling of Spatial Point
-Patterns.”</span> In <em>Statistics in Practice</em>, 1–534.
-<span>Chichester</span>: <span>Wiley-Interscience</span>.
+Patterns.”</span> In <em>Statistics in Practice</em>, 1–534. Chichester:
+Wiley-Interscience.
 </div>
 <div id="ref-Kenkel1988" class="csl-entry">
 Kenkel, N. C. 1988. <span>“Pattern of Self-Thinning in Jack Pine:
@@ -872,14 +998,12 @@ Null Hypothesis.”</span> <em>ISRN Ecology</em> 2013 (Article ID 753475):
 Openshaw, S., and P. J. Taylor. 1979. <span>“A Million or so Correlation
 Coefficients: Three Experiments on the Modifiable Areal Unit
 Problem.”</span> In <em>Statistical Applications in the Spatial
-Sciences</em>, edited by N Wrigley, 127–44. <span>London</span>:
-<span>Pion</span>.
+Sciences</em>, edited by N Wrigley, 127–44. London: Pion.
 </div>
 <div id="ref-Penttinen2006" class="csl-entry">
 Penttinen, Antti. 2006. <span>“Statistics for Marked Point
 Patterns.”</span> In <em>The Yearbook of the Finnish Statistical
-Society</em>, 70–91. <span>Helsinki</span>: <span>The Finnish
-Statistical Society</span>.
+Society</em>, 70–91. Helsinki: The Finnish Statistical Society.
 </div>
 <div id="ref-Penttinen1992" class="csl-entry">
 Penttinen, Antti, Dietrich Stoyan, and Helena M Henttonen. 1992.
@@ -904,7 +1028,7 @@ Royal Statistical Society: Series B (Statistical Methodology)</em> 39
 </div>
 <div id="ref-Ripley1988" class="csl-entry">
 ———. 1988. <em>Statistical Inference for Spatial Processes</em>.
-<span>Cambridge University Press</span>.
+Cambridge University Press.
 </div>
 <div id="ref-Scholl2013" class="csl-entry">
 Scholl, Tobias, and Thomas Brenner. 2015. <span>“Optimizing
@@ -914,28 +1038,26 @@ Geographical Systems</em> 17 (4): 333–51. <a href="https://doi.org/10.1007/s10
 </div>
 </div>
 
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Eric Marcon, Gabriel Lang, Stephane Traissac, Florence Puech.</p>
+  <p>Developed by Eric Marcon, Gabriel Lang, Stephane Traissac, Florence Puech.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
