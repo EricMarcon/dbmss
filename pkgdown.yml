@@ -1,13 +1,12 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
-  bandwidth: bandwidth.html
-  maps: maps.html
-  reference: reference.html
+  articles/bandwidth: bandwidth.html
   dbmss: dbmss.html
-last_built: 2023-12-12T10:27Z
+  articles/maps: maps.html
+  articles/reference: reference.html
+last_built: 2024-08-23T08:13Z
 urls:
   reference: https://ericmarcon.github.io/dbmss/reference
   article: https://ericmarcon.github.io/dbmss/articles
-
