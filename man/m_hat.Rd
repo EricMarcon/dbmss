@@ -59,7 +59,7 @@ mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   If \emph{CaseControl} is \code{TRUE}, then \emph{ReferenceType} points are cases and \emph{NeighborType} points are controls. The univariate concentration of cases is calculated as if \emph{NeighborType} was equal to \emph{ReferenceType}, but only controls are considered when counting all points around cases (Marcon et al., 2012). This makes sense when the sampling design is such that all points of \emph{ReferenceType} (the cases) but only a sample of the other points (the controls) are recorded. Then, the whole distribution of points is better represented by the controls alone.
 }
 \value{
-  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]*{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 
   If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point. The column names of the \code{fv} are "m_" followed by the point names, i.e. the row names of the marks of the point pattern.
 }

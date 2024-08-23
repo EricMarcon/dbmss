@@ -40,7 +40,7 @@
     Increase it for quality, paid by increasing computing time.
   }
   \item{\dots}{
-    Extra arguments, passed to \code{\link[spatstat.geom]{Smooth.ppp}}.
+    Extra arguments, passed to \code{\link[spatstat.explore]{Smooth.ppp}}.
   }
   \item{CheckArguments}{
     If \code{TRUE} (default), the function arguments are verified.

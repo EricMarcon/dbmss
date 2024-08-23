@@ -46,7 +46,7 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
   The computation of \code{Kinhomhat} relies on spatstat functions \code{\link[spatstat.explore]{Kinhom}}, \code{\link[spatstat.explore]{density.ppp}} and \code{\link[spatstat.explore]{bw.diggle}}.
 }
 \seealso{
-  \code{\link{KinhomEnvelope}}, \code{\link{Kinhom}}
+  \code{\link{KinhomEnvelope}}, \code{\link[spatstat.explore]{Kinhom}}
 }
 \examples{
 data(paracou16)
