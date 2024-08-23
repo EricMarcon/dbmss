@@ -61,7 +61,7 @@
 <dd><p>One of the point types. Default is all point types.</p></dd>
 
   <dt id="arg-lambda">lambda<a class="anchor" aria-label="anchor" href="#arg-lambda"></a></dt>
-<dd><p>An estimation of the point pattern density, obtained by the <code>density.ppp</code> function.</p></dd>
+<dd><p>An estimation of the point pattern density, obtained by the <code><a href="https://rdrr.io/pkg/spatstat.explore/man/density.ppp.html" class="external-link">density.ppp</a></code> function.</p></dd>
 
   <dt id="arg-checkarguments">CheckArguments<a class="anchor" aria-label="anchor" href="#arg-checkarguments"></a></dt>
 <dd><p>Logical; if <code>TRUE</code>, the function arguments are verified. Should be set to <code>FALSE</code> to save time in simulations for example, when the arguments have been checked elsewhere.</p></dd>
@@ -70,13 +70,13 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><em>Kinhom</em> is a cumulative, topographic measure of an inhomogenous point pattern structure.</p>
-<p>By default, density estimation is performed at points by <code>density.ppp</code> using the optimal bandwith (<code>bw.diggle</code>). It can be calculated separately (see example), including at pixels if the point pattern is too large for the default estimation to succeed, and provided as the argument <code>lambda</code>:
+<p>By default, density estimation is performed at points by <code><a href="https://rdrr.io/pkg/spatstat.explore/man/density.ppp.html" class="external-link">density.ppp</a></code> using the optimal bandwith (<code><a href="https://rdrr.io/pkg/spatstat.explore/man/bw.diggle.html" class="external-link">bw.diggle</a></code>). It can be calculated separately (see example), including at pixels if the point pattern is too large for the default estimation to succeed, and provided as the argument <code>lambda</code>:
   Arbia et al. (2012) for example use another point pattern as a reference to estimate density.</p>
 <p>Bivariate <em>Kinhom</em> is not currently supported.</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An object of class <code>fv</code>, see <code>fv.object</code>, which can be plotted directly using <code>plot.fv</code>.</p>
+    <p>An object of class <code>fv</code>, see <code><a href="https://rdrr.io/pkg/spatstat.explore/man/fv.object.html" class="external-link">fv.object</a></code>, which can be plotted directly using <code><a href="https://rdrr.io/pkg/spatstat.explore/man/plot.fv.html" class="external-link">plot.fv</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -85,11 +85,11 @@
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>The computation of <code>Kinhomhat</code> relies on spatstat functions <code>Kinhom</code>, <code>density.ppp</code> and <code>bw.diggle</code>.</p>
+    <p>The computation of <code>Kinhomhat</code> relies on spatstat functions <code><a href="https://rdrr.io/pkg/spatstat.explore/man/Kinhom.html" class="external-link">Kinhom</a></code>, <code><a href="https://rdrr.io/pkg/spatstat.explore/man/density.ppp.html" class="external-link">density.ppp</a></code> and <code><a href="https://rdrr.io/pkg/spatstat.explore/man/bw.diggle.html" class="external-link">bw.diggle</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="KinhomEnvelope.html">KinhomEnvelope</a></code>, <code>Kinhom</code></p></div>
+    <div class="dont-index"><p><code><a href="KinhomEnvelope.html">KinhomEnvelope</a></code>, <code><a href="https://rdrr.io/pkg/spatstat.explore/man/Kinhom.html" class="external-link">Kinhom</a></code></p></div>
     </div>
 
     <div class="section level2">
