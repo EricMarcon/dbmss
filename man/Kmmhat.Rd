@@ -27,7 +27,7 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   The \emph{Kmm} function is used to test the independence of marks.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Penttinen, A., Stoyan, D. and Henttonen, H. M. (1992). Marked Point Processes in Forest Statistics. \emph{Forest Science} 38(4): 806-824.
@@ -35,10 +35,10 @@ Kmmhat(X, r = NULL, ReferenceType = "", CheckArguments = TRUE)
   Penttinen, A. (2006). Statistics for Marked Point Patterns. in \emph{The Yearbook of the Finnish Statistical Society}. The Finnish Statistical Society, Helsinki: 70-91.
 }
 \note{
-  The function is computed using \code{\link{markcorrint}} in spatstat.
+  The function is computed using \code{\link[spatstat.explore]{markcorrint}} in spatstat.
 }
 \seealso{
-  \code{\link{Lmmhat}}, \code{\link{LmmEnvelope}}, \code{\link{markcorrint}}
+  \code{\link{Lmmhat}}, \code{\link{LmmEnvelope}}, \code{\link[spatstat.explore]{markcorrint}}
 }
 \examples{
 data(paracou16)

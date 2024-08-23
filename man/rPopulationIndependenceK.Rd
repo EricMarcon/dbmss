@@ -24,7 +24,7 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
   }
 }
 \details{
-  Reference points are kept unchanged, neighbor type point positions are shifted by \code{\link{rshift}}.
+  Reference points are kept unchanged, neighbor type point positions are shifted by \code{\link[spatstat.random]{rshift}}.
   Other points are lost and point weights are not kept (they are set to 1) since the K function ignores them.
 }
 \value{

@@ -14,7 +14,7 @@ wmppp(df, window = NULL, unitname = NULL)
   A dataframe with at least two columns containing point coordinates.  
   }
   \item{window}{
-  An object of calls "owin" (\code{\link{owin.object}}).  
+  An object of calls "owin" (\code{\link[spatstat.geom]{owin.object}}).  
   }
   \item{unitname}{
   Name of unit of length. Either a single character string, or a vector of two character strings giving the singular and plural forms, respectively. Ignored if \code{window} is not \code{NULL}.

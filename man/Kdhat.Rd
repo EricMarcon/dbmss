@@ -58,7 +58,7 @@
   If \code{X} is not a \code{\link{Dtable}} object, the maximum value of \code{r} is obtained from the geometry of the window rather than caculating the median distance between points as suggested by Duranton and Overman (2005) to save (a lot of) calculation time.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \note{
   Estimating \emph{Kd} relies on calculating distances, exactly or approximately (if \code{Approximate} is not 0).

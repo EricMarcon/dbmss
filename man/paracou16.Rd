@@ -11,7 +11,7 @@
 data(paracou16)
 }
 \format{
-  An object of class \code{\link{ppp.object}} representing the point pattern of tree locations in a 250 x 300 meter sampling region. Each tree is marked with its species ("Q. Rosea", "V. Americana" or "Other"), and basal area (square centimeters).
+  An object of class \code{\link[spatstat.geom]{ppp.object}} representing the point pattern of tree locations in a 250 x 300 meter sampling region. Each tree is marked with its species ("Q. Rosea", "V. Americana" or "Other"), and basal area (square centimeters).
 }
 
 \source{

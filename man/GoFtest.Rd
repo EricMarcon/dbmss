@@ -11,7 +11,7 @@ GoFtest(Envelope)
 }
 \arguments{
   \item{Envelope}{
-  An envelope object (\code{\link{envelope}}) containing simulations in its \code{simfuns} attribute. It may be the result of any estimation function of the dbmss package or obtained by the \code{\link{envelope}} function with argument \code{savefuns=TRUE}.
+  An envelope object (\code{\link[spatstat.explore]{envelope}}) containing simulations in its \code{simfuns} attribute. It may be the result of any estimation function of the dbmss package or obtained by the \code{\link[spatstat.explore]{envelope}} function with argument \code{savefuns=TRUE}.
   }
 }
 \details{

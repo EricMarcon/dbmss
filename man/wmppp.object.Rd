@@ -4,19 +4,19 @@
   Class of Weighted, Marked, Planar Point Patterns
 }
 \description{
-  A class \code{"wmppp"} to represent a two-dimensional point pattern of class \code{\link{ppp}} whose marks are a dataframe with two columns:
+  A class \code{"wmppp"} to represent a two-dimensional point pattern of class \code{\link[spatstat.geom]{ppp}} whose marks are a dataframe with two columns:
   \itemize{
    \item \code{PointType}: labels, as factors
    \item \code{PointWeight}: weights.
   }
 }
 \details{
-  This class represents a two-dimensional point pattern dataset. \code{wmppp} objects are also of class \code{\link{ppp}}.
+  This class represents a two-dimensional point pattern dataset. \code{wmppp} objects are also of class \code{\link[spatstat.geom]{ppp}}.
   
   Objects of class \code{wmppp} may be created by the function \code{\link{wmppp}} and converted from other types of data by the function \code{\link{as.wmppp}}.
 }
 \seealso{
-  \code{\link{ppp.object}},
+  \code{\link[spatstat.geom]{ppp.object}},
   \code{\link{wmppp}},
   \code{\link{as.wmppp}}
   \code{\link{autoplot.wmppp}}

@@ -14,7 +14,7 @@
     A point pattern (\code{\link{wmppp.object}}).
   }
   \item{fvind}{
-    An object of class \code{fv}, see \code{\link{fv.object}}, obtained a distance-based method, such as \code{\link{Mhat}} with individual values (argument \code{Individual = TRUE}).
+    An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, obtained a distance-based method, such as \code{\link{Mhat}} with individual values (argument \code{Individual = TRUE}).
   }
   \item{distance}{
     The distance at which the function value must be considered.
@@ -29,8 +29,8 @@
   }
   \item{sigma}{
   The bandwidth used for smoothing.
-  A Gaussian kernel is used (see \code{\link{Smooth.ppp}}).
-  Its bandwidth is chosen by default according to Scott's rule (see \code{\link{bw.scott}}).
+  A Gaussian kernel is used (see \code{\link[spatstat.explore]{Smooth.ppp}}).
+  Its bandwidth is chosen by default according to Scott's rule (see \code{\link[spatstat.explore]{bw.scott}}).
   }
   \item{Adjust}{
   Force the selected bandwidth (\code{sigma}) to be multiplied by \code{Adjust}. Setting it to values smaller than one (1/2 for example) will sharpen the estimation. 
@@ -40,7 +40,7 @@
     Increase it for quality, paid by increasing computing time.
   }
   \item{\dots}{
-    Extra arguments, passed to \code{\link{Smooth.ppp}}.
+    Extra arguments, passed to \code{\link[spatstat.geom]{Smooth.ppp}}.
   }
   \item{CheckArguments}{
     If \code{TRUE} (default), the function arguments are verified.

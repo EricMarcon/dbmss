@@ -32,7 +32,7 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
   The \emph{Di} function allows comparing the structure of the cases to that of the controls around cases, that is to say the comparison is made around the same points. This has been advocated by Arbia et al. (2008) and formalized by Marcon and Puech (2012).
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Arbia, G., Espa, G. and Quah, D. (2008). A class of spatial econometric methods in the empirical analysis of clusters of firms in the space. \emph{Empirical Economics} 34(1): 81-103.
@@ -42,10 +42,10 @@ Dhat(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments = TR
   Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
 }
 \note{
-  The computation of \code{Dhat} relies on spatstat functions \code{\link{Kest}} and \code{\link{Kcross}}.
+  The computation of \code{Dhat} relies on spatstat functions \code{\link[spatstat.explore]{Kest}} and \code{\link[spatstat.explore]{Kcross}}.
 }
 \seealso{
-  \code{\link{Khat}}, \code{\link{DEnvelope}}, \code{\link{Kest}}, \code{\link{Kcross}}
+  \code{\link{Khat}}, \code{\link{DEnvelope}}, \code{\link[spatstat.explore]{Kest}}, \code{\link[spatstat.explore]{Kcross}}
 }
 \examples{
 data(paracou16)

@@ -84,7 +84,7 @@
   Rectangular and polygonal windows (see \code{\link[spatstat.geom]{owin.object}}) are supported but mask windows are ignored (use the `plot` method if necessary).
 }
 \value{
-  A \code{\link{ggplot}} object.
+  A \code{\link[ggplot2]{ggplot}} object.
 }
 \author{
   Eric Marcon <Eric.Marcon@agroparistech.fr>, parts of the code from \code{spatstat.explore::plot.fv}.

@@ -28,7 +28,7 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   One of the point types. Default is all point types.
   }
   \item{lambda}{
-  An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
+  An estimation of the point pattern density, obtained by the \code{\link[spatstat.explore]{density.ppp}} function.
   }
   \item{SimulationType}{
   A string describing the null hypothesis to simulate. The null hypothesis, may be 
@@ -57,7 +57,7 @@ KinhomEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   The global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step. The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped. The remaining upper and lower bounds at all distances constitute the global envelope. Interpolation is used if the exact ratio cannot be reached.
 }
 \value{
-  An envelope object (\code{\link{envelope}}). There are methods for print and plot for this class.
+  An envelope object (\code{\link[spatstat.explore]{envelope}}). There are methods for print and plot for this class.
   
   The \code{fv} contains the observed value of the function, its average simulated value and the confidence envelope.
 }

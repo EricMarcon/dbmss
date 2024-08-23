@@ -58,7 +58,7 @@ Mhat(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   If \emph{Individual} is \code{TRUE}, then the individual values \emph{M} in the neighborhood of each point are returned. If \emph{ReferencePoint} is also specified, then \emph{only} the individual value of M around the reference point is returned.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
   
   If \code{Individual} is set to \code{TRUE}, the object also contains the value of the function around each individual \emph{ReferenceType} point taken as the only reference point. The column names of the \code{fv} are "M_" followed by the point names, i.e. the row names of the marks of the point pattern.
 }

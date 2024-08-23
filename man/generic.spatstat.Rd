@@ -8,7 +8,7 @@
   Methods for weighted, marked planar point patterns (of class wmppp) from spatstat
 }
 \description{
-  \strong{spatstat} methods for a \code{\link{ppp.object}} applied to a \code{\link{wmppp.object}}.
+  \strong{spatstat} methods for a \code{\link[spatstat.geom]{ppp.object}} applied to a \code{\link{wmppp.object}}.
 }
 \usage{
 \method{sharpen}{wmppp}(X, \dots)
@@ -22,7 +22,7 @@
   A two-dimensional point pattern. An object of class "wmppp".
   }
   \item{\dots}{
-  Arguments passed to the \code{\link{ppp.object}} method.
+  Arguments passed to the \code{\link[spatstat.geom]{ppp.object}} method.
   }
   \item{i}{
   Subset index. Either a valid subset index in the usual R sense, indicating which points should be retained, or a window (an object of class "owin") delineating a subset of the original observation window, or a pixel image with logical values defining a subset of the original observation window.
@@ -38,13 +38,13 @@
   }
 }
 \details{
-  \strong{spatstat} methods for \code{ppp} objects returning a \code{ppp} object can be applied to a \code{wmppp} and return a \code{wpppp} with these methods which just call the \code{\link{ppp.object}} method and change the class of the result for convenience.
+  \strong{spatstat} methods for \code{ppp} objects returning a \code{ppp} object can be applied to a \code{wmppp} and return a \code{wpppp} with these methods which just call the \code{\link[spatstat.geom]{ppp.object}} method and change the class of the result for convenience.
   
-  Some \strong{spatstat} functions such as \code{\link{rthin}} are not generic so they always return a \code{\link{ppp.object}} when applied to a \code{\link{wmppp.object}}. Their result may be converted by \code{\link{as.wmppp}}.
+  Some \strong{spatstat} functions such as \code{\link[spatstat.random]{rthin}} are not generic so they always return a \code{\link[spatstat.geom]{ppp.object}} when applied to a \code{\link{wmppp.object}}. Their result may be converted by \code{\link{as.wmppp}}.
 }
 \value{
   An object of class \code{"wmppp"}.
 }
 \seealso{
-  \code{\link{sharpen.ppp}}, \code{\link{split.ppp}}, \code{\link{superimpose.ppp}}, \code{\link{unique.ppp}}
+  \code{\link[spatstat.explore]{sharpen.ppp}}, \code{\link[spatstat.geom]{split.ppp}}, \code{\link[spatstat.geom]{superimpose.ppp}}, \code{\link[spatstat.geom]{unique.ppp}}
 }

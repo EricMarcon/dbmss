@@ -22,7 +22,7 @@ as.Dtable(X, \dots)
   }
 }
 \details{
-  This is a generic method, implemented for \code{\link{ppp}} and \code{\link{data.frame}}. 
+  This is a generic method, implemented for \code{\link[spatstat.geom]{ppp}} and \code{\link{data.frame}}. 
   
   Data is first converted to a (\code{\link{wmppp.object}}). Then, the distance matrix between points is calculated and the marks are kept.
 }

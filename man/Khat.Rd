@@ -30,7 +30,7 @@ Khat(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArgumen
   \emph{K} is a cumulative, topographic measure of a point pattern structure.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Ripley, B. D. (1976). The Foundations of Stochastic Geometry. \emph{Annals of Probability} 4(6): 995-998.
@@ -38,7 +38,7 @@ Khat(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArgumen
   Ripley, B. D. (1977). Modelling Spatial Patterns. \emph{Journal of the Royal Statistical Society B} 39(2): 172-212.
 }
 \note{
-  The computation of \code{Khat} relies on spatstat functions \code{\link{Kest}} and \code{\link{Kcross}}.
+  The computation of \code{Khat} relies on spatstat functions \code{\link[spatstat.explore]{Kest}} and \code{\link[spatstat.explore]{Kcross}}.
 }
 \seealso{
   \code{\link{Lhat}}, \code{\link{KEnvelope}}, \code{\link{Ktest}}

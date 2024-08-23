@@ -4,7 +4,7 @@
   Class of envelope of function values (fv)
 }
 \description{
-  A class \code{"dbmssEnvelope"}, \emph{i.e.} a particular type of see \code{\link{envelope}} to represent several estimates of the same function and its confidence envelope.
+  A class \code{"dbmssEnvelope"}, \emph{i.e.} a particular type of see \code{\link[spatstat.explore]{envelope}} to represent several estimates of the same function and its confidence envelope.
 }
 \details{
   "dbmssEnvelope" objects are similar to envelope objects. The differences are that the risk level is chosen (instead of the simulation rank to use as the envelope), so the rank is calculated (interpolation is used if necessary), and a global envelope can be calculated following Duranton and Overman (2005).

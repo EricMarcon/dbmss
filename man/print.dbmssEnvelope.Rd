@@ -18,7 +18,7 @@
   }
 }
 \details{
-  "dbmssEnvelope" objects are similar to \code{\link{envelope}} objects. The way they are printed is different to take into account the possibility of building global envelope following Duranton and Overman (2005):  the global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step. The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped. The remaining upper and lower bounds at all distances constitute the global envelope. Interpolation is used if the exact ratio cannot be reached.
+  "dbmssEnvelope" objects are similar to \code{\link[spatstat.explore]{envelope}} objects. The way they are printed is different to take into account the possibility of building global envelope following Duranton and Overman (2005):  the global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step. The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped. The remaining upper and lower bounds at all distances constitute the global envelope. Interpolation is used if the exact ratio cannot be reached.
 }
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106

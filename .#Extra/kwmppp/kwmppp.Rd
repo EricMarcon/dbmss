@@ -18,7 +18,7 @@
     A point pattern (\code{\link{wmppp.object}}).
   }
   \item{fvind}{
-    An object of class \code{fv}, see \code{\link{fv.object}}, obtained a distance-based method, such as \code{\link{Mhat}} with individual values (argument \code{Individual = TRUE}). 
+    An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, obtained a distance-based method, such as \code{\link{Mhat}} with individual values (argument \code{Individual = TRUE}). 
   }
   \item{ReferenceType}{
     The point type used to calculate the function values.
@@ -62,7 +62,7 @@
   }
 }
 \value{
-  \code{kmppp()} produces an object of class "kwmppp" that is also an \code{\link{autoKrige}} object that can be used to produce alternative maps.
+  \code{kmppp()} produces an object of class "kwmppp" that is also an \code{\link[automap]{autoKrige}} object that can be used to produce alternative maps.
   It can be plotted.
 }
 \examples{

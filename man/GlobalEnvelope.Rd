@@ -11,7 +11,7 @@ GlobalEnvelope(Simulations, Alpha)
 }
 \arguments{
   \item{Simulations}{
-  An object of class \code{fv}, see \code{\link{fv.object}}, containing the simulated values.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, containing the simulated values.
   }
   \item{Alpha}{
   The risk level.

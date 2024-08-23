@@ -18,7 +18,7 @@ as.wmppp(X, \dots)
   Data to be converted into a weighted, marked, planar point pattern (\code{\link{wmppp.object}})
   }
   \item{window}{
-  An object of calls "owin" (\code{\link{owin.object}}).  
+  An object of calls "owin" (\code{\link[spatstat.geom]{owin.object}}).  
   }
   \item{unitname}{
   Name of unit of length. Either a single character string, or a vector of two character strings giving the singular and plural forms, respectively.  
@@ -28,9 +28,9 @@ as.wmppp(X, \dots)
   }
 }
 \details{
-  This is a generic method, implemented for \code{\link{ppp}} and \code{\link{data.frame}}:
+  This is a generic method, implemented for \code{\link[spatstat.geom]{ppp}} and \code{\link{data.frame}}:
   \itemize{
-    \item{If the dataset \code{X} is an object of class "ppp" (\code{\link{ppp.object}}), the marks are converted to point weights if they are numeric or to point types if they are factors. Default weights are set to 1, default types to "All". If marks are a dataframe with column names equal to \code{PointType} and \code{PointWeight}, they are not modified. Row names of the dataframe are preserved as row names of the marks, to identify points.
+    \item{If the dataset \code{X} is an object of class "ppp" (\code{\link[spatstat.geom]{ppp.object}}), the marks are converted to point weights if they are numeric or to point types if they are factors. Default weights are set to 1, default types to "All". If marks are a dataframe with column names equal to \code{PointType} and \code{PointWeight}, they are not modified. Row names of the dataframe are preserved as row names of the marks, to identify points.
     }
     \item{If the dataset \code{X} is a dataframe, see \code{\link{wmppp}}.
     }

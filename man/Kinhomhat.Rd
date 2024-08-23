@@ -20,7 +20,7 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
   One of the point types. Default is all point types.
   }
   \item{lambda}{
-  An estimation of the point pattern density, obtained by the \code{\link{density.ppp}} function.
+  An estimation of the point pattern density, obtained by the \code{\link[spatstat.explore]{density.ppp}} function.
   }
   \item{CheckArguments}{
   Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
@@ -29,13 +29,13 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
 \details{
   \emph{Kinhom} is a cumulative, topographic measure of an inhomogenous point pattern structure.
   
-  By default, density estimation is performed at points by \code{\link{density.ppp}} using the optimal bandwith (\code{\link{bw.diggle}}). It can be calculated separately (see example), including at pixels if the point pattern is too large for the default estimation to succeed, and provided as the argument \code{lambda}:
+  By default, density estimation is performed at points by \code{\link[spatstat.explore]{density.ppp}} using the optimal bandwith (\code{\link[spatstat.explore]{bw.diggle}}). It can be calculated separately (see example), including at pixels if the point pattern is too large for the default estimation to succeed, and provided as the argument \code{lambda}:
   Arbia et al. (2012) for example use another point pattern as a reference to estimate density.
   
   Bivariate \emph{Kinhom} is not currently supported.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Baddeley, A. J., J. Moller, et al. (2000). Non- and semi-parametric estimation of interaction in inhomogeneous point patterns. \emph{Statistica Neerlandica} 54(3): 329-350.
@@ -43,7 +43,7 @@ Kinhomhat(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE)
   Arbia, G., G. Espa, et al. (2012). Clusters of firms in an inhomogeneous space: The high-tech industries in Milan. \emph{Economic Modelling} 29(1): 3-11.
 }
 \note{
-  The computation of \code{Kinhomhat} relies on spatstat functions \code{\link{Kinhom}}, \code{\link{density.ppp}} and \code{\link{bw.diggle}}.
+  The computation of \code{Kinhomhat} relies on spatstat functions \code{\link[spatstat.explore]{Kinhom}}, \code{\link[spatstat.explore]{density.ppp}} and \code{\link[spatstat.explore]{bw.diggle}}.
 }
 \seealso{
   \code{\link{KinhomEnvelope}}, \code{\link{Kinhom}}

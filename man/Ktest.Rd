@@ -11,7 +11,7 @@ Ktest(X, r)
 }
 \arguments{
   \item{X}{
-  A point pattern (\code{\link{ppp.object}}). Marks are ignored. The window must be a rectangle sensu spatstat (tested by \code{\link{is.rectangle}}).
+  A point pattern (\code{\link[spatstat.geom]{ppp.object}}). Marks are ignored. The window must be a rectangle sensu spatstat (tested by \code{\link[spatstat.geom]{is.rectangle}}).
   }
   \item{r}{
   A vector of distances.

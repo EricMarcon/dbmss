@@ -30,7 +30,7 @@ Lhat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
   \emph{L} is the normalized version of \emph{K}: \eqn{L(r)=\sqrt{\frac{K}{\pi}}-r}.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Besag, J. E. (1977). Comments on Ripley's paper. \emph{Journal of the Royal Statistical Society B} 39(2): 193-195.

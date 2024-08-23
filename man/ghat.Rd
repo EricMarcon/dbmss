@@ -27,10 +27,10 @@ ghat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
   }
 }
 \details{
-  The computation of \code{ghat} relies on spatstat function \code{\link{sewpcf}}.
+  The computation of \code{ghat} relies on spatstat function \code{\link[spatstat.explore]{sewpcf}}.
 }
 \value{
-  An object of class \code{fv}, see \code{\link{fv.object}}, which can be plotted directly using \code{\link{plot.fv}}.
+  An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
   Stoyan, D. and Stoyan, H. (1994) \emph{Fractals, random shapes and point fields: methods of geometrical statistics}. John Wiley and Sons. 
