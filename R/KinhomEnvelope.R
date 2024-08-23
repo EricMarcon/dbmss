@@ -25,11 +25,24 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   if (is.null(SimulatedPP))
     stop(paste("The null hypothesis", sQuote(SimulationType), "has not been recognized."))
   # local envelope, keep extreme values for lo and hi (nrank=1)
-  Envelope <- envelope(X, fun=Kinhomhat, nsim=NumberOfSimulations, nrank=1,
-                       r=r, ReferenceType=ReferenceType, lambda=lambda, 
-                       CheckArguments = FALSE,
-                       simulate=SimulatedPP, verbose=verbose, savefuns=TRUE
-                       )
+  Envelope <- suppressWarnings(
+    # Suppress warning:
+    # Envelope may be invalid; argument ‘lambda’ appears to have been fixed.
+    # because lambda is necessarily fixed here.
+    envelope(
+      X, 
+      fun = Kinhomhat, 
+      nsim = NumberOfSimulations, 
+      nrank = 1,
+      r = r,
+      ReferenceType = ReferenceType,
+      lambda = lambda,
+      CheckArguments = FALSE,
+      simulate = SimulatedPP, 
+      verbose = verbose, 
+      savefuns = TRUE
+    )
+  )
   attr(Envelope, "einfo")$H0 <- switch (SimulationType,
                                         RandomPosition = "Random Position",
                                         RandomLocation = "Random Location",
