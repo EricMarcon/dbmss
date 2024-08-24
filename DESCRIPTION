@@ -11,8 +11,8 @@ Authors@R: c(
 Description: Simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, following Marcon, Traissac, Puech, and Lang (2015) <doi:10.18637/jss.v067.c03>.
   Includes classical functions (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's Kd, Marcon and Puech's M). 
   Relies on 'spatstat' for some core calculation.
-URL: https://ericmarcon.github.io/dbmss, https://github.com/EricMarcon/dbmss
-BugReports: https://github.com/EricMarcon/dbmss/issues
+URL: https://ericmarcon.github.io/dbmss/, https://github.com/EricMarcon/dbmss/
+BugReports: https://github.com/EricMarcon/dbmss/issues/
 License: GNU General Public License
 Depends: 
   R (>= 3.5.0), 
