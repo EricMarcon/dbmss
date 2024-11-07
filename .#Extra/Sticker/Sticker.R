@@ -21,9 +21,9 @@ library("tidyverse")
     ) +
     theme_bw(base_size = 12) +
     theme(
-      panel.background = element_rect(fill = "transparent", colour = NA),
-      plot.background = element_rect(fill = "transparent", colour = NA),
-      panel.border = element_rect(colour = "black", size = 1.5), 
+      panel.background = element_rect(fill = "transparent", color = NA),
+      plot.background = element_rect(fill = "transparent", color = NA),
+      panel.border = element_rect(color = "black", size = 1.5), 
     ) +
     theme(legend.position = "none") ->
     P6
@@ -62,9 +62,9 @@ sticker_autoplot <- function(object, ..., ObsColor = "black", H0Color = "red", S
   
   # Add lines to the plot
   thePlot <- thePlot +
-    ggplot2::geom_line(ggplot2::aes(x=.data$r, y=.data$value, colour=.data$variable, linetype=.data$variable, linewidth=0.75), data=Lines) +
+    ggplot2::geom_line(ggplot2::aes(x=.data$r, y=.data$value, color=.data$variable, linetype=.data$variable, linewidth=0.75), data=Lines) +
     # Merged legend if name and labels are identical
-    ggplot2::scale_colour_manual(name=ylab,  values=c(ObsColor, H0Color), labels=LegendLabels[1:2]) +
+    ggplot2::scale_color_manual(name=ylab,  values=c(ObsColor, H0Color), labels=LegendLabels[1:2]) +
     ggplot2::scale_linetype_manual(name=ylab,  values=c(1, 2), labels=LegendLabels[1:2])
   
   return(thePlot)
@@ -79,8 +79,8 @@ library("dbmss")
   sticker_autoplot +
   theme_bw(base_size = 12) +
   theme(
-    panel.background = element_rect(fill = "transparent", colour = NA),
-    plot.background = element_rect(fill = "transparent", colour = NA)
+    panel.background = element_rect(fill = "transparent", color = NA),
+    plot.background = element_rect(fill = "transparent", color = NA)
   ) +
   theme(legend.position = "none") ->
   Kd)

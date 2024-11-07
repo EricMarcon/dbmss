@@ -1,6 +1,5 @@
-as.wmppp.ppp <-
-function(X, ...) 
-{
+as.wmppp.ppp <- function(X, ...) {
+
   Marks <- marks(X)
   
   # Marks are a dataframe with colums PointType and PointWeight

@@ -1,8 +1,7 @@
-CheckdbmssArguments <-
-function() {
+CheckdbmssArguments <- function() {
 
   # Verify that the package is attached
-  if (! "dbmss" %in% .packages()) {
+  if (!("dbmss" %in% .packages())) {
     warning("Function arguments cannot be checked because the dbmss package is not attached. Add CheckArguments=FALSE to suppress this warning or run library('dbmss')")
     return (TRUE)
   }
@@ -20,12 +19,12 @@ function() {
   ParentFunctionNoNS <- ParentFunction_split[length(ParentFunction_split)]
   Args <- formals(match.fun(ParentFunctionNoNS))
   
-  ErrorFunction <- paste("Error in ", ParentFunctionNoNS, ":")
+  ErrorFunction <- paste("In function", ParentFunctionNoNS)
   
   ErrorMessage <- function(Message, Argument) {
-    cat(deparse(substitute(Argument)), "cannot be:\n")
-    print(utils::head(Argument))
-    cat(paste(ErrorFunction, Message, "\n"))
+    message(deparse(substitute(Argument)), " cannot be:", appendLF = TRUE)
+    message(utils::head(Argument))
+    message(ErrorFunction, ", ", Message, appendLF = TRUE)
     stop("Check the function arguments.", call. = FALSE)
   }
   

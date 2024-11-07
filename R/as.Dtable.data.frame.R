@@ -1,6 +1,4 @@
-as.Dtable.data.frame <-
-function (X, ...)
-{
+as.Dtable.data.frame <- function (X, ...) {
   # Convert X to a wmppp
   X <- as.wmppp.data.frame(X, ...)
   
@@ -8,5 +6,11 @@ function (X, ...)
   Dmatrix <- spatstat.geom::pairdist(X)
   
   # Convert
-  return (Dtable(Dmatrix, PointType=spatstat.geom::marks(X)$PointType , PointWeight=spatstat.geom::marks(X)$PointWeight))
+  return (
+    Dtable(
+      Dmatrix, 
+      PointType = spatstat.geom::marks(X)$PointType, 
+      PointWeight = spatstat.geom::marks(X)$PointWeight
+    )
+  )
 }

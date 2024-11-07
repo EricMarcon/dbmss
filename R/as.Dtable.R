@@ -1,5 +1,3 @@
-as.Dtable <-
-function (X, ...)
-{
+as.Dtable <- function (X, ...) {
   UseMethod("as.Dtable")
 }

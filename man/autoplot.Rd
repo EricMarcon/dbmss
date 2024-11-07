@@ -70,7 +70,7 @@
   The guide of the point color legend in point maps, i.e. what the `PointType` mark represents. 
   }
   \item{palette}{
-  The color palette used to display point types in maps. See \code{\link[ggplot2]{scale_colour_brewer}}
+  The color palette used to display point types in maps. See \code{\link[ggplot2]{scale_color_brewer}}
   }
   \item{windowColor}{
   The color used to draw the limits of the windows in point maps. 
