@@ -24,20 +24,20 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   }
   
   # Vectors to recognize point types
-  IsReferenceType <- spatstat.geom::marks(X)$PointType==ReferenceType
-  IsNeighborType <- spatstat.geom::marks(X)$PointType==NeighborType
+  IsReferenceType <- marks(X)$PointType==ReferenceType
+  IsNeighborType <- marks(X)$PointType==NeighborType
   
   # Global ratio
   if (ReferenceType==NeighborType | CaseControl) {
-    WrMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight[IsReferenceType])-spatstat.geom::marks(X)$PointWeight
+    WrMinusReferencePoint <- sum(marks(X)$PointWeight[IsReferenceType])-marks(X)$PointWeight
     Wn <- WrMinusReferencePoint[IsReferenceType]
   } else {
-    Wn <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType])
+    Wn <- sum(marks(X)$PointWeight[IsNeighborType])
   }
   if (CaseControl) {
-    Wa <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType]) 
+    Wa <- sum(marks(X)$PointWeight[IsNeighborType]) 
   } else {
-    WaMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight)-spatstat.geom::marks(X)$PointWeight
+    WaMinusReferencePoint <- sum(marks(X)$PointWeight)-marks(X)$PointWeight
     Wa <- WaMinusReferencePoint[IsReferenceType]
   }
   GlobalRatio <- Wn/Wa
@@ -50,18 +50,18 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   if (CaseControl) {
     if (inherits(X, "Dtable")) {
       # Dtable case
-      Nbd <- parallelCountNbdDtCC(r, X$Dmatrix, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdDtCC(r, X$Dmatrix, marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     } else {
       # wmppp case
-      Nbd <- parallelCountNbdCC(r, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdCC(r, X$x, X$y, marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     }
   } else {
     if (inherits(X, "Dtable")) {
       # Dtable case
-      Nbd <- parallelCountNbdDt(r, X$Dmatrix, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdDt(r, X$Dmatrix, marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     } else {
       # wmppp case
-      Nbd <- parallelCountNbd(r, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbd(r, X$x, X$y, marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     }
   }
   
@@ -85,7 +85,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
-    ColNumbers <- row.names(spatstat.geom::marks(X)[IsReferenceType, ])
+    ColNumbers <- row.names(marks(X)[IsReferenceType, ])
     ColNames <- c(ColNames, paste("M", ColNumbers, sep="_"))
     Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
     Desc <- c(Desc, paste("Individual %s around point", ColNumbers))

@@ -6,15 +6,15 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
   
   if (inherits(X, "Dtable")) {
     # Dtable case
-    Index <- seq_along(spatstat.geom::marks(X)$PointType) 
+    Index <- seq_along(marks(X)$PointType) 
     if (ReferenceType != "") {
       # Retain a single point type
-      ReferencePoints <- spatstat.geom::marks(X)$PointType==ReferenceType
+      ReferencePoints <- marks(X)$PointType==ReferenceType
       # Randomize the reference points
       RandomizedReferences <- sample(Index[ReferencePoints])
       # Replace randomized elements in the index
       i <- o <- 1
-      while (i <= length(spatstat.geom::marks(X)$PointType))
+      while (i <= length(marks(X)$PointType))
       {
         if (ReferencePoints[i]) {
           Index[i] <- RandomizedReferences[o]
@@ -26,8 +26,8 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
       Index <- sample(Index)
     }
     # Apply the randomization to PointType and PointWeight
-    spatstat.geom::marks(X)$PointType <- spatstat.geom::marks(X)$PointType[Index]
-    spatstat.geom::marks(X)$PointWeight <- spatstat.geom::marks(X)$PointWeight[Index]
+    marks(X)$PointType <- marks(X)$PointType[Index]
+    marks(X)$PointWeight <- marks(X)$PointWeight[Index]
     return(X)
   } else {
     # wmppp case
@@ -38,7 +38,7 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
       }
       # The reference point must belong to the reference point type
       if (ReferenceType != "") {
-        if (spatstat.geom::marks(X)$PointType[ReferencePoint] != ReferenceType) {
+        if (marks(X)$PointType[ReferencePoint] != ReferenceType) {
           stop("The reference point must be of the reference point type.")
         }
       }
@@ -48,7 +48,7 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
     }
     if (ReferenceType != "") {
       # Retain a single point type
-      X.reduced <- X[spatstat.geom::marks(X)$PointType == ReferenceType]
+      X.reduced <- X[marks(X)$PointType == ReferenceType]
       RandomizedX <- rlabel(X.reduced)
     } else {
       RandomizedX <- rlabel(X)

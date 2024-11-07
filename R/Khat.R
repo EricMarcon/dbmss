@@ -15,13 +15,13 @@ function(X, r = NULL, ReferenceType = "", NeighborType = ReferenceType, CheckArg
   }
   # K intra for a single point type
   if (ReferenceType == NeighborType) {
-    X.reduced <- X[spatstat.geom::marks(X)$PointType == ReferenceType]
+    X.reduced <- X[marks(X)$PointType == ReferenceType]
     return (Kest(X.reduced,  r=r, correction="best"))
   }  
   # K inter calls Kcross. The marks must contain the type, with no weight.
   if (ReferenceType != NeighborType) {
     X.cross <- X
-    spatstat.geom::marks(X.cross) <- spatstat.geom::marks(X)$PointType
+    spatstat.geom::marks(X.cross) <- marks(X)$PointType
     return (Kcross(X.cross, i=ReferenceType , j=NeighborType, r=r, correction="best"))
   }  
 }

@@ -7,7 +7,7 @@ kwmppp <-
   
   # Reduce the community to the reference type
   if (ReferenceType != "") {
-    is_ReferenceType <- spatstat.geom::marks(X)$PointType == ReferenceType
+    is_ReferenceType <- marks(X)$PointType == ReferenceType
     X <- X[is_ReferenceType]
   } 
   

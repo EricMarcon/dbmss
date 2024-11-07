@@ -9,9 +9,9 @@ function(X, r = NULL, Cases, Controls = NULL, Intertype = FALSE, CheckArguments 
   Y <- X
   if (is.null(Controls)) {
     Controls <- "CoNtRoLs_"
-    if (Controls %in% levels(spatstat.geom::marks(Y)$PointType)) stop("A point type is named 'CoNtRoLs_'. It must be changed to use the 'Controls = NULL' option of Dhat.")
-    levels(spatstat.geom::marks(Y)$PointType) <- c(levels(spatstat.geom::marks(Y)$PointType), Controls)
-    spatstat.geom::marks(Y)$PointType[spatstat.geom::marks(Y)$PointType != Cases] <- Controls
+    if (Controls %in% levels(marks(Y)$PointType)) stop("A point type is named 'CoNtRoLs_'. It must be changed to use the 'Controls = NULL' option of Dhat.")
+    levels(marks(Y)$PointType) <- c(levels(marks(Y)$PointType), Controls)
+    marks(Y)$PointType[marks(Y)$PointType != Cases] <- Controls
   }
   # K of controls. r must be those of cases.
   if (Intertype) {

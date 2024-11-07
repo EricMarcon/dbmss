@@ -20,7 +20,7 @@ function(X, r = NULL, ReferenceType = "", lambda = NULL, CheckArguments = TRUE) 
   }
   # K intra for a single point type
   if (ReferenceType != "") {
-    X.reduced <- X[spatstat.geom::marks(X)$PointType==ReferenceType]
+    X.reduced <- X[marks(X)$PointType==ReferenceType]
     return (Kiintra(X.reduced, r, lambda))
   }  
 

@@ -45,7 +45,7 @@ rRandomLocation(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = T
 X <- rpoispp(50) 
 PointType   <- sample(c("A", "B", "C", "D", "E"), X$n, replace=TRUE)
 PointWeight <- runif(X$n, min=1, max=10)
-spatstat.geom::marks(X) <- data.frame(PointType, PointWeight)
+marks(X) <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
 autoplot(X, main="Original pattern")

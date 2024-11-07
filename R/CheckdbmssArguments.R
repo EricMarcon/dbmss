@@ -54,26 +54,26 @@ CheckdbmssArguments <- function() {
   # ReferenceType 
   if (!is.na(names(Args["ReferenceType"]))) {
     ReferenceType <- eval(expression(ReferenceType), parent.frame())
-    if (ReferenceType!="" & !ReferenceType %in% spatstat.geom::marks(X)$PointType)
+    if (ReferenceType!="" & !ReferenceType %in% marks(X)$PointType)
       ErrorMessage("ReferenceType must be a point type of the point pattern", ReferenceType)
   }
   # NeighborType 
   if (!is.na(names(Args["NeighborType"]))) {
     NeighborType <- eval(expression(NeighborType), parent.frame())
-    if (NeighborType!="" & !NeighborType %in% spatstat.geom::marks(X)$PointType)
+    if (NeighborType!="" & !NeighborType %in% marks(X)$PointType)
       ErrorMessage("NeighborType must be a point type of the point pattern", NeighborType)
   }
   # Cases 
   if (!is.na(names(Args["Cases"]))) {
     Cases <- eval(expression(Cases), parent.frame())
-    if (!Cases %in% spatstat.geom::marks(X)$PointType)
+    if (!Cases %in% marks(X)$PointType)
       ErrorMessage("Cases must be a point type of the point pattern", Cases)
   }
   # Controls 
   if (!is.na(names(Args["Controls"]))) {
     Controls <- eval(expression(Controls), parent.frame())
     if (!is.null(Controls)) {
-      if (!(Controls %in% spatstat.geom::marks(X)$PointType))
+      if (!(Controls %in% marks(X)$PointType))
         ErrorMessage("Controls must be a point type of the point pattern", Controls)
     }
   }

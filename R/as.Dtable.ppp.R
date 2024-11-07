@@ -9,8 +9,8 @@ as.Dtable.ppp <- function (X, ...) {
   return(
     Dtable(
       Dmatrix, 
-      PointType = spatstat.geom::marks(X)$PointType, 
-      PointWeight = spatstat.geom::marks(X)$PointWeight
+      PointType = marks(X)$PointType, 
+      PointWeight = marks(X)$PointWeight
     )
   )
 }

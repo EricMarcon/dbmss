@@ -14,7 +14,7 @@ function(X, Precision = 0, CheckArguments = TRUE) {
   }
   
   # Apply original marks to new points
-  marks(RandomizedX) <- data.frame(PointWeight=spatstat.geom::marks(X)$PointWeight, PointType=spatstat.geom::marks(X)$PointType)
+  marks(RandomizedX) <- data.frame(PointWeight=marks(X)$PointWeight, PointType=spatstat.geom::marks(X)$PointType)
   class(RandomizedX) <- c("wmppp", "ppp")
   return (RandomizedX)
 }
