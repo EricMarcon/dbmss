@@ -11,5 +11,5 @@ testthat::test_that("A Weighted, Marked Point Pattern can be created with a crop
   # Create a point pattern retaining point in the unit square window
   wp <- wmppp(df, window = owin())
   # The label of the first point must be greater than 100
-  testthat::expect_gt(as.numeric(row.names(wp$marks)[1]), 100)
+  testthat::expect_gt(as.numeric(row.names(marks(wp))[1]), 100)
 })

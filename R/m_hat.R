@@ -13,20 +13,20 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   }
   
   # Vectors to recognize point types
-  IsReferenceType <- X$marks$PointType==ReferenceType
-  IsNeighborType <- X$marks$PointType==NeighborType
+  IsReferenceType <- spatstat.geom::marks(X)$PointType==ReferenceType
+  IsNeighborType <- spatstat.geom::marks(X)$PointType==NeighborType
   
   # Global ratio
   if (ReferenceType==NeighborType | CaseControl) {
-    WrMinusReferencePoint <- sum(X$marks$PointWeight[IsReferenceType])-X$marks$PointWeight
+    WrMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight[IsReferenceType])-spatstat.geom::marks(X)$PointWeight
     Wn <- WrMinusReferencePoint[IsReferenceType]
   } else {
-    Wn <- sum(X$marks$PointWeight[IsNeighborType])
+    Wn <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType])
   }
   if (CaseControl) {
-    Wa <- sum(X$marks$PointWeight[IsNeighborType]) 
+    Wa <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType]) 
   } else {
-    WaMinusReferencePoint <- sum(X$marks$PointWeight)-X$marks$PointWeight
+    WaMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight)-spatstat.geom::marks(X)$PointWeight
     Wa <- WaMinusReferencePoint[IsReferenceType]
   }
   GlobalRatio <- Wn/Wa
@@ -61,9 +61,9 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
 
     # Call C routine to fill Nbd (1 line per reference point, 2*Nr columns)
     if (CaseControl) {
-      Nbd <- parallelCountNbdCC(rseq, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdCC(rseq, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     } else {
-      Nbd <- parallelCountNbd(rseq, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbd(rseq, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     }
     
     # Adjust distances: values are the centers of intervals
@@ -129,8 +129,8 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
         function(x, weights) stats::density(x, bw=h, weights=weights, subdensity=TRUE, from=rmin, to=rmax, na.rm=TRUE)$y
     else
       function(x, weights) suppressWarnings(stats::density(x, bw=h, weights=weights[!is.na(x)], from=rmin, to=rmax, na.rm=TRUE))$y
-    Djc <- t(apply(Nbd[, IsNeighborType], 1, function(x) wdensityNA(x, weights=X$marks$PointWeight[IsNeighborType])))
-    Dj  <- t(apply(Nbd,                   1, function(x) wdensityNA(x, weights=X$marks$PointWeight)))
+    Djc <- t(apply(Nbd[, IsNeighborType], 1, function(x) wdensityNA(x, weights=spatstat.geom::marks(X)$PointWeight[IsNeighborType])))
+    Dj  <- t(apply(Nbd,                   1, function(x) wdensityNA(x, weights=spatstat.geom::marks(X)$PointWeight)))
     
     # Get the x values of the density estimation: estimate one vector
     x <- stats::density(Nbd[1, IsNeighborType], bw=h, from=rmin, to=rmax, na.rm=TRUE)$x
@@ -159,7 +159,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, CaseControl =
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
-    ColNumbers <- row.names(X$marks[IsReferenceType, ])
+    ColNumbers <- row.names(spatstat.geom::marks(X)[IsReferenceType, ])
     ColNames <- c(ColNames, paste("m", ColNumbers, sep="_"))
     Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
     Desc <- c(Desc, paste("Individual %s around point", ColNumbers))

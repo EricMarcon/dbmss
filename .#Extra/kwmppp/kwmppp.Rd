@@ -73,6 +73,6 @@
   # Plot the point pattern with values of M(30 meters)
   plot(kwmppp(paracou16, fvind, ReferenceType, distance=30))
   # Add the reference points to the plot
-  is.ReferenceType <- paracou16$marks$PointType == ReferenceType
+  is.ReferenceType <- spatstat.geom::marks(paracou16)$PointType == ReferenceType
   points(x=paracou16$x[is.ReferenceType], y=paracou16$y[is.ReferenceType], pch=20)
 }

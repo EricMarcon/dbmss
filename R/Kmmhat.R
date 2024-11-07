@@ -8,7 +8,7 @@ function(X, r = NULL, ReferenceType = "", CheckArguments = TRUE) {
   KmmBymarkcorrint <- function (X, r) {
     X.marked <- X
     # Weights are normalized so that their mean is 1 because markcorrint returns Kmm * mean weight instead of Kmm (as of v. 1.27-0 of spatstat).
-    X.marked$marks <- X$marks$PointWeight/mean(X$marks$PointWeight)
+    spatstat.geom::marks(X.marked) <- spatstat.geom::marks(X)$PointWeight/mean(spatstat.geom::marks(X)$PointWeight)
     Kmm <- spatstat.explore::Kmark(X.marked, correction="best")
     attr(Kmm, "ylab") <- attr(Kmm, "yexp") <- quote(K[mm](r))
     attr(Kmm, "fname") <- "K[mm]"
@@ -19,7 +19,7 @@ function(X, r = NULL, ReferenceType = "", CheckArguments = TRUE) {
   if (ReferenceType == "") {
     return (KmmBymarkcorrint(X, r))
     } else {
-    X.reduced <- X[X$marks$PointType == ReferenceType]
+    X.reduced <- X[spatstat.geom::marks(X)$PointType == ReferenceType]
     return (KmmBymarkcorrint(X.reduced, r))
   }   
 }

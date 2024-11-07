@@ -23,8 +23,8 @@ testthat::test_that("The envelope calculated for a Dtable is the same as that of
   data("paracou16")
   # Make a data.frame for tests
   df <- data.frame(x=paracou16$x, y=paracou16$y, 
-                   PointWeight=paracou16$marks$PointWeight, 
-                   PointType=paracou16$marks$PointType)
+                   PointWeight=marks(paracou16)$PointWeight, 
+                   PointType=marks(paracou16)$PointType)
   # Test as.wmppp.data.frame 
   testthat::expect_true(is.wmppp(as.wmppp(df)))
   # Test as.Dtable.data.frame

@@ -10,7 +10,7 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
     if (ReferenceType == "") {
       X.reduced <- X
     } else {
-      X.reduced <- X[X$marks$PointType==ReferenceType]
+      X.reduced <- X[spatstat.geom::marks(X)$PointType==ReferenceType]
     }
     lambda <- spatstat.explore::density.ppp(X.reduced, sigma=bw.diggle(X.reduced))
   }

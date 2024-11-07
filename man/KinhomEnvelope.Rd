@@ -86,7 +86,7 @@ autoplot(X,
 # Density of all trees
 lambda <- density.ppp(X, bw.diggle(X))
 plot(lambda)
-V.americana <- X[X$marks$PointType=="V. Americana"]
+V.americana <- X[marks(X)$PointType=="V. Americana"]
 plot(V.americana, add=TRUE)
 
 # Calculate Kinhom according to the density of all trees

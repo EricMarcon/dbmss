@@ -7,14 +7,14 @@ function(X, CheckArguments = TRUE) {
   if (inherits(X, "Dtable")) {
     # Dtable case
     # Randomize marks
-    X$marks$PointType <- sample(X$marks$PointType)
+    spatstat.geom::marks(X)$PointType <- sample(spatstat.geom::marks(X)$PointType)
     return(X)
   } else {
     # wmppp case
     # Randomize marks
     RandomizedX <- rlabel(X)
     # Restore weights
-    RandomizedX$marks$PointWeight <- X$marks$PointWeight
+    marks(RandomizedX)$PointWeight <- spatstat.geom::marks(X)$PointWeight
     
     class(RandomizedX) <- c("wmppp", "ppp")
     return (RandomizedX)

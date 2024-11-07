@@ -6,15 +6,15 @@ function(X, ReferenceType = "", CheckArguments = TRUE) {
   
   if (inherits(X, "Dtable")) {
     # Dtable case
-    Index <- seq_along(X$marks$PointType) 
+    Index <- seq_along(spatstat.geom::marks(X)$PointType) 
     if (ReferenceType != "") {
       # Retain a single point type
-      ReferencePoints <- X$marks$PointType==ReferenceType
+      ReferencePoints <- spatstat.geom::marks(X)$PointType==ReferenceType
       # Randomize the reference points
       RandomizedReferences <- sample(Index[ReferencePoints])
       # Replace randomized elements in the index
       i <- o <- 1
-      while (i <= length(X$marks$PointType))
+      while (i <= length(spatstat.geom::marks(X)$PointType))
       {
         if (ReferencePoints[i]) {
           Index[i] <- RandomizedReferences[o]
@@ -26,14 +26,14 @@ function(X, ReferenceType = "", CheckArguments = TRUE) {
       Index <- sample(Index)
     }
     # Apply the randomization to PointType and PointWeight
-    X$marks$PointType <- X$marks$PointType[Index]
-    X$marks$PointWeight <- X$marks$PointWeight[Index]
+    spatstat.geom::marks(X)$PointType <- spatstat.geom::marks(X)$PointType[Index]
+    spatstat.geom::marks(X)$PointWeight <- spatstat.geom::marks(X)$PointWeight[Index]
     return(X)
   } else {
     # wmppp case
     if (ReferenceType != "") {
       # Retain a single point type
-      X.reduced <- X[X$marks$PointType == ReferenceType]
+      X.reduced <- X[spatstat.geom::marks(X)$PointType == ReferenceType]
       RandomizedX <- rlabel(X.reduced)
     } else {
       RandomizedX <- rlabel(X)

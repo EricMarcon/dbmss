@@ -5,10 +5,10 @@ function (X, ReferenceType, NeighborType, CheckArguments = TRUE) {
     CheckdbmssArguments()
 
   # Eliminate useless points
-  X.reduced <- X[X$marks$PointType==ReferenceType | X$marks$PointType==NeighborType]
+  X.reduced <- X[spatstat.geom::marks(X)$PointType==ReferenceType | spatstat.geom::marks(X)$PointType==NeighborType]
   RandomizedX <- X.reduced
   # Reduce the factor levels to two (factor eliminates the levels with no points)
-  Marks <- factor(X.reduced$marks$PointType)
+  Marks <- factor(spatstat.geom::marks(X.reduced)$PointType)
   # The new point pattern has classical spatstat marks
   RandomizedX <- RandomizedX %mark% Marks
   # Split reference and neighbor points

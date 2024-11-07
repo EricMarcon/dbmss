@@ -69,9 +69,9 @@ function(df, window = NULL, unitname = NULL)
   wmpppX <- ppp(X, Y, window=w, marks=data.frame(PointWeight, PointType))
   # Keep the point names
   if ("pointname" %in% names(df)) {
-    row.names(wmpppX$marks) <- df[, "pointname"]
+    row.names(marks(wmpppX)) <- df[, "pointname"]
   } else {
-    row.names(wmpppX$marks) <- row.names(df)
+    row.names(marks(wmpppX)) <- row.names(df)
   }
   
   # Crop the window

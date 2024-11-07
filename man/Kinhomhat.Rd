@@ -55,7 +55,7 @@ data(paracou16)
 lambda <- density.ppp(paracou16, bw.diggle(paracou16))
 plot(lambda)
 # Reduce the point pattern to one type of trees
-V.americana <- paracou16[paracou16$marks$PointType=="V. Americana"]
+V.americana <- paracou16[marks(paracou16)$PointType=="V. Americana"]
 plot(V.americana, add=TRUE)
 
 # Calculate Kinhom according to the density of all trees

@@ -39,7 +39,7 @@ rRandomPositionK(X, Precision = 0, CheckArguments = TRUE)
 X <- rpoispp(5) 
 PointType   <- sample(c("A", "B"), X$n, replace=TRUE)
 PointWeight <- runif(X$n, min=1, max=10)
-X$marks <- data.frame(PointType, PointWeight)
+marks(X) <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
 autoplot(X, main="Original pattern")

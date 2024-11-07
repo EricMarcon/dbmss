@@ -41,7 +41,7 @@ rPopulationIndependenceK(X, ReferenceType, NeighborType, CheckArguments = TRUE)
 X <- rpoispp(50) 
 PointType   <- sample(c("A", "B", "C"), X$n, replace=TRUE)
 PointWeight <- runif(X$n, min=1, max=10)
-X$marks <- data.frame(PointType, PointWeight)
+marks(X) <- data.frame(PointType, PointWeight)
 X <- as.wmppp(X)
 
 # Plot the point pattern, using PointType as marks

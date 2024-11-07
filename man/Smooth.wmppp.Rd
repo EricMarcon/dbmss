@@ -63,7 +63,7 @@
   p16_map <- Smooth(paracou16, fvind, distance=30)
   plot(p16_map, main = "")
   # Add the reference points to the plot
-  is.ReferenceType <- paracou16$marks$PointType == ReferenceType
+  is.ReferenceType <- marks(paracou16)$PointType == ReferenceType
   points(x=paracou16$x[is.ReferenceType], y=paracou16$y[is.ReferenceType], pch=20)
   # Add contour lines
   contour(p16_map, nlevels = 5, add = TRUE)

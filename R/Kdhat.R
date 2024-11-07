@@ -17,14 +17,14 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     Y <- X 
   } else {
     # Current use
-    IsReferenceType <- X$marks$PointType==ReferenceType
-    IsNeighborType <- X$marks$PointType==NeighborType    
+    IsReferenceType <- spatstat.geom::marks(X)$PointType==ReferenceType
+    IsNeighborType <- spatstat.geom::marks(X)$PointType==NeighborType    
     # Eliminate useless points
     if (inherits(X, "Dtable")) {
       # Dtable case
       Y <- Dtable(X$Dmatrix[IsReferenceType | IsNeighborType, IsReferenceType | IsNeighborType], 
-                  PointType = X$marks$PointType[IsReferenceType | IsNeighborType], 
-                  PointWeight = X$marks$PointWeight[IsReferenceType | IsNeighborType])
+                  PointType = spatstat.geom::marks(X)$PointType[IsReferenceType | IsNeighborType], 
+                  PointWeight = spatstat.geom::marks(X)$PointWeight[IsReferenceType | IsNeighborType])
       # Set the diagonal to NA to prepare density estimation without those zeros
       diag(Y$Dmatrix) <- NA
     } else {
@@ -32,8 +32,8 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
       Y <- X[IsReferenceType | IsNeighborType]
     }
     # Update for Y
-    IsReferenceType <- Y$marks$PointType==ReferenceType
-    IsNeighborType <- Y$marks$PointType==NeighborType
+    IsReferenceType <- spatstat.geom::marks(Y)$PointType==ReferenceType
+    IsNeighborType <- spatstat.geom::marks(Y)$PointType==NeighborType
   }
 
   # Roughly estimate max distances
@@ -68,7 +68,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
     NeighborWeight <- matrix(0.0, nrow=1, ncol=Nr+1)
     # Weights
     if (Weighted) {
-      Weight <- Y$marks$PointWeight
+      Weight <- spatstat.geom::marks(Y)$PointWeight
     } else {
       Weight <- rep(1, Y$n)
     }
@@ -113,7 +113,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
       Dist <- as.vector(Y$Dmatrix[IsReferenceType, IsNeighborType])
       if (Weighted) {
         # Calculate weight products
-        Weight <- Y$marks$PointWeight %*% t(Y$marks$PointWeight)
+        Weight <- spatstat.geom::marks(Y)$PointWeight %*% t(spatstat.geom::marks(Y)$PointWeight)
         # Keep useful ones
         Weight <- as.vector(Weight[IsReferenceType, IsNeighborType])
         # Eliminate NAs (for identical reference and neighbor points)
@@ -140,7 +140,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType, Weighted = FA
       }
     
       # C++ routine to fill distances and weights
-      DistKd(Y$x, Y$y, Y$marks$PointWeight, Weight, Dist, IsReferenceType, IsNeighborType)
+      DistKd(Y$x, Y$y, spatstat.geom::marks(Y)$PointWeight, Weight, Dist, IsReferenceType, IsNeighborType)
     }
 
     # Min distance obtained from the data rather than 0

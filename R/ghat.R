@@ -19,13 +19,13 @@ function(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TR
   } else {
     # g intra for a single point type
     if (ReferenceType==NeighborType) {
-      X.reduced <- X[X$marks$PointType==ReferenceType]
+      X.reduced <- X[spatstat.geom::marks(X)$PointType==ReferenceType]
       lambdaI <- lambdaJ <- X.reduced$n/area
     }
     # g inter
     if (ReferenceType!=NeighborType) {
-      X.cross <- X[X$marks$PointType==ReferenceType]
-      Y.cross <- X[X$marks$PointType==NeighborType]
+      X.cross <- X[spatstat.geom::marks(X)$PointType==ReferenceType]
+      Y.cross <- X[spatstat.geom::marks(X)$PointType==NeighborType]
       lambdaI <- X.cross$n/area
       lambdaJ <- Y.cross$n/area
     }

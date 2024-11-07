@@ -51,7 +51,7 @@ library("dbmss")
 rMatClust(kappa = 10, scale = 0.05, mu = 10) %>% 
   as.wmppp -> 
   CASES
-CASES$marks$PointType <- "Cases"
+marks(CASES)$PointType <- "Cases"
 # Number of points
 CASES$n
 
@@ -59,7 +59,7 @@ CASES$n
 rpoispp(function(x, y) {1000 * exp(-2 * y)}) %>% 
   as.wmppp ->
   CONTROLS
-CONTROLS$marks$PointType <-"Controls"
+marks(CONTROLS)$PointType <-"Controls"
 # Number of points
 CONTROLS$n
 
@@ -132,7 +132,7 @@ M_TheoEx_map <- Smooth(
 plot(M_TheoEx_map, main = "")
 # Add the cases to the map
 points(
-  ALL[ALL$marks$PointType == "Cases"],
+  ALL[marks(ALL)$PointType == "Cases"],
   pch = 20, col = "green"
 )
 # Add contour lines
@@ -152,7 +152,7 @@ High densities are *not* similar to high relative concentrations in this example
 ```{r}
 plot(density(CASES), main = "")
 points(
-  ALL[ALL$marks$PointType == "Cases"],
+  ALL[marks(ALL)$PointType == "Cases"],
   pch = 20, col = "green"
 )
 ```

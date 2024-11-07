@@ -28,15 +28,15 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   }
   
   # Vectors to recognize point types
-  IsReferenceType <- X$marks$PointType==ReferenceType
-  IsNeighborType <- X$marks$PointType==NeighborType
+  IsReferenceType <- spatstat.geom::marks(X)$PointType==ReferenceType
+  IsNeighborType <- spatstat.geom::marks(X)$PointType==NeighborType
   
   if (!is.null(ReferencePoint)) {
     # Set individual to TRUE if a refernce point is given
     Individual <- TRUE
     if (IsReferenceType[ReferencePoint]) {
       # Remember the name of the reference point in the dataset of reference type
-      ReferencePoint_name <- row.names(X$marks[ReferencePoint, ])
+      ReferencePoint_name <- row.names(spatstat.geom::marks(X)[ReferencePoint, ])
     } else {
       # The reference point must be in the reference type
       stop("The reference point must be of the reference point type.")
@@ -45,15 +45,15 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   
   # Global ratio
   if (ReferenceType==NeighborType | CaseControl) {
-    WrMinusReferencePoint <- sum(X$marks$PointWeight[IsReferenceType])-X$marks$PointWeight
+    WrMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight[IsReferenceType])-spatstat.geom::marks(X)$PointWeight
     Wn <- WrMinusReferencePoint[IsReferenceType]
   } else {
-    Wn <- sum(X$marks$PointWeight[IsNeighborType])
+    Wn <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType])
   }
   if (CaseControl) {
-    Wa <- sum(X$marks$PointWeight[IsNeighborType]) 
+    Wa <- sum(spatstat.geom::marks(X)$PointWeight[IsNeighborType]) 
   } else {
-    WaMinusReferencePoint <- sum(X$marks$PointWeight)-X$marks$PointWeight
+    WaMinusReferencePoint <- sum(spatstat.geom::marks(X)$PointWeight)-spatstat.geom::marks(X)$PointWeight
     Wa <- WaMinusReferencePoint[IsReferenceType]
   }
   GlobalRatio <- Wn/Wa
@@ -66,18 +66,18 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   if (CaseControl) {
     if (inherits(X, "Dtable")) {
       # Dtable case
-      Nbd <- parallelCountNbdDtCC(r, X$Dmatrix, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdDtCC(r, X$Dmatrix, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     } else {
       # wmppp case
-      Nbd <- parallelCountNbdCC(r, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdCC(r, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     }
   } else {
     if (inherits(X, "Dtable")) {
       # Dtable case
-      Nbd <- parallelCountNbdDt(r, X$Dmatrix, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbdDt(r, X$Dmatrix, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     } else {
       # wmppp case
-      Nbd <- parallelCountNbd(r, X$x, X$y, X$marks$PointWeight, IsReferenceType, IsNeighborType)
+      Nbd <- parallelCountNbd(r, X$x, X$y, spatstat.geom::marks(X)$PointWeight, IsReferenceType, IsNeighborType)
     }
   }
   
@@ -97,7 +97,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
     }
   } else {
     # Find the reference point in the set of points of the reference type
-    ReferencePoint_index <- which(rownames(X[IsReferenceType]$marks) == ReferencePoint_name)
+    ReferencePoint_index <- which(rownames(marks(X[IsReferenceType])) == ReferencePoint_name)
     # Only keep the value of the reference point
     Mvalues <- LocalRatio[ReferencePoint_index, ]/GlobalRatio[ReferencePoint_index]
   }
@@ -109,7 +109,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
   Desc <- c("Distance argument r", "Theoretical independent %s", "Estimated %s")  
   if (Individual & is.null(ReferencePoint)) {
     # ColNumbers will usually be line numbers of the marks df, but may be real names.
-    ColNumbers <- row.names(X$marks[IsReferenceType, ])
+    ColNumbers <- row.names(spatstat.geom::marks(X)[IsReferenceType, ])
     ColNames <- c(ColNames, paste("M", ColNumbers, sep="_"))
     Labl <- c(Labl, paste("hat(%s)[", ColNumbers, "](r)", sep=""))
     Desc <- c(Desc, paste("Individual %s around point", ColNumbers))
@@ -137,7 +137,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
       SimulatedPP <- expression(
         rRandomLocation(
           X, 
-          ReferencePoint = which(X$marks$PointType == ReferenceType)[i], 
+          ReferencePoint = which(spatstat.geom::marks(X)$PointType == ReferenceType)[i], 
           CheckArguments = FALSE
         )
       )
@@ -145,7 +145,7 @@ function(X, r = NULL, ReferenceType, NeighborType = ReferenceType,
       Envelope <- envelope(
         # The value Mhat(X) is not used but the point #1 must be of ReferenceType
         # so retain points of ReferenceType only to save time
-        X[X$marks$PointType == ReferenceType], 
+        X[spatstat.geom::marks(X)$PointType == ReferenceType], 
         fun = Mhat, 
         nsim = NumberOfSimulations, 
         # nrank may be any value because the envelope is not used
