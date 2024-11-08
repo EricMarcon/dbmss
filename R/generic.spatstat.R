@@ -4,16 +4,6 @@ sharpen.wmppp <- function(X, ...) {
   return(X)
 }
 
-split.wmppp <- function(...) {
-  Xlist <- split.ppp(...)
-  as.wmppplist <- function(X) {
-    class(X) <- c("wmppp", "ppp")
-    return(X)
-  }
-  Xlist <- lapply(Xlist, as.wmppplist)
-  return(Xlist)
-}
-
 superimpose.wmppp <- function(...) {
   X <- superimpose.ppp(...)
   class(X) <- c("wmppp", "ppp")

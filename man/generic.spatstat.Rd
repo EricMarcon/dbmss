@@ -1,6 +1,5 @@
 \name{spatstat generic functions}
 \alias{sharpen.wmppp}
-\alias{split.wmppp}
 \alias{superimpose.wmppp}
 \alias{unique.wmppp}
 \alias{[.wmppp}
@@ -12,7 +11,6 @@
 }
 \usage{
 \method{sharpen}{wmppp}(X, \dots)
-\method{split}{wmppp}(\dots)
 \method{superimpose}{wmppp}(\dots)
 \method{unique}{wmppp}(x, \dots)
 \method{[}{wmppp}(i, j, drop=FALSE, \dots, clip=FALSE)
@@ -46,5 +44,5 @@
   An object of class \code{"wmppp"}.
 }
 \seealso{
-  \code{\link[spatstat.explore]{sharpen.ppp}}, \code{\link[spatstat.geom]{split.ppp}}, \code{\link[spatstat.geom]{superimpose.ppp}}, \code{\link[spatstat.geom]{unique.ppp}}
+  \code{\link[spatstat.explore]{sharpen.ppp}}, \code{\link[spatstat.geom]{superimpose.ppp}}, \code{\link[spatstat.geom]{unique.ppp}}
 }
