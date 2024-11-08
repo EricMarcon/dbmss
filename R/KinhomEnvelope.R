@@ -1,7 +1,13 @@
-KinhomEnvelope <-
-function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05, 
-         ReferenceType = "", lambda = NULL, SimulationType = "RandomPosition", 
-         Global = FALSE, verbose = interactive()) {
+KinhomEnvelope <- function(
+    X, 
+    r = NULL, 
+    NumberOfSimulations = 100, 
+    Alpha = 0.05, 
+    ReferenceType = "", 
+    lambda = NULL, 
+    SimulationType = "RandomPosition",
+    Global = FALSE, 
+    verbose = interactive()) {
 
   CheckdbmssArguments()
   
@@ -10,20 +16,37 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
     if (ReferenceType == "") {
       X.reduced <- X
     } else {
-      X.reduced <- X[marks(X)$PointType==ReferenceType]
+      X.reduced <- X[marks(X)$PointType == ReferenceType]
     }
-    lambda <- spatstat.explore::density.ppp(X.reduced, sigma=bw.diggle(X.reduced))
+    lambda <- spatstat.explore::density.ppp(
+      X.reduced, 
+      sigma = bw.diggle(X.reduced)
+    )
   }
   
   # Choose the null hypothesis
-  SimulatedPP <- switch (SimulationType,
-                         RandomPosition = expression(rpoispp(lambda)),
-                         RandomLocation = expression(rRandomLocation(X, CheckArguments = FALSE)),
-                         RandomLabeling = expression(rRandomLabeling(X, CheckArguments = FALSE)),
-                         PopulationIndependence = expression(rPopulationIndependenceM(X, ReferenceType = ReferenceType, CheckArguments = FALSE))
-                         )
-  if (is.null(SimulatedPP))
-    stop(paste("The null hypothesis", sQuote(SimulationType), "has not been recognized."))
+  SimulatedPP <- switch (
+    SimulationType,
+    RandomPosition = expression(rpoispp(lambda)),
+    RandomLocation = expression(rRandomLocation(X, CheckArguments = FALSE)),
+    RandomLabeling = expression(rRandomLabeling(X, CheckArguments = FALSE)),
+    PopulationIndependence = expression(
+      rPopulationIndependenceM(
+        X, 
+        ReferenceType = ReferenceType, 
+        CheckArguments = FALSE
+      )
+    )
+  )
+  if (is.null(SimulatedPP)) {
+    stop(
+      paste(
+        "The null hypothesis", 
+        sQuote(SimulationType), 
+        "has not been recognized."
+      )
+    )
+  }
   # local envelope, keep extreme values for lo and hi (nrank=1)
   Envelope <- suppressWarnings(
     # Suppress warning:
@@ -43,12 +66,13 @@ function(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
       savefuns = TRUE
     )
   )
-  attr(Envelope, "einfo")$H0 <- switch (SimulationType,
-                                        RandomPosition = "Random Position",
-                                        RandomLocation = "Random Location",
-                                        )
+  attr(Envelope, "einfo")$H0 <- switch (
+    SimulationType,
+    RandomPosition = "Random Position",
+    RandomLocation = "Random Location",
+  )
   # Calculate confidence intervals
-  Envelope <- FillEnvelope(Envelope, Alpha, Global)
+  Envelope <- FillEnvelope(Envelope, Alpha = Alpha, Global = Global)
   # Return the envelope
   return (Envelope)
 }

@@ -1,11 +1,14 @@
-rRandomPositionK <-
-function(X, Precision = 0, CheckArguments = TRUE) {
+rRandomPositionK <- function(
+    X, 
+    Precision = 0, 
+    CheckArguments = TRUE) {
   
-  if (CheckArguments)
+  if (CheckArguments) {
     CheckdbmssArguments()
-  
+  }
+   
   # Draw in a binomial process
-  RandomizedX <- runifpoint(X$n, win=X$window)
+  RandomizedX <- runifpoint(X$n, win = X$window)
   
   # Precision
   if (Precision) {
@@ -14,7 +17,10 @@ function(X, Precision = 0, CheckArguments = TRUE) {
   }
   
   # Apply original marks to new points
-  marks(RandomizedX) <- data.frame(PointWeight=marks(X)$PointWeight, PointType=spatstat.geom::marks(X)$PointType)
+  marks(RandomizedX) <- data.frame(
+    PointWeight = marks(X)$PointWeight, 
+    PointType = marks(X)$PointType
+  )
   class(RandomizedX) <- c("wmppp", "ppp")
   return (RandomizedX)
 }

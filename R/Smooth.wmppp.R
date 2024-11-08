@@ -22,7 +22,7 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
   
   # Reduce the point pattern to the reference type
   if (ReferenceType != "") {
-    is_ReferenceType <- spatstat.geom::marks(X)$PointType == ReferenceType
+    is_ReferenceType <- marks(X)$PointType == ReferenceType
     X <- X[is_ReferenceType]
   }
    
@@ -39,7 +39,7 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
   r_to_plot <- max(fvind$r[fvind$r<=distance])
   # Weights
   if (Weighted) {
-    weights <- spatstat.geom::marks(X)$PointWeight
+    weights <- marks(X)$PointWeight
   } else {
     weights <- rep(1, X$n)
   }
@@ -53,11 +53,11 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
   if (Quantiles) {
     # Smooth the quantiles of the dbm
     # Make the quantiles the marks of X
-    spatstat.geom::marks(X) <- Qvalues
+    marks(X) <- Qvalues
     # Smooth() requires the top class of X to be ppp
     class(X) <- "ppp"
     # Eliminate NA's before smoothing
-    is_na <- is.na(spatstat.geom::marks(X))
+    is_na <- is.na(marks(X))
     weights <- weights[!is_na]
     X<- X[!is_na]
     Image <- Smooth.ppp(X, sigma = sigma, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
@@ -65,11 +65,11 @@ Smooth.wmppp <- function(X, fvind, distance = NULL, Quantiles = FALSE,
     # Smooth the values of the dbm
     fvind.matrix <- as.matrix(fvind)
     # Extract the values. Columns 1 to 3 contain the global dbm
-    spatstat.geom::marks(X) <- fvind.matrix [which(fvind.matrix [, 1] == r_to_plot), -(1:3)]
+    marks(X) <- fvind.matrix [which(fvind.matrix [, 1] == r_to_plot), -(1:3)]
     # Smooth requires the top class of X to be ppp
     class(X) <- "ppp"
     # Eliminate NA's before smoothing
-    is_na <- is.na(spatstat.geom::marks(X))
+    is_na <- is.na(marks(X))
     weights <- weights[!is_na]
     X<- X[!is_na]
     Image <- Smooth.ppp(X, sigma = sigma, ..., weights = weights, adjust = Adjust, dimyx = c(Nby, Nbx))
