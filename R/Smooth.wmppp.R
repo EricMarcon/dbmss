@@ -85,7 +85,7 @@ Smooth.wmppp <- function(
     # Smooth the values of the dbm
     fvind.matrix <- as.matrix(fvind)
     # Extract the values. Columns 1 to 3 contain the global dbm
-    marks(X) <- fvind.matrix [which(fvind.matrix[, 1] == r_to_plot), -(1:3)]
+    marks(X) <- fvind.matrix[which(fvind.matrix[, 1] == r_to_plot), -(1:3)]
     # Smooth requires the top class of X to be ppp
     class(X) <- "ppp"
     # Eliminate NA's before smoothing

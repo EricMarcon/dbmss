@@ -8,7 +8,7 @@ KinhomEnvelope <- function(
     SimulationType = "RandomPosition",
     Global = FALSE, 
     verbose = interactive()) {
-
+  
   CheckdbmssArguments()
   
   # Estimate intensity if it has not been provided.
@@ -25,7 +25,7 @@ KinhomEnvelope <- function(
   }
   
   # Choose the null hypothesis
-  SimulatedPP <- switch(
+  SimulatedPP <- switch (
     SimulationType,
     RandomPosition = expression(rpoispp(lambda)),
     RandomLocation = expression(rRandomLocation(X, CheckArguments = FALSE)),
@@ -66,10 +66,12 @@ KinhomEnvelope <- function(
       savefuns = TRUE
     )
   )
-  attr(Envelope, "einfo")$H0 <- switch(
+  attr(Envelope, "einfo")$H0 <- switch (
     SimulationType,
     RandomPosition = "Random Position",
     RandomLocation = "Random Location",
+    RandomLabeling = "Random Labeling",
+    PopulationIndependence = "Population Independence"
   )
   # Calculate confidence intervals
   Envelope <- FillEnvelope(Envelope, Alpha = Alpha, Global = Global)
