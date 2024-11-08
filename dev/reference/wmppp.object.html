@@ -15,7 +15,7 @@ PointWeight: weights.
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,19 +48,19 @@ PointWeight: weights.
     </div>
 
     <div class="ref-description section level2">
-    <p>A class <code>"wmppp"</code> to represent a two-dimensional point pattern of class <code>ppp</code> whose marks are a dataframe with two columns:</p><ul><li><p><code>PointType</code>: labels, as factors</p></li>
+    <p>A class <code>"wmppp"</code> to represent a two-dimensional point pattern of class <code><a href="https://rdrr.io/pkg/spatstat.geom/man/ppp.html" class="external-link">ppp</a></code> whose marks are a dataframe with two columns:</p><ul><li><p><code>PointType</code>: labels, as factors</p></li>
 <li><p><code>PointWeight</code>: weights.</p></li>
 </ul></div>
 
 
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This class represents a two-dimensional point pattern dataset. <code>wmppp</code> objects are also of class <code>ppp</code>.</p>
+    <p>This class represents a two-dimensional point pattern dataset. <code>wmppp</code> objects are also of class <code><a href="https://rdrr.io/pkg/spatstat.geom/man/ppp.html" class="external-link">ppp</a></code>.</p>
 <p>Objects of class <code>wmppp</code> may be created by the function <code><a href="wmppp.html">wmppp</a></code> and converted from other types of data by the function <code><a href="as.wmppp.html">as.wmppp</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code>ppp.object</code>,
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/spatstat.geom/man/ppp.object.html" class="external-link">ppp.object</a></code>,
   <code><a href="wmppp.html">wmppp</a></code>,
   <code><a href="as.wmppp.html">as.wmppp</a></code>
   <code><a href="autoplot.html">autoplot.wmppp</a></code></p></div>
@@ -79,8 +79,8 @@ PointWeight: weights.
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Plot the point pattern. which.marks=1 for point weights, 2 for point types</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, which.marks<span class="op">=</span><span class="fl">1</span>, main<span class="op">=</span><span class="st">"Point weights"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, which.marks<span class="op">=</span><span class="fl">2</span>, main<span class="op">=</span><span class="st">"Point types"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, which.marks<span class="op">=</span><span class="fl">1</span>, main<span class="op">=</span><span class="st">"Point weights"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, which.marks<span class="op">=</span><span class="fl">2</span>, main<span class="op">=</span><span class="st">"Point types"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="wmppp.object-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Or use autoplot for a ggplot</span></span></span>
@@ -97,7 +97,7 @@ PointWeight: weights.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

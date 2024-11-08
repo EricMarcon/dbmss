@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
 <dd><p>One of the point types. Default is all point types.</p></dd>
 
   <dt id="arg-lambda">lambda<a class="anchor" aria-label="anchor" href="#arg-lambda"></a></dt>
-<dd><p>An estimation of the point pattern density, obtained by the <code>density.ppp</code> function.</p></dd>
+<dd><p>An estimation of the point pattern density, obtained by the <code><a href="https://rdrr.io/pkg/spatstat.explore/man/density.ppp.html" class="external-link">density.ppp</a></code> function.</p></dd>
 
   <dt id="arg-simulationtype">SimulationType<a class="anchor" aria-label="anchor" href="#arg-simulationtype"></a></dt>
 <dd><p>A string describing the null hypothesis to simulate. The null hypothesis, may be
@@ -96,7 +96,7 @@
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An envelope object (<code>envelope</code>). There are methods for print and plot for this class.</p>
+    <p>An envelope object (<code><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></code>). There are methods for print and plot for this class.</p>
 <p>The <code>fv</code> contains the observed value of the function, its average simulated value and the confidence envelope.</p>
     </div>
     <div class="section level2">
@@ -124,9 +124,9 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Density of all trees</span></span></span>
 <span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fu">density.ppp</span><span class="op">(</span><span class="va">X</span>, <span class="fu">bw.diggle</span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">V.americana</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="va">X</span><span class="op">$</span><span class="va">marks</span><span class="op">$</span><span class="va">PointType</span><span class="op">==</span><span class="st">"V. Americana"</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">V.americana</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">V.americana</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span><span class="op">==</span><span class="st">"V. Americana"</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">V.americana</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Plotting the first column of marks</span>
 <span class="r-plt img"><img src="KinhomEnvelope-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
@@ -137,7 +137,6 @@
 <span class="r-in"><span><span class="va">Alpha</span> <span class="op">&lt;-</span> <span class="fl">.10</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="fu">KinhomEnvelope</span><span class="op">(</span><span class="va">X</span>, <span class="va">r</span>,<span class="va">NumberOfSimulations</span>, <span class="va">Alpha</span>, , </span></span>
 <span class="r-in"><span>    SimulationType<span class="op">=</span><span class="st">"RandomPosition"</span>, lambda<span class="op">=</span><span class="va">lambda</span><span class="op">)</span>, <span class="va">.</span><span class="op">/</span><span class="op">(</span><span class="va">pi</span><span class="op">*</span><span class="va">r</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">~</span> <span class="va">r</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Envelope may be invalid; argument ‘lambda’ appears to have been fixed.</span>
 <span class="r-plt img"><img src="KinhomEnvelope-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -150,7 +149,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

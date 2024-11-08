@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
 <dd><p>A dataframe with at least two columns containing point coordinates.</p></dd>
 
   <dt id="arg-window">window<a class="anchor" aria-label="anchor" href="#arg-window"></a></dt>
-<dd><p>An object of calls "owin" (<code>owin.object</code>).</p></dd>
+<dd><p>An object of calls "owin" (<code><a href="https://rdrr.io/pkg/spatstat.geom/man/owin.object.html" class="external-link">owin.object</a></code>).</p></dd>
 
   <dt id="arg-unitname">unitname<a class="anchor" aria-label="anchor" href="#arg-unitname"></a></dt>
 <dd><p>Name of unit of length. Either a single character string, or a vector of two character strings giving the singular and plural forms, respectively. Ignored if <code>window</code> is not <code>NULL</code>.</p></dd>
@@ -84,7 +84,7 @@
 <span class="r-in"><span><span class="co"># Draw the point types.</span></span></span>
 <span class="r-in"><span><span class="va">PointType</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fl">10</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Plot the point pattern. Weights are set to 1 ant the window is adjusted.</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">wmppp</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">Y</span>, <span class="va">PointType</span><span class="op">)</span><span class="op">)</span>, , which.marks<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">wmppp</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">Y</span>, <span class="va">PointType</span><span class="op">)</span><span class="op">)</span>, , which.marks<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No column has been found for PointWeight. All point weights have been set to 1.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No window has been specified. A rectangle window containing all points has been used.</span>
 <span class="r-plt img"><img src="wmppp-1.png" alt="" width="700" height="433"></span>
@@ -99,7 +99,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-0.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,12 +93,12 @@ decreases exponentially along the y-axis (we will call “north” the
 higher y values).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss">"dbmss"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss/">"dbmss"</a></span><span class="op">)</span></span>
 <span><span class="co"># Simulation of cases (clusters)</span></span>
 <span><span class="fu">rMatClust</span><span class="op">(</span>kappa <span class="op">=</span> <span class="fl">10</span>, scale <span class="op">=</span> <span class="fl">0.05</span>, mu <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="va">as.wmppp</span> <span class="op">-&gt;</span> </span>
 <span>  <span class="va">CASES</span></span>
-<span><span class="va">CASES</span><span class="op">$</span><span class="va">marks</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span> <span class="st">"Cases"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">CASES</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span> <span class="st">"Cases"</span></span>
 <span><span class="co"># Number of points</span></span>
 <span><span class="va">CASES</span><span class="op">$</span><span class="va">n</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 54</span></span></code></pre>
@@ -107,7 +107,7 @@ higher y values).</p>
 <span><span class="fu">rpoispp</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span><span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span><span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="va">as.wmppp</span> <span class="op">-&gt;</span></span>
 <span>  <span class="va">CONTROLS</span></span>
-<span><span class="va">CONTROLS</span><span class="op">$</span><span class="va">marks</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span><span class="st">"Controls"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">CONTROLS</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span><span class="st">"Controls"</span></span>
 <span><span class="co"># Number of points</span></span>
 <span><span class="va">CONTROLS</span><span class="op">$</span><span class="va">n</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 427</span></span></code></pre>
@@ -176,10 +176,10 @@ the individual values and plotted.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot the point pattern with values of M(Distance)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">M_TheoEx_map</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">M_TheoEx_map</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span><span class="co"># Add the cases to the map</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span></span>
-<span>  <span class="va">ALL</span><span class="op">[</span><span class="va">ALL</span><span class="op">$</span><span class="va">marks</span><span class="op">$</span><span class="va">PointType</span> <span class="op">==</span> <span class="st">"Cases"</span><span class="op">]</span>,</span>
+<span>  <span class="va">ALL</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">ALL</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">==</span> <span class="st">"Cases"</span><span class="op">]</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"green"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co"># Add contour lines</span></span>
@@ -197,9 +197,9 @@ north of the map because the controls are less dense there.</p>
 similar to high relative concentrations in this example because the
 control points are not homogeneously distributed.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">CASES</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">CASES</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span></span>
-<span>  <span class="va">ALL</span><span class="op">[</span><span class="va">ALL</span><span class="op">$</span><span class="va">marks</span><span class="op">$</span><span class="va">PointType</span> <span class="op">==</span> <span class="st">"Cases"</span><span class="op">]</span>,</span>
+<span>  <span class="va">ALL</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">ALL</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">==</span> <span class="st">"Cases"</span><span class="op">]</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"green"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
@@ -231,7 +231,7 @@ Fr<span>å</span>n Statens Skogsforskningsinstitut</em> 49 (5): 1–144.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
