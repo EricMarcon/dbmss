@@ -9,3 +9,15 @@ marks.Dtable <- function (x, ...) {
   y$marks <- value
   return(y)
 }
+
+`marks<-.wmppp` <- function(x, ..., dfok = TRUE, drop = TRUE, value) {
+  Y <- spatstat.geom::`marks<-.ppp`(
+    x, 
+    ..., 
+    dfok = TRUE, 
+    drop = TRUE, 
+    value = value
+  )
+  class(Y) <- c("wmppp", "ppp")
+  return(Y)
+}
