@@ -1,13 +1,20 @@
-wmppp <-
-function(df, window = NULL, unitname = NULL) 
-{
+wmppp <- function(
+    df, 
+    window = NULL, 
+    unitname = NULL) {
+  
   # Check the data
-  if (!is.data.frame(df))
+  if (!is.data.frame(df)) {
     stop("The data used to create a wmppp must be a dataframe.")
-  if (tibble::is_tibble(df)) # Tibbles must be coerced to data.frames or as.numeric below won't work.
-    df <- as.data.frame(df)
-  if (ncol(df) < 2)
+  }
+  if (tibble::is_tibble(df)) {
+    # Tibbles must be coerced to data.frames or as.numeric below won't work.
+    df <- as.data.frame(df)    
+  }
+  if (ncol(df) < 2) {
     stop("The data used to create a wmppp must have at least two columns for coordinates X and Y.")
+  }
+    
   names(df) <- tolower(names(df))
   # Read X and Y
   if ("x" %in% names(df) & "y" %in% names(df)) {
@@ -18,9 +25,10 @@ function(df, window = NULL, unitname = NULL)
     X <- as.numeric(df[, 1])
     Y <- as.numeric(df[, 2])
   }
-  if (!is.numeric(c(X, Y)))
+  if (!is.numeric(c(X, Y))) {
     stop("Point coordinates X and Y must be numeric.")
-  
+  }
+
   # Read Point Types
   if ("pointtype" %in% names(df)) {
     PointType <- df[, "pointtype"]
@@ -53,20 +61,32 @@ function(df, window = NULL, unitname = NULL)
       PointWeight <- df[, 4]
     }
   }
-  if (!is.numeric(PointWeight))
+  if (!is.numeric(PointWeight)) {
     stop("Point weights must be numeric.")
-  if (any(PointWeight < 0))
+  }
+  if (any(PointWeight < 0)) {
     stop("Point weights must be positive.")
-  
-  if (!is.null(window))
-    if (!is.owin(window))
+  }
+  if (!is.null(window)) {
+    if (!is.owin(window)) {
       stop("window must be an object of class owin.")
+    }
+  }
 
   # Full window: keep all points for their names
-  w <- owin(xrange=c(min(X), max(X)), yrange=c(min(Y), max(Y)), unitname=unitname)
+  w <- owin(
+    xrange = c(min(X), max(X)), 
+    yrange = c(min(Y), max(Y)), 
+    unitname = unitname
+  )
   
   # Build the object
-  wmpppX <- ppp(X, Y, window=w, marks=data.frame(PointWeight, PointType))
+  wmpppX <- ppp(
+    x = X, 
+    y = Y, 
+    window = w, 
+    marks = data.frame(PointWeight, PointType)
+  )
   # Keep the point names
   if ("pointname" %in% names(df)) {
     row.names(marks(wmpppX)) <- df[, "pointname"]

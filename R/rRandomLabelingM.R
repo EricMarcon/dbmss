@@ -1,9 +1,11 @@
-rRandomLabelingM <-
-function(X, CheckArguments = TRUE) {
+rRandomLabelingM <- function(
+    X, 
+    CheckArguments = TRUE) {
   
-  if (CheckArguments)
+  if (CheckArguments) {
     CheckdbmssArguments()
-  
+  }
+
   if (inherits(X, "Dtable")) {
     # Dtable case
     # Randomize marks

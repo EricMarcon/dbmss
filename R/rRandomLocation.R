@@ -1,26 +1,28 @@
-rRandomLocation <-
-function(X, ReferenceType = "", CheckArguments = TRUE) {
+rRandomLocation <- function(
+    X, 
+    ReferenceType = "", 
+    CheckArguments = TRUE) {
   
-  if (CheckArguments)
+  if (CheckArguments) {
     CheckdbmssArguments()
-  
+  }
+
   if (inherits(X, "Dtable")) {
     # Dtable case
     Index <- seq_along(marks(X)$PointType) 
     if (ReferenceType != "") {
       # Retain a single point type
-      ReferencePoints <- marks(X)$PointType==ReferenceType
+      ReferencePoints <- (marks(X)$PointType == ReferenceType)
       # Randomize the reference points
       RandomizedReferences <- sample(Index[ReferencePoints])
       # Replace randomized elements in the index
       i <- o <- 1
-      while (i <= length(marks(X)$PointType))
-      {
+      while (i <= length(marks(X)$PointType)) {
         if (ReferencePoints[i]) {
           Index[i] <- RandomizedReferences[o]
-          o <- o+1
+          o <- o + 1
         }
-        i <- i+1
+        i <- i + 1
       }
     } else {
       Index <- sample(Index)
