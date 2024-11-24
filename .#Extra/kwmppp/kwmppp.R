@@ -1,7 +1,12 @@
-kwmppp <-
-  function (X, fvind, ReferenceType = "", distance = stats::median(fvind$r), 
-            AllowJitter = TRUE, Nbx = 128, Nby = 128, CheckArguments = TRUE)
-{
+kwmppp <- function (
+    X, 
+    fvind, 
+    ReferenceType = "", 
+    distance = stats::median(fvind$r),
+    AllowJitter = TRUE, 
+    Nbx = 128, 
+    Nby = 128, 
+    CheckArguments = TRUE) {
   if (CheckArguments)
     CheckdbmssArguments()
   
@@ -12,15 +17,22 @@ kwmppp <-
   } 
   
   # Check the consistency between X and fvind
-  if (X$n != sum(startsWith(colnames(fvind), paste0(attr(fvind, "valu"), "_"))))
-    stop(paste("The number of reference points in the function value is different from \n", 
-               "that of the reference points of the spatialized community"))
-  
+  if (
+    spatstat.geom::npoints(X) != 
+    sum(startsWith(colnames(fvind), paste0(attr(fvind, "valu"), "_")))
+  ) {
+    stop(
+      paste(
+        "The number of reference points in the function value is different from \n", 
+        "that of the reference points of the spatialized community"
+      )
+    )
+  }
   # Jitter
   if (AllowJitter) {
     # Find duplicates
-    Dups <- spatstat.geom::duplicated.ppp(X, rule="unmark")
-    if (sum(Dups)>0) {
+    Dups <- spatstat.geom::duplicated.ppp(X, rule = "unmark")
+    if (sum(Dups) > 0) {
       # Extract the duplicates and jitter them
       Dupswmppp <- spatstat.geom::rjitter(X[Dups])
       # Put the coordinates back into the original wmppp
@@ -30,8 +42,8 @@ kwmppp <-
   }
   
   # Find the max r value of fvind lower than or equal to argument distance
-  r_to_plot <- max(fvind$r[fvind$r<=distance])
-  
+  r_to_plot <- max(fvind$r[fvind$r <= distance])
+
   # Convert the data to a SpatialPointsDataFrame
   df <- as.data.frame(fvind)
   # Pivot longer. Columns are named M_1, etc. for function M
@@ -57,8 +69,8 @@ kwmppp <-
   
   # Make a SpatialPointsDataFrame
   sdfCommunity <- sp::SpatialPointsDataFrame(
-    coords=data.frame(x=X$x[is_not_na], y=X$y[is_not_na]),
-    data=df[is_not_na,]
+    coords = data.frame(x = X$x[is_not_na], y = X$y[is_not_na]),
+    data = df[is_not_na,]
   )
   
   # Prepare a grid
@@ -67,7 +79,7 @@ kwmppp <-
   xygrid <- sp::SpatialPoints(cbind(xy$x[is_inside], xy$y[is_inside]))
   sp::gridded(xygrid) <- TRUE
   # Proceed to krigeing
-  krigedCommunity <- automap::autoKrige(dbmss~1, sdfCommunity, new_data=xygrid)
+  krigedCommunity <- automap::autoKrige(dbmss~1, sdfCommunity, new_data = xygrid)
   
   # Class 
   class(krigedCommunity) <- c("kwmppp", class(krigedCommunity))
@@ -75,20 +87,29 @@ kwmppp <-
 }
 
 
-plot.kwmppp <- 
-  function (x, ..., Contour = TRUE, Palette = grDevices::topo.colors(128, alpha=1), 
-            SuppressMargins = TRUE, Contournlevels = 10, Contourcol = "dark red")
-{
+plot.kwmppp <- function(
+    x, 
+    ..., 
+    Contour = TRUE, 
+    Palette = grDevices::topo.colors(128, alpha = 1), 
+    SuppressMargins = TRUE, 
+    Contournlevels = 10, 
+    Contourcol = "dark red") {
     if (SuppressMargins) {
       OldPar <- graphics::par("mar")
-      graphics::par(mar=c(0, 0, 2, 0))
+      graphics::par(mar = c(0, 0, 2, 0))
     }
-    
-    graphics::image(x$krige_output, col=Palette, asp=1, ...)
-    if (Contour)
-      graphics::contour(x$krige_output, add=TRUE, nlevels=Contournlevels, col=Contourcol)
-    
-    if (SuppressMargins) {
-      graphics::par("mar"=OldPar)
-    }
+
+  graphics::image(x$krige_output, col = Palette, asp = 1, ...)
+  if (Contour) {
+    graphics::contour(
+      x$krige_output, 
+      add = TRUE, 
+      nlevels = Contournlevels, 
+      col = Contourcol
+    )
+  }
+  if (SuppressMargins) {
+    graphics::par("mar" = OldPar)
+  }
 }

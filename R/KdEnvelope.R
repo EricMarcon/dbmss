@@ -50,7 +50,7 @@ KdEnvelope <- function(
     verbose = verbose, 
     savefuns = TRUE
   )
-  attr(Envelope, "einfo")$H0 <- switch (
+  attr(Envelope, "einfo")$H0 <- switch(
     SimulationType,
     RandomLocation = "Random Location",
     RandomLabeling = "Random Labeling",
@@ -61,5 +61,5 @@ KdEnvelope <- function(
   # No edge effect correction
   attr(Envelope, "einfo")$valname <- NULL
   # Return the envelope
-  return (Envelope)
+  return(Envelope)
 }

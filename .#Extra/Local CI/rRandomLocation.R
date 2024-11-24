@@ -9,7 +9,7 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
     Index <- seq_along(marks(X)$PointType) 
     if (ReferenceType != "") {
       # Retain a single point type
-      ReferencePoints <- marks(X)$PointType==ReferenceType
+      ReferencePoints <- marks(X)$PointType == ReferenceType
       # Randomize the reference points
       RandomizedReferences <- sample(Index[ReferencePoints])
       # Replace randomized elements in the index
@@ -18,9 +18,9 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
       {
         if (ReferencePoints[i]) {
           Index[i] <- RandomizedReferences[o]
-          o <- o+1
+          o <- o + 1
         }
-        i <- i+1
+        i <- i + 1
       }
     } else {
       Index <- sample(Index)
@@ -33,7 +33,7 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
     # wmppp case
     if (!is.null(ReferencePoint)) {
       # The reference point must be < than the number of points
-      if (ReferencePoint > X$n) {
+      if (ReferencePoint > spatstat.geom::npoints(X)) {
         stop("The number of the reference point must be smaller than the number of points in the point pattern.")
       }
       # The reference point must belong to the reference point type
@@ -58,6 +58,6 @@ function(X, ReferenceType = "", ReferencePoint = NULL, CheckArguments = TRUE) {
       RandomizedX <- superimpose(ReferencePoint_ppp, RandomizedX)
     }
     class(RandomizedX) <- c("wmppp", "ppp")
-    return (RandomizedX)
+    return(RandomizedX)
   }
 }
