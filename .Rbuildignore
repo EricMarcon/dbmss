@@ -17,3 +17,4 @@ vignettes/articles/
 vignettes/dbmss_cache/
 vignettes/dbmss_files/
 .github/
+^README\.Rmd$
