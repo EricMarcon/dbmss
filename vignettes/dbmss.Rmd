@@ -10,7 +10,8 @@ vignette: >
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(
-  fig.width = 5       # Larger figures (default is 3, only legend is visible)
+  fig.width = 5,       # Larger figures (default is 3, only legend is visible)
+  out.width = "100%"
 )
 set.seed(2018)
 ```
@@ -53,7 +54,7 @@ autoplot(
 
 # Main functions
 
-The main functions of the packages are designed to calculate distance-based measures of spatial structure.
+The main functions of the package are designed to calculate distance-based measures of spatial structure.
 Those are non-parametric statistics able to summarize and test the spatial distribution (concentration, dispersion) of points.
 
 The classical, topographic functions such as Ripley's _K_ are provided by the _spatstat_ package and supported by _dbmss_ for convenience.
@@ -88,6 +89,44 @@ autoplot(
 ```
 
 Significant concentration is detected between about 10 and 20 meters.
+
+
+# Maps
+
+Individual values of some distance-based measures can be computed and mapped.
+
+```{r}
+# Calculate individual intertype M(distance) value
+ReferenceType <- "V. Americana"
+NeighborType <- "Q. Rosea"
+fvind <- Mhat(
+  paracou16, 
+  r = c(0, 30), 
+  ReferenceType = ReferenceType, 
+  NeighborType = NeighborType, 
+  Individual = TRUE
+)
+# Plot the point pattern with values of M(30 meters)
+p16_map <- Smooth(
+  paracou16, 
+  fvind = fvind, 
+  distance = 30,
+  # Resolution
+  Nbx = 512, 
+  Nby = 512
+)
+par(mar = rep(0, 4))
+plot(p16_map, main = "")
+# Add the reference points to the plot
+is.ReferenceType <- marks(paracou16)$PointType == ReferenceType
+points(
+  x = paracou16$x[is.ReferenceType], 
+  y = paracou16$y[is.ReferenceType], 
+  pch = 20
+)
+# Add contour lines
+contour(p16_map, nlevels = 5, add = TRUE)
+```
 
 
 # Full documentation
