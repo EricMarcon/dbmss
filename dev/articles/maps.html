@@ -107,7 +107,7 @@ higher y values).</p>
 <span><span class="fu">rpoispp</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span><span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span><span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="va">as.wmppp</span> <span class="op">-&gt;</span></span>
 <span>  <span class="va">CONTROLS</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">CONTROLS</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span><span class="st">"Controls"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">CONTROLS</span><span class="op">)</span><span class="op">$</span><span class="va">PointType</span> <span class="op">&lt;-</span> <span class="st">"Controls"</span></span>
 <span><span class="co"># Number of points</span></span>
 <span><span class="va">CONTROLS</span><span class="op">$</span><span class="va">n</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 427</span></span></code></pre>
@@ -127,7 +127,7 @@ higher y values).</p>
 <span><span class="co"># Calculate and plot M Cases</span></span>
 <span><span class="va">ALL</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span></span>
-<span>    ReferenceType<span class="op">=</span><span class="st">"Cases"</span>, </span>
+<span>    ReferenceType <span class="op">=</span> <span class="st">"Cases"</span>, </span>
 <span>    SimulationType <span class="op">=</span> <span class="st">"RandomLocation"</span>,</span>
 <span>    NumberOfSimulations <span class="op">=</span> <span class="va">NumberOfSimulations</span>,</span>
 <span>    Alpha <span class="op">=</span> <span class="va">Alpha</span>,</span>
