@@ -384,10 +384,8 @@ neighbors of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>
 are counted at a chosen distance
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>:</p>
-<p><span class="math display">$$n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\
-}i\ne j}{k\left(\left\|x_i{\rm
--}x_j\right\|,r\right)c\left(i,j\right)}$$</span></p>
-<p><span class="math inline">$k(\left\|x_i{\rm -}x_j\right\|,r)$</span>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>j</mi><mo>,</mo><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></munder><mrow><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">∥</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">∥</mo></mrow><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">n\left(x_i, r\right) = \sum_{j, i\ne j}{k\left(\left\|x_i - x_j\right\|, r\right)c\left(i, j\right)}</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">∥</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">∥</mo></mrow><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">k(\left\|x_i - x_j\right\|,r)</annotation></semantics></math>
 is a kernel estimator, necessary to evaluate the number of neighbors at
 distance
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
@@ -410,35 +408,30 @@ In cumulative functions such as
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
 neighbors are counted up to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>:</p>
-<p><span class="math display">$$n\left(x_i,r\right){\rm =}\sum_{x_j \in
-\mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
-r\right)w\left(x_j\right)}$$</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>∈</mo><mi>𝒩</mi><mo>,</mo><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></munder><mrow><mn>𝟏</mn><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">∥</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">∥</mo></mrow><mo>≤</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">n\left(x_i, r\right) = \sum_{x_j \in \mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i - x_j\right\|\le r\right)w\left(x_j\right)}</annotation></semantics></math></p>
 <p>Points can be weighted,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">w(x_j)</annotation></semantics></math>
 is the neighbor’s weight.</p>
 <p>The number of neighbors is averaged then.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 is the number of reference points:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munder><mo>∑</mo><mi>i</mi></munder><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\bar{n}\left(r\right)=\frac{1}{n}\sum_i{n\left(x_i,r\right)}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munder><mo>∑</mo><mi>i</mi></munder><mrow><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\bar{n}\left(r\right) = \frac{1}{n}\sum_i{n\left(x_i, r\right)}</annotation></semantics></math></p>
 <p>The average number of neighbors is compared to a reference measure.
 It may be a measure of space (the perimeter of the circle of radius
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
 for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>),
 defining topographic functions:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">z\left(r\right)=2 \pi r</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">z\left(r\right) = 2 \pi r</annotation></semantics></math></p>
 <p>It may also be the average number of neighbors of all types in a
 relative function such as
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>:</p>
-<p><span class="math display">$$z\left(r\right)=\frac{1}{n}\sum_{j,i\ne
-j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le
-r\right)w\left(x_j\right)}$$</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munder><mo>∑</mo><mrow><mi>j</mi><mo>,</mo><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></munder><mrow><mn>𝟏</mn><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">∥</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">∥</mo></mrow><mo>≤</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">z\left(r\right) = \frac{1}{n}\sum_{j, i \ne j}{{\mathbf 1}\left(\left\|x_i - x_j\right\|\le r\right) w\left(x_j\right)}</annotation></semantics></math></p>
 <p>Finally,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mover><mi>n</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><annotation encoding="application/x-tex">\frac{\bar{n}(r)}{z(r)}</annotation></semantics></math>
 is compared to the same ratio computed on the whole window. For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>:</p>
-<p><span class="math display">$$\frac{\bar{n}_0}{z_0}{\rm
-=}\frac{n-1}{A}$$</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mi>A</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\bar{n}_0}{z_0} = \frac{n - 1}{A}</annotation></semantics></math></p>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 is the area of the window,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><annotation encoding="application/x-tex">\bar{n}_0</annotation></semantics></math>
@@ -453,7 +446,7 @@ when
 gets larger than the window’s size. For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
 it comes:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mfrac><msub><mi>W</mi><mi>𝒩</mi></msub><mrow><mi>W</mi><mo>−</mo><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{{\bar{n}}_0}{z_0}=\sum_i{\frac{W_\mathcal{N}}{W-w\left(x_i\right)}}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mover><mi>n</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mfrac><msub><mi>W</mi><mi>𝒩</mi></msub><mrow><mi>W</mi><mo>−</mo><mi>w</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{{\bar{n}}_0}{z_0} = \sum_i{\frac{W_\mathcal{N}}{W - w\left(x_i\right)}}</annotation></semantics></math></p>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>W</mi><mi>𝒩</mi></msub><annotation encoding="application/x-tex">W_\mathcal{N}</annotation></semantics></math>
 is the total weight of neighbor points,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
