@@ -16,7 +16,7 @@ vignette: >
 InstallPackages <- function(Packages) {
   InstallPackage <- function(Package) {
     if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos="https://cran.rstudio.com/")
+      install.packages(Package, repos = "https://cran.rstudio.com/")
     }
   }
   invisible(sapply(Packages, InstallPackage))
@@ -59,7 +59,7 @@ CASES$n
 rpoispp(function(x, y) {1000 * exp(-2 * y)}) %>% 
   as.wmppp ->
   CONTROLS
-marks(CONTROLS)$PointType <-"Controls"
+marks(CONTROLS)$PointType <- "Controls"
 # Number of points
 CONTROLS$n
 
@@ -79,7 +79,7 @@ Alpha <- .01
 # Calculate and plot M Cases
 ALL %>% 
   MEnvelope(
-    ReferenceType="Cases", 
+    ReferenceType = "Cases", 
     SimulationType = "RandomLocation",
     NumberOfSimulations = NumberOfSimulations,
     Alpha = Alpha,

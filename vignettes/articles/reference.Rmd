@@ -276,14 +276,14 @@ Category <- cut(
 )
 X <- wmppp(
   data.frame(X = Emergencies$X, Y = Emergencies$Y, PointType = Category), 
-  win=Region
+  win = Region
 )
 X$window$units <- c("meter","meters")
 X2 <- split(X)
 marks(X2$Other) <- rep(1, X2$Other$n)
 marks(X2$Biggest) <- rep(1, X2$Biggest$n)
 par(mfrow = c(1, 2), mar = c(0, 0, 0, 0))  
-plot(X2$Other, main="", maxsize = 1, legend = FALSE)
+plot(X2$Other, main = "", maxsize = 1, legend = FALSE)
 text(514300, 1826800, "a")
 plot(X2$Biggest, main = "", maxsize = 1, legend = FALSE)
 text(514300, 1826800, "b")

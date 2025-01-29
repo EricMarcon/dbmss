@@ -62,7 +62,7 @@ plot(
     paracou16, 
     ReferenceType = "Q. Rosea"
   ), 
-  col ="red", 
+  col = "red", 
   main = "", 
   add = TRUE
 )
