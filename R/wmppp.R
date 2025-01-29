@@ -1,20 +1,20 @@
 wmppp <- function(
-    df, 
-    window = NULL, 
+    df,
+    window = NULL,
     unitname = NULL) {
-  
+
   # Check the data
   if (!is.data.frame(df)) {
     stop("The data used to create a wmppp must be a dataframe.")
   }
   if (tibble::is_tibble(df)) {
     # Tibbles must be coerced to data.frames or as.numeric below won't work.
-    df <- as.data.frame(df)    
+    df <- as.data.frame(df)
   }
   if (ncol(df) < 2) {
     stop("The data used to create a wmppp must have at least two columns for coordinates X and Y.")
   }
-    
+
   names(df) <- tolower(names(df))
   # Read X and Y
   if ("x" %in% names(df) & "y" %in% names(df)) {
@@ -34,7 +34,7 @@ wmppp <- function(
     PointType <- df[, "pointtype"]
   } else {
     if (ncol(df) < 3) {
-      warning("No column has been found for PointType. All point types have been set to All.")      
+      warning("No column has been found for PointType. All point types have been set to All.")
       PointType <- as.factor(rep("All", length(X)))
     } else {
       warning("No column named PointType has been found. Columns #3 has been used for labels.")
@@ -48,13 +48,13 @@ wmppp <- function(
       stop("Point types must be factors or characters.")
     }
   }
-  
+
   # Read Point Weights
   if ("pointweight" %in% names(df)) {
     PointWeight <- df[, "pointweight"]
   } else {
     if (ncol(df) < 4) {
-      warning("No column has been found for PointWeight. All point weights have been set to 1.")      
+      warning("No column has been found for PointWeight. All point weights have been set to 1.")
       PointWeight <- rep(1, length(X))
     } else {
       warning("No column named PointWeight has been found. Columns #4 has been used for weights.")
@@ -75,16 +75,16 @@ wmppp <- function(
 
   # Full window: keep all points for their names
   w <- owin(
-    xrange = c(min(X), max(X)), 
-    yrange = c(min(Y), max(Y)), 
+    xrange = c(min(X), max(X)),
+    yrange = c(min(Y), max(Y)),
     unitname = unitname
   )
-  
+
   # Build the object
   wmpppX <- ppp(
-    x = X, 
-    y = Y, 
-    window = w, 
+    x = X,
+    y = Y,
+    window = w,
     marks = data.frame(PointWeight, PointType)
   )
   # Keep the point names
@@ -93,14 +93,14 @@ wmppp <- function(
   } else {
     row.names(marks(wmpppX)) <- row.names(df)
   }
-  
+
   # Crop the window
   if (is.null(window)) {
     warning("No window has been specified. A rectangle window containing all points has been used.")
   } else {
     wmpppX <- wmpppX[window]
   }
-  
+
   class(wmpppX) <- c("wmppp", "ppp")
-  return (wmpppX)
+  return(wmpppX)
 }

@@ -1,3 +1,3 @@
-is.wmppp <- function (X) {
+is.wmppp <- function(X) {
   inherits(X, "wmppp")
 }

@@ -1,16 +1,16 @@
 KinhomEnvelope <- function(
-    X, 
-    r = NULL, 
-    NumberOfSimulations = 100, 
-    Alpha = 0.05, 
-    ReferenceType = "", 
-    lambda = NULL, 
+    X,
+    r = NULL,
+    NumberOfSimulations = 100,
+    Alpha = 0.05,
+    ReferenceType = "",
+    lambda = NULL,
     SimulationType = "RandomPosition",
-    Global = FALSE, 
+    Global = FALSE,
     verbose = interactive()) {
-  
+
   CheckdbmssArguments()
-  
+
   # Estimate intensity if it has not been provided.
   if (is.null(lambda)) {
     if (ReferenceType == "") {
@@ -19,21 +19,21 @@ KinhomEnvelope <- function(
       X.reduced <- X[marks(X)$PointType == ReferenceType]
     }
     lambda <- spatstat.explore::density.ppp(
-      X.reduced, 
+      X.reduced,
       sigma = bw.diggle(X.reduced)
     )
   }
-  
+
   # Choose the null hypothesis
-  SimulatedPP <- switch (
+  SimulatedPP <- switch(
     SimulationType,
     RandomPosition = expression(rpoispp(lambda)),
     RandomLocation = expression(rRandomLocation(X, CheckArguments = FALSE)),
     RandomLabeling = expression(rRandomLabeling(X, CheckArguments = FALSE)),
     PopulationIndependence = expression(
       rPopulationIndependenceM(
-        X, 
-        ReferenceType = ReferenceType, 
+        X,
+        ReferenceType = ReferenceType,
         CheckArguments = FALSE
       )
     )
@@ -41,8 +41,8 @@ KinhomEnvelope <- function(
   if (is.null(SimulatedPP)) {
     stop(
       paste(
-        "The null hypothesis", 
-        sQuote(SimulationType), 
+        "The null hypothesis",
+        sQuote(SimulationType),
         "has not been recognized."
       )
     )
@@ -53,20 +53,20 @@ KinhomEnvelope <- function(
     # Envelope may be invalid; argument ‘lambda’ appears to have been fixed.
     # because lambda is necessarily fixed here.
     envelope(
-      X, 
-      fun = Kinhomhat, 
-      nsim = NumberOfSimulations, 
+      X,
+      fun = Kinhomhat,
+      nsim = NumberOfSimulations,
       nrank = 1,
       r = r,
       ReferenceType = ReferenceType,
       lambda = lambda,
       CheckArguments = FALSE,
-      simulate = SimulatedPP, 
-      verbose = verbose, 
+      simulate = SimulatedPP,
+      verbose = verbose,
       savefuns = TRUE
     )
   )
-  attr(Envelope, "einfo")$H0 <- switch (
+  attr(Envelope, "einfo")$H0 <- switch(
     SimulationType,
     RandomPosition = "Random Position",
     RandomLocation = "Random Location",
@@ -76,5 +76,5 @@ KinhomEnvelope <- function(
   # Calculate confidence intervals
   Envelope <- FillEnvelope(Envelope, Alpha = Alpha, Global = Global)
   # Return the envelope
-  return (Envelope)
+  return(Envelope)
 }

@@ -1,16 +1,16 @@
 summary.dbmssEnvelope <- function(
-    object, 
+    object,
     ...) {
-  
+
   einfo <- attr(object, "einfo")
 
   type <- ifelse(einfo$global, "Global", "Local")
   cat(
     paste(
-      type, 
-      "critical envelopes obtained from", 
-      einfo$nsim, 
-      "simulations of", 
+      type,
+      "critical envelopes obtained from",
+      einfo$nsim,
+      "simulations of",
       deparse(attr(object, "ylab"))
     )
   )
@@ -19,10 +19,10 @@ summary.dbmssEnvelope <- function(
   if (!is.null(attr(object, "simfuns"))) {
     cat(
       paste(
-        "(All", 
-        einfo$nsim, 
-        "simulated function values are stored in attr(,", 
-        dQuote("simfuns"), 
+        "(All",
+        einfo$nsim,
+        "simulated function values are stored in attr(,",
+        dQuote("simfuns"),
         ") )\n"
       )
     )

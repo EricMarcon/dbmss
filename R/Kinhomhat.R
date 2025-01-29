@@ -1,8 +1,8 @@
 Kinhomhat <- function(
-    X, 
-    r = NULL, 
-    ReferenceType = "", 
-    lambda = NULL, 
+    X,
+    r = NULL,
+    ReferenceType = "",
+    lambda = NULL,
     CheckArguments = TRUE) {
 
   if (CheckArguments) {
@@ -10,23 +10,22 @@ Kinhomhat <- function(
   }
 
   # K intratype calls Kest with the best edge-effect correction and returns the values
-  Kiintra <- function (X, r, lambda) {
+  Kiintra <- function(X, r, lambda) {
     # Estimate intensity if it has not been provided
     if (is.null(lambda)) {
       lambda <- as.vector(density.ppp(X, sigma = bw.diggle(X), at = "points"))
     }
     # Calculate Kinhom according to lambda
-    return (Kinhom(X, r = r, correction = "best", normpower = 2, lambda = lambda))
-  } 
-  
+    return(Kinhom(X, r = r, correction = "best", normpower = 2, lambda = lambda))
+  }
+
   # K intra
   if (ReferenceType == "") {
-    return (Kiintra(X, r = r, lambda = lambda))
+    return(Kiintra(X, r = r, lambda = lambda))
   }
   # K intra for a single point type
   if (ReferenceType != "") {
     X.reduced <- X[marks(X)$PointType == ReferenceType]
-    return (Kiintra(X.reduced, r, lambda))
-  }  
-
+    return(Kiintra(X.reduced, r, lambda))
+  }
 }

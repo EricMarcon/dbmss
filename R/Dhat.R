@@ -1,20 +1,20 @@
 Dhat <- function(
-    X, 
-    r = NULL, 
-    Cases, 
-    Controls = NULL, 
-    Intertype = FALSE, 
+    X,
+    r = NULL,
+    Cases,
+    Controls = NULL,
+    Intertype = FALSE,
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
   # K of cases.
   KCases <- Khat(
     X,
-    r = r, 
-    ReferenceType = Cases, 
-    NeighborType = Cases, 
+    r = r,
+    ReferenceType = Cases,
+    NeighborType = Cases,
     CheckArguments = FALSE
   )
   # Default controls are all points except cases. Reserved name is "CoNtRoLs_"
@@ -30,41 +30,41 @@ Dhat <- function(
   # K of controls. r must be those of cases.
   if (Intertype) {
     KControls <- Khat(
-      Y, 
+      Y,
       r = KCases$r,
-      ReferenceType = Cases, 
-      NeighborType = Controls, 
+      ReferenceType = Cases,
+      NeighborType = Controls,
       CheckArguments = FALSE
-    )   
+    )
   } else {
     KControls <- Khat(
-      Y, 
-      r = KCases$r, 
-      ReferenceType = Controls, 
-      NeighborType = Controls, 
+      Y,
+      r = KCases$r,
+      ReferenceType = Controls,
+      NeighborType = Controls,
       CheckArguments = FALSE
-    )     
+    )
   }
   # Calculate the difference (a difference between fv's yields a dataframe)
   Dvalues <- KCases - KControls
   DEstimate <- cbind(
-    as.data.frame(KCases)[1], 
+    as.data.frame(KCases)[1],
     as.data.frame(Dvalues)[2:3]
   )
-    
+
   # Return the values of D(r)
   D <- fv(
-    DEstimate, 
-    argu="r", 
+    DEstimate,
+    argu = "r",
     ylab = quote(D(r)),
-    valu = attr(KCases, "valu"), 
-    fmla = attr(KCases, "fmla"), 
-    alim = attr(KCases, "alim"), 
+    valu = attr(KCases, "valu"),
+    fmla = attr(KCases, "fmla"),
+    alim = attr(KCases, "alim"),
     labl = c("r", "%s[theo](r)", "hat(%s)[iso](r)"),
-    desc = attr(KCases, "desc"), 
+    desc = attr(KCases, "desc"),
     unitname = attr(KCases, "unitname"),
     fname = "D"
   )
   fvnames(D, ".") <- colnames(DEstimate)[-1]
-  return (D)
+  return(D)
 }

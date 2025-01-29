@@ -1,17 +1,17 @@
 KEnvelope <- function(
-    X, 
-    r = NULL, 
-    NumberOfSimulations = 100, 
-    Alpha = 0.05, 
+    X,
+    r = NULL,
+    NumberOfSimulations = 100,
+    Alpha = 0.05,
     ReferenceType = "",
-    NeighborType = ReferenceType, 
-    SimulationType = "RandomPosition", 
-    Precision = 0, 
-    Global = FALSE, 
+    NeighborType = ReferenceType,
+    SimulationType = "RandomPosition",
+    Precision = 0,
+    Global = FALSE,
     verbose = interactive()) {
 
   CheckdbmssArguments()
-  
+
   # Choose the null hypothesis
   SimulatedPP <- switch(
     SimulationType,
@@ -23,9 +23,9 @@ KEnvelope <- function(
     ),
     PopulationIndependence = expression(
       rPopulationIndependenceK(
-        X, 
-        ReferenceType, 
-        NeighborType, 
+        X,
+        ReferenceType,
+        NeighborType,
         CheckArguments = FALSE)
     )
   )
@@ -34,19 +34,19 @@ KEnvelope <- function(
   }
   # local envelope, keep extreme values for lo and hi (nrank=1)
   Envelope <- envelope(
-    X, 
+    X,
     fun = Khat,
-    nsim = NumberOfSimulations, 
+    nsim = NumberOfSimulations,
     nrank = 1,
-    r = r, 
+    r = r,
     ReferenceType = ReferenceType,
-    NeighborType = NeighborType, 
+    NeighborType = NeighborType,
     CheckArguments = FALSE,
-    simulate = SimulatedPP, 
+    simulate = SimulatedPP,
     verbose = verbose,
     savefuns = TRUE
   )
-  attr(Envelope, "einfo")$H0 <- switch (
+  attr(Envelope, "einfo")$H0 <- switch(
     SimulationType,
     RandomPosition = "Random Position",
     RandomLabeling = "Random Labeling",
@@ -55,5 +55,5 @@ KEnvelope <- function(
   # Calculate confidence intervals
   Envelope <- FillEnvelope(Envelope, Alpha = Alpha, Global = Global)
   # Return the envelope
-  return (Envelope)
+  return(Envelope)
 }

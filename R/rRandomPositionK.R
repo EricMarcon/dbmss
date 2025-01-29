@@ -1,26 +1,26 @@
 rRandomPositionK <- function(
-    X, 
-    Precision = 0, 
+    X,
+    Precision = 0,
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-   
+
   # Draw in a binomial process
   RandomizedX <- runifpoint(X$n, win = X$window)
-  
+
   # Precision
   if (Precision) {
     RandomizedX$x <- round(RandomizedX$x / Precision) * Precision
     RandomizedX$y <- round(RandomizedX$y / Precision) * Precision
   }
-  
+
   # Apply original marks to new points
   marks(RandomizedX) <- data.frame(
-    PointWeight = marks(X)$PointWeight, 
+    PointWeight = marks(X)$PointWeight,
     PointType = marks(X)$PointType
   )
   class(RandomizedX) <- c("wmppp", "ppp")
-  return (RandomizedX)
+  return(RandomizedX)
 }

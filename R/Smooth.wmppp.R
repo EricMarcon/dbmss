@@ -1,21 +1,21 @@
 Smooth.wmppp <- function(
-    X, 
-    fvind, 
-    distance = NULL, 
-    Quantiles = FALSE, 
-    sigma = bw.scott(X, isotropic = TRUE), 
-    Weighted = TRUE, 
-    Adjust = 1, 
-    Nbx = 128, 
+    X,
+    fvind,
+    distance = NULL,
+    Quantiles = FALSE,
+    sigma = bw.scott(X, isotropic = TRUE),
+    Weighted = TRUE,
+    Adjust = 1,
+    Nbx = 128,
     Nby = 128,
-    ..., 
+    ...,
     CheckArguments = TRUE) {
-  
+
   # Check the arguments
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-  
+
   if (Quantiles) {
     # Read the risk level in fvind
     if (is.null(attr(fvind, "Alpha"))) {
@@ -37,32 +37,32 @@ Smooth.wmppp <- function(
     is_ReferenceType <- (marks(X)$PointType == ReferenceType)
     X <- X[is_ReferenceType]
   }
-   
+
   # Check the consistency between X and fvind
   if (X$n != sum(startsWith(colnames(fvind), paste0(attr(fvind, "valu"), "_")))) {
-    stop(paste("The number of reference points in the function value is different from \n", 
+    stop(paste("The number of reference points in the function value is different from \n",
                "that of the reference points of the point pattern"))
   }
-  
+
   if (is.null(distance)) {
     # default distance
     distance <- stats::median(fvind$r)
   }
   # Find the max r value of fvind lower than or equal to argument distance
-  r_to_plot <- max(fvind$r[fvind$r<=distance])
+  r_to_plot <- max(fvind$r[fvind$r <= distance])
   # Weights
   if (Weighted) {
     weights <- marks(X)$PointWeight
   } else {
     weights <- rep(1, X$n)
   }
-  
+
   # Read the attributes of the fvind
   if (!is.null(attr(fvind, "Alpha"))) {
     Alpha <- attr(fvind, "Alpha")
     Qvalues <- attr(fvind, "Quantiles")[which(rownames(attr(fvind, "Quantiles")) == r_to_plot), ]
   }
-  
+
   if (Quantiles) {
     # Smooth the quantiles of the dbm
     # Make the quantiles the marks of X
@@ -72,13 +72,13 @@ Smooth.wmppp <- function(
     # Eliminate NA's before smoothing
     is_na <- is.na(marks(X))
     weights <- weights[!is_na]
-    X<- X[!is_na]
+    X <- X[!is_na]
     Image <- Smooth.ppp(
-      X, 
-      sigma = sigma, 
-      ..., 
-      weights = weights, 
-      adjust = Adjust, 
+      X,
+      sigma = sigma,
+      ...,
+      weights = weights,
+      adjust = Adjust,
       dimyx = c(Nby, Nbx)
     )
   } else {
@@ -91,13 +91,13 @@ Smooth.wmppp <- function(
     # Eliminate NA's before smoothing
     is_na <- is.na(marks(X))
     weights <- weights[!is_na]
-    X<- X[!is_na]
+    X <- X[!is_na]
     Image <- Smooth.ppp(
-      X, 
-      sigma = sigma, 
-      ..., 
-      weights = weights, 
-      adjust = Adjust, 
+      X,
+      sigma = sigma,
+      ...,
+      weights = weights,
+      adjust = Adjust,
       dimyx = c(Nby, Nbx)
     )
   }

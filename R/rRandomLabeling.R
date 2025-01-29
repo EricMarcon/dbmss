@@ -1,9 +1,9 @@
 rRandomLabeling <- function(
-    X, 
+    X,
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-  return (rRandomLocation(X, CheckArguments = FALSE))
+  return(rRandomLocation(X, CheckArguments = FALSE))
 }

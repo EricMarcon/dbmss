@@ -1,7 +1,7 @@
 rRandomLabelingM <- function(
-    X, 
+    X,
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
@@ -17,8 +17,8 @@ rRandomLabelingM <- function(
     RandomizedX <- rlabel(X)
     # Restore weights
     marks(RandomizedX)$PointWeight <- marks(X)$PointWeight
-    
+
     class(RandomizedX) <- c("wmppp", "ppp")
-    return (RandomizedX)
+    return(RandomizedX)
   }
 }

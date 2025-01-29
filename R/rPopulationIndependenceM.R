@@ -1,8 +1,8 @@
 rPopulationIndependenceM <- function(
-    X, 
-    ReferenceType, 
+    X,
+    ReferenceType,
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
@@ -33,6 +33,6 @@ rPopulationIndependenceM <- function(
     OtherPointsPP <- (X[marks(X)$PointType != ReferenceType])
     RandomizedX <- superimpose(ReferencePP, rlabel(OtherPointsPP))
     class(RandomizedX) <- c("wmppp", "ppp")
-    return (RandomizedX)
+    return(RandomizedX)
   }
 }

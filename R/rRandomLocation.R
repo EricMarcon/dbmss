@@ -1,15 +1,15 @@
 rRandomLocation <- function(
-    X, 
-    ReferenceType = "", 
+    X,
+    ReferenceType = "",
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
 
   if (inherits(X, "Dtable")) {
     # Dtable case
-    Index <- seq_along(marks(X)$PointType) 
+    Index <- seq_along(marks(X)$PointType)
     if (ReferenceType != "") {
       # Retain a single point type
       ReferencePoints <- (marks(X)$PointType == ReferenceType)
@@ -40,8 +40,8 @@ rRandomLocation <- function(
     } else {
       RandomizedX <- rlabel(X)
     }
-    
+
     class(RandomizedX) <- c("wmppp", "ppp")
-    return (RandomizedX)
+    return(RandomizedX)
   }
 }

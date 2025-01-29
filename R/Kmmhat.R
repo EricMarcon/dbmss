@@ -1,16 +1,16 @@
 Kmmhat <- function(
-    X, 
-    r = NULL, 
-    ReferenceType = "", 
+    X,
+    r = NULL,
+    ReferenceType = "",
     CheckArguments = TRUE) {
 
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-  
+
   # KmmBymarkcorrint calls Kmark (previously called markcorrint)
   # with the best edge-effect correction and returns the values
-  KmmBymarkcorrint <- function (X, r) {
+  KmmBymarkcorrint <- function(X, r) {
     X.marked <- X
     # Weights are normalized so that their mean is 1 because markcorrint returns
     # Kmm * mean weight instead of Kmm (as of v. 1.27-0 of spatstat).
@@ -18,14 +18,14 @@ Kmmhat <- function(
     Kmm <- spatstat.explore::Kmark(X.marked, correction = "best")
     attr(Kmm, "ylab") <- attr(Kmm, "yexp") <- quote(K[mm](r))
     attr(Kmm, "fname") <- "K[mm]"
-    return (Kmm)
-  } 
-  
+    return(Kmm)
+  }
+
   # Kmm all points or specified point type
   if (ReferenceType == "") {
-    return (KmmBymarkcorrint(X, r))
+    return(KmmBymarkcorrint(X, r))
     } else {
     X.reduced <- X[marks(X)$PointType == ReferenceType]
-    return (KmmBymarkcorrint(X.reduced, r))
-  }   
+    return(KmmBymarkcorrint(X.reduced, r))
+  }
 }

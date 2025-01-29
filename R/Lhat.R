@@ -1,25 +1,25 @@
 Lhat <- function(
-    X, 
-    r = NULL, 
-    ReferenceType = "", 
-    NeighborType = "", 
+    X,
+    r = NULL,
+    ReferenceType = "",
+    NeighborType = "",
     CheckArguments = TRUE) {
-  
+
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-  
+
   K <- Khat(
-    X, 
-    r = r, 
-    ReferenceType = ReferenceType, 
+    X,
+    r = r,
+    ReferenceType = ReferenceType,
     NeighborType = NeighborType
   )
   Columns <- names(K)[-1]
-  for(i in Columns) {
+  for (i in Columns) {
     K[[i]] <- sqrt(K[[i]] / pi) - K$r
   }
   attr(K, "ylab") <- attr(K, "yexp") <- quote(L(r))
   attr(K, "fname") <- "L"
-  return (K)
+  return(K)
 }

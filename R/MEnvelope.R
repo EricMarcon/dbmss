@@ -1,26 +1,26 @@
 MEnvelope <- function(
-    X, 
-    r = NULL, 
-    NumberOfSimulations = 100, 
-    Alpha = 0.05, 
-    ReferenceType, 
-    NeighborType = ReferenceType, 
-    CaseControl = FALSE, 
-    SimulationType = "RandomLocation", 
-    Global = FALSE, 
+    X,
+    r = NULL,
+    NumberOfSimulations = 100,
+    Alpha = 0.05,
+    ReferenceType,
+    NeighborType = ReferenceType,
+    CaseControl = FALSE,
+    SimulationType = "RandomLocation",
+    Global = FALSE,
     verbose = interactive()) {
 
   CheckdbmssArguments()
-    
+
   # Choose the null hypothesis
-  SimulatedPP <- switch (
+  SimulatedPP <- switch(
     SimulationType,
     RandomLocation = expression(rRandomLocation(X, CheckArguments = FALSE)),
     RandomLabeling = expression(rRandomLabelingM(X, CheckArguments = FALSE)),
     PopulationIndependence = expression(
       rPopulationIndependenceM(
-        X, 
-        ReferenceType = ReferenceType, 
+        X,
+        ReferenceType = ReferenceType,
         CheckArguments = FALSE
       )
     )
@@ -28,26 +28,26 @@ MEnvelope <- function(
   if (is.null(SimulatedPP)) {
     stop(
       paste(
-        "The null hypothesis", 
-        sQuote(SimulationType), 
+        "The null hypothesis",
+        sQuote(SimulationType),
         "has not been recognized."
       )
     )
   }
-   
+
   # local envelope, keep extreme values for lo and hi (nrank=1)
   Envelope <- envelope(
-    X, 
-    fun = Mhat, 
-    nsim = NumberOfSimulations, 
+    X,
+    fun = Mhat,
+    nsim = NumberOfSimulations,
     nrank = 1,
-    r = r, 
-    ReferenceType = ReferenceType, 
-    NeighborType = NeighborType, 
-    CaseControl = CaseControl, 
+    r = r,
+    ReferenceType = ReferenceType,
+    NeighborType = NeighborType,
+    CaseControl = CaseControl,
     CheckArguments = FALSE,
-    simulate = SimulatedPP, 
-    verbose = verbose, 
+    simulate = SimulatedPP,
+    verbose = verbose,
     savefuns = TRUE
   )
   attr(Envelope, "einfo")$H0 <- switch(
@@ -61,5 +61,5 @@ MEnvelope <- function(
   # No edge effect correction
   attr(Envelope, "einfo")$valname <- NULL
   # Return the envelope
-  return (Envelope)
+  return(Envelope)
 }

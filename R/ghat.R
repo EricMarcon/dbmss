@@ -1,8 +1,8 @@
 ghat <- function(
-    X, 
-    r = NULL, 
-    ReferenceType = "", 
-    NeighborType = "", 
+    X,
+    r = NULL,
+    ReferenceType = "",
+    NeighborType = "",
     CheckArguments = TRUE) {
 
   if (CheckArguments) {
@@ -45,7 +45,7 @@ ghat <- function(
   if (is.null(r)) {
     r <- rBest
   }
-  
+
   # Find pairs
   # g intra
   if (ReferenceType == "" & NeighborType == "") {
@@ -56,7 +56,7 @@ ghat <- function(
       Pairs <- closepairs(X.reduced, rmax = max(r))
     }
     # g inter
-    if (ReferenceType!=NeighborType) {
+    if (ReferenceType != NeighborType) {
       Pairs <- crosspairs(X = X.cross, Y = Y.cross, rmax = max(r))
     }
   }
@@ -66,7 +66,7 @@ ghat <- function(
   # Geometry
   XI <- ppp(Pairs$xi, Pairs$yi, window = X$window, check = FALSE)
   XJ <- ppp(Pairs$xj, Pairs$yj, window = X$window, check = FALSE)
-  
+
   # Edge-effect correction
   if (is.rectangle(X$window) |  is.polygonal(X$window)) {
     edgewt <- edge.Ripley(XI, r = matrix(Pairs$d, ncol = 1))
@@ -74,22 +74,22 @@ ghat <- function(
     desc <- "Ripley isotropic correction estimate of %s"
   } else {
     edgewt <- edge.Trans(X = XI, Y = XJ, paired = TRUE)
-    valu <- "trans"    
+    valu <- "trans"
     desc <- "translation-corrected estimate of %s"
   }
 
-  # Estimate g  
+  # Estimate g
   gEstimate <- sewpcf(
-    Pairs$d, 
-    w = edgewt, 
-    denargs = denargs, 
+    Pairs$d,
+    w = edgewt,
+    denargs = denargs,
     lambda2area = lambdaI * lambdaJ * area
   )
   # Calculate values for r if specified
   if (!autor) {
     g <- stats::approx(
-      x = gEstimate$r, 
-      y = gEstimate$g, 
+      x = gEstimate$r,
+      y = gEstimate$g,
       xout = r
     )$y
     gEstimate <- data.frame(r, g)
@@ -99,18 +99,18 @@ ghat <- function(
   gEstimate <- data.frame(gEstimate[, 1], theo, gEstimate[, 2])
   ColNames <- c("r", "theo", valu)
   colnames(gEstimate) <- ColNames
-  
+
   # Return the values of g(r)
   g <- fv(
-    gEstimate, 
-    argu = "r", 
-    ylab = quote(g(r)), 
-    valu = valu, 
-    fmla= ". ~ r", 
-    alim = c(0, max(r)), 
-    labl = c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep="")), 
+    gEstimate,
+    argu = "r",
+    ylab = quote(g(r)),
+    valu = valu,
+    fmla = ". ~ r",
+    alim = c(0, max(r)),
+    labl = c("r", "%s[pois](r)", paste("hat(%s)[", valu, "](r)", sep = "")),
     desc = c("distance argument r", "theoretical Poisson %s", desc),
-    unitname = X$window$unit, 
+    unitname = X$window$unit,
     fname = "g"
   )
   fvnames(g, ".") <- ColNames[-1]

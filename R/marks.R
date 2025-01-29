@@ -3,7 +3,7 @@ marks.Dtable <- function (x, ...) {
   return(as.data.frame(x$marks))
 }
 
-`marks<-.Dtable` <- function (x, ..., value) {
+`marks<-.Dtable` <- function(x, ..., value) {
   # marks replacement method for Dtable
   y <- x
   y$marks <- value
@@ -12,10 +12,10 @@ marks.Dtable <- function (x, ...) {
 
 `marks<-.wmppp` <- function(x, ..., dfok = TRUE, drop = TRUE, value) {
   Y <- spatstat.geom::`marks<-.ppp`(
-    x, 
-    ..., 
-    dfok = TRUE, 
-    drop = TRUE, 
+    x,
+    ...,
+    dfok = TRUE,
+    drop = TRUE,
     value = value
   )
   class(Y) <- c("wmppp", "ppp")

@@ -1,8 +1,8 @@
 Dtable <- function(
-    Dmatrix, 
-    PointType = NULL, 
+    Dmatrix,
+    PointType = NULL,
     PointWeight = NULL) {
-  
+
   # Dmatrix must be a distance matrix
   if (is.matrix(Dmatrix)) {
     if (nrow(Dmatrix) != ncol(Dmatrix)) {
@@ -30,7 +30,7 @@ Dtable <- function(
         # Check row and col names are identical
         if (colnames(Dmatrix) != rownames(Dmatrix))
           stop("row and column names of the distance matrix are different.")
-      } 
+      }
     } else {
       if (!is.null(colnames(Dmatrix)))
         PointType <- colnames(Dmatrix)
@@ -63,7 +63,7 @@ Dtable <- function(
       stop("The vector of point weights must have the same size as Dmatrix.")
     }
   }
-  
+
   # Build the object
   Dt <- list(
     Dmatrix = Dmatrix,
@@ -71,5 +71,5 @@ Dtable <- function(
     marks = list(PointType = PointType, PointWeight = PointWeight)
   )
   class(Dt) <- "Dtable"
-  return (Dt)
+  return(Dt)
 }

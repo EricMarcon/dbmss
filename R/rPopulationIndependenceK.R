@@ -1,15 +1,15 @@
 rPopulationIndependenceK <- function(
-    X, 
-    ReferenceType, 
-    NeighborType, 
+    X,
+    ReferenceType,
+    NeighborType,
     CheckArguments = TRUE) {
 
   if (CheckArguments) {
     CheckdbmssArguments()
   }
-    
+
   # Eliminate useless points
-  X.reduced <- 
+  X.reduced <-
     (X[marks(X)$PointType == ReferenceType | marks(X)$PointType == NeighborType])
   RandomizedX <- X.reduced
   # Reduce the factor levels to two (factor eliminates the levels with no points)
@@ -25,7 +25,7 @@ rPopulationIndependenceK <- function(
   # Reorganize the marks (add weight)
   PointWeight <- rep(1, RandomizedX$n)
   PointType   <- marks(RandomizedX)
-  marks(RandomizedX) <- data.frame(PointWeight, PointType)  
+  marks(RandomizedX) <- data.frame(PointWeight, PointType)
   class(RandomizedX) <- c("wmppp", "ppp")
-  return (RandomizedX)
+  return(RandomizedX)
 }
