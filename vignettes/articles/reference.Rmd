@@ -145,40 +145,40 @@ See @Marcon2012c for a full review.
 Reference points are denoted $x_i$, neighbor points are $x_j$. 
 For density functions such as $g$, neighbors of $x_i$ are counted at a chosen distance $r$:
 
-$$n\left(x_i,r\right){\rm =}\sum_{j{\rm ,\ }i\ne j}{k\left(\left\|x_i{\rm -}x_j\right\|,r\right)c\left(i,j\right)}$$
+$$n\left(x_i, r\right) = \sum_{j, i\ne j}{k\left(\left\|x_i - x_j\right\|, r\right)c\left(i, j\right)}$$
 
-$k(\left\|x_i{\rm -}x_j\right\|,r)$ is a kernel estimator, necessary to evaluate the number of neighbors at distance $r$, and $c(i,j)$ is an edge-effect correction (points located close to boundaries have less neighbors because of the lack of knowledge outside the observation window).
+$k(\left\|x_i - x_j\right\|,r)$ is a kernel estimator, necessary to evaluate the number of neighbors at distance $r$, and $c(i,j)$ is an edge-effect correction (points located close to boundaries have less neighbors because of the lack of knowledge outside the observation window).
 
 To compute the bivariate $M$ function, reference points are of a particular type in a marked point pattern: $x_i \in \mathcal{R}$, where $\mathcal{R}$ is the set of points of the reference type. Neighbors of the chosen type are denoted $x_j \in \mathcal{N}$. 
 In cumulative functions such as $M$, neighbors are counted up to $r$:
 
-$$n\left(x_i,r\right){\rm =}\sum_{x_j \in \mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le r\right)w\left(x_j\right)}$$
+$$n\left(x_i, r\right) = \sum_{x_j \in \mathcal{N}, i \ne j}{{\mathbf 1}\left(\left\|x_i - x_j\right\|\le r\right)w\left(x_j\right)}$$
 
 Points can be weighted, $w(x_j)$ is the neighbor's weight.
 
 The number of neighbors is averaged then. 
 $n$ is the number of reference points:
 
-$$\bar{n}\left(r\right)=\frac{1}{n}\sum_i{n\left(x_i,r\right)}$$
+$$\bar{n}\left(r\right) = \frac{1}{n}\sum_i{n\left(x_i, r\right)}$$
 
 The average number of neighbors is compared to a reference measure. 
 It may be a measure of space (the perimeter of the circle of radius $r$ for $g$), defining topographic functions:
 
-$$z\left(r\right)=2 \pi r$$
+$$z\left(r\right) = 2 \pi r$$
 
 It may also be the average number of neighbors of all types in a relative function such as $M$:
 
-$$z\left(r\right)=\frac{1}{n}\sum_{j,i\ne j}{{\mathbf 1}\left(\left\|x_i{\rm -}x_j\right\|\le r\right)w\left(x_j\right)}$$
+$$z\left(r\right) = \frac{1}{n}\sum_{j, i \ne j}{{\mathbf 1}\left(\left\|x_i - x_j\right\|\le r\right) w\left(x_j\right)}$$
 
 Finally, $\frac{\bar{n}(r)}{z(r)}$ is compared to the same ratio computed on the whole window. 
 For $g$:
 
-$$\frac{\bar{n}_0}{z_0}{\rm =}\frac{n-1}{A}$$
+$$\frac{\bar{n}_0}{z_0} = \frac{n - 1}{A}$$
 
 $A$ is the area of the window, $\bar{n}_0$ and $z_0$ are the limit values of $\bar{n}(r)$ and $z(r)$ when $r$ gets larger than the window's size. 
 For $M$, it comes:
 
-$$\frac{{\bar{n}}_0}{z_0}=\sum_i{\frac{W_\mathcal{N}}{W-w\left(x_i\right)}}$$
+$$\frac{{\bar{n}}_0}{z_0} = \sum_i{\frac{W_\mathcal{N}}{W - w\left(x_i\right)}}$$
 
 $W_\mathcal{N}$ is the total weight of neighbor points, $W$ that of all points. 
 Finally, despite the functions are quite different (density vs. cumulative, topographic vs. relative, univariate vs. bivariate), both estimators can be written as ${\frac{{\bar{n}}}{z}}/{\frac{{\bar{n}}_0}{z_0}}$. 
