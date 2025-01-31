@@ -1,7 +1,8 @@
-# dbmss 2.9-2.9002
+# dbmss 2.9-2.9100
 
 ## Improvements
 
+- parallelized MEnvelope code.
 - avoided accessing ppp objects' marks directly.
 - cleaned up the code
 

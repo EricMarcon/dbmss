@@ -8,9 +8,20 @@ MEnvelope <- function(
     CaseControl = FALSE,
     SimulationType = "RandomLocation",
     Global = FALSE,
-    verbose = interactive()) {
+    verbose = interactive(),
+    parallel = FALSE) {
 
-  CheckdbmssArguments()
+  # CheckdbmssArguments()
+
+  if (parallel && is(future::plan(), "sequential")) {
+    warning(
+      c(
+        "You chose parallel computing but the plan is sequential.\n",
+        "You may want to set a plan such as\n
+        `plan(multisession, workers = availableCores() - 1)`"
+      )
+    )
+  }
 
   # Choose the null hypothesis
   SimulatedPP <- switch(
@@ -35,11 +46,22 @@ MEnvelope <- function(
     )
   }
 
+  # Parallel?
+  if (parallel & NumberOfSimulations > 4) {
+    nSimSerial <- 4
+    nSimParallel <-  NumberOfSimulations - 4
+
+  } else {
+    nSimSerial <- NumberOfSimulations
+    nSimParallel <- 0
+  }
+
+  # Serial.
   # local envelope, keep extreme values for lo and hi (nrank=1)
   Envelope <- envelope(
     X,
     fun = Mhat,
-    nsim = NumberOfSimulations,
+    nsim = nSimSerial,
     nrank = 1,
     r = r,
     ReferenceType = ReferenceType,
@@ -47,9 +69,40 @@ MEnvelope <- function(
     CaseControl = CaseControl,
     CheckArguments = FALSE,
     simulate = SimulatedPP,
-    verbose = verbose,
+    verbose = ifelse(nSimParallel > 0, FALSE, verbose),
     savefuns = TRUE
   )
+
+  # Parallel
+  if (nSimParallel > 0) {
+    # Run simulations
+    ParalellSims <- foreach(
+      Simulation = seq_len(nSimParallel),
+      .combine = cbind,
+      .options.future = list(seed = TRUE)
+    ) %dofuture% {
+      SimulatedPP <- switch(
+        SimulationType,
+        RandomLocation = rRandomLocation(X, CheckArguments = FALSE),
+        RandomLabeling = rRandomLabelingM(X, CheckArguments = FALSE),
+        PopulationIndependence = rPopulationIndependenceM(
+          X,
+          ReferenceType = ReferenceType,
+          CheckArguments = FALSE
+        )
+      )
+      M <- Mhat(
+        SimulatedPP,
+        ReferenceType = ReferenceType,
+        NeighborType = NeighborType,
+        CaseControl = CaseControl,
+        CheckArguments = FALSE
+      )$M
+    }
+    # Merge the values into the envelope
+    attr(Envelope, "simfuns") <- cbind(attr(Envelope, "simfuns"), ParalellSims)
+  }
+
   attr(Envelope, "einfo")$H0 <- switch(
     SimulationType,
     RandomLocation = "Random Location",
