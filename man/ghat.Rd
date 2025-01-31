@@ -28,12 +28,13 @@ ghat(X, r = NULL, ReferenceType = "", NeighborType = "", CheckArguments = TRUE)
 }
 \details{
   The computation of \code{ghat} relies on spatstat function \code{\link[spatstat.explore]{sewpcf}}.
+  The kernel estimation of the number of neighbors follows Stoyan and Stoyan (1994, pages 284–285).
 }
 \value{
   An object of class \code{fv}, see \code{\link[spatstat.explore]{fv.object}}, which can be plotted directly using \code{\link[spatstat.explore]{plot.fv}}.
 }
 \references{
-  Stoyan, D. and Stoyan, H. (1994) \emph{Fractals, random shapes and point fields: methods of geometrical statistics}. John Wiley and Sons. 
+  Stoyan, D. and Stoyan, H. (1994) \emph{Fractals, random shapes and point fields: methods of geometrical statistics}. John Wiley and Sons.
 }
 \seealso{
   \code{\link{gEnvelope}}
