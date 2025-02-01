@@ -54,13 +54,13 @@ CheckdbmssArguments <- function() {
   # ReferenceType
   if (!is.na(names(Args["ReferenceType"]))) {
     ReferenceType <- eval(expression(ReferenceType), parent.frame())
-    if (ReferenceType!="" & !ReferenceType %in% marks(X)$PointType)
+    if (ReferenceType != "" & !ReferenceType %in% marks(X)$PointType)
       ErrorMessage("ReferenceType must be a point type of the point pattern", ReferenceType)
   }
   # NeighborType
   if (!is.na(names(Args["NeighborType"]))) {
     NeighborType <- eval(expression(NeighborType), parent.frame())
-    if (NeighborType!="" & !NeighborType %in% marks(X)$PointType)
+    if (NeighborType != "" & !NeighborType %in% marks(X)$PointType)
       ErrorMessage("NeighborType must be a point type of the point pattern", NeighborType)
   }
   # Cases
@@ -110,7 +110,7 @@ CheckdbmssArguments <- function() {
       ErrorMessage("Adjust must be a number", Adjust)
     if (length(Adjust) > 1)
       ErrorMessage(paste("Adjust must be a single number, not a vector of length", length(Adjust)), Adjust)
-    if (Adjust<=0)
+    if (Adjustv<= 0)
       ErrorMessage("Adjust must be strictly positive", Adjust)
   }
   # Approximate
@@ -200,6 +200,12 @@ CheckdbmssArguments <- function() {
     Original <- eval(expression(Original), parent.frame())
     if (!is.logical(Original))
       ErrorMessage("Original must be TRUE or FALSE", Original)
+  }
+  # parallel
+  if (!is.na(names(Args["parallel"]))) {
+    parallel <- eval(expression(parallel), parent.frame())
+    if (!is.logical(parallel))
+      ErrorMessage("parallel must be TRUE or FALSE", parallel)
   }
   # Precision
   if (!is.na(names(Args["Precision"]))) {
