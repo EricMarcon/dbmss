@@ -101,6 +101,8 @@ MEnvelope <- function(
     }
     # Merge the values into the envelope
     attr(Envelope, "simfuns") <- cbind(attr(Envelope, "simfuns"), ParalellSims)
+    attr(Envelope, "einfo")$nsim <- NumberOfSimulations
+    attr(Envelope, "einfo")$Nsim <- NumberOfSimulations
   }
 
   attr(Envelope, "einfo")$H0 <- switch(
