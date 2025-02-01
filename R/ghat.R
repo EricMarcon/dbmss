@@ -35,30 +35,37 @@ ghat <- function(
     }
   }
 
-  # Find the best breaks
-  rmaxdefault <- rmax.rule("K", X$window, lambdaJ)
-  breaks <- handle.r.b.args(window = X$window, rmaxdefault = rmaxdefault)
-  rBest <- breaks$r
-  denargs <- spatstat.utils::resolve.defaults(
-    list(kernel = "epanechnikov",  n = length(rBest), from = 0, to = max(rBest))
-  )
+  # Find the max value of r
   if (is.null(r)) {
+    rmax <- rmax.rule(fun = "K", W = X$window, lambda = lambdaJ)
+  } else {
+    rmax <- max(r)
+  }
+
+  # Find the best breaks
+  breaks <- handle.r.b.args(window = X$window, rmaxdefault = rmax)
+  rBest <- breaks$r
+  if (is.null(r)) {
+    # set default r
     r <- rBest
   }
 
+
+  # Bandwidth (Stoyan and Stoyan, 1994, pages 284–285)
+  stoyan <- 0.15
+  hmax <- stoyan / sqrt(lambdaJ)
+  bw <- hmax / sqrt(5)
+
   # Find pairs
-  # g intra
   if (ReferenceType == "" & NeighborType == "") {
-    Pairs <- closepairs(X, rmax = max(r))
-  } else {
+    # g intra
+    Pairs <- closepairs(X, rmax = rmax + hmax)
+  } else if (ReferenceType == NeighborType) {
     # g intra for a single point type
-    if (ReferenceType == NeighborType) {
-      Pairs <- closepairs(X.reduced, rmax = max(r))
-    }
+    Pairs <- closepairs(X.reduced, rmax = rmax + hmax)
+  } else {
     # g inter
-    if (ReferenceType != NeighborType) {
-      Pairs <- crosspairs(X = X.cross, Y = Y.cross, rmax = max(r))
-    }
+    Pairs <- crosspairs(X = X.cross, Y = Y.cross, rmax = rmax + hmax)
   }
 
   # Adapted from pcf.ppp {spatstat}
@@ -82,9 +89,18 @@ ghat <- function(
   gEstimate <- sewpcf(
     Pairs$d,
     w = edgewt,
-    denargs = denargs,
+    denargs = spatstat.utils::resolve.defaults(
+      list(
+        kernel = "epanechnikov",
+        bw = bw,
+        n = length(rBest),
+        from = 0,
+        to = max(rBest)
+      )
+    ),
     lambda2area = lambdaI * lambdaJ * area
   )
+
   # Calculate values for r if specified
   if (!autor) {
     g <- stats::approx(
@@ -94,6 +110,7 @@ ghat <- function(
     )$y
     gEstimate <- data.frame(r, g)
   }
+
   # Add theoretical value
   theo <- rep(1, length(r))
   gEstimate <- data.frame(gEstimate[, 1], theo, gEstimate[, 2])

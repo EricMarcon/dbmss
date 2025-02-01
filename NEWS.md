@@ -1,8 +1,19 @@
-# dbmss 2.9-2.9100
+# dbmss 2.9-2.9103
 
 ## Improvements
 
 - parallelized MEnvelope code.
+
+
+# dbmss 2.9-2.9003
+
+## Improvements
+
+- improved the estimation of the g function in `ghat()`:
+  * bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
+  * the max distance is no longer censored, for consistency with other functions.
+  * the estimation was not correct at last distances.
+>>>>>>> master
 - avoided accessing ppp objects' marks directly.
 - cleaned up the code
 

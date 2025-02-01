@@ -27,6 +27,9 @@ reference:
     desc:  Non-parametric summary statistics of point patterns.
     contents:
     - ends_with("hat")
+  - title: Confidence envelopes
+    desc: Confidence envelopes for the non-parametric summary statistics of point patterns.
+    contents:
     - ends_with("Envelope")
   - title: Tests
     desc:  Statistical tests.
