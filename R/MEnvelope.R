@@ -13,13 +13,14 @@ MEnvelope <- function(
 
   # CheckdbmssArguments()
 
-  if (parallel && is(future::plan(), "sequential")) {
+  if (parallel && methods::is(future::plan(), "sequential")) {
     warning(
       c(
         "You chose parallel computing but the plan is sequential.\n",
         "You may want to set a plan such as\n
-        `plan(multisession, workers = availableCores() - 1)`"
-      )
+        `library(future)`\n
+        `plan(multisession, workers = availableCores(omit = 1))`"
+)
     )
   }
 
@@ -76,7 +77,7 @@ MEnvelope <- function(
   # Parallel
   if (nSimParallel > 0) {
     # Run simulations
-    ParalellSims <- foreach(
+    ParalellSims <- foreach::foreach(
       Simulation = seq_len(nSimParallel),
       .combine = cbind,
       .options.future = list(seed = TRUE)

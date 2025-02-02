@@ -20,7 +20,11 @@ Depends:
   spatstat.explore
 Imports:
   cubature,
+  doFuture,
+  foreach,
+  future,
   ggplot2, 
+  methods,
   RcppParallel, 
   reshape2, 
   rlang, 
