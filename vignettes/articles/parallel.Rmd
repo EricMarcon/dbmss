@@ -101,5 +101,5 @@ See the documentation of the *future* package, namely `future::plan()`.
 
 Setting up the parallel code and gathering the results takes time so the performance of sequential simulations may be better if they are fast.
 
-
+  
 # References

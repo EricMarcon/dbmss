@@ -110,7 +110,7 @@ CheckdbmssArguments <- function() {
       ErrorMessage("Adjust must be a number", Adjust)
     if (length(Adjust) > 1)
       ErrorMessage(paste("Adjust must be a single number, not a vector of length", length(Adjust)), Adjust)
-    if (Adjustv<= 0)
+    if (Adjust <= 0)
       ErrorMessage("Adjust must be strictly positive", Adjust)
   }
   # Approximate
