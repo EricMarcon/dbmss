@@ -44,7 +44,7 @@ GoFtest <- function(Envelope) {
 }
 
 
-GoFtest <- function (
+GoFtest <- function(
     Envelope,
     Scaling = "asymmetric",
     Method = "integral") {
@@ -78,7 +78,7 @@ GoFtest <- function (
   }
 
   NumberOfSimulations <- dim(SimulatedValues)[2]
-  AverageSimulatedValues <- apply(SimulatedValues, 1, sum)/(NumberOfSimulations -                                                          1)
+  AverageSimulatedValues <- apply(SimulatedValues, 1, sum) / (NumberOfSimulations - 1)
   rIncrements <- (r - c(0, r)[seq_along(r)])[-1]
 
   # Calculate the weights to scale the residuals of the statistic
