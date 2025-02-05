@@ -1,8 +1,9 @@
-# dbmss 2.9-2.9103
+# dbmss 2.9-2.9104
 
 ## Improvements
 
 - parallelized MEnvelope code.
+- parallelized gEnvelope code.
 
 
 # dbmss 2.9-2.9003
