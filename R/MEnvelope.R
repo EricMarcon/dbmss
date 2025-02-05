@@ -9,7 +9,8 @@ MEnvelope <- function(
     SimulationType = "RandomLocation",
     Global = FALSE,
     verbose = interactive(),
-    parallel = FALSE) {
+    parallel = FALSE,
+    parallel_progress = 100) {
 
   CheckdbmssArguments()
 
@@ -76,7 +77,7 @@ MEnvelope <- function(
   # Parallel
   if (nSimParallel > 0) {
     # Run simulations
-    progress <- progressr::progressor(steps = nSimParallel / 100)
+    progress <- progressr::progressor(steps = nSimParallel / parallel_progress)
     ParalellSims <- foreach::foreach(
       Simulation = seq_len(nSimParallel),
       .combine = cbind,
@@ -101,7 +102,7 @@ MEnvelope <- function(
         CheckArguments = FALSE
       )$M
       # Progress every percent
-      if (Simulation %% 100 == 0) progress()
+      if (Simulation %% parallel_progress == 0) progress()
       M
     }
     # Merge the values into the envelope
