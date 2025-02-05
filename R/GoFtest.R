@@ -54,18 +54,18 @@ GoFtest <- function(
     stop("Envelope is not of class envelope")
   }
   # Verify Scaling
-  if(!is.character(Scaling) && !is.vector(Scaling) && !length(Scaling) == 1) {
+  if (!is.character(Scaling) | !is.vector(Scaling) | !length(Scaling) == 1) {
     stop("Argument 'Scaling' must be a character vector of length one")
   }
-  if(!(Scaling %in% c("quantile", "studentized", "asymmetric", "none"))) {
+  if (!(Scaling %in% c("quantile", "studentized", "asymmetric", "none"))) {
     stop("Invalid argument: 'Scaling'. Accepted arguments are: quantile,
     studentized, asymmetric, none.")
   }
   # Verify Method
-  if(!is.character(Method) && !is.vector(Method) && !length(Method) == 1) {
+  if (!is.character(Method) | !is.vector(Method) | !length(Method) == 1) {
     stop("Argument 'Method' must be a character vector of length one")
   }
-  if(!(Method %in% c("Integral", "Supremum"))) {
+  if (!(Method %in% c("Integral", "Supremum"))) {
     stop("Invalid argument: 'Method'. Accepted arguments are: Integral, Supremum.")
   }
   # Verify simulations
@@ -101,7 +101,7 @@ GoFtest <- function(
   Ui <- function(SimulationNumber) {
     Departure <- (SimulatedValues[, SimulationNumber] -
                     AverageSimulatedValues)[seq_along(r) - 1]
-    if(inherits(Weights, "list")) {
+    if (inherits(Weights, "list")) {
       ScaledDeparture <- sapply(seq_along(Departure),
                                 FUN= function(x) ifelse(Departure[x]>=0,
                                                         Departure[x]*Weights$UprW[x],
@@ -110,10 +110,10 @@ GoFtest <- function(
     } else {
       ScaledDeparture <- Departure*Weights[seq_along(r) - 1]
     }
-    if(Method == "Integral") {
+    if (Method == "Integral") {
       GofStatistic <- sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
                             rIncrements[!is.nan(ScaledDeparture)], na.rm = T)
-    } else if(Method == "Supremum") {
+    } else if (Method == "Supremum") {
       GofStatistic <- max(ScaledDeparture, na.rm = T)
     }
     return(GofStatistic)
@@ -128,7 +128,7 @@ GoFtest <- function(
 
   # Calculate the Ui statistic for the actual value
   ResidualValues <- (ActualValues - AverageSimulatedValues)[seq_along(r) - 1]
-  if(inherits(Weights, "list")) {
+  if (inherits(Weights, "list")) {
     ScaledResidualValues <- sapply(seq_along(ResidualValues),
                                    FUN= function(x) ifelse(ResidualValues[x]>=0,
                                                            ResidualValues[x]*Weights$UprW[x],
@@ -137,10 +137,10 @@ GoFtest <- function(
   } else {
     ScaledResidualValues <- ResidualValues*Weights[seq_along(r) - 1]
   }
-  if(Method == "Integral") {
+  if (Method == "Integral") {
     ActualU <- sum((ScaledResidualValues[!is.nan(ScaledResidualValues)])^2 *
                      rIncrements[!is.nan(ScaledResidualValues)], na.rm = T)
-  } else if(Method == "Supremum") {
+  } else if (Method == "Supremum") {
     ActualU <- max(ScaledResidualValues, na.rm = T)
   }
 
