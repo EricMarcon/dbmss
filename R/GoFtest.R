@@ -47,7 +47,7 @@ GoFtest <- function(Envelope) {
 GoFtest <- function(
     Envelope,
     Scaling = "asymmetric",
-    Method = "integral") {
+    Method = "Integral") {
 
   # Verify Envelope
   if (!inherits(Envelope, "envelope")) {
@@ -57,7 +57,7 @@ GoFtest <- function(
   if(!is.character(Scaling) && !is.vector(Scaling) && !length(Scaling) == 1) {
     stop("Argument 'Scaling' must be a character vector of length one")
   }
-  if(!(Scaling %in% c("quantile","studentized","asymmetric","none"))) {
+  if(!(Scaling %in% c("quantile", "studentized", "asymmetric", "none"))) {
     stop("Invalid argument: 'Scaling'. Accepted arguments are: quantile,
     studentized, asymmetric, none.")
   }
@@ -65,8 +65,8 @@ GoFtest <- function(
   if(!is.character(Method) && !is.vector(Method) && !length(Method) == 1) {
     stop("Argument 'Method' must be a character vector of length one")
   }
-  if(!(Method %in% c("integral","supremum"))) {
-    stop("Invalid argument: 'Method'. Accepted arguments are: integral, supremum.")
+  if(!(Method %in% c("Integral", "Supremum"))) {
+    stop("Invalid argument: 'Method'. Accepted arguments are: Integral, Supremum.")
   }
   # Verify simulations
   if (is.null(attr(Envelope, "simfuns"))) {
@@ -84,18 +84,14 @@ GoFtest <- function(
   # Calculate the weights to scale the residuals of the statistic
   if(Scaling == "studentized") {
     Weights <- 1/apply(SimulatedValues, 1, sd, na.rm = T)
-    Weights[!(is.finite(Weights))] <- 0
   } else if (Scaling == "quantile") {
     Weights <- 1/(apply(SimulatedValues, 1, quantile, probs = 0.975, na.rm = T)-
                     apply(SimulatedValues, 1, quantile, probs = 0.025, na.rm = T))
-    Weights[!(is.finite(Weights))]<- 0
   } else if (Scaling == "asymmetric") {
     Upper <- 1/(apply(SimulatedValues,1,quantile,probs = 0.975,na.rm = T)-
                   AverageSimulatedValues)
     Lower <- 1/(AverageSimulatedValues-
                   apply(SimulatedValues, 1, quantile, probs = 0.025, na.rm = T))
-    Upper[!(is.finite(Upper))] <- 0
-    Lower[!(is.finite(Lower))] <- 0
     Weights <- list(UprW = Upper, LwrW = Lower)
   } else {
     Weights <- rep(1,length(r))
@@ -114,29 +110,40 @@ GoFtest <- function(
     } else {
       ScaledDeparture <- Departure*Weights[seq_along(r) - 1]
     }
-    if(Method == "integral") {
-      GoFstatistic <- sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
+    if(Method == "Integral") {
+      GofStatistic <- sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
                             rIncrements[!is.nan(ScaledDeparture)], na.rm = T)
-    } else if(Method == "supremum") {
-      GoFstatistic <- max(ScaledDeparture, na.rm = T)
+    } else if(Method == "Supremum") {
+      GofStatistic <- max(ScaledDeparture, na.rm = T)
     }
-    return(GoFstatistic)
+    return(GofStatistic)
   }
 
-  # Merge all simulations and the actual value to calculate the Ui statistics
-  SimulatedValues <- cbind(SimulatedValues, ActualValues)
-  NewNumberOfSimulations <- dim(SimulatedValues)[2]
-
-  # Calculate the Ui statistic for all simulations and the actual value
+  # Calculate the Ui statistic for all simulations
   SimulatedU <- vapply(
-    seq_len(NewNumberOfSimulations),
+    seq_len(NumberOfSimulations),
     FUN = Ui,
     FUN.VALUE = 0
   )
 
-  # Extract the Ui statistic of the actual value
-  ActualU <- SimulatedU[length(SimulatedU)]
+  # Calculate the Ui statistic for the actual value
+  ResidualValues <- (ActualValues - AverageSimulatedValues)[seq_along(r) - 1]
+  if(inherits(Weights, "list")) {
+    ScaledResidualValues <- sapply(seq_along(ResidualValues),
+                                   FUN= function(x) ifelse(ResidualValues[x]>=0,
+                                                           ResidualValues[x]*Weights$UprW[x],
+                                                           ResidualValues[x]*Weights$LwrW[x]))
+    ScaledResidualValues <- as.vector(ScaledResidualValues)
+  } else {
+    ScaledResidualValues <- ResidualValues*Weights[seq_along(r) - 1]
+  }
+  if(Method == "Integral") {
+    ActualU <- sum((ScaledResidualValues[!is.nan(ScaledResidualValues)])^2 *
+                     rIncrements[!is.nan(ScaledResidualValues)], na.rm = T)
+  } else if(Method == "Supremum") {
+    ActualU <- max(ScaledResidualValues, na.rm = T)
+  }
 
   # Return the rank
-  return(mean(ActualU < SimulatedU[-length(SimulatedU)]))
+  return(mean(ActualU < SimulatedU))
 }
