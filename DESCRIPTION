@@ -25,6 +25,7 @@ Imports:
   future,
   ggplot2, 
   methods,
+  progressr,
   RcppParallel, 
   reshape2, 
   rlang, 

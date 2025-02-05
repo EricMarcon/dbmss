@@ -11,16 +11,16 @@ MEnvelope <- function(
     verbose = interactive(),
     parallel = FALSE) {
 
-  # CheckdbmssArguments()
+  CheckdbmssArguments()
 
   if (parallel && methods::is(future::plan(), "sequential")) {
     warning(
       c(
-        "You chose parallel computing but the plan is sequential.\n",
+        "You chose parallel computing but the strategy is sequential.\n",
         "You may want to set a plan such as\n
-        `library(future)`\n
+        `library(future)`
         `plan(multisession, workers = availableCores(omit = 1))`"
-)
+      )
     )
   }
 
@@ -51,14 +51,13 @@ MEnvelope <- function(
   if (parallel & NumberOfSimulations > 4) {
     nSimSerial <- 4
     nSimParallel <-  NumberOfSimulations - 4
-
   } else {
     nSimSerial <- NumberOfSimulations
     nSimParallel <- 0
   }
 
   # Serial.
-  # local envelope, keep extreme values for lo and hi (nrank=1)
+  # local envelope, keep extreme values for lo and hi (nrank = 1)
   Envelope <- envelope(
     X,
     fun = Mhat,
@@ -77,6 +76,7 @@ MEnvelope <- function(
   # Parallel
   if (nSimParallel > 0) {
     # Run simulations
+    progress <- progressr::progressor(steps = nSimParallel / 100)
     ParalellSims <- foreach::foreach(
       Simulation = seq_len(nSimParallel),
       .combine = cbind,
@@ -94,11 +94,15 @@ MEnvelope <- function(
       )
       M <- Mhat(
         SimulatedPP,
+        r = r,
         ReferenceType = ReferenceType,
         NeighborType = NeighborType,
         CaseControl = CaseControl,
         CheckArguments = FALSE
       )$M
+      # Progress every percent
+      if (Simulation %% 100 == 0) progress()
+      M
     }
     # Merge the values into the envelope
     attr(Envelope, "simfuns") <- cbind(attr(Envelope, "simfuns"), ParalellSims)

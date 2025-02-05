@@ -83,7 +83,7 @@ system.time(
     SimulationType = "RandomLabeling", 
     Global = TRUE, 
     parallel = TRUE
-  )  
+  )
 )
 ```
 The default strategy is `sequential`.
@@ -94,8 +94,24 @@ plan(sequential)
 ```
 
 Other possible strategies are forking (`multicore`), unavailable on Windows, and `cluster`, on several computers.
+
+
 See the documentation of the *future* package, namely `future::plan()`.
 
+# Progress bar
+
+Parallel simulations can report their progress thanks to the **progressr** package.
+They ignore the `verbose` argument.
+The progress bar must be activated and its interface chosen, for example by the following code, to be run before calling the `MEnvelope()` function:
+
+```{r}
+#| eval: false
+library("progressr")
+handlers(global = TRUE)
+handlers("txtprogressbar")
+```
+
+Note that the choice of the progress bar is free: see `?progressr`.
 
 # Limits
 
