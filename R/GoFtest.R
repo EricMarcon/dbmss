@@ -46,8 +46,9 @@ GoFtest <- function(Envelope) {
 
 GoFtest <- function(
     Envelope,
-    Scaling = "asymmetric",
-    Method = "Integral") {
+    Scaling = "Asymmetric",
+    Distance = "Integral2",
+    Range = NULL) {
 
   # Verify Envelope
   if (!inherits(Envelope, "envelope")) {
@@ -57,16 +58,24 @@ GoFtest <- function(
   if (!is.character(Scaling) | !is.vector(Scaling) | !length(Scaling) == 1) {
     stop("Argument 'Scaling' must be a character vector of length one")
   }
-  if (!(Scaling %in% c("quantile", "studentized", "asymmetric", "none"))) {
-    stop("Invalid argument: 'Scaling'. Accepted arguments are: quantile,
-    studentized, asymmetric, none.")
+  if (!(Scaling %in% c("Quantile", "Studentized", "Asymmetric", "None"))) {
+    stop("Invalid argument: 'Scaling'. Accepted arguments are: Quantile,
+    Studentized, Asymmetric, None.")
   }
-  # Verify Method
-  if (!is.character(Method) | !is.vector(Method) | !length(Method) == 1) {
-    stop("Argument 'Method' must be a character vector of length one")
+  # Verify Distance
+  if (!is.character(Distance) | !is.vector(Distance) | !length(Distance) == 1) {
+    stop("Argument 'Distance' must be a character vector of length one")
   }
-  if (!(Method %in% c("Integral", "Supremum"))) {
-    stop("Invalid argument: 'Method'. Accepted arguments are: Integral, Supremum.")
+  if (!(Distance %in% c("Integral2", "Integral", "Maximum"))) {
+    stop("Invalid argument: 'Distance'. Accepted arguments are: Integral2, Integral,
+         Maximum.")
+  }
+  # Verify Range
+  if (!is.null(Range) && (!is.vector(Range) |
+                          !is.numeric(Range) |
+                          length(Range) != 2)) {
+    stop("Invalid argument: 'Range'. Accepted arguments are a numeric vector of length two,
+         specifying the minimum and maximum distances over which to compute the test.")
   }
   # Verify simulations
   if (is.null(attr(Envelope, "simfuns"))) {
@@ -77,25 +86,46 @@ GoFtest <- function(
     SimulatedValues <- as.data.frame(attr(Envelope, "simfuns"))[, -1]
   }
 
+  # Transform observed Ls into K for the test (L envelopes are constructed from
+  # the K function)
+  if (attr(Envelope, "fname") %in% c("L", "Lmm")) {
+    ActualValues <- (ActualValues + r)^2 * pi
+  }
+
+  # Restrict analysis to chosen distance range
+  if (!is.null(Range)) {
+    if(min(Range) < max(r) && max(Range) > min(r)) {
+      SelectedR <- (r > min(Range) & r < max(Range))
+      ActualValues <- ActualValues[SelectedR]
+      SimulatedValues <- SimulatedValues[SelectedR, ]
+      r <- r[SelectedR]
+    } else {
+      warning("The selected range is outside the simulated distances.
+              The test was computed using all distances from the envelope.")
+    }
+  }
+
   NumberOfSimulations <- dim(SimulatedValues)[2]
   AverageSimulatedValues <- apply(SimulatedValues, 1, sum) / (NumberOfSimulations - 1)
   rIncrements <- (r - c(0, r)[seq_along(r)])[-1]
 
   # Calculate the weights to scale the residuals of the statistic
-  if(Scaling == "studentized") {
-    Weights <- 1/apply(SimulatedValues, 1, sd, na.rm = T)
-  } else if (Scaling == "quantile") {
-    Weights <- 1/(apply(SimulatedValues, 1, quantile, probs = 0.975, na.rm = T)-
-                    apply(SimulatedValues, 1, quantile, probs = 0.025, na.rm = T))
-  } else if (Scaling == "asymmetric") {
-    Upper <- 1/(apply(SimulatedValues,1,quantile,probs = 0.975,na.rm = T)-
-                  AverageSimulatedValues)
-    Lower <- 1/(AverageSimulatedValues-
-                  apply(SimulatedValues, 1, quantile, probs = 0.025, na.rm = T))
-    Weights <- list(UprW = Upper, LwrW = Lower)
-  } else {
-    Weights <- rep(1,length(r))
-  }
+  Weights <- switch(Scaling,
+                    "Studentized" = 1/apply(SimulatedValues, 1, sd, na.rm = T),
+                    "Quantile" = 1/(apply(SimulatedValues, 1,
+                                          quantile, probs = 0.975, na.rm = T)-
+                                      apply(SimulatedValues, 1,
+                                            quantile, probs = 0.025, na.rm = T)),
+                    "Asymmetric" = {
+                      Upper <- 1/(apply(SimulatedValues, 1,
+                                        quantile, probs = 0.975,na.rm = T)-
+                                    AverageSimulatedValues)
+                      Lower <- 1/(AverageSimulatedValues -
+                                    apply(SimulatedValues, 1,
+                                          quantile, probs = 0.025, na.rm = T))
+                      list(UprW = Upper, LwrW = Lower)
+                    },
+                    "None" = rep(1,length(r)))
 
   # Ui calculate the statistic for a simulation
   Ui <- function(SimulationNumber) {
@@ -110,12 +140,16 @@ GoFtest <- function(
     } else {
       ScaledDeparture <- Departure*Weights[seq_along(r) - 1]
     }
-    if (Method == "Integral") {
-      GofStatistic <- sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
-                            rIncrements[!is.nan(ScaledDeparture)], na.rm = T)
-    } else if (Method == "Supremum") {
-      GofStatistic <- max(ScaledDeparture, na.rm = T)
-    }
+    GofStatistic <- switch(Distance,
+                           "Integral2" =
+                             sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
+                                   rIncrements[!is.nan(ScaledDeparture)],
+                                 na.rm = T),
+                           "Integral" =
+                             sum((ScaledDeparture[!is.nan(ScaledDeparture)]) *
+                                   rIncrements[!is.nan(ScaledDeparture)],
+                                 na.rm = T),
+                           "Maximum" = max(ScaledDeparture, na.rm = T))
     return(GofStatistic)
   }
 
@@ -130,20 +164,24 @@ GoFtest <- function(
   ResidualValues <- (ActualValues - AverageSimulatedValues)[seq_along(r) - 1]
   if (inherits(Weights, "list")) {
     ScaledResidualValues <- sapply(seq_along(ResidualValues),
-                                   FUN= function(x) ifelse(ResidualValues[x]>=0,
-                                                           ResidualValues[x]*Weights$UprW[x],
-                                                           ResidualValues[x]*Weights$LwrW[x]))
+                                   FUN = function(x)
+                                     ifelse(ResidualValues[x]>=0,
+                                            ResidualValues[x]*Weights$UprW[x],
+                                            ResidualValues[x]*Weights$LwrW[x]))
     ScaledResidualValues <- as.vector(ScaledResidualValues)
   } else {
     ScaledResidualValues <- ResidualValues*Weights[seq_along(r) - 1]
   }
-  if (Method == "Integral") {
-    ActualU <- sum((ScaledResidualValues[!is.nan(ScaledResidualValues)])^2 *
-                     rIncrements[!is.nan(ScaledResidualValues)], na.rm = T)
-  } else if (Method == "Supremum") {
-    ActualU <- max(ScaledResidualValues, na.rm = T)
-  }
-
+  ActualU <- switch(Distance,
+                    "Integral2" =
+                      sum((ScaledResidualValues[!is.nan(ScaledResidualValues)])^2 *
+                            rIncrements[!is.nan(ScaledResidualValues)],
+                          na.rm = T),
+                    "Integral" =
+                      sum((ScaledResidualValues[!is.nan(ScaledResidualValues)]) *
+                            rIncrements[!is.nan(ScaledResidualValues)],
+                          na.rm = T),
+                    "Maximum" = max(ScaledResidualValues, na.rm = T))
   # Return the rank
   return(mean(ActualU < SimulatedU))
 }
