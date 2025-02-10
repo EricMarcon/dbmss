@@ -47,7 +47,7 @@ GoFtest <- function(Envelope) {
 GoFtest <- function(
     Envelope,
     Scaling = "Asymmetric",
-    Distance = "Integral2",
+    Distance = "DCLF",
     Range = NULL) {
 
   # Verify Envelope
@@ -66,9 +66,9 @@ GoFtest <- function(
   if (!is.character(Distance) | !is.vector(Distance) | !length(Distance) == 1) {
     stop("Argument 'Distance' must be a character vector of length one")
   }
-  if (!(Distance %in% c("Integral2", "Integral", "Maximum"))) {
-    stop("Invalid argument: 'Distance'. Accepted arguments are: Integral2, Integral,
-         Maximum.")
+  if (!(Distance %in% c("DCLF", "Integral", "MAD"))) {
+    stop("Invalid argument: 'Distance'. Accepted arguments are: DCLF, Integral,
+         MAD.")
   }
   # Verify Range
   if (!is.null(Range) && (!is.vector(Range) |
@@ -141,7 +141,7 @@ GoFtest <- function(
       ScaledDeparture <- Departure*Weights[seq_along(r) - 1]
     }
     GofStatistic <- switch(Distance,
-                           "Integral2" =
+                           "DCLF" =
                              sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
                                    rIncrements[!is.nan(ScaledDeparture)],
                                  na.rm = T),
@@ -149,7 +149,7 @@ GoFtest <- function(
                              sum(abs((ScaledDeparture[!is.nan(ScaledDeparture)])) *
                                    rIncrements[!is.nan(ScaledDeparture)],
                                  na.rm = T),
-                           "Maximum" = max(ScaledDeparture, na.rm = T))
+                           "MAD" = max(ScaledDeparture, na.rm = T))
     return(GofStatistic)
   }
 
@@ -172,3 +172,4 @@ GoFtest <- function(
   # Return the rank
   return(mean(ActualU < SimulatedU))
 }
+
