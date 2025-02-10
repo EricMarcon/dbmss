@@ -113,23 +113,23 @@ GoFtest <- function(
   Weights <- switch(Scaling,
                     "Studentized" = 1/apply(SimulatedValues, 1, sd, na.rm = T),
                     "Quantile" = 1/(apply(SimulatedValues, 1,
-                                          quantile, probs = 0.975, na.rm = T)-
+                                          quantile, probs = 0.975, na.rm = T) -
                                       apply(SimulatedValues, 1,
                                             quantile, probs = 0.025, na.rm = T)),
                     "Asymmetric" = {
                       Upper <- 1/(apply(SimulatedValues, 1,
-                                        quantile, probs = 0.975,na.rm = T)-
+                                        quantile, probs = 0.975,na.rm = T) -
                                     AverageSimulatedValues)
                       Lower <- 1/(AverageSimulatedValues -
                                     apply(SimulatedValues, 1,
                                           quantile, probs = 0.025, na.rm = T))
                       list(UprW = Upper, LwrW = Lower)
                     },
-                    "None" = rep(1,length(r)))
+                    "None" = rep(1, length(r)))
 
   # Ui calculate the statistic for a simulation
-  Ui <- function(SimulationNumber) {
-    Departure <- (SimulatedValues[, SimulationNumber] -
+  Ui <- function(SimulationNumber, ValueToTest) {
+    Departure <- (ValueToTest[, SimulationNumber] -
                     AverageSimulatedValues)[seq_along(r) - 1]
     if (inherits(Weights, "list")) {
       ScaledDeparture <- sapply(seq_along(Departure),
@@ -146,7 +146,7 @@ GoFtest <- function(
                                    rIncrements[!is.nan(ScaledDeparture)],
                                  na.rm = T),
                            "Integral" =
-                             sum((ScaledDeparture[!is.nan(ScaledDeparture)]) *
+                             sum(abs((ScaledDeparture[!is.nan(ScaledDeparture)])) *
                                    rIncrements[!is.nan(ScaledDeparture)],
                                  na.rm = T),
                            "Maximum" = max(ScaledDeparture, na.rm = T))
@@ -157,31 +157,18 @@ GoFtest <- function(
   SimulatedU <- vapply(
     seq_len(NumberOfSimulations),
     FUN = Ui,
-    FUN.VALUE = 0
+    FUN.VALUE = 0,
+    ValueToTest = SimulatedValues
   )
 
   # Calculate the Ui statistic for the actual value
-  ResidualValues <- (ActualValues - AverageSimulatedValues)[seq_along(r) - 1]
-  if (inherits(Weights, "list")) {
-    ScaledResidualValues <- sapply(seq_along(ResidualValues),
-                                   FUN = function(x)
-                                     ifelse(ResidualValues[x]>=0,
-                                            ResidualValues[x]*Weights$UprW[x],
-                                            ResidualValues[x]*Weights$LwrW[x]))
-    ScaledResidualValues <- as.vector(ScaledResidualValues)
-  } else {
-    ScaledResidualValues <- ResidualValues*Weights[seq_along(r) - 1]
-  }
-  ActualU <- switch(Distance,
-                    "Integral2" =
-                      sum((ScaledResidualValues[!is.nan(ScaledResidualValues)])^2 *
-                            rIncrements[!is.nan(ScaledResidualValues)],
-                          na.rm = T),
-                    "Integral" =
-                      sum((ScaledResidualValues[!is.nan(ScaledResidualValues)]) *
-                            rIncrements[!is.nan(ScaledResidualValues)],
-                          na.rm = T),
-                    "Maximum" = max(ScaledResidualValues, na.rm = T))
+  ActualU <- vapply(
+    1,
+    FUN = Ui,
+    FUN.VALUE = 0,
+    ValueToTest = data.frame(ActualValues)
+  )
+
   # Return the rank
   return(mean(ActualU < SimulatedU))
 }
