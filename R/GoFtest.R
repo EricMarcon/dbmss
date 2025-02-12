@@ -88,7 +88,7 @@ GoFtest <- function(
 
   # Transform observed Ls into K for the test (L envelopes are constructed from
   # the K function)
-  if (attr(Envelope, "fname") %in% c("L", "Lmm")) {
+  if (any(attr(Envelope, "fname") %in% c("L", "Lmm"))) {
     ActualValues <- (ActualValues + r)^2 * pi
   }
 
