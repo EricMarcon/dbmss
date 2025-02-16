@@ -1,6 +1,6 @@
 Ranktest = function(
     Envelope,
-    Tail = "two-tailed",
+    Tail = "Two-tailed",
     Method = "RankCountOrdering") {
 
   # Verify Envelope
@@ -12,9 +12,9 @@ Ranktest = function(
   if (!is.character(Tail) | !is.vector(Tail) | !length(Tail) == 1) {
     stop("Argument 'Tail' must be a character vector of length one")
   }
-  if (!(Tail %in% c("two-tailed", "left-tailed", "right-tailed"))) {
-    stop("Invalid argument: 'Tail'. Accepted arguments are: two-tailed,
-    left-tailed, right-tailed.")
+  if (!(Tail %in% c("Two-tailed", "Left-tailed", "Right-tailed"))) {
+    stop("Invalid argument: 'Tail'. Accepted arguments are: Two-tailed,
+    Left-tailed, Right-tailed.")
   }
 
   # Verify Method
@@ -43,12 +43,11 @@ Ranktest = function(
   # Compute function ranks for all simulations and the actual value
   Rankmatrix <- rbind(apply(AllValues, 1, rank, na.last = NA))
   Rankmatrix <- t(Rankmatrix)
-  if (Tail == "right-tailed") {
-    Rankmatrix <- dim(Rankmatrix)[2] - Rankmatrix
-  }
-  if (Tail == "two-tailed") {
-    Rankmatrix <- rbind(dim(Rankmatrix)[2] - Rankmatrix, Rankmatrix)
-  }
+  Rankmatrix <- switch(Tail,
+                       "Left-tailed" = Rankmatrix,
+                       "Right-tailed" =  dim(Rankmatrix)[2] - Rankmatrix,
+                       "Two-tailed" = rbind(dim(Rankmatrix)[2] - Rankmatrix,
+                                            Rankmatrix))
 
   # Compute Extreme Rank Ordering Test
   if (Method == "SimpleRankOrdering") {
