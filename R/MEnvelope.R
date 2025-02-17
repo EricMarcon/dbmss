@@ -70,7 +70,7 @@ MEnvelope <- function(
     CaseControl = CaseControl,
     CheckArguments = FALSE,
     simulate = SimulatedPP,
-    verbose = ifelse(nSimParallel > 0, FALSE, verbose),
+    verbose = (verbose & nSimParallel == 0),
     savefuns = TRUE
   )
 

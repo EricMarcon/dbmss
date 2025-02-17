@@ -69,7 +69,7 @@ gEnvelope <- function(
     NeighborType = NeighborType,
     CheckArguments = FALSE,
     simulate = SimulatedPP,
-    verbose = verbose,
+    verbose = (verbose & nSimParallel == 0),
     savefuns = TRUE
   )
 
