@@ -82,10 +82,34 @@ system.time(
     NeighborType = "Q. Rosea", 
     SimulationType = "RandomLabeling", 
     Global = TRUE, 
-    parallel = TRUE
+    parallel = TRUE,
+    parallel_pgb_refresh = 1/100
   )
 )
 ```
+
+Except for Windows systems, the `multicore` strategy may be a better choice.
+
+```{r}
+library("doFuture")
+plan(multicore, workers = availableCores(omit = 1))
+system.time(
+  MEnvelope(
+    paracou16, 
+    r = NULL, 
+    NumberOfSimulations = 5000, 
+    Alpha = 0.05, 
+    ReferenceType = "V. Americana", 
+    NeighborType = "Q. Rosea", 
+    SimulationType = "RandomLabeling", 
+    Global = TRUE, 
+    parallel = TRUE,
+    parallel_pgb_refresh = 1/100
+  )
+)
+```
+
+
 The default strategy is `sequential`.
 It should be restored.
 

@@ -10,7 +10,7 @@
 gEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
          ReferenceType = "", NeighborType = "",
          SimulationType = "RandomPosition", Global = FALSE,
-         verbose = interactive(), parallel = FALSE, parallel_progress = 100)
+         verbose = interactive(), parallel = FALSE, parallel_pgb_refresh = 1/10)
 }
 \arguments{
   \item{X}{
@@ -43,9 +43,9 @@ gEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   \item{parallel}{
   Logical; if \code{TRUE}, simulations can be run in parallel, see details.
   }
-  \item{parallel_progress}{
+  \item{parallel_pgb_refresh}{
   The proportion of simulations steps to be displayed by the parallel progress bar.
-  1 will show all but may slow down the computing, 100 only one out of a hundred.
+  1 will show all but may slow down the computing, 1/100 only one out of a hundred.
   }
 }
 \details{
