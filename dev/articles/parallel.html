@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9104</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9105</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,15 +100,15 @@ computing time can be measured.</p>
 <span>  <span class="op">)</span>  </span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##  39.311   0.668  18.122</span></span></code></pre>
+<span><span class="co">##  43.166   1.234  33.729</span></span></code></pre>
 <p>It can be parallelized by setting a hardware strategy. The following
 example launches several simultaneous copies of R on the local computer:
-it works on all operating systems. The number of parallel processes is
-the number of logical CPUs minus 1.</p>
+it works on all operating systems. The number of parallel processes here
+is the number of logical CPUs.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://doFuture.futureverse.org" class="external-link">"doFuture"</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">multisession</span>, workers <span class="op">=</span> <span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span>omit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>The same set of simulations is now run much faster with argument
+<span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">multisession</span>, workers <span class="op">=</span> <span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>The same set of simulations is now run faster with argument
 <code>parallel = TRUE</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span></span>
@@ -126,31 +126,10 @@ the number of logical CPUs minus 1.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.029   0.042  19.180</span></span></code></pre>
-<p>Except for Windows systems, the <code>multicore</code> strategy may
-be a better choice.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://doFuture.futureverse.org" class="external-link">"doFuture"</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">multicore</span>, workers <span class="op">=</span> <span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span>omit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="../reference/MEnvelope.html">MEnvelope</a></span><span class="op">(</span></span>
-<span>    <span class="va">paracou16</span>, </span>
-<span>    r <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>    NumberOfSimulations <span class="op">=</span> <span class="fl">5000</span>, </span>
-<span>    Alpha <span class="op">=</span> <span class="fl">0.05</span>, </span>
-<span>    ReferenceType <span class="op">=</span> <span class="st">"V. Americana"</span>, </span>
-<span>    NeighborType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
-<span>    SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, </span>
-<span>    Global <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>    parallel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    parallel_pgb_refresh <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">100</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##  48.844   1.019  25.596</span></span></code></pre>
+<span><span class="co">##   0.999   0.050  18.339</span></span></code></pre>
 <p>The default strategy is <code>sequential</code>. It should be
 restored.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">sequential</span><span class="op">)</span></span></code></pre></div>
 <p>Other possible strategies are forking (<code>multicore</code>),
 unavailable on Windows, and <code>cluster</code>, on several
@@ -166,7 +145,7 @@ computers.</p>
 argument. The progress bar must be activated and its interface chosen,
 for example by the following code, to be run before calling the
 <code><a href="../reference/MEnvelope.html">MEnvelope()</a></code> function:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://progressr.futureverse.org" class="external-link">"progressr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://progressr.futureverse.org/reference/handlers.html" class="external-link">handlers</a></span><span class="op">(</span>global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://progressr.futureverse.org/reference/handlers.html" class="external-link">handlers</a></span><span class="op">(</span><span class="st">"txtprogressbar"</span><span class="op">)</span></span></code></pre></div>
