@@ -1,15 +1,9 @@
-# dbmss 2.9-2.9104
+# dbmss 2.9-2.9105
 
 ## Improvements
 
-- parallelized MEnvelope code.
-- parallelized gEnvelope code.
-
-
-# dbmss 2.9-2.9003
-
-## Improvements
-
+- v. 2.9-10 in preparation.
+- parallelized MEnvelope and gEnvelope code.
 - improved the estimation of the g function in `ghat()`:
   * bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
   * the max distance is no longer censored, for consistency with other functions.

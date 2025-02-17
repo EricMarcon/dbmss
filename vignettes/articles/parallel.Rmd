@@ -62,14 +62,14 @@ system.time(
 
 It can be parallelized by setting a hardware strategy.
 The following example launches several simultaneous copies of R on the local computer: it works on all operating systems.
-The number of parallel processes is the number of logical CPUs minus 1.
+The number of parallel processes here is the number of logical CPUs.
 
 ```{r}
 library("doFuture")
-plan(multisession, workers = availableCores(omit = 1))
+plan(multisession, workers = availableCores())
 ```
 
-The same set of simulations is now run much faster with argument `parallel = TRUE`.
+The same set of simulations is now run faster with argument `parallel = TRUE`.
 
 ```{r}
 system.time(
@@ -87,28 +87,6 @@ system.time(
   )
 )
 ```
-
-Except for Windows systems, the `multicore` strategy may be a better choice.
-
-```{r}
-library("doFuture")
-plan(multicore, workers = availableCores(omit = 1))
-system.time(
-  MEnvelope(
-    paracou16, 
-    r = NULL, 
-    NumberOfSimulations = 5000, 
-    Alpha = 0.05, 
-    ReferenceType = "V. Americana", 
-    NeighborType = "Q. Rosea", 
-    SimulationType = "RandomLabeling", 
-    Global = TRUE, 
-    parallel = TRUE,
-    parallel_pgb_refresh = 1/100
-  )
-)
-```
-
 
 The default strategy is `sequential`.
 It should be restored.
