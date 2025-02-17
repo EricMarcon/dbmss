@@ -14,7 +14,6 @@
   * bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
   * the max distance is no longer censored, for consistency with other functions.
   * the estimation was not correct at last distances.
->>>>>>> master
 - avoided accessing ppp objects' marks directly.
 - cleaned up the code
 
