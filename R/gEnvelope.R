@@ -81,6 +81,8 @@ gEnvelope <- function(
     )
     # Calculated only once for performance
     parallel_pgb_refresh_inverse <- 1 / parallel_pgb_refresh
+    # Declare the iterator to avoid R CMD check  note
+    Simulation <- 0
     # Simulation loop
     ParalellSims <- foreach::foreach(
       Simulation = seq_len(nSimParallel),
