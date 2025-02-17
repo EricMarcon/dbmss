@@ -10,7 +10,7 @@
 MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
           ReferenceType, NeighborType = ReferenceType,
           CaseControl = FALSE, SimulationType = "RandomLocation", Global = FALSE,
-          verbose = interactive(), parallel = FALSE)
+          verbose = interactive(), parallel = FALSE, parallel_progress = 100)
 }
 \arguments{
   \item{X}{
@@ -49,6 +49,10 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   \item{parallel}{
   Logical; if \code{TRUE}, simulations can be run in parallel, see details.
   }
+  \item{parallel_progress}{
+  The proportion of simulations steps to be displayed by the parallel progress bar.
+  1 will show all but may slow down the computing, 100 only one out of a hundred.
+  }
 }
 \details{
   This envelope is local by default, that is to say it is computed separately at each distance.
@@ -61,6 +65,8 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 
   Parallel simulations rely on the *future* and *doFuture* packages.
   Before calling the function with argument `parallel = TRUE`, you must choose a strategy and set it with \code{\link[future]{plan}}.
+  Their progress bar relies on the *progressr* package.
+  They must be activated by the user by \code{\link[progressr]{handlers}}.
 }
 \value{
   An envelope object (\code{\link[spatstat.explore]{envelope}}). There are methods for print and plot for this class.
