@@ -8,6 +8,7 @@ importFrom("ggplot2", "autoplot")
 importFrom("RcppParallel", "RcppParallelLibs")
 importFrom("rlang", ".data")
 importFrom("spatstat.geom", "marks")
+importFrom("doFuture", "%dofuture%")
 
 export("as.Dtable")
 export("as.wmppp")

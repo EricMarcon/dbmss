@@ -1,0 +1,123 @@
+---
+title: "Parallel simulations"
+bibliography: dbmss.bib
+output: 
+  rmarkdown::html_document:
+    toc: yes
+    toc_float: yes
+vignette: >
+  %\VignetteIndexEntry{Parallel}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r global_options, include=FALSE}
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos = "https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+# Add necessary packages here
+Packages <- c("dplyr", "dbmss")
+# Install them
+InstallPackages(Packages)
+knitr::opts_chunk$set(
+  cache = TRUE, 
+  message = FALSE, 
+  warning = FALSE
+)
+set.seed(97310)
+```
+
+
+Simulations are necessary to compute the confidence envelopes of the main functions of the package.
+They can be run in parallel thanks to the **future** and **doFuture** [@Bengtsson2021] packages.
+
+
+# Example
+
+Estimating the confidence envelope of the M function under the null hypothesis of random labeling of the point types relies on the `MEnvelope()` function.
+Simulations are run sequentially.
+The computing time can be measured.
+
+```{r}
+library("dbmss")
+system.time(
+  MEnvelope(
+    paracou16, 
+    r = NULL, 
+    NumberOfSimulations = 5000, 
+    Alpha = 0.05, 
+    ReferenceType = "V. Americana", 
+    NeighborType = "Q. Rosea", 
+    SimulationType = "RandomLabeling", 
+    Global = TRUE
+  )  
+)
+```
+
+It can be parallelized by setting a hardware strategy.
+The following example launches several simultaneous copies of R on the local computer: it works on all operating systems.
+The number of parallel processes here is the number of logical CPUs.
+
+```{r}
+library("doFuture")
+plan(multisession, workers = availableCores())
+```
+
+The same set of simulations is now run faster with argument `parallel = TRUE`.
+
+```{r}
+system.time(
+  MEnvelope(
+    paracou16, 
+    r = NULL, 
+    NumberOfSimulations = 5000, 
+    Alpha = 0.05, 
+    ReferenceType = "V. Americana", 
+    NeighborType = "Q. Rosea", 
+    SimulationType = "RandomLabeling", 
+    Global = TRUE, 
+    parallel = TRUE,
+    parallel_pgb_refresh = 1/100
+  )
+)
+```
+
+The default strategy is `sequential`.
+It should be restored.
+
+```{r}
+plan(sequential)
+```
+
+Other possible strategies are forking (`multicore`), unavailable on Windows, and `cluster`, on several computers.
+
+
+See the documentation of the *future* package, namely `future::plan()`.
+
+# Progress bar
+
+Parallel simulations can report their progress thanks to the **progressr** package.
+They ignore the `verbose` argument.
+The progress bar must be activated and its interface chosen, for example by the following code, to be run before calling the `MEnvelope()` function:
+
+```{r}
+#| eval: false
+library("progressr")
+handlers(global = TRUE)
+handlers("txtprogressbar")
+```
+
+Note that the choice of the progress bar is free: see `?progressr`.
+
+# Limits
+
+Setting up the parallel code and gathering the results takes time so the performance of sequential simulations may be better if they are fast.
+
+  
+# References
