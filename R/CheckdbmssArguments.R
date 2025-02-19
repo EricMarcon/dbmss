@@ -275,7 +275,7 @@ CheckdbmssArguments <- function() {
   return(TRUE)
 }
 
-WarnPlan <- function () {
+WarnPlan <- function() {
   warning(
     c(
       "You chose parallel computing but the strategy is sequential.\n",
