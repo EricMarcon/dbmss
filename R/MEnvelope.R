@@ -14,16 +14,7 @@ MEnvelope <- function(
 
   CheckdbmssArguments()
 
-  if (parallel && methods::is(future::plan(), "sequential")) {
-    warning(
-      c(
-        "You chose parallel computing but the strategy is sequential.\n",
-        "You may want to set a plan such as\n
-        `library(future)`
-        `plan(multisession, workers = availableCores(omit = 1))`"
-      )
-    )
-  }
+  if (parallel && methods::is(future::plan(), "sequential")) WarnPlan()
 
   # Choose the null hypothesis
   SimulatedPP <- switch(

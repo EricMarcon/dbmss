@@ -274,3 +274,14 @@ CheckdbmssArguments <- function() {
 
   return(TRUE)
 }
+
+WarnPlan <- function () {
+  warning(
+    c(
+      "You chose parallel computing but the strategy is sequential.\n",
+      "You may want to set a plan such as\n
+        `library(future)`
+        `plan(multisession, workers = availableCores(omit = 1))`"
+    )
+  )
+}
