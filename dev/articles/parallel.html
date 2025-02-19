@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9105</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.9-2.9106</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +100,7 @@ computing time can be measured.</p>
 <span>  <span class="op">)</span>  </span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##  43.166   1.234  33.729</span></span></code></pre>
+<span><span class="co">##  48.409   1.031  22.265</span></span></code></pre>
 <p>It can be parallelized by setting a hardware strategy. The following
 example launches several simultaneous copies of R on the local computer:
 it works on all operating systems. The number of parallel processes here
@@ -121,12 +121,11 @@ is the number of logical CPUs.</p>
 <span>    NeighborType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
 <span>    SimulationType <span class="op">=</span> <span class="st">"RandomLabeling"</span>, </span>
 <span>    Global <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>    parallel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    parallel_pgb_refresh <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">100</span></span>
+<span>    parallel <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.999   0.050  18.339</span></span></code></pre>
+<span><span class="co">##   0.844   0.026  17.152</span></span></code></pre>
 <p>The default strategy is <code>sequential</code>. It should be
 restored.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -142,8 +141,10 @@ computers.</p>
 </h2>
 <p>Parallel simulations can report their progress thanks to the
 <strong>progressr</strong> package. They ignore the <code>verbose</code>
-argument. The progress bar must be activated and its interface chosen,
-for example by the following code, to be run before calling the
+argument but rely on the <code>parallel_pgb_refresh</code> argument to
+refresh the progress bar more or less often.</p>
+<p>The progress bar must be activated and its interface chosen, for
+example by the following code, to be run before calling the
 <code><a href="../reference/MEnvelope.html">MEnvelope()</a></code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://progressr.futureverse.org" class="external-link">"progressr"</a></span><span class="op">)</span></span>
@@ -151,6 +152,16 @@ for example by the following code, to be run before calling the
 <span><span class="fu"><a href="https://progressr.futureverse.org/reference/handlers.html" class="external-link">handlers</a></span><span class="op">(</span><span class="st">"txtprogressbar"</span><span class="op">)</span></span></code></pre></div>
 <p>Note that the choice of the progress bar is free: see
 <code><a href="https://progressr.futureverse.org/reference/progressr.html" class="external-link">?progressr</a></code>.</p>
+<p>To limit the overhead of updating the progress bar, this can be done
+during a fraction of the simulations. <code>parallel_pgb_refresh</code>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">1/10</annotation></semantics></math>
+by default, meaning that the progress bar display is updated one
+simulation out of ten. This fraction can be increased to 1 if each
+simulation takes a long time (say, one second or more) or decreased to
+improve the computing performance. In the example above,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">1/100</annotation></semantics></math>
+is a reasonable choice on a laptop computer.</p>
 </div>
 <div class="section level2">
 <h2 id="limits">Limits<a class="anchor" aria-label="anchor" href="#limits"></a>
