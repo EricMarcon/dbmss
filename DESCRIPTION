@@ -29,16 +29,16 @@ Imports:
   RcppParallel, 
   reshape2, 
   rlang, 
-  spatstat.utils, 
-  stats, 
-  tibble,
   spatstat.geom, 
-  spatstat.random
+  spatstat.utils, 
+  spatstat.random,
+  stats, 
+  tibble
 Suggests: 
-  testthat, 
   knitr, 
   pkgdown, 
-  rmarkdown
+  rmarkdown,
+  testthat
 LinkingTo: 
   Rcpp, 
   RcppParallel
