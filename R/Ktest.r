@@ -226,7 +226,7 @@ Ktest <- function(X, r) {
     # calculated according to the number of points.
     espKi_ <- espKi(r, X$n, w, l)
 
-    # Computed variance. Depends on the the observed number of points and the window.
+    # Computed variance. Depends on the observed number of points and the window.
     sigmaKi_ <- sigmaKi(r, X$n, w, l)
 
     # Distance matrix.
