@@ -9,9 +9,9 @@
 \usage{
 mEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
           ReferenceType, NeighborType = ReferenceType, CaseControl = FALSE,
-          Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1, 
+          Original = TRUE, Approximate = ifelse(X$n < 10000, 0, 1), Adjust = 1,
           MaxRange = "ThirdW", SimulationType = "RandomLocation", Global = FALSE,
-          verbose = interactive())
+          verbose = interactive(), parallel = FALSE, parallel_pgb_refresh = 1/10)
 }
 \arguments{
   \item{X}{
@@ -42,47 +42,68 @@ mEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   if not 0 (1 is a good choice), exact distances between pairs of points are rounded to 1024 times \code{Approximate} single values equally spaced between 0 and the largest distance. This technique (Scholl and Brenner, 2015) allows saving a lot of memory when addressing large point sets (the default value is 1 over 10000 points). Increasing \code{Approximate} allows better precision at the cost of proportional memory use.
   }
   \item{Adjust}{
-  Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation. 
+  Force the automatically selected bandwidth (following \code{Original}) to be multiplied by \code{Adjust}. Setting it to values lower than one (1/2 for example) will sharpen the estimation.
   }
   \item{MaxRange}{
-  The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}. Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
+  The maximum value of \code{r} to consider, ignored if \code{r} is not \code{NULL}.
+  Default is "ThirdW", one third of the diameter of the window. Other choices are "HalfW", and "QuarterW" and "D02005".
   "HalfW", and "QuarterW" are for half or the quarter of the diameter of the window.
-  "D02005" is for the median distance observed between points, following Duranton and Overman (2005). "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types. "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
+  "D02005" is for the median distance observed between points, following Duranton and Overman (2005).
+  "ThirdW" should be close to "DO2005" but has the advantage to be independent of the point types chosen as \code{ReferenceType} and \code{NeighborType}, to simplify comparisons between different types.
+  "D02005" is approximated by "ThirdW" if \code{Approximate} is not 0.
   }
   \item{SimulationType}{
-  A string describing the null hypothesis to simulate. The null hypothesis may be
+  A string describing the null hypothesis to simulate.
+  The null hypothesis may be
   "\emph{RandomLocation}": points are redistributed on the actual locations (default);
   "\emph{RandomLabeling}": randomizes point types, keeping locations and weights unchanged;
   "\emph{PopulationIndependence}": keeps reference points unchanged, randomizes other point locations.
   }
   \item{Global}{
-  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated. 
+  Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
   }
   \item{verbose}{
   Logical; if \code{TRUE}, print progress reports during the simulations.
   }
+  \item{parallel}{
+  Logical; if \code{TRUE}, simulations can be run in parallel, see details.
+  }
+  \item{parallel_pgb_refresh}{
+  The proportion of simulations steps to be displayed by the parallel progress bar.
+  1 will show all but may slow down the computing, 1/100 only one out of a hundred.
+  }
 }
 \details{
-  This envelope is local by default, that is to say it is computed separately at each distance. See Loosmore and Ford (2006) for a discussion.
-  
-  The global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step. The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped. The remaining upper and lower bounds at all distances constitute the global envelope. Interpolation is used if the exact ratio cannot be reached.
+  This envelope is local by default, that is to say it is computed separately at each distance.
+  See Loosmore and Ford (2006) for a discussion.
+
+  The global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step.
+  The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped.
+  The remaining upper and lower bounds at all distances constitute the global envelope.
+  Interpolation is used if the exact ratio cannot be reached.
+
+  Parallel simulations rely on the \emph{future} and \emph{doFuture} packages.
+  Before calling the function with argument \code{parallel = TRUE}, you must choose a strategy and set it with \code{\link[future]{plan}}.
+  Their progress bar relies on the \emph{progressr} package.
+  They must be activated by the user by \code{\link[progressr]{handlers}}.
 }
 \value{
-  An envelope object (\code{\link[spatstat.explore]{envelope}}). There are methods for print and plot for this class.
-  
+  An envelope object (\code{\link[spatstat.explore]{envelope}}).
+  There are methods for print and plot for this class.
+
   The \code{fv} contains the observed value of the function, its average simulated value and the confidence envelope.
 }
 \references{
   Duranton, G. and Overman, H. G. (2005). Testing for Localisation Using Micro-Geographic Data. \emph{Review of Economic Studies} 72(4): 1077-1106.
-  
+
   Kenkel, N. C. (1988). Pattern of Self-Thinning in Jack Pine: Testing the Random Mortality Hypothesis. \emph{Ecology} 69(4): 1017-1024.
 
   Lang G., Marcon E. and Puech F. (2014) Distance-Based Measures of Spatial Concentration: Introducing a Relative Density Function. \emph{HAL} 01082178, 1-18.
 
   Loosmore, N. B. and Ford, E. D. (2006). Statistical inference using the G or K point pattern spatial statistics. \emph{Ecology} 87(8): 1925-1931.
-  
+
   Marcon, E. and F. Puech (2017). A typology of distance-based measures of spatial concentration. \emph{Regional Science and Urban Economics}. 62:56-67.
-  
+
   Scholl, T. and Brenner, T. (2015) Optimizing distance-based methods for large data sets, \emph{Journal of Geographical Systems} 17(4): 333-351.
 
   Silverman, B. W. (1986). \emph{Density estimation for statistics and data analysis}. Chapman and Hall, London.
@@ -94,13 +115,13 @@ mEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 data(paracou16)
 # Keep only 50\% of points to run this example
 X <- as.wmppp(rthin(paracou16, 0.5))
-autoplot(X, 
-  labelSize = expression("Basal area (" ~cm^2~ ")"), 
+autoplot(X,
+  labelSize = expression("Basal area (" ~cm^2~ ")"),
   labelColor = "Species")
 
 # Calculate confidence envelope (should be 1000 simulations, reduced to 4 to save time)
 NumberOfSimulations <- 4
 Alpha <- .10
-autoplot(mEnvelope(X, , NumberOfSimulations, Alpha, 
+autoplot(mEnvelope(X, , NumberOfSimulations, Alpha,
     "V. Americana", "Q. Rosea", Original = FALSE, SimulationType = "RandomLabeling"))
 }

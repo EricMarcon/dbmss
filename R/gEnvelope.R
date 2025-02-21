@@ -98,7 +98,7 @@ gEnvelope <- function(
           CheckArguments = FALSE
         )
       )
-      # The value of g is the the third column of the fv, i.e. third item
+      # The value of g is the third column of the fv, i.e. third item
       g <- ghat(
         SimulatedPP,
         r = r,
