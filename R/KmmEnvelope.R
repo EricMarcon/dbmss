@@ -64,7 +64,7 @@ KmmEnvelope <- function(
         CheckArguments = FALSE
       )
       # The value of K is the the third column of the fv, i.e. third item
-      K <- Khat(
+      K <- Kmmhat(
         SimulatedPP,
         r = r,
         ReferenceType = ReferenceType,
