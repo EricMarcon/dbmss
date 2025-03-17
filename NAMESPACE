@@ -9,6 +9,7 @@ importFrom("RcppParallel", "RcppParallelLibs")
 importFrom("rlang", ".data")
 importFrom("spatstat.geom", "marks")
 importFrom("doFuture", "%dofuture%")
+importFrom("stats", "quantile", "sd")
 
 export("as.Dtable")
 export("as.wmppp")

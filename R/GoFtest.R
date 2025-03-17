@@ -111,16 +111,16 @@ GoFtest <- function(
 
   # Calculate the weights to scale the residuals of the statistic
   Weights <- switch(Scaling,
-                    "Studentized" = 1/apply(SimulatedValues, 1, sd, na.rm = T),
-                    "Quantile" = 1/(apply(SimulatedValues, 1,
+                    "Studentized" = 1 / apply(SimulatedValues, 1, sd, na.rm = T),
+                    "Quantile" = 1 / (apply(SimulatedValues, 1,
                                           quantile, probs = 0.975, na.rm = T) -
                                       apply(SimulatedValues, 1,
                                             quantile, probs = 0.025, na.rm = T)),
                     "Asymmetric" = {
-                      Upper <- 1/(apply(SimulatedValues, 1,
+                      Upper <- 1 / (apply(SimulatedValues, 1,
                                         quantile, probs = 0.975,na.rm = T) -
                                     AverageSimulatedValues)
-                      Lower <- 1/(AverageSimulatedValues -
+                      Lower <- 1 / (AverageSimulatedValues -
                                     apply(SimulatedValues, 1,
                                           quantile, probs = 0.025, na.rm = T))
                       list(UprW = Upper, LwrW = Lower)
@@ -133,12 +133,12 @@ GoFtest <- function(
                     AverageSimulatedValues)[seq_along(r) - 1]
     if (inherits(Weights, "list")) {
       ScaledDeparture <- sapply(seq_along(Departure),
-                                FUN= function(x) ifelse(Departure[x]>=0,
-                                                        Departure[x]*Weights$UprW[x],
-                                                        Departure[x]*Weights$LwrW[x]))
+                                FUN= function(x) ifelse(Departure[x] >= 0,
+                                                        Departure[x] * Weights$UprW[x],
+                                                        Departure[x] * Weights$LwrW[x]))
       ScaledDeparture <- as.vector(ScaledDeparture)
     } else {
-      ScaledDeparture <- Departure*Weights[seq_along(r) - 1]
+      ScaledDeparture <- Departure * Weights[seq_along(r) - 1]
     }
     GofStatistic <- switch(Distance,
                            "DCLF" =

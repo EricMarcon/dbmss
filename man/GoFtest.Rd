@@ -82,6 +82,12 @@ Alpha <- .10
 Envelope <- KEnvelope(as.wmppp(X), r, NumberOfSimulations, Alpha)
 autoplot(Envelope, ./(pi*r^2) ~ r)
 
-# GoF test. Power is correct if enough simulations are run (say >1000).
-paste("p-value =", GoFtest(Envelope))
+# DCLF test using asymmetric scaling.
+# Power is correct if enough simulations are run (say >1000).
+paste("p-value =", GoFtest(Envelope, Distance = "DCLF",
+                           Scaling = "Asymmetric", Range = c(0.1, 0.2)))
+
+# MAD test using asymmetric scaling.
+paste("p-value =", GoFtest(Envelope, Distance = "MAD",
+                           Scaling = "Asymmetric", Range = c(0.1, 0.2)))
 }
