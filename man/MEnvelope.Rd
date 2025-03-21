@@ -63,9 +63,9 @@ MEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   The remaining upper and lower bounds at all distances constitute the global envelope.
   Interpolation is used if the exact ratio cannot be reached.
 
-  Parallel simulations rely on the *future* and *doFuture* packages.
-  Before calling the function with argument `parallel = TRUE`, you must choose a strategy and set it with \code{\link[future]{plan}}.
-  Their progress bar relies on the *progressr* package.
+  Parallel simulations rely on the \emph{future} and \emph{doFuture} packages.
+  Before calling the function with argument \code{parallel = TRUE}, you must choose a strategy and set it with \code{\link[future]{plan}}.
+  Their progress bar relies on the \emph{progressr} package.
   They must be activated by the user by \code{\link[progressr]{handlers}}.
 }
 \value{

@@ -10,14 +10,15 @@
 KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
           ReferenceType = "", NeighborType = ReferenceType,
           SimulationType = "RandomPosition", Precision = 0, Global = FALSE,
-          verbose = interactive())
+          verbose = interactive(), parallel = FALSE, parallel_pgb_refresh = 1/10)
 }
 \arguments{
   \item{X}{
   A point pattern (\code{\link{wmppp.object}}).
   }
   \item{r}{
-  A vector of distances. If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \strong{spatstat}.
+  A vector of distances.
+  If \code{NULL}, a sensible default value is chosen (512 intervals, from 0 to half the diameter of the window) following \strong{spatstat}.
   }
   \item{NumberOfSimulations}{
   The number of simulations to run, 100 by default.
@@ -26,19 +27,24 @@ KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   The risk level, 5\% by default.
   }
   \item{ReferenceType}{
-  One of the point types. Default is all point types.
+  One of the point types.
+  Default is all point types.
   }
   \item{NeighborType}{
-  One of the point types. By default, the same as reference type.
+  One of the point types.
+  By default, the same as reference type.
   }
   \item{SimulationType}{
-  A string describing the null hypothesis to simulate. The null hypothesis may be
+  A string describing the null hypothesis to simulate.
+  The null hypothesis may be
   "\emph{RandomPosition}": points are drawn in a Poisson process (default);
   "\emph{RandomLabeling}": randomizes point types, keeping locations unchanged;
   "\emph{PopulationIndependence}": keeps reference points unchanged, shifts other point locations.
   }
   \item{Precision}{
-  Accuracy of point coordinates, measured as a part of distance unit. See \code{\link{rRandomPositionK}}. Default is 0 for no approximation.
+  Accuracy of point coordinates, measured as a part of distance unit.
+  See \code{\link{rRandomPositionK}}.
+  Default is 0 for no approximation.
   }
   \item{Global}{
   Logical; if \code{TRUE}, a global envelope sensu Duranton and Overman (2005) is calculated.
@@ -46,14 +52,40 @@ KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
   \item{verbose}{
   Logical; if \code{TRUE}, print progress reports during the simulations.
   }
+  \item{parallel}{
+  Logical; if \code{TRUE}, simulations can be run in parallel, see details.
+  }
+  \item{parallel_pgb_refresh}{
+  The proportion of simulations steps to be displayed by the parallel progress bar.
+  1 will show all but may slow down the computing, 1/100 only one out of a hundred.
+  }
 }
 \details{
+<<<<<<< HEAD
   This envelope is local by default, that is to say it is computed separately at each distance. See Loosmore and Ford (2006) for a discussion.
 
   The global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step. The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped. The remaining upper and lower bounds at all distances constitute the global envelope. Interpolation is used if the exact ratio cannot be reached.
 }
 \value{
   An envelope object (\code{\link[spatstat.explore]{envelope}}). There are methods for print and plot for this class.
+=======
+  This envelope is local by default, that is to say it is computed separately at each distance.
+  See Loosmore and Ford (2006) for a discussion.
+
+  The global envelope is calculated by iteration: the simulations reaching one of the upper or lower values at any distance are eliminated at each step.
+  The process is repeated until \emph{Alpha / Number of simulations} simulations are dropped.
+  The remaining upper and lower bounds at all distances constitute the global envelope.
+  Interpolation is used if the exact ratio cannot be reached.
+
+  Parallel simulations rely on the \emph{future} and \emph{doFuture} packages.
+  Before calling the function with argument \code{parallel = TRUE}, you must choose a strategy and set it with \code{\link[future]{plan}}.
+  Their progress bar relies on the \emph{progressr} package.
+  They must be activated by the user by \code{\link[progressr]{handlers}}.
+}
+\value{
+  An envelope object (\code{\link[spatstat.explore]{envelope}}).
+  There are methods for print and plot for this class.
+>>>>>>> e98530e4af44a6643dc185aa6d0047e56e66b834
 
   The \code{fv} contains the observed value of the function, its average simulated value and the confidence envelope.
 }
