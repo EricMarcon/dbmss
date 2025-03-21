@@ -40,8 +40,8 @@ GoFtest(Envelope,
   These residuals are then transformed into test-specific statistics \emph{u}: \code{Test = "MAD"} uses the maximum absolute residual; \code{Test = "Integral"}, and \code{Test = "DCLF"} use residuals to approximate the integrated deviation, and the integrated squared deviation.
   A rank test on \emph{u} evaluates the null hypothesis that the observed point pattern originates from the same point process as the simulations.
 
-  The unequal variance of the residuals at different intervals of r influences \emph{u} statistics, and the power of the Goodness of Fit test. Myllymäki et al., 2015 proposed to scale residuals using pointwise quantiles (\code{Scaling = "Asymmetric"}, and \code{Scaling = "Quantile"}), or using pointwise standard deviations (\code{Scaling = "Studentized"}).
-  The GoFtest is sensitive to the distance interval over which it is performed. It is recommended to choose the distance interval to test based on \emph{a priori} hypotheses (Wiegand & Moloney, 2013, Baddeley et al., 2015).
+  The unequal variance of the residuals at different intervals of r influences \emph{u} statistics, and the power of Goodness of Fit tests. Myllymäki et al. (2015) proposed to scale residuals using pointwise quantiles (\code{Scaling = "Asymmetric"}, and \code{Scaling = "Quantile"}), and pointwise standard deviations (\code{Scaling = "Studentized"}).
+  Goodness of Fit tests are sensitive to the distance interval over which they are performed. It is recommended to choose the distance interval to test based on \emph{a priori} hypotheses (Wiegand & Moloney 2013, Baddeley et al. 2015).
 }
 \value{
   A p-value.
@@ -72,8 +72,6 @@ GoFtest(Envelope,
   \code{\link{Ktest}}
 }
 \examples{
-
-# TO DO: update example
 
 # Simulate a Matern (Neyman Scott) point pattern
 nclust <- function(x0, y0, radius, n) {
