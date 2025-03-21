@@ -8,7 +8,9 @@ LEnvelope <- function(
     SimulationType = "RandomPosition",
     Precision = 0,
     Global = FALSE,
-    verbose = interactive()) {
+    verbose = interactive(),
+    parallel = FALSE,
+    parallel_pgb_refresh = 1/10) {
 
   # Calculate the envelope of K
   Envelope <- KEnvelope(
@@ -21,7 +23,9 @@ LEnvelope <- function(
     SimulationType = SimulationType,
     Precision = Precision,
     Global = Global,
-    verbose = verbose
+    verbose = verbose,
+    parallel = parallel,
+    parallel_pgb_refresh = parallel_pgb_refresh
   )
   # Transform K to L
   Columns <- names(Envelope)[-1]

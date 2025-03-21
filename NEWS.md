@@ -1,13 +1,14 @@
-# dbmss 2.9-2.9105
+# dbmss 2.9-2.9108
 
 ## Improvements
 
 - v. 2.9-10 in preparation.
-- parallelized MEnvelope and gEnvelope code.
+- parallelized `gEnvelope`, `KEnvelope` and `MEnvelope` code.
 - improved the estimation of the g function in `ghat()`:
   * bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
   * the max distance is no longer censored, for consistency with other functions.
   * the estimation was not correct at last distances.
+- allowed setting the precision of simulated coordinates in `gEnvelope()`.
 - avoided accessing ppp objects' marks directly.
 - cleaned up the code
 
