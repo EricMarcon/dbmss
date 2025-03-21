@@ -46,8 +46,8 @@ GoFtest <- function(Envelope) {
 
 GoFtest <- function(
     Envelope,
+    Test = "DCLF",
     Scaling = "Asymmetric",
-    Distance = "DCLF",
     Range = NULL) {
 
   # Verify Envelope
@@ -62,12 +62,12 @@ GoFtest <- function(
     stop("Invalid argument: 'Scaling'. Accepted arguments are: Quantile,
     Studentized, Asymmetric, None.")
   }
-  # Verify Distance
-  if (!is.character(Distance) | !is.vector(Distance) | !length(Distance) == 1) {
-    stop("Argument 'Distance' must be a character vector of length one")
+  # Verify Test
+  if (!is.character(Test) | !is.vector(Test) | !length(Test) == 1) {
+    stop("Argument 'Test' must be a character vector of length one")
   }
-  if (!(Distance %in% c("DCLF", "Integral", "MAD"))) {
-    stop("Invalid argument: 'Distance'. Accepted arguments are: DCLF, Integral,
+  if (!(Test %in% c("DCLF", "Integral", "MAD"))) {
+    stop("Invalid argument: 'Test'. Accepted arguments are: DCLF, Integral,
          MAD.")
   }
   # Verify Range
@@ -109,7 +109,7 @@ GoFtest <- function(
   AverageSimulatedValues <- apply(SimulatedValues, 1, sum) / (NumberOfSimulations - 1)
   rIncrements <- (r - c(0, r)[seq_along(r)])[-1]
 
-  # Calculate the weights to scale the residuals of the statistic
+  # Calculate weights to scale residuals of the statistic
   Weights <- switch(Scaling,
                     "Studentized" = 1 / apply(SimulatedValues, 1, sd, na.rm = T),
                     "Quantile" = 1 / (apply(SimulatedValues, 1,
@@ -127,7 +127,7 @@ GoFtest <- function(
                     },
                     "None" = rep(1, length(r)))
 
-  # Ui calculate the statistic for a simulation
+  # Ui calculate the statistic for one simulation
   Ui <- function(SimulationNumber, ValueToTest) {
     Departure <- (ValueToTest[, SimulationNumber] -
                     AverageSimulatedValues)[seq_along(r) - 1]
@@ -140,7 +140,7 @@ GoFtest <- function(
     } else {
       ScaledDeparture <- Departure * Weights[seq_along(r) - 1]
     }
-    GofStatistic <- switch(Distance,
+    GofStatistic <- switch(Test,
                            "DCLF" =
                              sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
                                    rIncrements[!is.nan(ScaledDeparture)],
