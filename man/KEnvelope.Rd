@@ -85,7 +85,6 @@ KEnvelope(X, r = NULL, NumberOfSimulations = 100, Alpha = 0.05,
 \value{
   An envelope object (\code{\link[spatstat.explore]{envelope}}).
   There are methods for print and plot for this class.
->>>>>>> e98530e4af44a6643dc185aa6d0047e56e66b834
 
   The \code{fv} contains the observed value of the function, its average simulated value and the confidence envelope.
 }
