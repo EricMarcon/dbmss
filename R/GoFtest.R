@@ -149,7 +149,7 @@ GoFtest <- function(
                              sum(abs((ScaledDeparture[!is.nan(ScaledDeparture)])) *
                                    rIncrements[!is.nan(ScaledDeparture)],
                                  na.rm = T),
-                           "MAD" = max(ScaledDeparture, na.rm = T))
+                           "MAD" = max(abs(ScaledDeparture), na.rm = T))
     return(GofStatistic)
   }
 
@@ -169,7 +169,10 @@ GoFtest <- function(
     ValueToTest = data.frame(ActualValues)
   )
 
-  # Return the rank
-  return(mean(ActualU < SimulatedU))
+  # Return the p-value. If the p_value is equal to 0, a conservative p_value
+  # of 1/(n + 1) is returned.
+  return(ifelse(mean(ActualU < SimulatedU) == 0,
+                1 / (1 + NumberOfSimulations),
+                mean(ActualU < SimulatedU)))
 }
 

@@ -47,26 +47,29 @@ GoFtest(Envelope,
   A p-value.
 }
 \references{
-  Baddeley, A., Rubak, E. and Turner, R. (2015). \emph{Spatial Point Patterns: Methodology and Applications with R}. Chapman and Hall/CRC.
+  Baddeley, A., Rubak, E., & Turner, R. (2015). Spatial Point Patterns: Methodology and Applications with R (0 ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b19708
 
-  Cressie, N. A. C. (1993). \emph{Statistics for Spatial Data}. 1993 John Wiley and Sons.
+  Cressie, N. A. C. (1993). Statistics for Spatial Data (1st ed.). Wiley. https://doi.org/10.1002/9781119115151
 
-  Diggle, P. J. (1979). On Parameter Estimation and Goodness-of-Fit Testing for Spatial Point Patterns. \emph{Biometrics} 35(1): 87
+  Diggle, P. J. (1979). On Parameter Estimation and Goodness-of-Fit Testing for Spatial Point Patterns. Biometrics, 35(1), 87. https://doi.org/10.2307/2529938
 
-  Diggle, P. J. (1986). Displaced amacrine cells in the retina of a rabbit: analysis of a bivariate spatial point pattern. \emph{Journal of Neuroscience Methods} 18(1-2): 115-125.
+  Diggle, P. J. (1986). Displaced amacrine cells in the retina of a rabbit: Analysis of a bivariate spatial point pattern. Journal of Neuroscience Methods, 18(1–2), 115–125. https://doi.org/10.1016/0165-0270(86)90115-9
 
-  Loosmore, N. B. and  Ford, E. D. (2006). Statistical inference using the G or K point pattern spatial statistics. \emph{Ecology} 87(8): 1925-1931.
+  Loosmore, N. B., & Ford, E. D. (2006). Statistical inference using the G or K point pattern spatial statistics. Ecology, 87(8), 1925–1931. https://doi.org/10.1890/0012-9658(2006)87[1925:SIUTGO]2.0.CO;2
 
-  Marcon, E., F. Puech and S. Traissac (2012). Characterizing the relative spatial structure of point patterns. International \emph{Journal of Ecology} 2012(Article ID 619281): 11.
+  Marcon, E., Puech, F., & Traissac, S. (2012). Characterizing the Relative Spatial Structure of Point Patterns. International Journal of Ecology, 2012, 1–11. https://doi.org/10.1155/2012/619281
 
-  Myllymäki, M., Grabarnik, P., Seijo, H. and Stoyan, D. (2015). Deviation test construction and power comparison for marked spatial point patterns. \emph{Spatial Statistics} 11: 19-34
+  Myllymäki, M., & Mrkvička, T. (2024). GET: Global Envelopes in R. Journal of Statistical Software, 111(3). https://doi.org/10.18637/jss.v111.i03
 
-  Wiegand, T. and Moloney, K. A. (2013). \emph{Handbook of Spatial Point-Pattern Analysis in Ecology}. Chapman and Hall/CRC.
+  Myllymäki, M., Grabarnik, P., Seijo, H., & Stoyan, D. (2015). Deviation test construction and power comparison for marked spatial point patterns. Spatial Statistics, 11, 19–34. https://doi.org/10.1016/j.spasta.2014.11.004
+
+  Wiegand, T., & Moloney, K. A. (2013). Handbook of Spatial Point-Pattern Analysis in Ecology (0 ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b16195
+
 }
 \note{
-  No support exists in the literature to apply the GoF test to non-cumulative functions (\emph{g}, \emph{Kd}...).
-
   \code{\link{Ktest}} is a much better test (it does not rely on simulations) but it is limited to the \emph{K} function against complete spatial randomness (CSR) in a rectangle window.
+
+  This test is inspired from Myllymäki et al. (2015), and a similar function \code{deviation_test()} exists in the R package \emph{GET} (Myllymäki & Mrkvička, 2024)
 }
 \seealso{
   \code{\link{Ktest}}
