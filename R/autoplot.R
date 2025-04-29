@@ -235,19 +235,27 @@ autoplot.wmppp <- function(
   # Control the point types to display
   NbPointTypes <- length(unique(thePoints$PointType))
   if (NbPointTypes > MaxPointTypes) {
+    # Find the most frequent point types
     MostFrequentTypes <- sort(
       table(thePoints$PointType),
       decreasing = TRUE
     )[1:MaxPointTypes]
+    # Put them into a vector
     MostFrequentTypes <- dimnames(MostFrequentTypes)[[1]]
     if (!(Other %in% levels(thePoints$PointType))) {
       levels(thePoints$PointType) <- c(levels(thePoints$PointType), Other)
     }
+    # Replace less abundant point types by other
     for (i in 1:length(thePoints$PointType)) {
       if (!(thePoints$PointType[i] %in% MostFrequentTypes)) {
         thePoints$PointType[i] <- Other
       }
     }
+    # Reorder the factors in decreasing order of abundance
+    thePoints$PointType <- factor(
+      thePoints$PointType,
+      levels = c(MostFrequentTypes, Other)
+    )
   }
 
   # Plot the points
