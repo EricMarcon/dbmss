@@ -6,7 +6,7 @@ Authors@R: c(
   person("Eric", "Marcon", email="eric.marcon@agroparistech.fr", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
   person("Gabriel", "Lang", email="gabriel.lang@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0002-4325-6044")),
   person("Stephane", "Traissac", email="stephane.traissac@agroparistech.fr", role="aut", comment = c(ORCID = "0000-0001-9255-1616")),
-  person("Florence", "Puech", email="florence.puech@u-psud.fr", role="aut", comment = c(ORCID = "0000-0002-5279-6878"))
+  person("Florence", "Puech", email="florence.puech@universite-paris-saclay.fr", role="aut", comment = c(ORCID = "0000-0002-5279-6878"))
   )
 Description: Simple computation of spatial statistic functions of distance to characterize the spatial structures of mapped objects, following Marcon, Traissac, Puech, and Lang (2015) <doi:10.18637/jss.v067.c03>.
   Includes classical functions (Ripley's K and others) and more recent ones used by spatial economists (Duranton and Overman's Kd, Marcon and Puech's M). 
