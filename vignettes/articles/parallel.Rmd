@@ -96,8 +96,8 @@ plan(sequential)
 
 Other possible strategies are forking (`multicore`), unavailable on Windows, and `cluster`, on several computers.
 
-
 See the documentation of the *future* package, namely `future::plan()`.
+
 
 # Progress bar
 
@@ -116,9 +116,9 @@ handlers("txtprogressbar")
 Note that the choice of the progress bar is free: see `?progressr`.
 
 To limit the overhead of updating the progress bar, this can be done during a fraction of the simulations.
- `parallel_pgb_refresh` is $1/10$ by default, meaning that the progress bar display is updated one simulation out of ten.
- This fraction can be increased to 1 if each simulation takes a long time (say, one second or more) or decreased to improve the computing performance.
- In the example above, $1/100$ is a reasonable choice on a laptop computer.
+`parallel_pgb_refresh` is $1/10$ by default, meaning that the progress bar display is updated one simulation out of ten.
+This fraction can be increased to 1 if each simulation takes a long time (say, one second or more) or decreased to improve the computing performance.
+In the example above, $1/100$ is a reasonable choice on a laptop computer.
 
 
 # Limits
