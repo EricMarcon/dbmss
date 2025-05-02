@@ -6,16 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Bandwidth choice • dbmss</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Bandwidth choice">
 </head>
 <body>
@@ -26,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.9-1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.10-0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +41,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/bandwidth.html">Bandwidth choice</a></li>
     <li><a class="dropdown-item" href="../articles/maps.html">Mapping local values of measures</a></li>
+    <li><a class="dropdown-item" href="../articles/parallel.html">Parallel simulations</a></li>
     <li><a class="dropdown-item" href="../articles/reference.html">dbmss Package Reference</a></li>
   </ul>
 </li>
@@ -134,21 +134,21 @@ function applied to the <code>paracou16</code> point set: the red curve
 is for the original estimation, the black one uses the Sheather and
 Jones bandwidth.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss/">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.univar</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.univar 3.0-0</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.univar 3.1-2</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.3-2</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.geom 3.3-6</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.3-1</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.random 3.3-3</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.3-2</span></span></code></pre>
+<pre><code><span><span class="co">## spatstat.explore 3.4-2</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sheather and Jones bandwidth in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>, </span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -158,12 +158,12 @@ Jones bandwidth.</p>
 <span>  legend <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co"># Original bandwidth in red</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>, </span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span></span>
 <span>  <span class="op">)</span>, </span>
-<span>  col <span class="op">=</span><span class="st">"red"</span>, </span>
+<span>  col <span class="op">=</span> <span class="st">"red"</span>, </span>
 <span>  main <span class="op">=</span> <span class="st">""</span>, </span>
 <span>  add <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -197,7 +197,7 @@ bandwith: the curve of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
 is less smoothed.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>,</span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -206,7 +206,7 @@ is less smoothed.</p>
 <span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.008</span><span class="op">)</span>, </span>
 <span>  main <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>, </span>
 <span>    r <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">30</span>, </span>
@@ -231,7 +231,7 @@ approximated algorithm yields bandwidths very similar to those obtained
 by exact computation.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exact computation in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>,</span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -240,7 +240,7 @@ by exact computation.</p>
 <span>  main <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co"># Approximated computation in green</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>, </span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -261,7 +261,7 @@ by exact computation.</p>
 under 1, they will sharpen it.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default bandwith in black</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>,</span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -271,7 +271,7 @@ under 1, they will sharpen it.</p>
 <span>  main <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co"># Adjusted (half) bandwidth in red</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>,</span>
 <span>    ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, </span>
@@ -352,7 +352,7 @@ Analysis</em>. London: <span>Chapman and Hall</span>.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>
