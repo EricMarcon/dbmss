@@ -13,23 +13,29 @@ GoFtest <- function(
     stop("Argument 'Scaling' must be a character vector of length one")
   }
   if (!(Scaling %in% c("Quantile", "Studentized", "Asymmetric", "None"))) {
-    stop("Invalid argument: 'Scaling'. Accepted arguments are: Quantile,
-    Studentized, Asymmetric, None.")
+    stop(
+     "Invalid argument: 'Scaling'. Accepted arguments are: Quantile,
+     Studentized, Asymmetric, None."
+    )
   }
   # Verify Test
   if (!is.character(Test) | !is.vector(Test) | !length(Test) == 1) {
     stop("Argument 'Test' must be a character vector of length one")
   }
   if (!(Test %in% c("DCLF", "Integral", "MAD"))) {
-    stop("Invalid argument: 'Test'. Accepted arguments are: DCLF, Integral,
-         MAD.")
+    stop(
+      "Invalid argument: 'Test'. Accepted arguments are: DCLF, Integral, MAD."
+    )
   }
   # Verify Range
-  if (!is.null(Range) && (!is.vector(Range) |
-                          !is.numeric(Range) |
-                          length(Range) != 2)) {
-    stop("Invalid argument: 'Range'. Accepted arguments are a numeric vector of length two,
-         specifying the minimum and maximum distances over which to compute the test.")
+  if (
+    !is.null(Range) &&
+    (!is.vector(Range) | !is.numeric(Range) | length(Range) != 2)
+  ) {
+    stop(
+      "Invalid argument: 'Range'. Accepted arguments are a numeric vector of length two,
+      specifying the minimum and maximum distances over which to compute the test."
+    )
   }
   # Verify simulations
   if (is.null(attr(Envelope, "simfuns"))) {
@@ -48,14 +54,16 @@ GoFtest <- function(
 
   # Restrict analysis to chosen distance range
   if (!is.null(Range)) {
-    if(min(Range) < max(r) && max(Range) > min(r)) {
+    if (min(Range) < max(r) && max(Range) > min(r)) {
       SelectedR <- (r > min(Range) & r < max(Range))
       ActualValues <- ActualValues[SelectedR]
       SimulatedValues <- SimulatedValues[SelectedR, ]
       r <- r[SelectedR]
     } else {
-      warning("The selected range is outside the simulated distances.
-              The test was computed using all distances from the envelope.")
+      warning(
+       "The selected range is outside the simulated distances.
+       The test was computed using all distances from the envelope."
+      )
     }
   }
 
@@ -64,46 +72,86 @@ GoFtest <- function(
   rIncrements <- (r - c(0, r)[seq_along(r)])[-1]
 
   # Calculate weights to scale residuals of the statistic
-  Weights <- switch(Scaling,
-                    "Studentized" = 1 / apply(SimulatedValues, 1, sd, na.rm = T),
-                    "Quantile" = 1 / (apply(SimulatedValues, 1,
-                                          quantile, probs = 0.975, na.rm = T) -
-                                      apply(SimulatedValues, 1,
-                                            quantile, probs = 0.025, na.rm = T)),
-                    "Asymmetric" = {
-                      Upper <- 1 / (apply(SimulatedValues, 1,
-                                        quantile, probs = 0.975,na.rm = T) -
-                                    AverageSimulatedValues)
-                      Lower <- 1 / (AverageSimulatedValues -
-                                    apply(SimulatedValues, 1,
-                                          quantile, probs = 0.025, na.rm = T))
-                      list(UprW = Upper, LwrW = Lower)
-                    },
-                    "None" = rep(1, length(r)))
+  Weights <- switch(
+    Scaling,
+    "Studentized" = 1 / apply(
+      SimulatedValues,
+      MARGIN = 1,
+      FUN = sd,
+      na.rm = TRUE
+    ),
+    "Quantile" = 1 / (
+      apply(
+        SimulatedValues,
+        MARGIN =  1,
+        FUN = quantile,
+        probs = 0.975,
+        na.rm = TRUE
+      ) - apply(
+        SimulatedValues,
+        MARGIN = 1,
+        FUN = quantile,
+        probs = 0.025,
+        na.rm = TRUE
+      )
+    ),
+    "Asymmetric" = {
+      Upper <- 1 / (
+        apply(
+          SimulatedValues,
+          MARGIN = 1,
+          FUN = quantile,
+          probs = 0.975,
+          na.rm = TRUE
+        ) - AverageSimulatedValues
+      )
+      Lower <- 1 / (
+        AverageSimulatedValues - apply(
+          SimulatedValues,
+          MARGIN = 1,
+          FUN = quantile,
+          probs = 0.025,
+          na.rm = TRUE
+        )
+      )
+      list(UprW = Upper, LwrW = Lower)
+    },
+    "None" = rep(1, length(r))
+  )
 
   # Ui calculate the statistic for one simulation
   Ui <- function(SimulationNumber, ValueToTest) {
-    Departure <- (ValueToTest[, SimulationNumber] -
-                    AverageSimulatedValues)[seq_along(r) - 1]
+    Departure <- (
+      ValueToTest[, SimulationNumber] - AverageSimulatedValues
+    )[seq_along(r) - 1]
     if (inherits(Weights, "list")) {
-      ScaledDeparture <- sapply(seq_along(Departure),
-                                FUN= function(x) ifelse(Departure[x] >= 0,
-                                                        Departure[x] * Weights$UprW[x],
-                                                        Departure[x] * Weights$LwrW[x]))
+      ScaledDeparture <- sapply(
+        seq_along(Departure),
+        FUN= function(x) {
+          ifelse(
+            Departure[x] >= 0,
+            Departure[x] * Weights$UprW[x],
+            Departure[x] * Weights$LwrW[x]
+          )
+        }
+      )
       ScaledDeparture <- as.vector(ScaledDeparture)
     } else {
       ScaledDeparture <- Departure * Weights[seq_along(r) - 1]
     }
-    GofStatistic <- switch(Test,
-                           "DCLF" =
-                             sum((ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
-                                   rIncrements[!is.nan(ScaledDeparture)],
-                                 na.rm = T),
-                           "Integral" =
-                             sum(abs((ScaledDeparture[!is.nan(ScaledDeparture)])) *
-                                   rIncrements[!is.nan(ScaledDeparture)],
-                                 na.rm = T),
-                           "MAD" = max(abs(ScaledDeparture), na.rm = T))
+    GofStatistic <- switch(
+      Test,
+      "DCLF" = sum(
+        (ScaledDeparture[!is.nan(ScaledDeparture)])^2 *
+          rIncrements[!is.nan(ScaledDeparture)],
+        na.rm = TRUE
+      ),
+      "Integral" = sum(
+        abs((ScaledDeparture[!is.nan(ScaledDeparture)])) *
+          rIncrements[!is.nan(ScaledDeparture)],
+        na.rm = TRUE
+      ),
+      "MAD" = max(abs(ScaledDeparture), na.rm = TRUE))
     return(GofStatistic)
   }
 
@@ -125,8 +173,11 @@ GoFtest <- function(
 
   # Return the p_value. If the p_value is equal to 0, a conservative p_value
   # of 1/(n + 1) is returned.
-  return(ifelse(mean(ActualU < SimulatedU) == 0,
-                1 / (1 + NumberOfSimulations),
-                mean(ActualU < SimulatedU)))
+  return(
+    ifelse(
+      mean(ActualU < SimulatedU) == 0,
+      1 / (1 + NumberOfSimulations),
+      mean(ActualU < SimulatedU)
+    )
+  )
 }
-
