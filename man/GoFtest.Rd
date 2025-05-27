@@ -19,17 +19,21 @@ GoFtest(Envelope,
   }
   \item{Test}{
   A string specifying the method to summarize the deviation from the null hypothesis.
-  The deviation may be summarized using
-  "\emph{DCLF}": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford (DCLF) test is performed (default);
-  "\emph{Integral}": the integrated absolute deviation is utilized;
-  "\emph{MAD}": the Maximum Absolute Deviation (MAD) is utilized, a MAD test is perfomed.
+  The deviation may be summarized different ways:
+    \itemize{
+      \item "DCLF": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford (DCLF) test is performed (default);
+      \item "Integral": the integrated absolute deviation is utilized;
+      \item "MAD": the Maximum Absolute Deviation (MAD) is utilized, a MAD test is performed.
+    }
   }
   \item{Scaling}{
-  A string specifying the method to scale the residuals of the test. Scaling may be
-  "\emph{Asymmetric}" (the differences between the 2.5\% lower quantiles of simulations and the expected value is utilized to scale negative residuals, and the differences between the 2.5\% upper quantiles and the expected value is utilized to scale positive residuals);
-  "\emph{Quantile}" (ranges between the 2.5\% upper and 2.5\% lower quantiles is utilized to scale residuals, disregarding whether residuals are negative or positive);
-  "\emph{Studentized}" (the standard deviation of simulations is utilized);
-  "\emph{None}"(does not scale residuals).
+  A string specifying the method to scale the residuals of the test. Scaling may be:
+    \itemize{
+      \item "Asymmetric": the differences between the 2.5\% lower quantiles of simulations and the expected value is utilized to scale negative residuals, and the differences between the 2.5\% upper quantiles and the expected value is utilized to scale positive residuals (default);
+      \item "Quantile": ranges between the 2.5\% upper and 2.5\% lower quantiles is utilized to scale residuals, disregarding whether residuals are negative or positive;
+      \item "Studentized": the standard deviation of simulations is utilized.
+      \item "None": does not scale residuals.
+    }
   }
   \item{Range}{
   A vector of length two containing the minimum and the maximum distance over which to compute the test.
@@ -41,11 +45,17 @@ GoFtest(Envelope,
 
   Monte Carlo simulations assess how well observed distance-based measures of spatial structure align with expected measures under the null hypothesis, estimated here by the mean value of simulations.
   For both observed and simulated measures, residuals — calculated as the differences between observed and expected values — are computed at each distance r.
-  These residuals are then transformed into test-specific statistics \emph{u}: \code{Test = "MAD"} uses the maximum absolute residual; \code{Test = "Integral"}, and \code{Test = "DCLF"} use residuals to approximate the integrated deviation, and the integrated squared deviation.
+  These residuals are then transformed into test-specific statistics \emph{u}:
+  \itemize{
+    \item \code{Test = "MAD"} uses the maximum absolute residual;
+    \item \code{Test = "Integral"} and \code{Test = "DCLF"} use residuals to approximate the integrated deviation, and the integrated squared deviation.
+  }
+
   A rank test on \emph{u} evaluates the null hypothesis that the observed point pattern originates from the same point process as the simulations.
 
   The unequal variance of the residuals at different intervals of r influences \emph{u} statistics, and the power of Goodness of Fit tests.
   Myllymäki et al. (2015) proposed to scale residuals using pointwise quantiles (\code{Scaling = "Asymmetric"}, and \code{Scaling = "Quantile"}), and pointwise standard deviations (\code{Scaling = "Studentized"}).
+
   Goodness of Fit tests are sensitive to the distance interval over which they are performed.
   It is recommended to choose the distance interval to test based on \emph{a priori} hypotheses (Wiegand & Moloney 2013, Baddeley et al. 2015).
 }
