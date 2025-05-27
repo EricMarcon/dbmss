@@ -1,3 +1,10 @@
+# dbmss 2.10-0.9000
+
+## Improvements
+
+- Extended `GoFtest()`.
+
+
 # dbmss 2.10-0
 
 ## Improvements
