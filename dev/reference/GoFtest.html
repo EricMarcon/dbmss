@@ -61,17 +61,17 @@
 
   <dt id="arg-test">Test<a class="anchor" aria-label="anchor" href="#arg-test"></a></dt>
 <dd><p>A string specifying the method to summarize the deviation from the null hypothesis.
-  The deviation may be summarized using
-  "<em>DCLF</em>": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford (DCLF) test is performed (default);
-  "<em>Integral</em>": the integrated absolute deviation is utilized;
-  "<em>MAD</em>": the Maximum Absolute Deviation (MAD) is utilized, a MAD test is perfomed.</p></dd>
+  The deviation may be summarized different ways:</p><ul><li><p>"DCLF": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford (DCLF) test is performed (default);</p></li>
+<li><p>"Integral": the integrated absolute deviation is utilized;</p></li>
+<li><p>"MAD": the Maximum Absolute Deviation (MAD) is utilized, a MAD test is performed.</p></li>
+</ul><p></p></dd>
 
   <dt id="arg-scaling">Scaling<a class="anchor" aria-label="anchor" href="#arg-scaling"></a></dt>
-<dd><p>A string specifying the method to scale the residuals of the test. Scaling may be
-  "<em>Asymmetric</em>" (the differences between the 2.5% lower quantiles of simulations and the expected value is utilized to scale negative residuals, and the differences between the 2.5% upper quantiles and the expected value is utilized to scale positive residuals);
-  "<em>Quantile</em>" (ranges between the 2.5% upper and 2.5% lower quantiles is utilized to scale residuals, disregarding whether residuals are negative or positive);
-  "<em>Studentized</em>" (the standard deviation of simulations is utilized);
-  "<em>None</em>"(does not scale residuals).</p></dd>
+<dd><p>A string specifying the method to scale the residuals of the test. Scaling may be:</p><ul><li><p>"Asymmetric": the differences between the 2.5% lower quantiles of simulations and the expected value is utilized to scale negative residuals, and the differences between the 2.5% upper quantiles and the expected value is utilized to scale positive residuals (default);</p></li>
+<li><p>"Quantile": ranges between the 2.5% upper and 2.5% lower quantiles is utilized to scale residuals, disregarding whether residuals are negative or positive;</p></li>
+<li><p>"Studentized": the standard deviation of simulations is utilized.</p></li>
+<li><p>"None": does not scale residuals.</p></li>
+</ul><p></p></dd>
 
   <dt id="arg-range">Range<a class="anchor" aria-label="anchor" href="#arg-range"></a></dt>
 <dd><p>A vector of length two containing the minimum and the maximum distance over which to compute the test.
@@ -83,11 +83,12 @@
     <p>This function gathers multiple Goodness of Fit tests: the DCLF test (Diggle 1986, Cressie 1993, Loosmore &amp; Ford 2006, Marcon et al. 2012, Myllymäki et al. 2015), the integrated deviation test (Diggle 1979), and the MAD test (Diggle 1979, Myllymäki et al. 2015).</p>
 <p>Monte Carlo simulations assess how well observed distance-based measures of spatial structure align with expected measures under the null hypothesis, estimated here by the mean value of simulations.
   For both observed and simulated measures, residuals — calculated as the differences between observed and expected values — are computed at each distance r.
-  These residuals are then transformed into test-specific statistics <em>u</em>: <code>Test = "MAD"</code> uses the maximum absolute residual; <code>Test = "Integral"</code>, and <code>Test = "DCLF"</code> use residuals to approximate the integrated deviation, and the integrated squared deviation.
-  A rank test on <em>u</em> evaluates the null hypothesis that the observed point pattern originates from the same point process as the simulations.</p>
+  These residuals are then transformed into test-specific statistics <em>u</em>:</p><ul><li><p><code>Test = "MAD"</code> uses the maximum absolute residual;</p></li>
+<li><p><code>Test = "Integral"</code> and <code>Test = "DCLF"</code> use residuals to approximate the integrated deviation, and the integrated squared deviation.</p></li>
+</ul><p>A rank test on <em>u</em> evaluates the null hypothesis that the observed point pattern originates from the same point process as the simulations.</p>
 <p>The unequal variance of the residuals at different intervals of r influences <em>u</em> statistics, and the power of Goodness of Fit tests.
-  Myllymäki et al. (2015) proposed to scale residuals using pointwise quantiles (<code>Scaling = "Asymmetric"</code>, and <code>Scaling = "Quantile"</code>), and pointwise standard deviations (<code>Scaling = "Studentized"</code>).
-  Goodness of Fit tests are sensitive to the distance interval over which they are performed.
+  Myllymäki et al. (2015) proposed to scale residuals using pointwise quantiles (<code>Scaling = "Asymmetric"</code>, and <code>Scaling = "Quantile"</code>), and pointwise standard deviations (<code>Scaling = "Studentized"</code>).</p>
+<p>Goodness of Fit tests are sensitive to the distance interval over which they are performed.
   It is recommended to choose the distance interval to test based on <em>a priori</em> hypotheses (Wiegand &amp; Moloney 2013, Baddeley et al. 2015).</p>
     </div>
     <div class="section level2">
