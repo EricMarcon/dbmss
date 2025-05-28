@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.10-0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.10-0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +99,7 @@ computing time can be measured.</p>
 <span>  <span class="op">)</span>  </span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##  38.578   0.946  19.853</span></span></code></pre>
+<span><span class="co">##  39.324   0.780  18.689</span></span></code></pre>
 <p>It can be parallelized by setting a hardware strategy. The following
 example launches several simultaneous copies of R on the local computer:
 it works on all operating systems. The number of parallel processes here
@@ -124,7 +124,7 @@ is the number of logical CPUs.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.045   0.036  17.034</span></span></code></pre>
+<span><span class="co">##   1.277   0.045  17.738</span></span></code></pre>
 <p>The default strategy is <code>sequential</code>. It should be
 restored.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">

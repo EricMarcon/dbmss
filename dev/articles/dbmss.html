@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dbmss</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.10-0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.10-0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,20 +156,39 @@ Americana</em> trees:</p>
 The univariate distribution of <em>Q. Rosea</em> is tested against the
 null hypothesis of random location.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
+<code class="sourceCode R"><span><span class="va">p16_envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/KdEnvelope.html">KdEnvelope</a></span><span class="op">(</span><span class="va">paracou16</span>, ReferenceType <span class="op">=</span> <span class="st">"Q. Rosea"</span>, Global <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">p16_envelope</span>, </span>
 <span>  main <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="dbmss_files/figure-html/unnamed-chunk-1-1.png" width="100%"></p>
 <p>Significant concentration is detected between about 10 and 20
 meters.</p>
+<p>Goodness of Fit tests are available to produce a p-value, i.e. the
+probability to erroneously reject the null hypothesis.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Test H0 up to 30m</span></span>
+<span><span class="fu"><a href="../reference/GoFtest.html">GoFtest</a></span><span class="op">(</span><span class="va">p16_envelope</span>, Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.00990099</span></span></code></pre>
+<p>An analytical test, that does not rely on simulations, is available
+for the K function against complete spatial randomness in a rectangular
+window.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate a Poisson point pattern</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">rpoispp</span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="fu"><a href="../reference/as.wmppp.html">as.wmppp</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="dbmss_files/figure-html/unnamed-chunk-3-1.png" width="100%"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Test it</span></span>
+<span><span class="fu"><a href="../reference/Ktest.html">Ktest</a></span><span class="op">(</span><span class="va">X</span>, r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">.5</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.8457173</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="maps">Maps<a class="anchor" aria-label="anchor" href="#maps"></a>
 </h2>
 <p>Individual values of some distance-based measures can be computed and
 mapped.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate individual intertype M(distance) value</span></span>
 <span><span class="va">ReferenceType</span> <span class="op">&lt;-</span> <span class="st">"V. Americana"</span></span>
 <span><span class="va">NeighborType</span> <span class="op">&lt;-</span> <span class="st">"Q. Rosea"</span></span>
@@ -200,7 +219,7 @@ mapped.</p>
 <span><span class="op">)</span></span>
 <span><span class="co"># Add contour lines</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/contour.html" class="external-link">contour</a></span><span class="op">(</span><span class="va">p16_map</span>, nlevels <span class="op">=</span> <span class="fl">5</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="dbmss_files/figure-html/unnamed-chunk-2-1.png" width="100%"></p>
+<p><img src="dbmss_files/figure-html/unnamed-chunk-4-1.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="full-documentation">Full documentation<a class="anchor" aria-label="anchor" href="#full-documentation"></a>
