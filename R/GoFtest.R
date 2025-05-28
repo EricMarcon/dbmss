@@ -2,11 +2,17 @@ GoFtest <- function(
     Envelope,
     Test = "DCLF",
     Scaling = "Asymmetric",
-    Range = NULL) {
+    Range = NULL,
+    Alpha = 0.05,
+    CheckArguments = TRUE) {
+
+  if (CheckArguments) {
+    CheckdbmssArguments()
+  }
 
   # Verify Envelope
   if (!inherits(Envelope, "envelope")) {
-    stop("Envelope is not of class envelope")
+    stop("'Envelope' must be of class 'envelope'")
   }
   # Verify Scaling
   if (!is.character(Scaling) | !is.vector(Scaling) | !length(Scaling) == 1) {
@@ -46,8 +52,8 @@ GoFtest <- function(
     SimulatedValues <- as.data.frame(attr(Envelope, "simfuns"))[, -1]
   }
 
-  # Transform observed Ls into K for the test (L envelopes are constructed from
-  # the K function)
+  # Transform observed L's into K for the test
+  # (L envelopes are constructed from the K function)
   if (any(attr(Envelope, "fname") %in% c("L", "Lmm"))) {
     ActualValues <- (ActualValues + r)^2 * pi
   }
@@ -68,7 +74,11 @@ GoFtest <- function(
   }
 
   NumberOfSimulations <- dim(SimulatedValues)[2]
-  AverageSimulatedValues <- apply(SimulatedValues, 1, sum) / (NumberOfSimulations - 1)
+  AverageSimulatedValues <- apply(
+    SimulatedValues,
+    MARGIN = 1,
+    FUN = sum
+  ) / (NumberOfSimulations - 1)
   rIncrements <- (r - c(0, r)[seq_along(r)])[-1]
 
   # Calculate weights to scale residuals of the statistic
@@ -85,13 +95,13 @@ GoFtest <- function(
         SimulatedValues,
         MARGIN =  1,
         FUN = quantile,
-        probs = 0.975,
+        probs = 1 - Alpha / 2,
         na.rm = TRUE
       ) - apply(
         SimulatedValues,
         MARGIN = 1,
         FUN = quantile,
-        probs = 0.025,
+        probs = Alpha / 2,
         na.rm = TRUE
       )
     ),
@@ -101,7 +111,7 @@ GoFtest <- function(
           SimulatedValues,
           MARGIN = 1,
           FUN = quantile,
-          probs = 0.975,
+          probs = 1 - Alpha / 2,
           na.rm = TRUE
         ) - AverageSimulatedValues
       )
@@ -110,7 +120,7 @@ GoFtest <- function(
           SimulatedValues,
           MARGIN = 1,
           FUN = quantile,
-          probs = 0.025,
+          probs = Alpha / 2,
           na.rm = TRUE
         )
       )
@@ -127,7 +137,7 @@ GoFtest <- function(
     if (inherits(Weights, "list")) {
       ScaledDeparture <- sapply(
         seq_along(Departure),
-        FUN= function(x) {
+        FUN = function(x) {
           ifelse(
             Departure[x] >= 0,
             Departure[x] * Weights$UprW[x],

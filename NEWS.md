@@ -1,8 +1,8 @@
-# dbmss 2.10-0.9000
+# dbmss 2.10-0.9001
 
 ## Improvements
 
-- Extended `GoFtest()`.
+- Extended `GoFtest()` following Myllymäki et al. (2015).
 
 
 # dbmss 2.10-0

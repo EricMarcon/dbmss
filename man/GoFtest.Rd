@@ -10,7 +10,9 @@
 GoFtest(Envelope,
         Test = "DCLF",
         Scaling = "Asymmetric",
-        Range = NULL)
+        Range = NULL,
+        Alpha = 0.05,
+        CheckArguments = TRUE)
 }
 \arguments{
   \item{Envelope}{
@@ -38,6 +40,12 @@ GoFtest(Envelope,
   \item{Range}{
   A vector of length two containing the minimum and the maximum distance over which to compute the test.
   If \code{NULL}, or if the selected range is outside the simulated distances, all distances in the \code{Envelope} argument are used.
+  }
+  \item{Alpha}{
+  The risk level, 5\% by default.
+  }
+  \item{CheckArguments}{
+  Logical; if \code{TRUE}, the function arguments are verified. Should be set to \code{FALSE} to save time in simulations for example, when the arguments have been checked elsewhere.
   }
 }
 \details{
