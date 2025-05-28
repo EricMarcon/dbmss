@@ -87,7 +87,7 @@ GoFtest(Envelope,
 
   Myllymäki, M., Grabarnik, P., Seijo, H., & Stoyan, D. (2015). Deviation test construction and power comparison for marked spatial point patterns. Spatial Statistics, 11, 19–34. https://doi.org/10.1016/j.spasta.2014.11.004
 
-  Wiegand, T., & Moloney, K. A. (2013). Handbook of Spatial Point-Pattern Analysis in Ecology (0 ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b16195
+  Wiegand, T., & Moloney, K. A. (2013). Handbook of Spatial Point-Pattern Analysis in Ecology. Chapman and Hall/CRC. https://doi.org/10.1201/b16195
 
 }
 \note{
