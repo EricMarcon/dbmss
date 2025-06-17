@@ -7,7 +7,7 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GH_PAT }}
     steps:
@@ -17,10 +17,12 @@ jobs:
         uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
-          # options(pkgType = "binary")
-          # options(install.packages.check.source = "no")
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
+          # parallely issue (https://github.com/futureverse/doFuture/issues/87)
+          remotes::install_version("parallelly", "1.44.0", upgrade = FALSE)
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning", check_dir = "check")
