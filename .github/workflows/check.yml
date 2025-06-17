@@ -17,8 +17,8 @@ jobs:
         uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
-          options(pkgType = "binary")
-          options(install.packages.check.source = "no")
+          # options(pkgType = "binary")
+          # options(install.packages.check.source = "no")
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
