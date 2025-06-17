@@ -7,7 +7,7 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    runs-on: windows-latest
+    runs-on: macos-13
     env:
       GITHUB_PAT: ${{ secrets.GH_PAT }}
     steps:
@@ -27,8 +27,6 @@ jobs:
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
-        shell: cmd
       - name: Pkgdown
         # Build the package site locally
         run: Rscript -e 'pkgdown::build_site()'
-        shell: cmd
