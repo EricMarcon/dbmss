@@ -62,11 +62,11 @@ system.time(
 
 It can be parallelized by setting a hardware strategy.
 The following example launches several simultaneous copies of R on the local computer: it works on all operating systems.
-The number of parallel processes here is the number of logical CPUs.
+The number of parallel processes here is the number of logical CPUs minus 1, kept available for the system.
 
 ```{r}
 library("doFuture")
-plan(multisession, workers = availableCores())
+plan(multisession, workers = availableCores(omit = 1))
 ```
 
 The same set of simulations is now run faster with argument `parallel = TRUE`.
