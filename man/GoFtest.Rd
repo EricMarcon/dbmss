@@ -23,9 +23,9 @@ GoFtest(Envelope,
   A string specifying the method to summarize the deviation from the null hypothesis.
   The deviation may be summarized different ways:
     \itemize{
-      \item "DCLF": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford (DCLF) test is performed (default);
+      \item "DCLF": the integrated squared deviation is utilized, a Diggle-Cressie-Loosmore-Ford test is performed (default);
       \item "Integral": the integrated absolute deviation is utilized;
-      \item "MAD": the Maximum Absolute Deviation (MAD) is utilized, a MAD test is performed.
+      \item "MAD": the Maximum Absolute Deviation is utilized, a MAD test is performed.
     }
   }
   \item{Scaling}{
