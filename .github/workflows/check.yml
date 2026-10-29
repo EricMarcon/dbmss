@@ -19,16 +19,13 @@ jobs:
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
+          install.packages(c("remotes", "rcmdcheck", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
           # parallely issue (https://github.com/futureverse/doFuture/issues/87)
           remotes::install_version("parallelly", "1.44.0", upgrade = FALSE)
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning", check_dir = "check")
-        shell: Rscript {0}
-      - name: Test coverage
-        run: covr::codecov(type="all")
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
