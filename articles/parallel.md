@@ -30,7 +30,7 @@ system.time(
 ```
 
     ##    user  system elapsed 
-    ##  50.814   4.971  37.700
+    ##  39.880   5.816  22.354
 
 It can be parallelized by setting a hardware strategy. The following
 example launches several simultaneous copies of R on the local computer:
@@ -64,7 +64,7 @@ system.time(
 ```
 
     ##    user  system elapsed 
-    ##   1.927   0.163  26.212
+    ##   1.487   0.051  23.665
 
 The default strategy is `sequential`. It should be restored.
 

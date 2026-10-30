@@ -98,7 +98,7 @@ computing time can be measured.</p>
 <span>  <span class="op">)</span>  </span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##  50.814   4.971  37.700</span></span></code></pre>
+<span><span class="co">##  39.880   5.816  22.354</span></span></code></pre>
 <p>It can be parallelized by setting a hardware strategy. The following
 example launches several simultaneous copies of R on the local computer:
 it works on all operating systems. The number of parallel processes here
@@ -123,7 +123,7 @@ is the number of logical CPUs.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.927   0.163  26.212</span></span></code></pre>
+<span><span class="co">##   1.487   0.051  23.665</span></span></code></pre>
 <p>The default strategy is <code>sequential</code>. It should be
 restored.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
