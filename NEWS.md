@@ -1,9 +1,12 @@
+# dbmss 2.11-0.9000
+
+- Next version
+
 # dbmss 2.11-0
 
 ## Improvements
 
 - Extended `GoFtest()` following Myllymäki et al. (2015).
-
 
 # dbmss 2.10-0
 
@@ -11,14 +14,13 @@
 
 - parallelized `xxxEnvelope` code.
 - improved the estimation of the g function in `ghat()`:
-  * bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
-  * the max distance is no longer censored, for consistency with other functions.
-  * the estimation was not correct at last distances.
+  - bandwidth selection now follows exactly Stoyan and Stoyan, 1994.
+  - the max distance is no longer censored, for consistency with other functions.
+  - the estimation was not correct at last distances.
 - allowed setting the precision of simulated coordinates in `gEnvelope()`.
 - sorted point types in decreasing order of abundances in `autoplot.wmppp()`.
 - avoided accessing `ppp` objects' marks directly.
 - cleaned up the code
-
 
 # dbmss 2.9-2
 
@@ -26,7 +28,6 @@
 
 - pkgdown site declared in DESCRIPTION URL.
 - figure width is set to 5cm in the vignette to make the figures readable.
-
 
 # dbmss 2.9-0
 
@@ -38,7 +39,6 @@
 
 - `Smooth.wmppp()` smooths wmppp's to map individual values of functions such as $M$ in the neighborhood of points.
 
-
 # dbmss 2.8-2
 
 ## Improvements
@@ -46,9 +46,8 @@
 - C code cleaned up.
 
 ## External changes
- 
-- `Dhat()` code modified according to _spatstat.explore_ v.3.2-1 new features (thanks to Prof. Adrian Baddeley).
 
+- `Dhat()` code modified according to *spatstat.explore* v.3.2-1 new features (thanks to Prof. Adrian Baddeley).
 
 # dbmss 2.8-0
 
@@ -58,7 +57,6 @@
 - `plot.kwmppp()` (called as `plot()`) allows plotting `kwmppp` objects.
 - argument `verbose` in all envelope functions allows to hide the progress of simulations.
 
-
 # dbmss 2.7-11
 
 ## Improvements
@@ -66,9 +64,8 @@
 - `Ktest()` automatically drops 0 in `r` to avoid an obscure error message.
 
 ## External changes
- 
-- Updates in the _spatstat_ package: _dbmss_ has been updated to address the replacement of _spatstat.core_.
 
+- Updates in the *spatstat* package: *dbmss* has been updated to address the replacement of *spatstat.core*.
 
 # dbmss 2.7-10
 
@@ -78,13 +75,11 @@
 - Deprecated `aes_(x=~var)` aesthetics in ggplots replaced by `aes(x=.data$var)`.
 - documentation improvements.
 
-
 # dbmss 2.7-8
 
 ## External changes
 
 - The new package spatstat.random is now imported.
-
 
 # dbmss 2.7-7
 
@@ -92,13 +87,11 @@
 
 - Following R fixed bug [PR#18151](https://bugs.r-project.org/show_bug.cgi?id=18151), `mhat()` code is modified by Martin Maechler.
 
-
 # dbmss 2.7-6
 
 ## Bug correction
 
 - An error occurred when a function was called with `dbmss::` prefix and `CheckArguments = TRUE` and dbmss was loaded.
-
 
 # dbmss 2.7-5
 
@@ -108,8 +101,7 @@
 - `autoplot.fv()` added.
 - `autoplot.wmppp()` added.
 - CodeFactor optimization applied.
-- Suggests rmarkdown (https://github.com/yihui/knitr/issues/1864)
-
+- Suggests rmarkdown (<https://github.com/yihui/knitr/issues/1864>)
 
 # dbmss 2.7-4
 
@@ -118,16 +110,14 @@
 - Continuous integration by GitHub Actions.
 
 ## External changes
- 
-- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.core_ et al.
 
+- Updates in the *spatstat* package: *dbmss* has been updated to address the creation of *spatstat.core* et al.
 
 # dbmss 2.7-3
 
 ## Bug fixes
 
 - argument `main` in `autoplot()` was ignored.
-
 
 # dbmss 2.7-1
 
@@ -139,8 +129,6 @@
 ## Bug fixes
 
 - `autoplot()` failed with `Lenvelope` objects.
-
-
 
 # dbmss 2.7-0
 
@@ -158,14 +146,12 @@
 
 - `Kdhat()` density was normalized incorrectly with Approximate=TRUE and small r values.
 
-
-
 # dbmss 2.6-3
 
 ## Improvements
 
 - More robust check of arguments.
-- Rcpp >= 0.12.14 required. `init.c` no longer necessary. 
+- Rcpp \>= 0.12.14 required. `init.c` no longer necessary.
 - Introduction vignette.
 - On Travis and codecov.io now.
 - NEWS in Markdown.
@@ -174,8 +160,6 @@
 ## Bug fixes
 
 - `wmppp()` failed if some point laid outside the window.
-
-
 
 # dbmss 2.5-1
 
@@ -188,39 +172,31 @@
 ## Improvements
 
 - Far less memory is used to compute M and approximated m functions. The ratio of necessary memory equals that of the number of reference points to the total number of points.
-- `[.wmppp` function added to _spatstat_ generics
-
-
+- `[.wmppp` function added to *spatstat* generics
 
 # dbmss 2.4-1
 
 ## Improvements
 
-- Declaration of the required versions of R and _spatstat_ in DESCRIPTION to avoid error in CRAN test on oldrel Windows platform.
-  
+- Declaration of the required versions of R and *spatstat* in DESCRIPTION to avoid error in CRAN test on oldrel Windows platform.
 
-  
 # dbmss 2.4-0
 
 ## External changes
 
-- Updates in the _spatstat_ package: _dbmss_ has been updated to address the creation of _spatstat.util_.
+- Updates in the *spatstat* package: *dbmss* has been updated to address the creation of *spatstat.util*.
 
 ## Internal changes
 
 - C routines registration to comply with R 3.4 policy.
 - Explicit export of all non-internal functions instead of `exportPattern("^[[:alpha:]]+")`.
-- Import of package _cubature_ reduced to function `adaptIntegrate()`.
+- Import of package *cubature* reduced to function `adaptIntegrate()`.
 
-
-  
 # dbmss 2.3-0
 
 ## Internal changes
 
-- Enforcement of the use of C++11 to avoid warnings due to _RcppParallel_.
-
-  
+- Enforcement of the use of C++11 to avoid warnings due to *RcppParallel*.
 
 # dbmss 2.2-5
 
@@ -234,24 +210,18 @@
 
 - Weighted argument was ignored in `Kdhat` (bug introduced in v.2.2-4). Fixed.
 
-
-
 # dbmss 2.2-4
 
 ## Significant user-visible changes
 
-- `Mhat` and `mhat` C++ code is now parallelized thanks to _RcppParallel_.
+- `Mhat` and `mhat` C++ code is now parallelized thanks to *RcppParallel*.
 - Small performance improvement of `Kdhat` (around 5% faster).
-  
-  
-  
+
 # dbmss 2.2-3
 
 ## Significant user-visible changes
 
 - Updated CITATION: the paper about this package has been published: Eric Marcon, Stephane Traissac, Florence Puech, Gabriel Lang (2015). Tools to Characterize Point Patterns: dbmss for R. Journal of Statistical Software, 67(3), 1-15.
-
-
 
 # dbmss 2.2-2
 
@@ -263,15 +233,11 @@
 
 - Distances pairs more than twice the maximum value of `r` where ignored when using the approximate estimation of `Kd`, so `Kd` was overestimated when `r` was smaller than usual (much less than the default values). Corrected.
 
-
-
 # dbmss 2.2-1
 
 ## Bug fixes
 
 - Adjust argument ignored in `Kdhat`. Fixed.
-
-
 
 # dbmss 2.2-0
 
@@ -286,8 +252,6 @@
 
 - Typo in internal function name `FillEnveloppe` corrected: `FillEnvelope` is the new name.
 
-
-  
 # dbmss 2.1-2
 
 ## Significant user-visible changes
@@ -300,8 +264,6 @@
 
 - `FillEnvelope` returned wrong quantiles for local confidence intervals. Fixed.
 
-
-  
 # dbmss 2.1-1
 
 ## Significant user-visible changes
@@ -313,14 +275,11 @@
 
 - `Kdhat` with Reference and Neighbor points of different types was calculated with only half of point pairs and sometimes crashed R. Fixed.
 
-
-
 # dbmss 2.1-0
 
 ## Significant user-visible changes
 
 - `Kdhat` and `M` are computed through C++ loops instead of spatstat `pairdist()`. Much faster, and uses far less memory.
-
 
 # dbmss 2.0-6
 
@@ -333,76 +292,64 @@
 
 - `Kdhat` probability density estimation is cut at the lowest distance between points instead of 0.
 
-
 # dbmss 2.0-5
 
 ## Bug fixes
 
 - `Kdhat` with Reference and Neighbor points of the same type and `Weighted=TRUE` returned an error. Fixed.
 
-  
 # dbmss 2.0-3
 
 ## Overview
 
 - Minor corrections, mainly comments and formating.
 
-  
 # dbmss 2.0-0
 
 ## Overview
 
 - Most code rewritten.
-  
+
 ## Significant user-visible changes
 
 - Names of functions `X.r` became Xhat.
 - Point patterns are now of class `wmppp`.
 - Results are of class `fv`, envelopes of class `envelope`.
 
-  
 # dbmss 1.2-5
 
 ## Overview
 
 - NEWS file added.
 
-
 # dbmss 1.2-4
 
 ## Overview
 
 - Documentation format improved.
- 
+
 ## Significant user-visible changes
 
 - The default behavior of `Kd` is that of Duranton and Overman (2005). An optional parameter is added to used improved bandwith selection.
- 
+
 ## Bug fixes
 
 - The density estimation of `Kd` was run twice. Fixed.
 
-
-
 # dbmss 1.2-3
 
-  
-## ## Overview
+## Overview
 
 - First version on CRAN. Versions 1.2.2 and 1.2.3 contain faster examples to follow CRAN requirements.
 
- 
-
 # dbmss 1.2-1
-  
+
 ## Overview
 
 - `Kinhom` function added.
 
-
-
 # dbmss 1.1
-  
+
 ## Overview
 
 - First version.
