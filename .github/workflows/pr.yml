@@ -25,7 +25,6 @@ jobs:
           needs:
             website
             coverage
-        shell: Rscript {0}
       - name: Commit documentation
         uses: EndBug/add-and-commit@v10
       - name: Check the package
