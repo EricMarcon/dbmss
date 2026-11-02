@@ -9,11 +9,17 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
+# knitr options
 knitr::opts_chunk$set(
+  cache = TRUE, 
+  message = FALSE, 
+  warning = FALSE,
   # Larger figures (default is 3, only legend is visible)
   fig.width = 5,       
   out.width = "100%"
 )
+
+# Random seed
 set.seed(2018)
 ```
 

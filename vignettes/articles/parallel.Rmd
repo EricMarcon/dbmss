@@ -12,24 +12,27 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-# Installation of packages if necessary
-InstallPackages <- function(Packages) {
-  InstallPackage <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos = "https://cran.rstudio.com/")
-    }
-  }
-  invisible(sapply(Packages, InstallPackage))
-}
-# Add necessary packages here
-Packages <- c("dplyr", "dbmss")
-# Install them
-InstallPackages(Packages)
+# Necessary packages
+packages_required <- c("dplyr", "dbmss")
+
+# Already installed?
+packages_installed <- vapply(
+  packages_required, 
+  FUN = requireNamespace, 
+  FUN.VALUE = TRUE, 
+  quietly = TRUE
+) 
+# Install missing packages
+install.packages(names(packages_installed)[!packages_installed])
+
+# knitr options
 knitr::opts_chunk$set(
   cache = TRUE, 
   message = FALSE, 
   warning = FALSE
 )
+
+# Random seed
 set.seed(97310)
 ```
 

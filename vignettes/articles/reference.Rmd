@@ -13,7 +13,14 @@ vignette: >
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE)
+# knitr options
+knitr::opts_chunk$set(
+  cache = TRUE, 
+  message = FALSE, 
+  warning = FALSE
+)
+
+# Random seed
 set.seed(97310)
 ```
 
