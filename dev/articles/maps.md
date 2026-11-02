@@ -1,14 +1,14 @@
 # Mapping local values of measures
 
 Local values of distance-based measures of spatial concentration can be
-mapped (Marcon and Puech (2023)).
+mapped (Marcon and Puech 2023).
 
 ## Dataset simulation
 
 We build a point pattern made of cases (the points of interest) and
 controls (the background distribution of points).
 
-Cases are a Matérn (Matérn 1960) point pattern with $`\kappa`$
+Cases are a Matérn point pattern (Matérn 1960) with $`\kappa`$
 (expected) clusters of $`\mu`$ (expected) points in a circle of radius
 *scale*. Controls are a Poisson point pattern whose density $`\lambda`$
 decreases exponentially along the y-axis (we will call “north” the

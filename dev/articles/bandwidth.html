@@ -135,20 +135,8 @@ function applied to the <code>paracou16</code> point set: the red curve
 is for the original estimation, the black one uses the Sheather and
 Jones bandwidth.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss/">"dbmss"</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.explore</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.data</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.univar</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.univar 3.2-0</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.geom</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.geom 3.8-3</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: spatstat.random</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.random 3.5-2</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: nlme</span></span></code></pre>
-<pre><code><span><span class="co">## spatstat.explore 3.8-3</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Sheather and Jones bandwidth in black</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ericmarcon.github.io/dbmss/">"dbmss"</a></span><span class="op">)</span></span>
+<span><span class="co"># Sheather and Jones bandwidth in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/m_hat.html">mhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>, </span>
@@ -197,7 +185,7 @@ function estimated up to 30 meters only, resulting into a narrower
 bandwith: the curve of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>d</mi></msub><annotation encoding="application/x-tex">K_d</annotation></semantics></math>
 is less smoothed.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
 <span>    <span class="va">paracou16</span>,</span>
@@ -230,7 +218,7 @@ distances (actually, only those corresponding to at least a pair of
 points) is used to choose the bandwidth. Simulations show that the
 approximated algorithm yields bandwidths very similar to those obtained
 by exact computation.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exact computation in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>
@@ -260,7 +248,7 @@ by exact computation.</p>
 <p>The users can choose to multiply the bandwidth by argument
 <code>Adjust</code>. Values over 1 will smooth the density estimation;
 under 1, they will sharpen it.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default bandwith in black</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/Kdhat.html">Kdhat</a></span><span class="op">(</span></span>

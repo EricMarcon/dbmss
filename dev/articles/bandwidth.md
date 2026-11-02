@@ -45,32 +45,6 @@ bandwidth.
 ``` r
 
 library("dbmss")
-```
-
-    ## Loading required package: Rcpp
-
-    ## Loading required package: spatstat.explore
-
-    ## Loading required package: spatstat.data
-
-    ## Loading required package: spatstat.univar
-
-    ## spatstat.univar 3.2-0
-
-    ## Loading required package: spatstat.geom
-
-    ## spatstat.geom 3.8-3
-
-    ## Loading required package: spatstat.random
-
-    ## spatstat.random 3.5-2
-
-    ## Loading required package: nlme
-
-    ## spatstat.explore 3.8-3
-
-``` r
-
 # Sheather and Jones bandwidth in black
 plot(
   mhat(
