@@ -7,9 +7,9 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Check out
         uses: actions/checkout@v7
